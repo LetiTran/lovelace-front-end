@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 
-import customInputStyle from "assets/jss/material-dashboard-pro-react/components/customInputStyle.jsx";
+import customInputStyle from "../customInputStyle.jsx";
 
 function CustomInput({ ...props }) {
   const {

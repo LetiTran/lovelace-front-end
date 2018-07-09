@@ -1,28 +1,56 @@
 import React, { Component } from 'react';
 import LandingPage from './views/landing-page.js';
-import Homepage from './views/homepage.jsx';
+import Footer from './components/footer.js';
+import Sidebar from './components/NavBar.js';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
 class App extends Component {
   render() {
     
-     
-
-    return (
-      <Router>
-      <Switch>
-            <Route exact path="/" component={LandingPage }/>
-            <Route path="/homepage" component={Homepage} />
-       </Switch>
-      </Router>
+   return (
+       <div>
+          <LandingPage />
+          <Footer />
+          <Sidebar />
+       </div>
     );
   }
 }
 
 export default App;
+
+
+
+// const LandingPage = () => (
+//   <LandingPage />
+// )
+
+// const Homepage = () => (
+//   <Homepage />
+// )
+ 
+
+// return (
+//   <Router>
+// <div>
+   
+//       <header>
+//       <nav>
+//    <ul>
+//             <li>
+//               <Link to="/LandingPage" >LandingPage</Link>
+//             </li>
+//             <li>
+//               <Link to="/Homepage" >Homepage</Link>
+//             </li>
+//             </ul>
+//             </nav>
+//       </header>
+
+//   <Switch>
+//         <Route path="/LandingPage" component={LandingPage }/>
+//         <Route path="/homepage" component={Homepage} />
+//    </Switch>
+//    </div>
+//   </Router>
