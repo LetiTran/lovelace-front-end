@@ -12,6 +12,7 @@ class LandingPage extends Component {
         <Login />
         <img src= {logo} alt="App Logo" height="200" width="750"/>
         <p>Staff | Teachers | Students</p>
+       
       </div>
     );
   }

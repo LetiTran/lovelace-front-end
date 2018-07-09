@@ -6,7 +6,7 @@ class Homepage extends Component {
   render() {
      return (
       <Paper>
-        Hello, World
+        Hello, Homepage
       </Paper> 
     );
   }

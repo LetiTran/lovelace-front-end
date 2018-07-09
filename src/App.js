@@ -2,15 +2,38 @@ import React, { Component } from 'react';
 import LandingPage from './views/landing-page.js';
 import Footer from './components/footer.js';
 
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import { createBrowserHistory } from "history";
+import { Router, Route, Switch } from "react-router";
+import indexRoutes from  './routes/index.jsx'
+
+let hist = createBrowserHistory();
 
 class App extends Component {
   render() {
     
    return (
        <div>
-          <LandingPage />
-          <Footer />
+            <Router history={hist}>
+              <div>
+                <nav>
+                  <ul>
+                    <li><Link to="/homepage"> Link to Homepage </Link></li>
+                    <li><Link to="/"> Link to LandingPage </Link></li>
+                    <li><Link to="/assignments"> Link to Assignments </Link></li>
+                  </ul>
+                </nav>
+
+                <Switch>
+                  {indexRoutes.map((prop, key) => {
+                    return <Route path={prop.path} key={key} component={prop.component} />;
+                  })}
+                </Switch>
+              </div>
+            </Router>
+
+          <footer><Footer /></footer>
        </div>
     );
   }
