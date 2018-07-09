@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Login from "../components/login.js"
 import logo from "../logo-horizontal.png"
 
 import {Grid, Paper} from '@material-ui/core';
 
-// import "../css-files/landing-page.css";
 
 class LandingPage extends Component {
    
@@ -15,12 +13,9 @@ class LandingPage extends Component {
         Paper: {
           paddingLeft: 10,
           paddingRight: 10,
-          // paddingBottom: 0.2,
-          // paddingTop: 0.2,
           margin: 5
         },
         Grid: {
-        // flexGrow: 1,
         flexShrink: 1
         },
         Image: {
