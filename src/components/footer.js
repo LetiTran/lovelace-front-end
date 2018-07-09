@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
+import '../css-files/footer.css';
 
 const styles = theme => ({
   root: {
@@ -11,6 +12,8 @@ const styles = theme => ({
   },
   chip: {
     margin: theme.spacing.unit,
+    color: "black",
+    backgroundColor: "light-grey",
   },
 });
 
@@ -21,21 +24,18 @@ function Footer(props) {
       <Chip
         label="Home"
         className={classes.chip}
-        component="a"
         href="/"
         clickable
       />
           <Chip
         label="Textbook(GitHub)"
         className={classes.chip}
-        component="a"
         href="https://github.com/Ada-Developers-Academy/textbook-curriculum"
         clickable
       />
           <Chip
         label="Ada Website"
         className={classes.chip}
-        component="a"
         href="https://www.adadevelopersacademy.org/"
         clickable
       />
