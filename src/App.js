@@ -16,11 +16,7 @@ class App extends Component {
    return (
        <div>
           <MiniDrawer>
-          <ul role="nav">
-            <li><Link to="/homepage"> Link to Homepage </Link></li>
-            <li><Link to="/"> Link to LandingPage </Link></li>
-            <li><Link to="/assignments"> Link to Assignments </Link></li>
-          </ul>
+
 
         {this.props.children}
         {/* Children from Router on index.js */}

@@ -12,6 +12,11 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItemLink from './ListItemLink'
+import BookIcon from '@material-ui/icons/Book';
+import HomeIcon from '@material-ui/icons/Home'
+import CheckIcon from '@material-ui/icons/Done';
+import SchoolIcon from '@material-ui/icons/School'
 import { mailFolderListItems, otherMailFolderListItems } from './tileData';
 
 const drawerWidth = 240;
@@ -125,14 +130,17 @@ class MiniDrawer extends React.Component {
           open={this.state.open}
         >
           <section className={classes.toolbar}>
-            <IconButton onClick={this.handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
+            <IconButton onClick={this.handleDrawerClose}><ChevronLeftIcon /></IconButton>
           </section>
           <Divider />
-          <List>{mailFolderListItems}</List>
-          <Divider />
-          {/*<List>{otherMailFolderListItems}</List>*/}
+          {/*<List>{mailFolderListItems}</List>*/}
+          {/*<Divider />*/}
+          <list>
+            <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
+            <ListItemLink to="/homepage" primary="Textbook" icon={<BookIcon />} />
+            <ListItemLink to="/assignments" primary="Assignments" icon={<CheckIcon />} />
+            <ListItemLink to="/assignments" primary="Ada" icon={<SchoolIcon />} />
+          </list>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
