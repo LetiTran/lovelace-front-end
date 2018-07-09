@@ -1,6 +1,6 @@
-import LandingPage from "views/landing-page.jsx";
-import Assignments from "views/assignments.jsx";
-import HomePage from "views/homepage.jsx";
+import LandingPage from '../views/landing-page.js';
+import Assignments from '../views/assignments.jsx';
+import Homepage from '../views/homepage.jsx';
 
 let indexRoutes = [
   { path: "/assignments", name: "Assignments", component: Assignments },
