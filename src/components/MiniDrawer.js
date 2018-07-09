@@ -113,7 +113,7 @@ class MiniDrawer extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" noWrap>
-              Mini variant drawer
+              Lovelace
             </Typography>
           </Toolbar>
         </AppBar>
@@ -124,19 +124,19 @@ class MiniDrawer extends React.Component {
           }}
           open={this.state.open}
         >
-          <div className={classes.toolbar}>
+          <section className={classes.toolbar}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+              <ChevronLeftIcon />
             </IconButton>
-          </div>
+          </section>
           <Divider />
           <List>{mailFolderListItems}</List>
           <Divider />
-          <List>{otherMailFolderListItems}</List>
+          {/*<List>{otherMailFolderListItems}</List>*/}
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography>
+          {this.props.children}
         </main>
       </div>
     );
