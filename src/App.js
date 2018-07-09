@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import LandingPage from './views/landing-page.js';
-import Homepage from './views/homepage.jsx';
+import Footer from './components/footer.js';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
+import { Link } from "react-router-dom";
+
+import { createBrowserHistory } from "history";
+
+let hist = createBrowserHistory();
 
 class App extends Component {
   render() {
     
-     
+   return (
+       <div>
+          <nav>
+          <ul role="nav">
+            <li><Link to="/homepage"> Link to Homepage </Link></li>
+            <li><Link to="/"> Link to LandingPage </Link></li>
+            <li><Link to="/assignments"> Link to Assignments </Link></li>
+          </ul>
+        </nav>
+        {this.props.children}
+        {/* Children from Router on index.js */}
 
-    return (
-      <Router>
-      <Switch>
-            <Route exact path="/" component={LandingPage }/>
-            <Route path="/homepage" component={Homepage} />
-       </Switch>
-      </Router>
+          <footer><Footer /></footer>
+       </div>
     );
   }
 }
