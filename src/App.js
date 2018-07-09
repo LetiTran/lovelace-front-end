@@ -3,17 +3,13 @@ import Footer from './components/footer.js';
 
 import { Link } from "react-router-dom";
 
-import { createBrowserHistory } from "history";
-
-let hist = createBrowserHistory();
-
 class App extends Component {
   render() {
     
    return (
        <div>
           <nav>
-          <ul role="nav">
+          <ul>
             <li><Link to="/homepage"> Link to Homepage </Link></li>
             <li><Link to="/"> Link to LandingPage </Link></li>
             <li><Link to="/assignments"> Link to Assignments </Link></li>

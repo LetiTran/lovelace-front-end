@@ -6,7 +6,10 @@ class Homepage extends Component {
   render() {
      return (
       <Paper>
-        Hello, Homepage
+        
+        Hello, Homepage!
+        Put a dashboard view with calendar etc.
+
       </Paper> 
     );
   }
