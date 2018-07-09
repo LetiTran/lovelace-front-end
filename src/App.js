@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import LandingPage from './views/landing-page.js';
 import Footer from './components/footer.js';
-import Sidebar from './components/NavBar.js';
 
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 
@@ -12,7 +11,6 @@ class App extends Component {
        <div>
           <LandingPage />
           <Footer />
-          <Sidebar />
        </div>
     );
   }
