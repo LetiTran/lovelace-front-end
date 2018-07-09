@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import LandingPage from './views/landing-page.js';
 import Footer from './components/footer.js';
 
 import { Link } from "react-router-dom";
 
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router";
-import indexRoutes from  './routes/index.jsx'
 
 let hist = createBrowserHistory();
 
@@ -15,23 +12,15 @@ class App extends Component {
     
    return (
        <div>
-            <Router history={hist}>
-              <div>
-                <nav>
-                  <ul>
-                    <li><Link to="/homepage"> Link to Homepage </Link></li>
-                    <li><Link to="/"> Link to LandingPage </Link></li>
-                    <li><Link to="/assignments"> Link to Assignments </Link></li>
-                  </ul>
-                </nav>
-
-                <Switch>
-                  {indexRoutes.map((prop, key) => {
-                    return <Route path={prop.path} key={key} component={prop.component} />;
-                  })}
-                </Switch>
-              </div>
-            </Router>
+          <nav>
+          <ul role="nav">
+            <li><Link to="/homepage"> Link to Homepage </Link></li>
+            <li><Link to="/"> Link to LandingPage </Link></li>
+            <li><Link to="/assignments"> Link to Assignments </Link></li>
+          </ul>
+        </nav>
+        {this.props.children}
+        {/* Children from Router on index.js */}
 
           <footer><Footer /></footer>
        </div>
@@ -40,38 +29,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-// const LandingPage = () => (
-//   <LandingPage />
-// )
-
-// const Homepage = () => (
-//   <Homepage />
-// )
- 
-
-// return (
-//   <Router>
-// <div>
-   
-//       <header>
-//       <nav>
-//    <ul>
-//             <li>
-//               <Link to="/LandingPage" >LandingPage</Link>
-//             </li>
-//             <li>
-//               <Link to="/Homepage" >Homepage</Link>
-//             </li>
-//             </ul>
-//             </nav>
-//       </header>
-
-//   <Switch>
-//         <Route path="/LandingPage" component={LandingPage }/>
-//         <Route path="/homepage" component={Homepage} />
-//    </Switch>
-//    </div>
-//   </Router>
