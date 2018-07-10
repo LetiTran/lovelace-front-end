@@ -29,6 +29,7 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    backgroundColor: "#669933",
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -103,7 +104,7 @@ class MiniDrawer extends React.Component {
       <div className={classes.root}>
         <AppBar
           position="absolute"
-          className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
+          className={classNames(classes.appBar, this.state.open && classes.appBarShift) }
         >
           <Toolbar disableGutters={!this.state.open}>
             <IconButton
@@ -126,8 +127,8 @@ class MiniDrawer extends React.Component {
           }}
           open={this.state.open}
         >
-          <section className={classes.toolbar}>
-            <IconButton onClick={this.handleDrawerClose}><ChevronLeftIcon /></IconButton>
+          <section style={{backgroundColor: "#669933"}} className={classes.toolbar}>
+            <IconButton onClick={this.handleDrawerClose}><ChevronLeftIcon style={{color: "white"}}/></IconButton>
           </section>
           <Divider />
           {/*<List>{mailFolderListItems}</List>*/}

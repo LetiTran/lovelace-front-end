@@ -11,8 +11,8 @@ const styles = theme => ({
   },
   chip: {
     margin: theme.spacing.unit,
-    color: "black",
-    backgroundColor: "light-grey",
+    color: "#F8F8F8",
+    backgroundColor: "#669933",
   },
 });
 
