@@ -23,7 +23,7 @@ function Footer(props) {
       <Chip
         label="Home"
         className={classes.chip}
-        href="/"
+        href="/lovelace-front-end"
         clickable
       />
           <Chip

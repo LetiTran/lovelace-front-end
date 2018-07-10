@@ -133,8 +133,8 @@ class MiniDrawer extends React.Component {
           {/*<List>{mailFolderListItems}</List>*/}
           {/*<Divider />*/}
           <list>
-            <ListItemLink to="/lovelace-front-end" primary="Home" icon={<HomeIcon />} />
-            <ListItemLink to="/lovelace-front-end/homepage" primary="Textbook" icon={<BookIcon />} />
+            <ListItemLink to="/lovelace-front-end" primary="LandingPage" icon={<HomeIcon />} />
+            <ListItemLink to="/lovelace-front-end/homepage" primary="Homepage" icon={<BookIcon />} />
             <ListItemLink to="/lovelace-front-end/assignments" primary="Assignments" icon={<CheckIcon />} />
             <ListItemLink to="/lovelace-front-end/assignments" primary="Ada" icon={<SchoolIcon />} />
           </list>
