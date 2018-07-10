@@ -81,7 +81,13 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
   },
+  toolbarButtons: {
+    marginLeft: 'auto',
+
+  }
 });
+
+
 
 class MiniDrawer extends React.Component {
   state = {
@@ -96,13 +102,15 @@ class MiniDrawer extends React.Component {
     this.setState({ open: false });
   };
 
+
+
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
         <AppBar
-          position="absolute"
+          position="fixed"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
         >
           <Toolbar disableGutters={!this.state.open}>
@@ -129,9 +137,8 @@ class MiniDrawer extends React.Component {
           <section className={classes.toolbar}>
             <IconButton onClick={this.handleDrawerClose}><ChevronLeftIcon /></IconButton>
           </section>
+
           <Divider />
-          {/*<List>{mailFolderListItems}</List>*/}
-          {/*<Divider />*/}
           <list>
             <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
             <ListItemLink to="/homepage" primary="Textbook" icon={<BookIcon />} />
@@ -140,8 +147,9 @@ class MiniDrawer extends React.Component {
           </list>
         </Drawer>
         <main className={classes.content}>
-          <div className={classes.toolbar} />
-          {this.props.children}
+          <div className={classes.toolbar}/>
+          <section height="100vh" overflow="scroll">{this.props.children}</section>
+
         </main>
       </div>
     );
