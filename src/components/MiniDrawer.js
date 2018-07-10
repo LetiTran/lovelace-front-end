@@ -14,7 +14,7 @@ import ListItemLink from './ListItemLink'
 import BookIcon from '@material-ui/icons/Book';
 import HomeIcon from '@material-ui/icons/Home'
 import CheckIcon from '@material-ui/icons/Done';
-import SchoolIcon from '@material-ui/icons/School'
+import SchoolIcon from '@material-ui/icons/School';
 
 const drawerWidth = 240;
 

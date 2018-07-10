@@ -14,8 +14,9 @@ class App extends Component {
         {this.props.children}
         {/* Children from Router on index.js */}
 
-          <footer><Footer /></footer>
+         
           </MiniDrawer>
+          <footer><Footer /></footer>
        </div>
     );
   }

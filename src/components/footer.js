@@ -8,11 +8,14 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
+
+    // backgroundColor: "#669933",
   },
   chip: {
     margin: theme.spacing.unit,
     color: "#F8F8F8",
     backgroundColor: "#669933",
+    width: 300
   },
 });
 
