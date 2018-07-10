@@ -14,7 +14,7 @@ import ListItemLink from './ListItemLink'
 import BookIcon from '@material-ui/icons/Book';
 import HomeIcon from '@material-ui/icons/Home'
 import CheckIcon from '@material-ui/icons/Done';
-import SchoolIcon from '@material-ui/icons/School'
+import SchoolIcon from '@material-ui/icons/School';
 
 const drawerWidth = 240;
 
@@ -29,6 +29,7 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    backgroundColor: "#669933",
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -134,16 +135,16 @@ class MiniDrawer extends React.Component {
           }}
           open={this.state.open}
         >
-          <section className={classes.toolbar}>
-            <IconButton onClick={this.handleDrawerClose}><ChevronLeftIcon /></IconButton>
+          <section style={{backgroundColor: "#669933"}} className={classes.toolbar}>
+            <IconButton onClick={this.handleDrawerClose}><ChevronLeftIcon style={{color: "white"}}/></IconButton>
           </section>
 
           <Divider />
           <list>
-            <ListItemLink to="/" primary="Home" icon={<HomeIcon />} />
-            <ListItemLink to="/homepage" primary="Textbook" icon={<BookIcon />} />
-            <ListItemLink to="/assignments" primary="Assignments" icon={<CheckIcon />} />
-            <ListItemLink to="/assignments" primary="Ada" icon={<SchoolIcon />} />
+            <ListItemLink to="/lovelace-front-end" primary="LandingPage" icon={<HomeIcon />} />
+            <ListItemLink to="/lovelace-front-end/homepage" primary="Homepage" icon={<BookIcon />} />
+            <ListItemLink to="/lovelace-front-end/assignments" primary="Assignments" icon={<CheckIcon />} />
+            <ListItemLink to="/lovelace-front-end/assignments" primary="Ada" icon={<SchoolIcon />} />
           </list>
         </Drawer>
         <main className={classes.content}>

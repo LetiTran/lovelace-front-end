@@ -20,13 +20,9 @@ class App extends Component {
               </Grid>
             </Grid>
 
-            <section
-                style={{ position: 'fixed', width:"100%", right: "0", bottom:"0" }}>
-              <Footer />
-            </section>
-          {/*<footer><Footer /></footer>*/}
-          </MiniDrawer>
 
+          </MiniDrawer>
+          <footer><Footer /></footer>
        </div>
     );
   }

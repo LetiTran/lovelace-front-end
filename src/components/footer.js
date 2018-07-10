@@ -8,11 +8,14 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
+
+    // backgroundColor: "#669933",
   },
   chip: {
     margin: theme.spacing.unit,
-    color: "black",
-    backgroundColor: "light-grey",
+    color: "#F8F8F8",
+    backgroundColor: "#669933",
+    width: 300
   },
 });
 
@@ -23,7 +26,7 @@ function Footer(props) {
       <Chip
         label="Home"
         className={classes.chip}
-        href="/"
+        href="/lovelace-front-end"
         clickable
       />
           <Chip
