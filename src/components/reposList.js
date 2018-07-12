@@ -27,18 +27,20 @@ renderRepoList = () => {
       <Repo
         key={index}
         type={repo.type}
-        onClick={()=> window.open(repo.html_url, "_blank")}
-        external_id={repo.id}
-        name={repo.name}
-        language={repo.language}
-        pulls_url={repo.pulls_url}
+        onClick={()=> window.open(repo.repo_url, "_blank")}
+        repo_url={repo.repo_url}
+        // external_id={repo.id}
+        // name={repo.name}
+        // language={repo.language}
+        // pulls_url={repo.pulls_url}
       />
     );
   });
 }
 
   componentDidMount() {
-    axios.get(`https://api.github.com/users/Ada-C9/repos`)
+    // axios.get(`https://api.github.com/users/Ada-C9/repos`)
+      axios.get(`http://localhost:3000/assignments`)
         .then((response) => {
           console.log(response)
           this.setState({ repos: response.data });

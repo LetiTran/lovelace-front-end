@@ -13,7 +13,7 @@ class Repo extends Component {
     return (
         <section>
             <ListItem onClick={this.props.onClick}>
-                {this.props.name}
+                {this.props.repo_url}
             </ListItem>
         </section>
 
@@ -22,11 +22,12 @@ class Repo extends Component {
 }
 
 Repo.propTypes = {
-    external_id: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
-    // language: PropTypes.string.isRequired,
-    pulls_url: PropTypes.string.isRequired,
-    external_id: PropTypes.number.isRequired,
+    // external_id: PropTypes.object.isRequired,
+    // name: PropTypes.string.isRequired,
+    // // language: PropTypes.string.isRequired,
+    // // pulls_url: PropTypes.string.isRequired,
+    // repo_url: PropTypes.string.isRequired,
+    // external_id: PropTypes.number.isRequired,
   };
 
 export default Repo;
