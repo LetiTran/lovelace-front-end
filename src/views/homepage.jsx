@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Paper from "@material-ui/core/Paper";
 import MarkdownFeedback from "../components/MarkdownFeedback";
 
-
 class Homepage extends Component {
   render() {
      return (
@@ -11,6 +10,8 @@ class Homepage extends Component {
         Hello, Homepage!
         Put a dashboard view with calendar etc.
       </Paper> 
+      
+
     );
   }
 }
