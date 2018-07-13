@@ -5,9 +5,9 @@ import MarkdownFeedback from "../components/MarkdownFeedback";
 class Feedback extends Component {
   render() {
     return (
-        <Section>
+        // <Section>
           <MarkdownFeedback />
-        </Section>
+        // </Section>
     );
   }
 }
