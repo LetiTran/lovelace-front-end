@@ -28,7 +28,11 @@ renderRepoList = () => {
         key={index}
         type={repo.type}
         onClick={()=> window.open(repo.repo_url, "_blank")}
-        repo_url={repo.repo_url}
+        repoUrl={repo.repo_url}
+        startDate={repo.start_date} 
+        dueDate={repo.due_date}
+        individual={repo.individual}
+        // Add this ones later on rails db and here too:
         // external_id={repo.id}
         // name={repo.name}
         // language={repo.language}
@@ -53,7 +57,7 @@ renderRepoList = () => {
 
 
   render() {
-    const { repos } = this.state.repos;
+    // const { repos } = this.state.repos;
     return (
         <section>
           <Grid container >

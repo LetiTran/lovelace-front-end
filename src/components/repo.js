@@ -10,10 +10,15 @@ import ListItem from "@material-ui/core/es/ListItem/ListItem";
 class Repo extends Component {
 
   render() {
+    //   const startDate = this.repo.startDate
+      const repoUrl = this.props.repoUrl
+    //   const dueDate = this.this.props.dueDate
+    //   const individual = this.this.props.individual
+
     return (
         <section>
             <ListItem onClick={this.props.onClick}>
-                {this.props.repo_url}
+                {repoUrl}  
             </ListItem>
         </section>
 
@@ -24,10 +29,13 @@ class Repo extends Component {
 Repo.propTypes = {
     // external_id: PropTypes.object.isRequired,
     // name: PropTypes.string.isRequired,
-    // // language: PropTypes.string.isRequired,
-    // // pulls_url: PropTypes.string.isRequired,
-    // repo_url: PropTypes.string.isRequired,
+    // language: PropTypes.string.isRequired,
+    // pulls_url: PropTypes.string.isRequired,
+    repoUrl: PropTypes.string.isRequired,
+    startDate: PropTypes.string.isRequired,
+    dueDate: PropTypes.string.isRequired,
+    individual: PropTypes.string.isRequired,
     // external_id: PropTypes.number.isRequired,
-  };
+}
 
 export default Repo;
