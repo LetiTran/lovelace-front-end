@@ -22,7 +22,7 @@ constructor(props) {
 
 
 renderRepoList = () => {
-   return this.state.repos.map((repo,index) => {
+    return this.state.repos.map((repo,index) => {
     return (
       <Repo
         key={index}

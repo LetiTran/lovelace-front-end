@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Student from './Student.js'
+import Student from '../components/Student.js'
 import axios from 'axios';
 
 
@@ -16,7 +16,7 @@ class StudentsList extends Component {
       
       
     renderStudentList = () => {
-    return this.state.students.map((student,index) => {
+     return this.state.students.map((student,index) => {
         return (
         <Student
             key={index}
