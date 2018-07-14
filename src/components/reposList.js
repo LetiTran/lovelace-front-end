@@ -22,23 +22,29 @@ constructor(props) {
 
 
 renderRepoList = () => {
-   return this.state.repos.map((repo,index) => {
+    return this.state.repos.map((repo,index) => {
     return (
       <Repo
         key={index}
         type={repo.type}
-        onClick={()=> window.open(repo.html_url, "_blank")}
-        external_id={repo.id}
-        name={repo.name}
-        language={repo.language}
-        pulls_url={repo.pulls_url}
+        onClick={()=> window.open(repo.repo_url, "_blank")}
+        repoUrl={repo.repo_url}
+        startDate={repo.start_date} 
+        dueDate={repo.due_date}
+        individual={repo.individual}
+        // Add this ones later on rails db and here too:
+        // external_id={repo.id}
+        // name={repo.name}
+        // language={repo.language}
+        // pulls_url={repo.pulls_url}
       />
     );
   });
 }
 
   componentDidMount() {
-    axios.get(`https://api.github.com/users/Ada-C9/repos`)
+    // axios.get(`https://api.github.com/users/Ada-C9/repos`)
+      axios.get(`http://localhost:3000/assignments`)
         .then((response) => {
           console.log(response)
           this.setState({ repos: response.data });
@@ -51,7 +57,7 @@ renderRepoList = () => {
 
 
   render() {
-    const { repos } = this.state.repos;
+    // const { repos } = this.state.repos;
     return (
         <section>
           <Grid container >
