@@ -21,7 +21,7 @@ class StudentsList extends Component {
         <Student
             key={index}
             type={student.type}
-            // onClick={()=> window.open(student.student_url, "_blank")} --> make it a link to student github page?
+            onClick={()=> window.open("https://github.com/" + student.github_name, "_blank")}
             name={student.name}
             email={student.email} 
             cohort={student.cohort}
