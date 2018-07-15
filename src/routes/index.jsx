@@ -1,7 +1,7 @@
 import LandingPage from '../views/LandingPage.js';
-import Assignments from '../views/assignments.js';
-import Homepage from '../views/homepage.jsx';
-import Feedback from '../views/feedback.js';
+import Assignments from '../views/Assignments.js';
+import Homepage from '../views/Homepage.jsx';
+import Feedback from '../views/Feedback.js';
 import StudentsList from '../views/StudentsList.js';
 
 

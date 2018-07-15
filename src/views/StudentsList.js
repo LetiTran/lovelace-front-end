@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Student from '../components/Student.js'
 import axios from 'axios';
 
@@ -32,7 +32,9 @@ class StudentsList extends Component {
     }
     
     componentDidMount() {
-        axios.get(`http://localhost:3000/students`)
+            axios.get(`http://localhost:3000/studentsapi`)
+
+        // axios.get(`http://localhost:3000/students`)
             .then((response) => {
             console.log(response)
             this.setState({ students: response.data });

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Footer from './components/footer.js';
+import Footer from './components/Footer.js';
 import MiniDrawer from './components/MiniDrawer'
 import Grid from "@material-ui/core/es/Grid/Grid";
 

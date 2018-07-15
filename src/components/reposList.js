@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import axios from 'axios';
-import Repo from './repo.js'
+import Repo from './Repo.js'
 
 import Grid from '@material-ui/core/Grid';
 import List from "@material-ui/core/es/List/List";
@@ -11,7 +11,7 @@ import List from "@material-ui/core/es/List/List";
 // import CardHeader from "@material-ui/core/CardHeader/CardHeader";
 
 
-class ReposList extends Component {
+export default class ReposList extends Component {
 
 constructor(props) {
   super(props);
@@ -44,7 +44,9 @@ renderRepoList = () => {
 
   componentDidMount() {
     // axios.get(`https://api.github.com/users/Ada-C9/repos`)
-      axios.get(`http://localhost:3000/assignments`)
+    axios.get(`http://localhost:3000/assignmentsapi`)
+
+      // axios.get(`http://localhost:3000/assignments`)
         .then((response) => {
           console.log(response)
           this.setState({ repos: response.data });
@@ -74,5 +76,3 @@ renderRepoList = () => {
 }
 
 
-
-export default ReposList;

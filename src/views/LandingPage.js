@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from "../components/login.js"
+import Login from "../components/Login.js"
 import logo from "../logo-horizontal.png"
 
 import {Grid, Paper} from '@material-ui/core';

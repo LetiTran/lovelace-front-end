@@ -83,9 +83,9 @@ constructor(props) {
                 <Input
                     id="md-feedback"
                     fullWidth={true}
-                    multiline="true"
-                    value={this.state.feedback}
-                    onChange={this.updateFeedback}
+                    multiline={true}
+                    value={feedback}
+                    onChange={feedback}
 
 
                 />

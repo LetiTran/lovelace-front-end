@@ -32,9 +32,9 @@ Repo.propTypes = {
     // language: PropTypes.string.isRequired,
     // pulls_url: PropTypes.string.isRequired,
     repoUrl: PropTypes.string.isRequired,
-    startDate: PropTypes.string.isRequired,
-    dueDate: PropTypes.string.isRequired,
-    individual: PropTypes.string.isRequired,
+    // startDate: PropTypes.string.isRequired,
+    // dueDate: PropTypes.string.isRequired,
+    // individual: PropTypes.string.isRequired,
     // external_id: PropTypes.number.isRequired,
 }
 
