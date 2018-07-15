@@ -6,11 +6,15 @@ class Student extends Component {
 
   render() {
     return (
-        <section>
-            <ListItem onClick={this.props.onClick}>
-                {this.props.name}
-            </ListItem>
-        </section>
+        <tr>
+            {/* <ListItem onClick={this.props.onClick}> */}
+               <td onClick={this.props.onClick}>{this.props.name} </td>
+               <td> {this.props.classroom} </td>
+               <td> {this.props.classroom} </td>
+               <td> {this.props.githubName} </td>
+               <td> {this.props.email} </td>
+            {/* </ListItem> */}
+        </tr>
     )
   }
 }

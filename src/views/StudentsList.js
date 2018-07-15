@@ -24,7 +24,8 @@ class StudentsList extends Component {
             onClick={()=> window.open("https://github.com/" + student.github_name, "_blank")}
             name={student.name}
             email={student.email} 
-            cohort={student.cohort}
+            classroom={student.classroom_id}
+            // TODO: API sending only classroom_id --> how to sen dclass name and cohort?... do it on back-end
             githubName={student.github_name}
         />
         );
@@ -47,9 +48,30 @@ class StudentsList extends Component {
       
 
   render() {
+
+    const tableHead = {
+        padding: 20
+    }
+
     return (
         <section>
-            {this.renderStudentList()}
+            <table>
+            <caption style={{ fontSize: 50}}>Students</caption>
+                <thead>
+                <tr>
+                <th style={tableHead}> Student Name </th>
+                <th style={tableHead}> Classroom </th>
+                <th style={tableHead}> Class </th>
+                <th style={tableHead}> GitHub Name </th>
+                <th style={tableHead}> Email </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {this.renderStudentList()}
+                </tbody>
+            </table>
+           
         </section>
     )
   }
