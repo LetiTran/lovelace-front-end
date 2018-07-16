@@ -9,12 +9,13 @@ import { Router, Route, Switch } from "react-router";
 import indexRoutes from  './routes/index.jsx'
 
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import rootReducer from './reducers';
 
 const store = createStore(rootReducer);
 
 let hist = createBrowserHistory();
+
 
 ReactDOM.render(
     <Provider store={store}>

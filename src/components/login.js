@@ -12,10 +12,6 @@ class Login extends Component {
       <Button size="small">Please Login!</Button> 
     )
 
-    // checkUser = () => {
-
-    // }
-
     return (
     
       <div>

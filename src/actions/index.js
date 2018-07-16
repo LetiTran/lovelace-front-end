@@ -1,18 +1,31 @@
-export const GET_STUDENTS_LIST = "GET_STUDENTS_LIST";
-export const CHANGE_COHORT = "CHANGE_COHORT";
+import * as api from '../api';
 
-export function getStudentsList(students) {
+// export const GET_COHORT_LIST = "GET_COHORT_LIST";
+export const CHANGE_CLASSROOM = "CHANGE_CLASSROOM";
+export const GET_CLASSROOM_LIST_SUCCEDED = "GET_CLASSROOM_LIST_SUCCEDED"
+export const GET_CLASSROOM_LIST = "GET_CLASSROOM_LIST"
+
+export function fetchClassroomList() {
+    return dispatch => {
+        api.fetchClassroomList().then(response => {
+            dispatch(fetchClassroomListSucceded(response.data))
+        })
+    }
+}
+
+export function changeClassroom(classroom) {
     const action = {
-        type: GET_STUDENTS_LIST,
-        students
+        type: CHANGE_CLASSROOM,
+        classroom
     };
     return action
 }
 
-export function changeCohort(cohort) {
-    const action = {
-        type: CHANGE_COHORT,
-        cohort
-    };
-    return action
+export function fetchClassroomListSucceded(classroomList) {
+    return {
+    type: GET_CLASSROOM_LIST_SUCCEDED,
+        payload: {
+            classroomList
+        }
+    }
 }

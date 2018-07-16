@@ -4,7 +4,7 @@ import logo from "../logo-horizontal.png"
 
 import {Grid, Paper} from '@material-ui/core';
 
-import Cohort from '../components/Cohort.js'
+import Classroom from '../components/Classroom.js'
 
 
 class LandingPage extends Component {
@@ -33,7 +33,7 @@ class LandingPage extends Component {
         <Grid container justify="center">
           <Grid item style={styles.Grid}  >
             <Paper style={styles.Paper}>
-            <Cohort />
+            <Classroom />
             </Paper>
           </Grid>
         </Grid>
