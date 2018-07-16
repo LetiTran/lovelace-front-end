@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 
 class Login extends Component {
+  componentWillMount
 
   render() {
     const Welcome = (
