@@ -89,8 +89,6 @@ const styles = theme => ({
   }
 });
 
-
-
 class MiniDrawer extends React.Component {
   state = {
     open: false,
@@ -103,8 +101,6 @@ class MiniDrawer extends React.Component {
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
-
-
 
   render() {
     const { classes } = this.props;

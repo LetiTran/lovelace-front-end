@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from "../components/login.js"
+import Login from "../components/Login.js"
 import logo from "../logo-horizontal.png"
 
 import {Grid, Paper} from '@material-ui/core';
@@ -30,9 +30,9 @@ class LandingPage extends Component {
 
         <Grid container justify="center">
           <Grid item style={styles.Grid}  >
-            <Paper style={styles.Paper}>
+            {/*<Paper style={styles.Paper}>*/}
             <Login />
-            </Paper>
+            {/*</Paper>*/}
           </Grid>
         </Grid>
 
