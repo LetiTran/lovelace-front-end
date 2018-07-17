@@ -34,9 +34,8 @@ class Classroom extends Component {
 
     return (
    
-      <div>
-          <div>Classroom: {classroom}</div>
-
+      <section style={{textAlign:"center"}}>
+        <div>Classroom</div>
           <form  autoComplete="off">
         <FormControl >
           <InputLabel htmlFor="change-classroom"></InputLabel>
@@ -53,7 +52,7 @@ class Classroom extends Component {
         </FormControl>
         </form>
 
-      </div>
+      </section>
     );
   }
 }

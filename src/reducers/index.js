@@ -5,7 +5,7 @@ import {CHANGE_COHORT} from '../actions';
 import {GET_COHORT_LIST_SUCCEDED} from '../actions';
 
 const stateList = {
-    cohort: 9, 
+    cohort: 1, 
     cohortList: [], 
     classroom: 1, 
     classroomList: []

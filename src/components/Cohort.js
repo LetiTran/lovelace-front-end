@@ -11,6 +11,7 @@ import {changeCohort} from '../actions';
 
 class Cohort extends Component {
 
+    
 
   renderCohortList = () => {
     console.log('cohortList in renderCohortList: ' )
@@ -32,12 +33,13 @@ class Cohort extends Component {
 
     const cohort = this.props.cohort;
 
+ 
+
     return (
    
-      <div>
-          <div>Cohort: {cohort}</div>
-
-          <form  autoComplete="off">
+      <section style={{textAlign:"center"}}>
+        <div>Cohort</div>
+        <form  autoComplete="off">
         <FormControl >
           <InputLabel htmlFor="change-cohort"></InputLabel>
           <Select
@@ -53,7 +55,7 @@ class Cohort extends Component {
         </FormControl>
         </form>
 
-      </div>
+      </section>
     );
   }
 }
