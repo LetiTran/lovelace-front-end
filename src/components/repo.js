@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import Grid from '@material-ui/core/Grid';
-// import Card from "@material-ui/core/es/Card";
-// import GridContainer from "@material-ui/core/Grid";
-// import CardHeader from "@material-ui/core/CardHeader/CardHeader";
-// import List from "@material-ui/core/es/List/List";
-import ListItem from "@material-ui/core/es/ListItem/ListItem";
+
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
 
 class Repo extends Component {
 
@@ -16,11 +13,13 @@ class Repo extends Component {
     //   const individual = this.this.props.individual
 
     return (
-        <section>
-            <ListItem onClick={this.props.onClick}>
-                {repoUrl}  
-            </ListItem>
-        </section>
+        <TableRow>
+            <TableCell> Put Name</TableCell>
+            <TableCell onClick={this.props.onClick}> {repoUrl} </TableCell> 
+            <TableCell>Put Language</TableCell>
+            <TableCell>Put Due Date</TableCell>
+            <TableCell>Put Pulls URL</TableCell>
+        </TableRow>
 
     )
   }
@@ -32,9 +31,9 @@ Repo.propTypes = {
     // language: PropTypes.string.isRequired,
     // pulls_url: PropTypes.string.isRequired,
     repoUrl: PropTypes.string.isRequired,
-    startDate: PropTypes.string.isRequired,
-    dueDate: PropTypes.string.isRequired,
-    individual: PropTypes.string.isRequired,
+    // startDate: PropTypes.string.isRequired,
+    // dueDate: PropTypes.string.isRequired,
+    // individual: PropTypes.string.isRequired,
     // external_id: PropTypes.number.isRequired,
 }
 

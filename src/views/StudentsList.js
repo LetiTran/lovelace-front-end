@@ -1,59 +1,106 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Student from '../components/Student.js'
-import axios from 'axios';
+
+// For Redux:
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchStudentsList} from '../actions';
+
+// For Styles:
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+
 
 
 class StudentsList extends Component {
 
-
-    constructor(props) {
-        super(props);
-        this.state = {
-          students: []
-        }
-      }
-      
+    componentDidMount() {
+        console.log('Called componentDidMount for students')
+        this.props.fetchStudentsList()
+    }
       
     renderStudentList = () => {
-     return this.state.students.map((student,index) => {
+    console.log('studentsList in renderAssignmentsList: ' )
+    console.log(this.props.studentsList)
+     return this.props.studentsList.map((student,index) => {
         return (
-        <Student
-            key={index}
-            type={student.type}
-            // onClick={()=> window.open(student.student_url, "_blank")} --> make it a link to student github page?
-            name={student.name}
-            email={student.email} 
-            cohort={student.cohort}
-            githubName={student.github_name}
-        />
+            <Student
+                key={index}
+                type={student.type}
+                onClick={()=> window.open("https://github.com/" + student.github_name, "_blank")}
+                name={student.name}
+                email={student.email} 
+                classroom={student.classroom_id}
+                // TODO: API sending only classroom_id --> how to sen dclass name and cohort?... do it on back-end
+                githubName={student.github_name}
+            />
         );
-    });
-    }
-    
-    componentDidMount() {
-        axios.get(`http://localhost:3000/students`)
-            .then((response) => {
-            console.log(response)
-            this.setState({ students: response.data });
-            })
-            .catch((error) => {
-            console.log({error: error.message});
-            this.setState({ error: error.message});
         });
     }
-      
 
   render() {
+    console.log('students: ' + this.props.assignments)
+    
+    const styles =  {
+        root: {
+          width: '100%',
+          marginTop: 10,
+          overflowX: 'auto',
+        },
+        table: {
+          minWidth: 700,
+        },
+      };
+    
     return (
-        <section>
-            {this.renderStudentList()}
-        </section>
+    <section style={styles.root}>
+    <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
+      Students
+    </Typography>
+
+    <Paper >
+      <Table >
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Cohort</TableCell>
+            <TableCell>Class</TableCell>
+            <TableCell>GitHub Name</TableCell>
+            <TableCell>Email</TableCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+        {this.renderStudentList()}
+        </TableBody>
+      </Table>
+    </Paper>
+    </section>
     )
   }
 }
 
 StudentsList.propTypes = {
+  // TODO: write proTypes....
 }
 
-export default StudentsList;
+function mapStateToProps(state) {
+    console.log('function mapStateToProps:' )
+      console.log(state.studentsList)
+      return {
+      studentsList: state.studentsList
+      }
+  }
+  
+  function mapDispatchToProps(dispatch) {
+      return bindActionCreators({fetchStudentsList}, dispatch)
+    }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(StudentsList);
+  
