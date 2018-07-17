@@ -17,7 +17,7 @@ class Classroom extends Component {
     console.log(this.props.classroomList)
     return this.props.classroomList.map((classroom, index) => {
        return (
-       <MenuItem key={index} value={classroom.id}> {classroom.name} </MenuItem>
+       <MenuItem key={index} value={[classroom.id, classroom.name]}> {classroom.name} </MenuItem>
        );
    });
 }
@@ -28,19 +28,20 @@ class Classroom extends Component {
   };
 
   render() {
-    console.log('classroom: ' + this.props.classroom)
+    console.log('classroom: ' )
+    console.log(this.props.classroomName)
 
-    const classroom = this.props.classroom;
-
+    const classroomName = this.props.classroomName;
+   
     return (
    
       <section style={{textAlign:"center"}}>
         <div>Classroom</div>
           <form  autoComplete="off">
         <FormControl >
-          <InputLabel htmlFor="change-classroom"></InputLabel>
+          <InputLabel htmlFor="change-classroom">{classroomName}</InputLabel>
           <Select
-            value={classroom}
+            value={classroomName}
             onChange={this.handleChange}
             inputProps={{
               name: 'classroom',
@@ -59,10 +60,10 @@ class Classroom extends Component {
 
 function mapStateToProps(state) {
   console.log('function mapStateToProps:' )
-  console.log(state.classroom)
-    console.log(state.classroomList)
+  console.log(state)
     return {
-    classroom: state.classroom,
+    classroomId: state.currentClassroomId,
+    classroomName: state.currentClassroomName,
     classroomList: state.classroomList
     }
 }

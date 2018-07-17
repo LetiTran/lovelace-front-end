@@ -11,7 +11,8 @@ import {GET_STUDENTS_LIST_SUCCEDED} from '../actions';
 const stateList = {
     cohort: 1, 
     cohortList: [], 
-    classroom: 1, 
+    currentClassroomName: "Jelly", 
+    currentClassroomId: 1,
     classroomList: [],
     assignmentList: [],
     studentsList: [],
@@ -41,9 +42,12 @@ const stateList = {
         // *********** CLASSROOM *****************
         case CHANGE_CLASSROOM:
         console.log("CHANGE_CLASSROOM called");
-        console.log(state, action)
+        console.log(state)
+        console.log("action:")
+        console.log(action)
         return Object.assign({}, state, {
-            classroom : action.classroom
+            currentClassroomName : action.classroom[1],
+            currentClassroomId: action.classroom[0]
         })
 
         case GET_CLASSROOM_LIST_SUCCEDED:
@@ -73,9 +77,9 @@ const stateList = {
 
          // Filter students in current classromm
          const studentsInCurrentClassrom = action.payload.studentsList.filter((student) => {
-            console.log("state.classroom")
-            console.log(state.classroom)
-            return student.classroom_id === state.classroom
+            console.log("state.currentClassroomName")
+            console.log(state.currentClassroomName)
+            return student.classroom_id === state.currentClassroomId
         })
 
         console.log(studentsInCurrentClassrom)

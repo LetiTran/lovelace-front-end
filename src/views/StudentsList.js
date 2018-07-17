@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import Student from '../components/Student.js'
-import StudentProfile from '../components/StudentProfile.js'
 
 // For Redux:
 import {connect} from 'react-redux';
@@ -66,7 +65,7 @@ class StudentsList extends Component {
     return (
     <section style={styles.root}>
     <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
-      Students on Classroom {this.props.cohort}
+      Students on Classroom {this.props.classroomName}
     </Typography>
 
     <Paper >
@@ -103,7 +102,7 @@ function mapStateToProps(state) {
       return {
       studentsList: state.studentsList,
       currentClassroomStudents: state.currentClassroomStudents,
-      cohort: state.cohort
+      classroomName: state.currentClassroomName
       }
   }
   
