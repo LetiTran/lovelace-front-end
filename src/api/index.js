@@ -14,7 +14,7 @@ export function fetchClassroomList() {
 }
 
 export function fetchCohortList() {
-    // Change to cohortsapi when we have Cohort table in back-end
+    // TODO: Change to cohortsapi when we have Cohort table in back-end
     return client.get('classroomsapi');
 }
 

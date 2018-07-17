@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import Student from '../components/Student.js'
+import StudentProfile from '../components/StudentProfile.js'
 
 // For Redux:
 import {connect} from 'react-redux';
@@ -33,7 +34,8 @@ class StudentsList extends Component {
             <Student
                 key={index}
                 type={student.type}
-                onClick={()=> window.open("https://github.com/" + student.github_name, "_blank")}
+                // onClick={()=> this.openProfile(student)}
+                openGitHubProfile={()=> window.open("https://github.com/" + student.github_name, "_blank")}
                 name={student.name}
                 email={student.email} 
                 classroom={student.classroom_id}
@@ -81,6 +83,8 @@ class StudentsList extends Component {
         </TableBody>
       </Table>
     </Paper>
+
+    
     </section>
     )
   }
