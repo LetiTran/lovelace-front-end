@@ -75,23 +75,23 @@ export function fetchClassroomListSucceded(classroomList) {
 }
 
 // *********** ASSIGNMENTS *****************
-export function fetchAssignmentsList() {
+export function fetchAssignmentList() {
     return dispatch => {
-        api.fetchAssignmentsList().then(response => {
-            console.log('called fetch assignmentsList, response:')
+        api.fetchAssignmentList().then(response => {
+            console.log('called fetch assignmentList, response:')
             console.log(response)
-            dispatch(fetchAssignmentsListSucceded(response.data))
+            dispatch(fetchAssignmentListSucceded(response.data))
         })
     }
 }
 
-export function fetchAssignmentsListSucceded(assignmentsList) {
-    console.log('assignmentsList in actions:')
-    console.log(assignmentsList)
+export function fetchAssignmentListSucceded(assignmentList) {
+    console.log('assignmentList in actions:')
+    console.log(assignmentList)
     return {
     type: GET_ASSIGNMENTS_LIST_SUCCEDED,
         payload: {
-            assignmentsList
+            assignmentList
         }
     }
 }

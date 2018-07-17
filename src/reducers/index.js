@@ -13,7 +13,7 @@ const stateList = {
     cohortList: [], 
     classroom: 1, 
     classroomList: [],
-    assignmentsList: [],
+    assignmentList: [],
     studentsList: []
 }
 
@@ -57,9 +57,9 @@ const stateList = {
          case GET_ASSIGNMENTS_LIST_SUCCEDED:
          console.log("GET_ASSIGNMENTS_LIST_SUCCEDED called");
          console.log(state, action)
-         console.log(action.payload.assignmentsList)
+         console.log(action.payload.assignmentList)
          return Object.assign({}, state, {
-             assignmentsList : action.payload.assignmentsList
+             assignmentList : action.payload.assignmentList
          })
 
 

@@ -17,7 +17,7 @@ import rootReducer from './reducers';
 import {
     fetchClassroomList, 
     fetchCohortList, 
-    fetchAssignmentsList,
+    fetchAssignmentList,
     fetchStudentsList
     } from './actions';
 
@@ -35,7 +35,7 @@ store.dispatch(function (dispatch) {
     fetchCohortList(() => {
         dispatch({ type: 'GET_COHORT_LIST' })
         })
-    fetchAssignmentsList(() => {
+    fetchAssignmentList(() => {
         dispatch({ type: 'GET_ASSIGNMENT_LIST' })
         })
     fetchStudentsList(() => {

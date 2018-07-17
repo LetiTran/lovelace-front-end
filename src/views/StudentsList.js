@@ -26,7 +26,7 @@ class StudentsList extends Component {
     }
       
     renderStudentList = () => {
-    console.log('studentsList in renderAssignmentsList: ' )
+    console.log('studentsList in renderAssignmentList: ' )
     console.log(this.props.studentsList)
      return this.props.studentsList.map((student,index) => {
         return (

@@ -4,7 +4,7 @@ import Repo from './Repo.js'
 // For Redux:
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchAssignmentsList} from '../actions';
+import {fetchAssignmentList} from '../actions';
 
 // For Styles:
 import Table from '@material-ui/core/Table';
@@ -14,17 +14,17 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-class AssignmentsList extends Component {
+class AssignmentList extends Component {
 
 componentDidMount(){
     console.log('Called componentDidMount for assignments')
-    this.props.fetchAssignmentsList()
+    this.props.fetchAssignmentList()
     }
 
-  renderAssignmentsList = () => {
-    console.log('assignmentsList in renderAssignmentsList: ' )
-    console.log(this.props.assignmentsList)
-    return this.props.assignmentsList.map((repo, index) => {
+  renderAssignmentList = () => {
+    console.log('assignmentList in renderAssignmentList: ' )
+    console.log(this.props.assignmentList)
+    return this.props.assignmentList.map((repo, index) => {
        return (
        
         <Repo
@@ -74,7 +74,7 @@ componentDidMount(){
         </TableHead>
 
         <TableBody>
-        {this.renderAssignmentsList()}
+        {this.renderAssignmentList()}
         </TableBody>
       </Table>
     </Paper>
@@ -86,14 +86,14 @@ componentDidMount(){
 
 function mapStateToProps(state) {
   console.log('function mapStateToProps:' )
-    console.log(state.assignmentsList)
+    console.log(state.assignmentList)
     return {
-    assignmentsList: state.assignmentsList
+    assignmentList: state.assignmentList
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({fetchAssignmentsList}, dispatch)
+    return bindActionCreators({fetchAssignmentList}, dispatch)
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AssignmentsList);
+export default connect(mapStateToProps, mapDispatchToProps)(AssignmentList);
