@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Paper from "@material-ui/core/Paper";
-import ReposList from '../components/ReposList.js';
+// import ReposList from '../components/ReposList.js';
+import AssignmentsList from '../components/AssignmentsList.js';
 
 class Assignments extends Component {
   render() {
@@ -9,7 +10,7 @@ class Assignments extends Component {
            <Paper>
            Hello, Assignments
            </Paper>
-           <ReposList />
+           <AssignmentsList />
          </section>
 
     );

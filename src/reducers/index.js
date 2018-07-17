@@ -4,11 +4,14 @@ import {GET_CLASSROOM_LIST_SUCCEDED} from '../actions';
 import {CHANGE_COHORT} from '../actions';
 import {GET_COHORT_LIST_SUCCEDED} from '../actions';
 
+import {GET_ASSIGNMENTS_LIST_SUCCEDED} from '../actions';
+
 const stateList = {
     cohort: 1, 
     cohortList: [], 
     classroom: 1, 
-    classroomList: []
+    classroomList: [],
+    assignmentsList: []
 }
 
  function performAction(state = stateList, action) {
@@ -18,7 +21,6 @@ const stateList = {
         case CHANGE_COHORT:
         console.log("CHANGE_CLASSROOM called");
         console.log(state, action)
-        let cohort = state.cohort;
         return Object.assign({}, state, {
             cohort : action.cohort
         })
@@ -26,7 +28,6 @@ const stateList = {
         case GET_COHORT_LIST_SUCCEDED:
         console.log("GET_COHORT_LIST_SUCCEDED called");
         console.log(state, action)
-        // console.log(action)
         console.log(action.payload.cohortList)
         return Object.assign({}, state, {
             cohortList : action.payload.cohortList
@@ -36,8 +37,6 @@ const stateList = {
         case CHANGE_CLASSROOM:
         console.log("CHANGE_CLASSROOM called");
         console.log(state, action)
-        let classroom = state.classroom;
-        // return {classroom};
         return Object.assign({}, state, {
             classroom : action.classroom
         })
@@ -45,13 +44,20 @@ const stateList = {
         case GET_CLASSROOM_LIST_SUCCEDED:
         console.log("GET_CLASSROOM_LIST_SUCCEDED called");
         console.log(state, action)
-        // console.log(action)
         console.log(action.payload.classroomList)
-        // return {classroomList: action.payload.classroomList};
         return Object.assign({}, state, {
             classroomList : action.payload.classroomList
         })
         
+
+         // *********** ASSIGNMENTS *****************    
+         case GET_ASSIGNMENTS_LIST_SUCCEDED:
+         console.log("GET_ASSIGNMENTS_LIST_SUCCEDED called");
+         console.log(state, action)
+         console.log(action.payload.assignmentsList)
+         return Object.assign({}, state, {
+             assignmentsList : action.payload.assignmentsList
+         })
         default:
         return state
 

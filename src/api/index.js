@@ -16,3 +16,7 @@ export function fetchClassroomList() {
 export function fetchCohortList() {
     return client.get('classroomapi');
 }
+
+export function fetchAssignmentsList() {
+    return client.get('assignmentsapi');
+}

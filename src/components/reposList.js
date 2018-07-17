@@ -5,10 +5,6 @@ import Repo from './Repo.js'
 
 import Grid from '@material-ui/core/Grid';
 import List from "@material-ui/core/es/List/List";
-// import ListItem from "@material-ui/core/es/ListItem/ListItem";
-// import Card from "@material-ui/core/es/Card";
-// import GridContainer from "@material-ui/core/Grid";
-// import CardHeader from "@material-ui/core/CardHeader/CardHeader";
 
 
 export default class ReposList extends Component {
@@ -43,10 +39,7 @@ renderRepoList = () => {
 }
 
   componentDidMount() {
-    // axios.get(`https://api.github.com/users/Ada-C9/repos`)
     axios.get(`http://localhost:3000/assignmentsapi`)
-
-      // axios.get(`http://localhost:3000/assignments`)
         .then((response) => {
           console.log(response)
           this.setState({ repos: response.data });
@@ -59,7 +52,6 @@ renderRepoList = () => {
 
 
   render() {
-    // const { repos } = this.state.repos;
     return (
         <section>
           <Grid container >
