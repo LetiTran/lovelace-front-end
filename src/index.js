@@ -9,10 +9,23 @@ import { Router, Route, Switch } from "react-router";
 import indexRoutes from  './routes/index.jsx'
 
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import rootReducer from './reducers';
 
-const store = createStore(rootReducer);
+import {fetchClassroomList} from './actions';
+
+// const store = createStore(rootReducer);
+const store = createStore(
+    rootReducer,
+    applyMiddleware(thunk)
+  )
+
+  store.dispatch(function (dispatch) {
+    fetchClassroomList(() => {
+      dispatch({ type: 'GET_CLASSROOM_LIST' })
+    })
+  })
 
 let hist = createBrowserHistory();
 

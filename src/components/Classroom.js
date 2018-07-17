@@ -11,10 +11,14 @@ import {bindActionCreators} from 'redux';
 import {changeClassroom} from '../actions';
 
 class Classroom extends Component {
+
+
   renderClassroomList = () => {
-    return this.props.classroomList.map((classroom) => {
+    console.log('classrommList in renderClassroomList: ' )
+    console.log(this.props.classroomList)
+    return this.props.classroomList.map((classroom, index) => {
        return (
-       <MenuItem value={classroom}> {classroom} </MenuItem>
+       <MenuItem key={index} value={classroom.id}> {classroom.name} </MenuItem>
        );
    });
 }
@@ -30,19 +34,21 @@ class Classroom extends Component {
       <Button size="small" onClick={()=>this.props.changeClassroom(this.props.classroom)}>Change Classroom</Button> 
     )
 
+    console.log('classroom: ' + this.props.classroom)
 
+    const classroom = this.props.classroom;
 
     return (
-    
+   
       <div>
           {changeClassroomButton}
-          <div>Classroom: {this.props.classroom}</div>
+          <div>Classroom: {classroom}</div>
 
           <form  autoComplete="off">
         <FormControl >
           <InputLabel htmlFor="change-classroom">Classroom</InputLabel>
           <Select
-            value={this.props.classroom}
+            value={classroom}
             onChange={this.handleChange}
             inputProps={{
               name: 'classroom',
@@ -60,7 +66,9 @@ class Classroom extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('function mapStateToProps:')
+  console.log('function mapStateToProps:' )
+  console.log(state.classroom)
+    console.log(state.classroomList)
     return {
     classroom: state.classroom,
     classroomList: state.classroomList
@@ -72,3 +80,28 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Classroom);
+
+
+
+
+{/* <div>
+{changeClassroomButton}
+<div>Classroom: {classroom}</div>
+
+<form  autoComplete="off">
+<FormControl >
+<InputLabel htmlFor="change-classroom">Classroom</InputLabel>
+<Select
+  value={classroom}
+  onChange={this.handleChange}
+  inputProps={{
+    name: 'classroom',
+    id: 'change-classroom',
+  }}
+>
+  {this.renderClassroomList()}
+</Select>
+</FormControl>
+</form>
+
+</div> */}
