@@ -10,13 +10,18 @@ const client = axios.create({
 });
 
 export function fetchClassroomList() {
-    return client.get('classroomapi');
+    return client.get('classroomsapi');
 }
 
 export function fetchCohortList() {
-    return client.get('classroomapi');
+    // Change to cohortsapi when we have Cohort table in back-end
+    return client.get('classroomsapi');
 }
 
 export function fetchAssignmentsList() {
     return client.get('assignmentsapi');
+}
+
+export function fetchStudentsList() {
+    return client.get('studentsapi');
 }

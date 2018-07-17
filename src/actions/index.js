@@ -4,15 +4,15 @@ export const CHANGE_CLASSROOM = "CHANGE_CLASSROOM";
 export const GET_CLASSROOM_LIST_SUCCEDED = "GET_CLASSROOM_LIST_SUCCEDED"
 export const GET_CLASSROOM_LIST = "GET_CLASSROOM_LIST"
 
-
 export const CHANGE_COHORT = "CHANGE_COHORT";
 export const GET_COHORT_LIST_SUCCEDED = "GET_COHORT_LIST_SUCCEDED"
 export const GET_COHORT_LIST = "GET_COHORT_LIST";
 
-
-export const CHANGE_ASSIGNMENTS = "CHANGE_ASSIGNMENTS";
 export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED"
-export const GET_ASSIGNMENTS_LIST = "GET_COHORT_LIST";
+export const GET_ASSIGNMENTS_LIST = "GET_ASSIGNMENTS_LIST";
+
+export const GET_STUDENTS_LIST_SUCCEDED = "GET_STUDENTS_LIST_SUCCEDED"
+export const GET_STUDENTS_LIST = "GET_STUDENTS_LIST";
 
 // *********** COHORT *****************
 export function fetchCohortList() {
@@ -92,6 +92,29 @@ export function fetchAssignmentsListSucceded(assignmentsList) {
     type: GET_ASSIGNMENTS_LIST_SUCCEDED,
         payload: {
             assignmentsList
+        }
+    }
+}
+
+
+// *********** STUDENTS *****************
+export function fetchStudentsList() {
+    return dispatch => {
+        api.fetchStudentsList().then(response => {
+            console.log('called fetch studentsList, response:')
+            console.log(response)
+            dispatch(fetchStudentsListSucceded(response.data))
+        })
+    }
+}
+
+export function fetchStudentsListSucceded(studentsList) {
+    console.log('studentsList in actions:')
+    console.log(studentsList)
+    return {
+    type: GET_STUDENTS_LIST_SUCCEDED,
+        payload: {
+            studentsList
         }
     }
 }

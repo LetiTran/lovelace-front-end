@@ -6,12 +6,15 @@ import {GET_COHORT_LIST_SUCCEDED} from '../actions';
 
 import {GET_ASSIGNMENTS_LIST_SUCCEDED} from '../actions';
 
+import {GET_STUDENTS_LIST_SUCCEDED} from '../actions';
+
 const stateList = {
     cohort: 1, 
     cohortList: [], 
     classroom: 1, 
     classroomList: [],
-    assignmentsList: []
+    assignmentsList: [],
+    studentsList: []
 }
 
  function performAction(state = stateList, action) {
@@ -58,6 +61,17 @@ const stateList = {
          return Object.assign({}, state, {
              assignmentsList : action.payload.assignmentsList
          })
+
+
+         // *********** STUDENTS *****************    
+         case GET_STUDENTS_LIST_SUCCEDED:
+         console.log("GET_STUDENTS_LIST_SUCCEDED called");
+         console.log(state, action)
+         console.log(action.payload.studentsList)
+         return Object.assign({}, state, {
+             studentsList : action.payload.studentsList
+         })
+
         default:
         return state
 

@@ -1,54 +1,39 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import Student from '../components/Student.js'
-import axios from 'axios';
 
+// For Redux:
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchStudentsList} from '../actions';
 
 class StudentsList extends Component {
 
-
-    constructor(props) {
-        super(props);
-        this.state = {
-          students: []
-        }
-      }
-      
+    componentDidMount() {
+        console.log('Called componentDidMount for students')
+        this.props.fetchStudentsList()
+    }
       
     renderStudentList = () => {
-     return this.state.students.map((student,index) => {
+        console.log('studentsList in renderAssignmentsList: ' )
+        console.log(this.props.studentsList)
+     return this.props.studentsList.map((student,index) => {
         return (
-        <Student
-            key={index}
-            type={student.type}
-            onClick={()=> window.open("https://github.com/" + student.github_name, "_blank")}
-            name={student.name}
-            email={student.email} 
-            classroom={student.classroom_id}
-            // TODO: API sending only classroom_id --> how to sen dclass name and cohort?... do it on back-end
-            githubName={student.github_name}
-        />
+            <Student
+                key={index}
+                type={student.type}
+                onClick={()=> window.open("https://github.com/" + student.github_name, "_blank")}
+                name={student.name}
+                email={student.email} 
+                classroom={student.classroom_id}
+                // TODO: API sending only classroom_id --> how to sen dclass name and cohort?... do it on back-end
+                githubName={student.github_name}
+            />
         );
-    });
-    }
-    
-    componentDidMount() {
-            axios.get(`http://localhost:3000/studentsapi`)
-
-        // axios.get(`http://localhost:3000/students`)
-            .then((response) => {
-            console.log(response)
-            this.setState({ students: response.data });
-            })
-            .catch((error) => {
-            console.log({error: error.message});
-            this.setState({ error: error.message});
         });
     }
-      
 
   render() {
-
     const tableHead = {
         padding: 20
     }
@@ -80,4 +65,17 @@ class StudentsList extends Component {
 StudentsList.propTypes = {
 }
 
-export default StudentsList;
+function mapStateToProps(state) {
+    console.log('function mapStateToProps:' )
+      console.log(state.studentsList)
+      return {
+      studentsList: state.studentsList
+      }
+  }
+  
+  function mapDispatchToProps(dispatch) {
+      return bindActionCreators({fetchStudentsList}, dispatch)
+    }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(StudentsList);
+  

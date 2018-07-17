@@ -17,7 +17,8 @@ import rootReducer from './reducers';
 import {
     fetchClassroomList, 
     fetchCohortList, 
-    fetchAssignmentsList
+    fetchAssignmentsList,
+    fetchStudentsList
     } from './actions';
 
 
@@ -37,6 +38,9 @@ store.dispatch(function (dispatch) {
     fetchAssignmentsList(() => {
         dispatch({ type: 'GET_ASSIGNMENT_LIST' })
         })
+    fetchStudentsList(() => {
+        dispatch({ type: 'GET_STUDENT_LIST' })
+        })    
 })
 
 let hist = createBrowserHistory();

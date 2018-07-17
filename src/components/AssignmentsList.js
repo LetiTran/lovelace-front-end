@@ -13,9 +13,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 
-class Assignments extends Component {
+class AssignmentsList extends Component {
 
 componentDidMount(){
     console.log('Called componentDidMount for assignments')
@@ -97,4 +96,4 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({fetchAssignmentsList}, dispatch)
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Assignments);
+export default connect(mapStateToProps, mapDispatchToProps)(AssignmentsList);
