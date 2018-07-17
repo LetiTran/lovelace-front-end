@@ -7,6 +7,17 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchStudentsList} from '../actions';
 
+// For Styles:
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+
+
+
 class StudentsList extends Component {
 
     componentDidMount() {
@@ -15,8 +26,8 @@ class StudentsList extends Component {
     }
       
     renderStudentList = () => {
-        console.log('studentsList in renderAssignmentsList: ' )
-        console.log(this.props.studentsList)
+    console.log('studentsList in renderAssignmentsList: ' )
+    console.log(this.props.studentsList)
      return this.props.studentsList.map((student,index) => {
         return (
             <Student
@@ -34,35 +45,49 @@ class StudentsList extends Component {
     }
 
   render() {
-    const tableHead = {
-        padding: 20
-    }
-
+    console.log('students: ' + this.props.assignments)
+    
+    const styles =  {
+        root: {
+          width: '100%',
+          marginTop: 10,
+          overflowX: 'auto',
+        },
+        table: {
+          minWidth: 700,
+        },
+      };
+    
     return (
-        <section>
-            <table>
-            <caption style={{ fontSize: 50}}>Students</caption>
-                <thead>
-                <tr>
-                <th style={tableHead}> Student Name </th>
-                <th style={tableHead}> Classroom </th>
-                <th style={tableHead}> Class </th>
-                <th style={tableHead}> GitHub Name </th>
-                <th style={tableHead}> Email </th>
-                </tr>
-                </thead>
+    <section style={styles.root}>
+    <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
+      Students
+    </Typography>
 
-                <tbody>
-                {this.renderStudentList()}
-                </tbody>
-            </table>
-           
-        </section>
+    <Paper >
+      <Table >
+        <TableHead>
+          <TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Cohort</TableCell>
+            <TableCell>Class</TableCell>
+            <TableCell>GitHub Name</TableCell>
+            <TableCell>Email</TableCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+        {this.renderStudentList()}
+        </TableBody>
+      </Table>
+    </Paper>
+    </section>
     )
   }
 }
 
 StudentsList.propTypes = {
+  // TODO: write proTypes....
 }
 
 function mapStateToProps(state) {

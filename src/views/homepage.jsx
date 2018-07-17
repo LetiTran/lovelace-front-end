@@ -19,11 +19,11 @@ class Homepage extends Component {
      return (
       <section >      
       <Grid container  >
-      
+
       Hello, Homepage!
       Put a dashboard view with calendar etc.
       
-        <Grid container justify="left">
+        <Grid container justify="flex-start">
           <Grid item style={styles.root}  >
             <Paper elevation={2} style={styles.Paper}>
             <div style={styles.root}><Cohort /></div>

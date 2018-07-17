@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-// import ListItem from "@material-ui/core/es/ListItem/ListItem";
+
+// For Styles:
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+
 
 class Student extends Component {
 
   render() {
     return (
-        <tr>
-            {/* <ListItem onClick={this.props.onClick}> */}
-               <td onClick={this.props.onClick}>{this.props.name} </td>
-               <td> {this.props.classroom} </td>
-               <td> {this.props.classroom} </td>
-               <td> {this.props.githubName} </td>
-               <td> {this.props.email} </td>
-            {/* </ListItem> */}
-        </tr>
+      <TableRow>
+        <TableCell onClick={this.props.onClick}> {this.props.name}</TableCell>
+        <TableCell> Put Cohort </TableCell> 
+        <TableCell>{this.props.classroom}</TableCell>
+        <TableCell>{this.props.githubName}</TableCell>
+        <TableCell>{this.props.email}</TableCell>
+      </TableRow>
     )
   }
 }
 
 Student.propTypes = {
+  // TODO: write proTypes....
 }
 
 export default Student;
