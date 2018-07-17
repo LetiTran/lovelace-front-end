@@ -37,7 +37,7 @@ class Student extends Component {
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.classroom}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.githubName}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.email}</TableCell>
-          {/* Figure out how to DRY this to tablerow onclick insetad of tablecell without loosing format */}
+        {/* Figure out how to DRY this to tablerow onclick insetad of tablecell without loosing format */}
 
 
         {/* For the pop-up dialog box: */}

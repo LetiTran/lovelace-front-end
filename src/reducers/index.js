@@ -14,7 +14,8 @@ const stateList = {
     classroom: 1, 
     classroomList: [],
     assignmentList: [],
-    studentsList: []
+    studentsList: [],
+    currentClassroomStudents: []
 }
 
  function performAction(state = stateList, action) {
@@ -35,6 +36,7 @@ const stateList = {
         return Object.assign({}, state, {
             cohortList : action.payload.cohortList
         })
+
 
         // *********** CLASSROOM *****************
         case CHANGE_CLASSROOM:
@@ -68,9 +70,28 @@ const stateList = {
          console.log("GET_STUDENTS_LIST_SUCCEDED called");
          console.log(state, action)
          console.log(action.payload.studentsList)
+
+         // Filter students in current classromm
+         const studentsInCurrentClassrom = action.payload.studentsList.filter((student) => {
+            console.log("state.classroom")
+            console.log(state.classroom)
+            return student.classroom_id === state.classroom
+        })
+
+        console.log(studentsInCurrentClassrom)
+        // Change state:
          return Object.assign({}, state, {
-             studentsList : action.payload.studentsList
+             studentsList : action.payload.studentsList,
+             currentClassroomStudents: studentsInCurrentClassrom
          })
+
+        //  case POPULATES_COHORT_STUDENTS_LIST:
+        //     return Object.assign({}, state, {
+            // currentClassroomStudents: action.payload.studentsList.filter((student) => {
+            //     return student.classroom_id === cohort
+            // })
+        //     });
+
 
         default:
         return state

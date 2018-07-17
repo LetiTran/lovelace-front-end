@@ -27,9 +27,12 @@ class StudentsList extends Component {
     }
       
     renderStudentList = () => {
-    console.log('studentsList in renderAssignmentList: ' )
+    console.log('studentsList in renderStudenttList: ' )
     console.log(this.props.studentsList)
-     return this.props.studentsList.map((student,index) => {
+    console.log(this.props.currentClassroomStudents)
+        return this.props.currentClassroomStudents.map((student,index) => {
+        //  To change it for ALL STUDENTS LIST, swap this two lines:
+        //  return this.props.studentsList.map((student,index) => {
         return (
             <Student
                 key={index}
@@ -63,7 +66,7 @@ class StudentsList extends Component {
     return (
     <section style={styles.root}>
     <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
-      Students
+      Students on Classroom {this.props.cohort}
     </Typography>
 
     <Paper >
@@ -98,7 +101,9 @@ function mapStateToProps(state) {
     console.log('function mapStateToProps:' )
       console.log(state.studentsList)
       return {
-      studentsList: state.studentsList
+      studentsList: state.studentsList,
+      currentClassroomStudents: state.currentClassroomStudents,
+      cohort: state.cohort
       }
   }
   
