@@ -4,7 +4,7 @@ import MiniDrawer from './components/MiniDrawer'
 import Grid from "@material-ui/core/es/Grid/Grid";
 
 
-import {fetchClassroomList} from './actions';
+import {fetchClassroomList, fetchCohortList} from './actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import withRouter from 'react-router-dom/es/withRouter';
@@ -14,6 +14,7 @@ class App extends Component {
   componentDidMount(){
     console.log(this.props.fetchClassroomList)
     this.props.fetchClassroomList()
+    this.props.fetchCohortList()
   }
   
 
@@ -40,7 +41,7 @@ class App extends Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchClassroomList}, dispatch)
+  return bindActionCreators({fetchClassroomList, fetchCohortList}, dispatch)
 }
 
 export default withRouter(connect(null, mapDispatchToProps)(App));

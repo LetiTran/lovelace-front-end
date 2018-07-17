@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -29,11 +28,6 @@ class Classroom extends Component {
   };
 
   render() {
-
-    const changeClassroomButton = (
-      <Button size="small" onClick={()=>this.props.changeClassroom(this.props.classroom)}>Change Classroom</Button> 
-    )
-
     console.log('classroom: ' + this.props.classroom)
 
     const classroom = this.props.classroom;
@@ -41,12 +35,11 @@ class Classroom extends Component {
     return (
    
       <div>
-          {changeClassroomButton}
           <div>Classroom: {classroom}</div>
 
           <form  autoComplete="off">
         <FormControl >
-          <InputLabel htmlFor="change-classroom">Classroom</InputLabel>
+          <InputLabel htmlFor="change-classroom"></InputLabel>
           <Select
             value={classroom}
             onChange={this.handleChange}
@@ -80,28 +73,3 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Classroom);
-
-
-
-
-{/* <div>
-{changeClassroomButton}
-<div>Classroom: {classroom}</div>
-
-<form  autoComplete="off">
-<FormControl >
-<InputLabel htmlFor="change-classroom">Classroom</InputLabel>
-<Select
-  value={classroom}
-  onChange={this.handleChange}
-  inputProps={{
-    name: 'classroom',
-    id: 'change-classroom',
-  }}
->
-  {this.renderClassroomList()}
-</Select>
-</FormControl>
-</form>
-
-</div> */}

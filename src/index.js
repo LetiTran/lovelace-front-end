@@ -13,8 +13,10 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers';
 
-import {fetchClassroomList} from './actions';
+import {fetchClassroomList, fetchCohortList} from './actions';
 
+
+// create store and 'asyncly' fetch cohort and classrooms:
 // const store = createStore(rootReducer);
 const store = createStore(
     rootReducer,
@@ -25,6 +27,9 @@ const store = createStore(
     fetchClassroomList(() => {
       dispatch({ type: 'GET_CLASSROOM_LIST' })
     })
+    fetchCohortList(() => {
+        dispatch({ type: 'GET_COHORT_LIST' })
+      })
   })
 
 let hist = createBrowserHistory();
