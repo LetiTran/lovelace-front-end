@@ -9,10 +9,10 @@ import {GET_ASSIGNMENTS_LIST_SUCCEDED} from '../actions';
 import {GET_STUDENTS_LIST_SUCCEDED} from '../actions';
 
 const stateList = {
-    cohort: 1, 
+    cohort: "Select", 
     cohortList: [], 
-    currentClassroomName: "Jelly", 
-    currentClassroomId: 1,
+    currentClassroomName: "Select", 
+    currentClassroomId: "Select",
     classroomList: [],
     assignmentList: [],
     studentsList: [],
@@ -34,8 +34,20 @@ const stateList = {
         console.log("GET_COHORT_LIST_SUCCEDED called");
         console.log(state, action)
         console.log(action.payload.cohortList)
+
+        let selectCohort = state.cohort
+        let cohortList = action.payload.cohortList
+        let cohortListSize = action.payload.cohortList.length-1
+
+        if(state.cohort === "Select")  {
+            selectCohort = cohortList[cohortListSize].id
+        }
+        // Can't use .pop() here! TODO: refactor all this variables..... 
+
+
         return Object.assign({}, state, {
-            cohortList : action.payload.cohortList
+            cohortList : action.payload.cohortList,
+            cohort: selectCohort
         })
 
 
@@ -54,8 +66,23 @@ const stateList = {
         console.log("GET_CLASSROOM_LIST_SUCCEDED called");
         console.log(state, action)
         console.log(action.payload.classroomList)
+        console.log(action.payload.classroomList.last)
+
+        let assignClassroomId = state.currentClassroomId 
+        let assignClassroomName = state.classroomcurrentClassroomName
+        let classroomList = action.payload.classroomList
+        let classroomListSize = action.payload.classroomList.length-1
+
+        if(state.currentClassroomId === "Select" || state.currentClassroomName === "Select")  {
+             assignClassroomId = classroomList[classroomListSize].id
+             assignClassroomName = classroomList[classroomListSize].name
+        }
+        // Can't use .pop() here! TODO: refactor all this variables..... 
+
         return Object.assign({}, state, {
-            classroomList : action.payload.classroomList
+            classroomList : classroomList,
+            currentClassroomId: assignClassroomId,
+            currentClassroomName: assignClassroomName
         })
         
 

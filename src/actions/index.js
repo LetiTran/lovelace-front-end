@@ -69,7 +69,7 @@ export function fetchClassroomListSucceded(classroomList) {
     return {
     type: GET_CLASSROOM_LIST_SUCCEDED,
         payload: {
-            classroomList
+            classroomList,
         }
     }
 }
