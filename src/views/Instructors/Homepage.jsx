@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import {Grid, Paper} from '@material-ui/core';
-import Classroom from '../components/Classroom.js'
-import Cohort from '../components/Cohort.js'
+import Classroom from '../../components/Classroom.js'
+import Cohort from '../../components/Cohort.js'
 
 
 class Homepage extends Component {

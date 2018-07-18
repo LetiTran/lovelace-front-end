@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import Student from '../components/Student.js'
+import Student from './Student.js'
 
 // For Redux:
 import {connect} from 'react-redux';

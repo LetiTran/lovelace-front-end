@@ -1,8 +1,8 @@
 import LandingPage from '../views/LandingPage.js';
-import Assignments from '../views/Assignments.js';
-import Homepage from '../views/Homepage.jsx';
-import Feedback from '../views/Feedback.js';
-import StudentsList from '../views/StudentsList.js';
+import Assignments from '../views/Instructors/Assignments.js';
+import Homepage from '../views/Instructors/Homepage.jsx';
+import Feedback from '../views/Instructors/Feedback.js';
+import StudentsList from '../components/StudentsList.js';
 
 
 let indexRoutes = [
