@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import ListItemLink from './ListItemLink'
-import BookIcon from '@material-ui/icons/Book';
-import HomeIcon from '@material-ui/icons/Home';
-// import AllInclusive from '@material-ui/icons/Home'
-import CheckIcon from '@material-ui/icons/Done';
-// import SchoolIcon from '@material-ui/icons/School';
+
+import { 
+    BookIcon, 
+    HomeIcon, 
+    CheckIcon, 
+} from '../components-info/MaterialUiImports'
 
 class LinksList extends Component {
 

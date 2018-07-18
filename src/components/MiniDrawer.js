@@ -2,16 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import LinksList from './LinksList'
+// import Drawer from '@material-ui/core/Drawer';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
+// import Typography from '@material-ui/core/Typography';
+// import Divider from '@material-ui/core/Divider';
+// import IconButton from '@material-ui/core/IconButton';
+// import MenuIcon from '@material-ui/icons/Menu';
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
+import {
+Drawer, 
+AppBar,
+Toolbar, 
+Typography, 
+Divider,
+IconButton, 
+MenuIcon,
+ChevronLeftIcon, 
+} from '../components-info/MaterialUiImports'
 
 const drawerWidth = 240;
 
@@ -101,7 +111,6 @@ class MiniDrawer extends React.Component {
   };
 
 
-
   render() {
     const { classes } = this.props;
 
@@ -135,16 +144,13 @@ class MiniDrawer extends React.Component {
           <section style={{backgroundColor: "#669933"}} className={classes.toolbar}>
             <IconButton onClick={this.handleDrawerClose}><ChevronLeftIcon style={{color: "white"}}/></IconButton>
           </section>
-
           <Divider />
-          
+          {/* Render list of links on side bar: */}
           <LinksList />
-          
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar}/>
           <section height="100vh" overflow="scroll">{this.props.children}</section>
-
         </main>
       </div>
     );
