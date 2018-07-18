@@ -19,7 +19,6 @@ import {
 } from '../components-info/MaterialUiImports'
 
 
-
 class StudentsList extends Component {
 
     componentDidMount() {
