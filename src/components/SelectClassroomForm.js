@@ -44,7 +44,7 @@ class SelectClassroomForm extends Component {
                 
             {/* Select Existing Classroom: */}
             <CardContent>
-                <ChooseCohortOrClassForm selectValue="classroom" titleText="Select Classroom" func="chooseClassroomForInvitesForm"/>
+                <ChooseCohortOrClassForm selectValue="classroom" titleText="Select Classroom" funcName="chooseClassroomForInvitesForm"/>
             </CardContent>
 
             <CardActions>

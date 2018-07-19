@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeCurrentCohort, changeCohortOnForm, changeClassroomOnForm, changeCohortOnFormForNewClassroom} from '../actions';
+import {changeCurrentClassroom, changeCurrentCohort, changeCohortOnForm, changeClassroomOnForm, changeCohortOnFormForNewClassroom} from '../actions';
 
 import { InputLabel, 
   MenuItem, 
@@ -33,21 +33,28 @@ renderClassroomList = () => {
 
 
  handleChange = (event) => {
-   if(this.props.funcName === "chooseCohortForNewClassroom") {
+   if
+   (this.props.funcName === "chooseCohortForNewClassroom") {
     this.props.changeCohortOnFormForNewClassroom(event.target.value)
-   }else if(this.props.funcName === "chooseClassroomForInvitesForm"){
+   }else if
+   (this.props.funcName === "chooseClassroomForInvitesForm"){
     this.props.changeClassroomOnForm(event.target.value)
    }else if
    (this.props.funcName === "chooseCurrentCohort"){
     this.props.changeCurrentCohort(event.target.value)
-   }else{
+   }else if
+   (this.props.funcName === "chooseCurrentClassroom"){
+    this.props.changeCurrentClassroom(event.target.value)
+   }else if
+   (this.props.funcName === "chooseCohortForInvitesForm"){
     this.props.changeCohortOnForm(event.target.value)
    }
     
   };
 
   loadList = () => {
-    if(this.props.selectValue === "cohort"){
+    if
+    (this.props.selectValue === "cohort"){
      return this.renderCohortList() 
     }else{
      return this.renderClassroomList()
@@ -57,9 +64,27 @@ renderClassroomList = () => {
 
   render() {
 
-    const cohort = this.props.cohort;
-    const classroom = this.props.classroom;
 
+    let cohort = this.props.currentCohort;
+    let classroom = this.props.currentClassroom;
+
+    const assignVariables = (cohort, classroom) => {
+    if(this.props.funcName === "chooseCohortForNewClassroom") {
+      return this.cohort = this.props.selectedCohort;
+     }else if(this.props.funcName === "chooseClassroomForInvitesForm"){
+      return this.classroom = this.props.selectedclassroom;
+     }else if
+     (this.props.funcName === "chooseCurrentCohort"){
+      return this.cohort = this.props.currentCohort
+     }else if
+     (this.props.funcName === "chooseCurrentClassroom"){
+      return this.classroom = this.props.currentClassroom;
+     }else{
+      return this.cohort = this.props.selectedCohort;
+     }
+    };
+    
+    assignVariables(cohort, classroom)
     const alignment = (this.props.titleSize === "insideForm" ? 'left' : 'center')
     const titleSize = (this.props.titleSize === "insideForm" ? 'caption' : 'headline')
     const marginTop = (this.props.titleSize === "insideForm" ? '25px' : '')
@@ -81,7 +106,7 @@ renderClassroomList = () => {
             value={selectValue}
             onChange={this.handleChange}
             inputProps={{
-              name: `${this.props.selectValue}`,
+              name: `change`,
               id: 'change-'+`${this.props.selectValue}`,
             }}
           >
@@ -99,15 +124,18 @@ function mapStateToProps(state) {
   console.log('function mapStateToProps:' )
     return {
     cohortList: state.cohortList,
-    classroom: state.selectedClassroomOnForm,
-    cohort: state.selectedCohortOnForm,
     classroomList: state.classroomList,
-    currentCohort: state.cohort,
+
+    selectedclassroom: state.selectedClassroomOnForm,
+    selectedCohort: state.selectedCohortOnForm,
+    
+    currentCohort: state.currentCohort,
+    currentClassroom: state.currentClassroom,
     }
 }
 
 function mapDispatchToProps(dispatch){
-        return bindActionCreators({changeCurrentCohort, changeClassroomOnForm, changeCohortOnForm, changeCohortOnFormForNewClassroom}, dispatch)
+        return bindActionCreators({changeCurrentClassroom, changeCurrentCohort, changeClassroomOnForm, changeCohortOnForm, changeCohortOnFormForNewClassroom}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChooseCohortOrClassForm);

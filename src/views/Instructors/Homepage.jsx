@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import {Grid, Paper} from '@material-ui/core';
-import Classroom from '../../components/Classroom.js'
+// import Classroom from '../../components/Classroom.js'
 import ChooseCohortOrClassForm from '../../components/ChooseCohortOrClassForm.js'
 
 
@@ -31,7 +31,7 @@ class Homepage extends Component {
           </Grid>
           <Grid item style={styles.root}  >
             <Paper elevation={2} style={styles.Paper}>
-            <div style={styles.root}><Classroom /></div>
+            <div style={styles.root}><ChooseCohortOrClassForm selectValue="classroom" titleText="Select Current Classroom"  funcName="chooseCurrentClassroom" /></div>
             </Paper>
           </Grid>
         </Grid>

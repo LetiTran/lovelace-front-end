@@ -77,7 +77,7 @@ export function fetchClassroomList() {
     }
 }
 
-export function changeClassroom(classroom) {
+export function changeCurrentClassroom(classroom) {
     const action = {
         type: CHANGE_CLASSROOM,
         classroom
