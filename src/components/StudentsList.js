@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import Student from '../components/Student.js'
+import Student from './Student.js'
 
 // For Redux:
 import {connect} from 'react-redux';
@@ -8,14 +8,15 @@ import {bindActionCreators} from 'redux';
 import {fetchStudentsList} from '../actions';
 
 // For Styles:
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-
+import { 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableHead, 
+  TableRow, 
+  Paper,
+  Typography 
+} from '../components-info/MaterialUiImports'
 
 
 class StudentsList extends Component {
@@ -26,14 +27,18 @@ class StudentsList extends Component {
     }
       
     renderStudentList = () => {
-    console.log('studentsList in renderAssignmentList: ' )
+    console.log('studentsList in renderStudenttList: ' )
     console.log(this.props.studentsList)
-     return this.props.studentsList.map((student,index) => {
+    console.log(this.props.currentClassroomStudents)
+        return this.props.currentClassroomStudents.map((student,index) => {
+        //  To change it for ALL STUDENTS LIST, swap this two lines:
+        //  return this.props.studentsList.map((student,index) => {
         return (
             <Student
                 key={index}
                 type={student.type}
-                onClick={()=> window.open("https://github.com/" + student.github_name, "_blank")}
+                // onClick={()=> this.openProfile(student)}
+                openGitHubProfile={()=> window.open("https://github.com/" + student.github_name, "_blank")}
                 name={student.name}
                 email={student.email} 
                 classroom={student.classroom_id}
@@ -61,7 +66,7 @@ class StudentsList extends Component {
     return (
     <section style={styles.root}>
     <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
-      Students
+      Students on Classroom {this.props.classroomName}
     </Typography>
 
     <Paper >
@@ -81,6 +86,8 @@ class StudentsList extends Component {
         </TableBody>
       </Table>
     </Paper>
+
+    
     </section>
     )
   }
@@ -94,7 +101,9 @@ function mapStateToProps(state) {
     console.log('function mapStateToProps:' )
       console.log(state.studentsList)
       return {
-      studentsList: state.studentsList
+      studentsList: state.studentsList,
+      currentClassroomStudents: state.currentClassroomStudents,
+      classroomName: state.currentClassroomName
       }
   }
   

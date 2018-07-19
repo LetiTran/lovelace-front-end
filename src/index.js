@@ -25,6 +25,7 @@ import {
 // creating store with thunk to be able to fetch cohort and classrooms on componentDidMount in:
 const store = createStore(
     rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk)
 )
 

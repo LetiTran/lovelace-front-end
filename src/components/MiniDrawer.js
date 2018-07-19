@@ -2,20 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ListItemLink from './ListItemLink'
-import BookIcon from '@material-ui/icons/Book';
-import HomeIcon from '@material-ui/icons/Home';
-// import AllInclusive from '@material-ui/icons/Home'
-import CheckIcon from '@material-ui/icons/Done';
-// import SchoolIcon from '@material-ui/icons/School';
+import SidebarInstructorsLinksList from '../routes/SidebarInstructorsLinksList'
+import SidebarStudentsLinksList from '../routes/SidebarStudentsLinksList'
+
+import {
+Drawer, 
+AppBar,
+Toolbar, 
+Typography, 
+Divider,
+IconButton, 
+MenuIcon,
+ChevronLeftIcon, 
+} from '../components-info/MaterialUiImports'
 
 const drawerWidth = 240;
 
@@ -105,7 +104,6 @@ class MiniDrawer extends React.Component {
   };
 
 
-
   render() {
     const { classes } = this.props;
 
@@ -139,20 +137,14 @@ class MiniDrawer extends React.Component {
           <section style={{backgroundColor: "#669933"}} className={classes.toolbar}>
             <IconButton onClick={this.handleDrawerClose}><ChevronLeftIcon style={{color: "white"}}/></IconButton>
           </section>
-
           <Divider />
-          {/* <ul> */}
-            <ListItemLink to="/lovelace-front-end" primary="LandingPage" icon={<HomeIcon />} />
-            <ListItemLink to="/lovelace-front-end/homepage" primary="Homepage" icon={<HomeIcon />} />
-            <ListItemLink to="/lovelace-front-end/feedback" primary="Feedback" icon={<CheckIcon />} />
-            <ListItemLink to="/lovelace-front-end/assignments" primary="Assignments" icon={<BookIcon />} />
-            <ListItemLink to="/lovelace-front-end/students" primary="StudentsList" icon={<BookIcon />} />
-          {/* </ul> */}
+          {/* Render list of links on side bar. Changes wich one to render using permission once login is set up*/}
+          <SidebarInstructorsLinksList />
+          <SidebarStudentsLinksList />
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar}/>
           <section height="100vh" overflow="scroll">{this.props.children}</section>
-
         </main>
       </div>
     );

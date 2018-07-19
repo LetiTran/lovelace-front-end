@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Paper from "@material-ui/core/Paper";
-import AssignmentList from '../components/AssignmentList.js';
+import AssignmentList from '../../components/AssignmentList.js';
 import Typography from '@material-ui/core/Typography';
 
 class Assignments extends Component {
