@@ -61,35 +61,56 @@ renderClassroomList = () => {
     }
   }    
 
+  // assignVariables = () => {
+  //   // let cohort = this.props.currentCohort;
+  //   // let classroom = this.props.currentClassroom;
+
+  //   if(this.props.funcName === "chooseCohortForNewClassroom") {
+  //     return this.props.selectedCohort;
+  //    }else if(this.props.funcName === "chooseClassroomForInvitesForm"){
+  //     return = this.props.selectedclassroom;
+  //    }else if
+  //    (this.props.funcName === "chooseCurrentCohort"){
+  //     return this.props.currentCohort
+  //    }else if
+  //    (this.props.funcName === "chooseCurrentClassroom"){
+  //     return = this.props.currentClassroom;
+  //    }else if
+  //    (this.props.funcName === "chooseCohortForInvitesForm"){
+  //     return this.props.selectedCohort;
+  //    }
+  //   };
 
   render() {
 
 
-    let cohort = this.props.currentCohort;
-    let classroom = this.props.currentClassroom;
+    const assignVariables = () => {
+      // let cohort = this.props.currentCohort;
+      // let classroom = this.props.currentClassroom;
+  
+      if(this.props.funcName === "chooseCohortForNewClassroom") {
+        return this.props.selectedCohort;
+       }else if(this.props.funcName === "chooseClassroomForInvitesForm"){
+        return this.props.selectedclassroom;
+       }else if
+       (this.props.funcName === "chooseCurrentCohort"){
+        return this.props.currentCohort
+       }else if
+       (this.props.funcName === "chooseCurrentClassroom"){
+        return this.props.currentClassroom;
+       }else if
+       (this.props.funcName === "chooseCohortForInvitesForm"){
+        return this.props.selectedCohort;
+       }
+      };
 
-    const assignVariables = (cohort, classroom) => {
-    if(this.props.funcName === "chooseCohortForNewClassroom") {
-      return this.cohort = this.props.selectedCohort;
-     }else if(this.props.funcName === "chooseClassroomForInvitesForm"){
-      return this.classroom = this.props.selectedclassroom;
-     }else if
-     (this.props.funcName === "chooseCurrentCohort"){
-      return this.cohort = this.props.currentCohort
-     }else if
-     (this.props.funcName === "chooseCurrentClassroom"){
-      return this.classroom = this.props.currentClassroom;
-     }else{
-      return this.cohort = this.props.selectedCohort;
-     }
-    };
     
-    assignVariables(cohort, classroom)
+    
     const alignment = (this.props.titleSize === "insideForm" ? 'left' : 'center')
     const titleSize = (this.props.titleSize === "insideForm" ? 'caption' : 'headline')
     const marginTop = (this.props.titleSize === "insideForm" ? '25px' : '')
     const titleText =  this.props.titleText
-    const selectValue = (this.props.selectValue === "cohort" ? cohort : classroom)
+    const selectValue = assignVariables()
 
 
    
