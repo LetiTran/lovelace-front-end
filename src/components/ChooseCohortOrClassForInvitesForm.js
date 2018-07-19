@@ -12,7 +12,7 @@ import { InputLabel,
  } from '../components-info/MaterialUiImports'
  
 
-class ChooseCohortForInvitesForm extends Component {
+class ChooseCohortOrClassForInvitesForm extends Component {
 
   renderCohortList = () => {
     return this.props.cohortList.map((cohort, index) => {
@@ -106,4 +106,4 @@ function mapDispatchToProps(dispatch){
         return bindActionCreators({changeClassroomOnForm, changeCohortOnForm, changeCohortOnFormForNewClassroom}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChooseCohortForInvitesForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ChooseCohortOrClassForInvitesForm);

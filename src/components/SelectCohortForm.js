@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import InputWithGrid from './InputWithGrid';
-import ChooseCohortForInvitesForm from './ChooseCohortForInvitesForm.js'
+import ChooseCohortOrClassForInvitesForm from './ChooseCohortOrClassForInvitesForm.js'
 import DatePickers from './DatePicker.js'
 
 // For Styles:
@@ -53,7 +53,7 @@ class SelectCohortForm extends Component {
           
         {/* Select Existing Cohort: */}
         <CardContent>
-            <ChooseCohortForInvitesForm selectValue="cohort" titleText="Select Cohort"/>
+            <ChooseCohortOrClassForInvitesForm selectValue="cohort" titleText="Select Cohort"/>
         </CardContent>
 
         <CardActions>
