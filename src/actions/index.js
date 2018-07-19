@@ -8,6 +8,7 @@ export const CHANGE_CLASSROOM_ON_FORM = "CHANGE_CLASSROOM_ON_FORM"
 export const CHANGE_COHORT = "CHANGE_COHORT";
 export const GET_COHORT_LIST_SUCCEDED = "GET_COHORT_LIST_SUCCEDED";
 export const CHANGE_COHORT_ON_FORM = "CHANGE_COHORT_ON_FORM";
+export const CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM ="CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM";
 
 export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED";
 // export const GET_ASSIGNMENTS_LIST = "GET_ASSIGNMENTS_LIST";
@@ -48,13 +49,22 @@ export function fetchCohortListSucceded(cohortList) {
     }
 }
 
-export function changeClassroomOnForm(classroom) {
+export function changeCohortOnForm(cohort) {
     const action = {
-        type: CHANGE_CLASSROOM_ON_FORM,
-        classroom
+        type: CHANGE_COHORT_ON_FORM,
+        cohort
     };
     return action
 }
+
+export function changeCohortOnFormForNewClassroom(cohort) {
+    const action = {
+        type: CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM,
+        cohort
+    };
+    return action
+}
+
 
 // *********** CLASSROOM *****************
 export function fetchClassroomList() {
@@ -86,13 +96,14 @@ export function fetchClassroomListSucceded(classroomList) {
     }
 }
 
-export function changeCohortOnForm(cohort) {
+export function changeClassroomOnForm(classroom) {
     const action = {
-        type: CHANGE_COHORT_ON_FORM,
-        cohort
+        type: CHANGE_CLASSROOM_ON_FORM,
+        classroom
     };
     return action
 }
+
 
 // *********** ASSIGNMENTS *****************
 export function fetchAssignmentList() {

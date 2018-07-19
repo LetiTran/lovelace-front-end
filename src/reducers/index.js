@@ -3,7 +3,7 @@ import {
     CHANGE_COHORT, GET_COHORT_LIST_SUCCEDED,
     GET_ASSIGNMENTS_LIST_SUCCEDED, GET_STUDENTS_LIST_SUCCEDED,
     GET_INSTRUCTORS_LIST_SUCCEDED,
-    CHANGE_COHORT_ON_FORM, CHANGE_CLASSROOM_ON_FORM
+    CHANGE_COHORT_ON_FORM, CHANGE_CLASSROOM_ON_FORM, CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM,
         } from '../actions';
 
 
@@ -24,6 +24,7 @@ const stateList = {
     selectedInstructors: [],
     selectedCohortOnForm: 1,
     selectedClassroomOnForm: 1,
+    selectedCohortOnFormForNewClassroom: 1
 }
 
  function performAction(state = stateList, action) {
@@ -60,6 +61,10 @@ const stateList = {
             selectedCohortOnForm : action.cohort
         })
 
+        case CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM:
+        return Object.assign({}, state, {
+            selectedCohortOnFormForNewClassroom : action.cohort
+        })
 
         // *********** CLASSROOM *****************
         case CHANGE_CLASSROOM:

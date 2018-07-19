@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeCohortOnForm} from '../actions';
+import {changeCohortOnForm, changeCohortOnFormForNewClassroom} from '../actions';
 
 import { InputLabel, 
   MenuItem, 
@@ -23,7 +23,12 @@ class ChooseCohortForInvitesForm extends Component {
 }
 
  handleChange = (event) => {
+   if(this.props.funcName === "chooseCohortForNewClassroom") {
+    this.props.changeCohortOnFormForNewClassroom(event.target.value)
+   }else{
     this.props.changeCohortOnForm(event.target.value)
+   }
+    
   };
 
   render() {
@@ -31,13 +36,16 @@ class ChooseCohortForInvitesForm extends Component {
 
     const cohort = this.props.cohort;
 
- 
-
+    // {this.props.titleSize === "insideForm" ? 'h1' : 'h6'}
+    // variant="headline"
+    const alignment = (this.props.titleSize === "insideForm" ? 'left' : 'center')
+    const titleSize = (this.props.titleSize === "insideForm" ? 'caption' : 'headline')
+    const marginTop = (this.props.titleSize === "insideForm" ? '25px' : '')
+    const titleText =  (this.props.titleSize === "insideForm" ? 'Select Cohort For New Classroom:' : 'Select Cohort')
     return (
-   
-      <section style={{textAlign:"center"}}>
-        <Typography variant="headline" component="h2">
-            Select Cohort
+      <section style={{textAlign:alignment}}>
+        <Typography  variant={titleSize}  style={{marginTop:marginTop}}>
+            {titleText}
           </Typography>
         <form  autoComplete="off">
         <FormControl >
@@ -68,7 +76,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-        return bindActionCreators({changeCohortOnForm}, dispatch)
+        return bindActionCreators({changeCohortOnForm, changeCohortOnFormForNewClassroom}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChooseCohortForInvitesForm);

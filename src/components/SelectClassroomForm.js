@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import InputWithGrid from './InputWithGrid';
 import ChooseClassroomForInvitesForm from './ChooseClassroomForInvitesForm.js'
 import CustomizedSnackbars from './MessageSnackBar.js'
+import ChooseCohortForInvitesForm from './ChooseCohortForInvitesForm.js'
 
 // For Styles:
  import { 
@@ -52,10 +53,8 @@ class SelectClassroomForm extends Component {
             <Button onClick={this.handleClickOpen('body')} color="primary">
                 {this.props.buttonName}
             </Button>
-            <CustomizedSnackbars/>
+            {/* <CustomizedSnackbars/> */}
             {/* Make <CustomizedSnackbars/> work with create button inside of the Dialog */}
-            
-            
 
             </CardActions>
 
@@ -71,7 +70,9 @@ class SelectClassroomForm extends Component {
             <DialogContent>
                 <DialogContentText>
                 {/* this.renderPopUpFormInputs() NOT WORKING...(?)*/}
-                    <InputWithGrid name="Name"/>       
+                    <InputWithGrid name="Name"/>   
+                    <ChooseCohortForInvitesForm titleSize="insideForm" funcName="chooseCohortForNewClassroom"/>
+
                 </DialogContentText>
             </DialogContent>
             <DialogActions>

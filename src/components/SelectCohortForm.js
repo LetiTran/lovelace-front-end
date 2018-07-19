@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import InputWithGrid from './InputWithGrid';
 import ChooseCohortForInvitesForm from './ChooseCohortForInvitesForm.js'
+import DatePickers from './DatePicker.js'
 
 // For Styles:
  import { 
@@ -76,11 +77,12 @@ class SelectCohortForm extends Component {
                 <InputWithGrid name="Cohort Number"/>
                 <InputWithGrid name="Name"/>
                 <InputWithGrid name="Repo Name"/>
-                <InputWithGrid name="Class Start Date"/>
-                <InputWithGrid name="Class End Date"/>
-                <InputWithGrid name="Internship Start Date"/>
-                <InputWithGrid name="Internship End Date"/>
-                <InputWithGrid name="Graduation Date"/>         
+                <DatePickers text="Class Start Date"/>   
+                <DatePickers text="Class End Date"/>
+                <DatePickers text="Internship Start Date"/>
+                <DatePickers text="Internship End Date"/>
+                <DatePickers text="Graduation Date"/>     
+                 
             </DialogContentText>
           </DialogContent>
           <DialogActions>
