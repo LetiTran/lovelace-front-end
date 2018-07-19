@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeCohortOnForm} from '../actions';
+import {changeClassroomOnForm} from '../actions';
 
 import { InputLabel, 
   MenuItem, 
@@ -12,45 +12,41 @@ import { InputLabel,
  } from '../components-info/MaterialUiImports'
  
 
-class ChooseCohortForInvitesForm extends Component {
+class ChooseClassroomForInvitesForm extends Component {
 
-  renderCohortList = () => {
-    return this.props.cohortList.map((cohort, index) => {
+  renderClassroomList = () => {
+    return this.props.classroomList.map((classroom, index) => {
        return (
-       <MenuItem key={index} value={cohort.id}> {cohort.name} </MenuItem>
+       <MenuItem key={index} value={classroom.id}> {classroom.name} </MenuItem>
        );
    });
 }
 
  handleChange = (event) => {
-    this.props.changeCohortOnForm(event.target.value)
+    this.props.changeClassroomOnForm(event.target.value)
   };
 
   render() {
-    console.log('cohort: ' + this.props.cohort)
 
-    const cohort = this.props.cohort;
-
- 
+    const classroom = this.props.classroom;
 
     return (
-   
       <section style={{textAlign:"center"}}>
         <Typography variant="headline" component="h2">
-            Select Cohort
+            Select Classroom
           </Typography>
         <form  autoComplete="off">
         <FormControl >
-          <InputLabel htmlFor="change-cohort"></InputLabel>
+          <InputLabel htmlFor="change-classroom"></InputLabel>
           <Select
-            value={cohort}
+            value={classroom}
             onChange={this.handleChange}
             inputProps={{
-              name: 'cohort',
-              id: 'change-cohort',
+              name: 'classroom',
+              id: 'change-classroom',
             }}
           >
-            {this.renderCohortList()}
+            {this.renderClassroomList()}
           </Select>
         </FormControl>
         </form>
@@ -63,12 +59,12 @@ class ChooseCohortForInvitesForm extends Component {
 function mapStateToProps(state) {
   console.log('function mapStateToProps:' )
     return {
-    cohortList: state.cohortList
+    classroomList: state.classroomList
     }
 }
 
 function mapDispatchToProps(dispatch){
-        return bindActionCreators({changeCohortOnForm}, dispatch)
+        return bindActionCreators({changeClassroomOnForm}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChooseCohortForInvitesForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ChooseClassroomForInvitesForm);

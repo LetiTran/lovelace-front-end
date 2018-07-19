@@ -3,6 +3,7 @@ import * as api from '../api';
 export const CHANGE_CLASSROOM = "CHANGE_CLASSROOM";
 export const GET_CLASSROOM_LIST_SUCCEDED = "GET_CLASSROOM_LIST_SUCCEDED";
 export const GET_CLASSROOM_LIST = "GET_CLASSROOM_LIST"
+export const CHANGE_CLASSROOM_ON_FORM = "CHANGE_CLASSROOM_ON_FORM"
 
 export const CHANGE_COHORT = "CHANGE_COHORT";
 export const GET_COHORT_LIST_SUCCEDED = "GET_COHORT_LIST_SUCCEDED";
@@ -47,10 +48,10 @@ export function fetchCohortListSucceded(cohortList) {
     }
 }
 
-export function changeCohortOnForm(cohort) {
+export function changeClassroomOnForm(classroom) {
     const action = {
-        type: CHANGE_COHORT_ON_FORM,
-        cohort
+        type: CHANGE_CLASSROOM_ON_FORM,
+        classroom
     };
     return action
 }
@@ -83,6 +84,14 @@ export function fetchClassroomListSucceded(classroomList) {
             classroomList,
         }
     }
+}
+
+export function changeCohortOnForm(cohort) {
+    const action = {
+        type: CHANGE_COHORT_ON_FORM,
+        cohort
+    };
+    return action
 }
 
 // *********** ASSIGNMENTS *****************

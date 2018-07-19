@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import SelectCohortForm from "../../components/SelectCohortForm";
+import SelectClassroomForm from "../../components/SelectClassroomForm";
+
 // import PropTypes from 'prop-types';
+
+import { 
+    Grid, 
+   } from '../../components-info/MaterialUiImports'
 
 class UserInvitesForm extends Component {
 
@@ -16,11 +22,19 @@ class UserInvitesForm extends Component {
                     "Internship End Date",
                     "Graduation Date" 
                     ]   
+    const classroomInfo = [
+        "Name"
+        ]   
 
     return (
-        <section>
-           <SelectCohortForm buttonName="Create New Cohort" title="Please fill out new Cohort details" infoNeeded={cohortInfo}/>
-         </section>
+        <Grid spacing={16} container direction="row" justify="center">
+            <Grid item>
+                <SelectCohortForm buttonName="Create New Cohort" title="Please fill out new Cohort details" infoNeeded={cohortInfo}/>
+            </Grid>
+            <Grid item >
+                <SelectClassroomForm buttonName="Create New Class" title="Please fill out new Class details" infoNeeded={classroomInfo}/>
+           </Grid>
+         </Grid>
     );
   }
 }

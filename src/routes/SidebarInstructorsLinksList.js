@@ -11,7 +11,6 @@ class SidebarInstructorsLinksList extends Component {
 
   render() {
     return (
-    
       <div>
         <ListItemLink to="/lovelace-front-end" primary="LandingPage" icon={<HomeIcon />} />
         <ListItemLink to="/lovelace-front-end/homepage" primary="Instructors Homepage" icon={<HomeIcon />} />

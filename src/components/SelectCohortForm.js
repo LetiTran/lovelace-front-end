@@ -5,13 +5,15 @@ import ChooseCohortForInvitesForm from './ChooseCohortForInvitesForm.js'
 
 // For Styles:
  import { 
- Grid, 
  Button, 
  Dialog, 
  DialogActions,
  DialogContent, 
  DialogContentText,
  DialogTitle,
+ Card,
+ CardActions,
+ CardContent
 } from '../components-info/MaterialUiImports'
 
 class SelectCohortForm extends Component {
@@ -44,16 +46,20 @@ class SelectCohortForm extends Component {
   
   render() {
     return (
-      <Grid >
+      
+        <Card  style={{maxWidth: 400, margin:3}} >
+        <CardContent>
+        {/* Select Existing Cohort: */}
+        <CardContent>
+            <ChooseCohortForInvitesForm />
+            </CardContent>
 
-    <ChooseCohortForInvitesForm />
-
-
+        <CardActions>
         {/* Create new button: */}
         <Button onClick={this.handleClickOpen('body')} color="primary">
             {this.props.buttonName}
         </Button>
-
+        </CardActions>
 
         {/* For the pop-up dialog box: */}
         <Dialog
@@ -86,8 +92,8 @@ class SelectCohortForm extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-      
-        </Grid>
+        </CardContent>
+        </Card>
        
     )
   }
