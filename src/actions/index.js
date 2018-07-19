@@ -6,7 +6,7 @@ export const GET_CLASSROOM_LIST = "GET_CLASSROOM_LIST"
 
 export const CHANGE_COHORT = "CHANGE_COHORT";
 export const GET_COHORT_LIST_SUCCEDED = "GET_COHORT_LIST_SUCCEDED";
-// export const GET_COHORT_LIST = "GET_COHORT_LIST";
+export const CHANGE_COHORT_ON_FORM = "CHANGE_COHORT_ON_FORM";
 
 export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED";
 // export const GET_ASSIGNMENTS_LIST = "GET_ASSIGNMENTS_LIST";
@@ -45,6 +45,14 @@ export function fetchCohortListSucceded(cohortList) {
             cohortList
         }
     }
+}
+
+export function changeCohortOnForm(cohort) {
+    const action = {
+        type: CHANGE_COHORT_ON_FORM,
+        cohort
+    };
+    return action
 }
 
 // *********** CLASSROOM *****************

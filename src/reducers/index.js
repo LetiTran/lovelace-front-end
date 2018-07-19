@@ -2,7 +2,8 @@ import {
     CHANGE_CLASSROOM, GET_CLASSROOM_LIST_SUCCEDED,
     CHANGE_COHORT, GET_COHORT_LIST_SUCCEDED,
     GET_ASSIGNMENTS_LIST_SUCCEDED, GET_STUDENTS_LIST_SUCCEDED,
-    GET_INSTRUCTORS_LIST_SUCCEDED 
+    GET_INSTRUCTORS_LIST_SUCCEDED,
+    CHANGE_COHORT_ON_FORM,
         } from '../actions';
 
 
@@ -17,7 +18,8 @@ const stateList = {
     currentClassroomStudents: [],
     instructorsList: [],
     selectedInstructors: [],
-    currentUser: 1
+    currentUser: 1,
+    selectedCohortOnForm: 1
 }
 
  function performAction(state = stateList, action) {
@@ -44,11 +46,14 @@ const stateList = {
             selectCohort = cohortList[cohortListSize].id
         }
         // Can't use .pop() here! TODO: refactor all this variables..... 
-
-
         return Object.assign({}, state, {
             cohortList : action.payload.cohortList,
             cohort: selectCohort
+        })
+
+        case CHANGE_COHORT_ON_FORM:
+        return Object.assign({}, state, {
+            selectedCohortOnForm : action.cohort
         })
 
 

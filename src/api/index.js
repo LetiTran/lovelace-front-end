@@ -2,8 +2,8 @@ import axios from 'axios';
 // require('dotenv').config({path:'../../.env'})
 
 // console.log(process.env)
-const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
-
+// const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
+const API_BASE_URL = `http://localhost:3000/`;
 
 const client = axios.create({
     baseURL: API_BASE_URL,
