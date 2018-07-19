@@ -16,8 +16,6 @@ class Cohort extends Component {
     
 
   renderCohortList = () => {
-    console.log('cohortList in renderCohortList: ' )
-    console.log(this.props.cohortList)
     return this.props.cohortList.map((cohort, index) => {
        return (
        <MenuItem key={index} value={cohort.id}> {cohort.name} </MenuItem>
@@ -26,7 +24,7 @@ class Cohort extends Component {
 }
 
  handleChange = (event) => {
-    this.props.changeCohort(event.target.value)
+    this.props.changeCurrentCohort(event.target.value)
     // this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -73,7 +71,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-        return bindActionCreators({changeCohort}, dispatch)
+        return bindActionCreators({changeCurrentCohort}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cohort);

@@ -30,7 +30,7 @@ export function fetchCohortList() {
     }
 }
 
-export function changeCohort(cohort) {
+export function changeCurrentCohort(cohort) {
     const action = {
         type: CHANGE_COHORT,
         cohort

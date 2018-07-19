@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeCohortOnForm, changeClassroomOnForm, changeCohortOnFormForNewClassroom} from '../actions';
+import {changeCurrentCohort, changeCohortOnForm, changeClassroomOnForm, changeCohortOnFormForNewClassroom} from '../actions';
 
 import { InputLabel, 
   MenuItem, 
@@ -12,7 +12,7 @@ import { InputLabel,
  } from '../components-info/MaterialUiImports'
  
 
-class ChooseCohortOrClassForInvitesForm extends Component {
+class ChooseCohortOrClassForm extends Component {
 
   renderCohortList = () => {
     return this.props.cohortList.map((cohort, index) => {
@@ -37,6 +37,9 @@ renderClassroomList = () => {
     this.props.changeCohortOnFormForNewClassroom(event.target.value)
    }else if(this.props.funcName === "chooseClassroomForInvitesForm"){
     this.props.changeClassroomOnForm(event.target.value)
+   }else if
+   (this.props.funcName === "chooseCurrentCohort"){
+    this.props.changeCurrentCohort(event.target.value)
    }else{
     this.props.changeCohortOnForm(event.target.value)
    }
@@ -98,12 +101,13 @@ function mapStateToProps(state) {
     cohortList: state.cohortList,
     classroom: state.selectedClassroomOnForm,
     cohort: state.selectedCohortOnForm,
-    classroomList: state.classroomList
+    classroomList: state.classroomList,
+    currentCohort: state.cohort,
     }
 }
 
 function mapDispatchToProps(dispatch){
-        return bindActionCreators({changeClassroomOnForm, changeCohortOnForm, changeCohortOnFormForNewClassroom}, dispatch)
+        return bindActionCreators({changeCurrentCohort, changeClassroomOnForm, changeCohortOnForm, changeCohortOnFormForNewClassroom}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChooseCohortOrClassForInvitesForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ChooseCohortOrClassForm);
