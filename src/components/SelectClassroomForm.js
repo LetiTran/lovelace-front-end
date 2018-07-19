@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import InputWithGrid from './InputWithGrid';
-import ChooseClassroomForInvitesForm from './ChooseClassroomForInvitesForm.js'
 import CustomizedSnackbars from './MessageSnackBar.js'
 import ChooseCohortForInvitesForm from './ChooseCohortForInvitesForm.js'
 
@@ -45,7 +44,7 @@ class SelectClassroomForm extends Component {
                 
             {/* Select Existing Classroom: */}
             <CardContent>
-                <ChooseClassroomForInvitesForm />
+                <ChooseCohortForInvitesForm selectValue="classroom" titleText="Select Classroom" func="chooseClassroomForInvitesForm"/>
             </CardContent>
 
             <CardActions>
@@ -71,7 +70,7 @@ class SelectClassroomForm extends Component {
                 <DialogContentText>
                 {/* this.renderPopUpFormInputs() NOT WORKING...(?)*/}
                     <InputWithGrid name="Name"/>   
-                    <ChooseCohortForInvitesForm titleSize="insideForm" funcName="chooseCohortForNewClassroom"/>
+                    <ChooseCohortForInvitesForm  selectValue="cohort" titleText="Select Cohort for New Classroom" titleSize="insideForm" funcName="chooseCohortForNewClassroom"/>
 
                 </DialogContentText>
             </DialogContent>

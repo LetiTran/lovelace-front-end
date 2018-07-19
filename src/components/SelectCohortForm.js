@@ -50,10 +50,11 @@ class SelectCohortForm extends Component {
       
         <Card  style={{maxWidth: 400, margin:3}} >
         <CardContent>
+          
         {/* Select Existing Cohort: */}
         <CardContent>
-            <ChooseCohortForInvitesForm />
-            </CardContent>
+            <ChooseCohortForInvitesForm selectValue="cohort" titleText="Select Cohort"/>
+        </CardContent>
 
         <CardActions>
         {/* Create new button: */}
