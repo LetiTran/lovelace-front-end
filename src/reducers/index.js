@@ -1,12 +1,10 @@
-import {CHANGE_CLASSROOM} from '../actions';
-import {GET_CLASSROOM_LIST_SUCCEDED} from '../actions';
+import {
+    CHANGE_CLASSROOM, GET_CLASSROOM_LIST_SUCCEDED,
+    CHANGE_COHORT, GET_COHORT_LIST_SUCCEDED,
+    GET_ASSIGNMENTS_LIST_SUCCEDED, GET_STUDENTS_LIST_SUCCEDED,
+    GET_INSTRUCTORS_LIST_SUCCEDED 
+        } from '../actions';
 
-import {CHANGE_COHORT} from '../actions';
-import {GET_COHORT_LIST_SUCCEDED} from '../actions';
-
-import {GET_ASSIGNMENTS_LIST_SUCCEDED} from '../actions';
-
-import {GET_STUDENTS_LIST_SUCCEDED} from '../actions';
 
 const stateList = {
     cohort: "Select", 
@@ -16,7 +14,10 @@ const stateList = {
     classroomList: [],
     assignmentList: [],
     studentsList: [],
-    currentClassroomStudents: []
+    currentClassroomStudents: [],
+    instructorsList: [],
+    selectedInstructors: [],
+    currentUser: 1
 }
 
  function performAction(state = stateList, action) {
@@ -116,13 +117,24 @@ const stateList = {
              currentClassroomStudents: studentsInCurrentClassrom
          })
 
-        //  case POPULATES_COHORT_STUDENTS_LIST:
-        //     return Object.assign({}, state, {
-            // currentClassroomStudents: action.payload.studentsList.filter((student) => {
-            //     return student.classroom_id === cohort
-            // })
-        //     });
 
+        // *********** INSTRUCTORS *****************    
+        case GET_INSTRUCTORS_LIST_SUCCEDED:
+        console.log("GET_INSTRUCTORS_LIST_SUCCEDED called");
+        console.log(state, action)
+        console.log(action.payload.instructorsList)
+
+        // Filter instructors in current classromm
+        const activeInstructors = action.payload.instructorsList.filter((instructor) => {
+            console.log(instructor)
+            return instructor.active === true
+        })
+
+        console.log(activeInstructors)
+        // Change state:
+        return Object.assign({}, state, {
+            instructorsList : activeInstructors,
+        })
 
         default:
         return state

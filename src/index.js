@@ -18,7 +18,8 @@ import {
     fetchClassroomList, 
     fetchCohortList, 
     fetchAssignmentList,
-    fetchStudentsList
+    fetchStudentsList,
+    fetchInstructorsList
     } from './actions';
 
 
@@ -42,6 +43,12 @@ store.dispatch(function (dispatch) {
     fetchStudentsList(() => {
         dispatch({ type: 'GET_STUDENT_LIST' })
         })    
+    fetchInstructorsList(() => {
+        dispatch({ type: 'GET_INSTRUCTOR_LIST' })
+        })   
+    fetchStudentsList(() => {
+        dispatch({ type: 'GET_STUDENTS_LIST' })
+        })        
 })
 
 let hist = createBrowserHistory();

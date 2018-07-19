@@ -8,6 +8,7 @@
     "@material-ui/icons": "^1.1.0",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "dotenv": "^6.0.0",
     "npm": "^6.2.0",
     "perfect-scrollbar": "^1.4.0",
     "react": "^16.4.1",
@@ -19,9 +20,12 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start ",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-env-run": "^3.0.2"
   }
 }

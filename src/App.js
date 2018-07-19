@@ -6,16 +6,23 @@ import MiniDrawer from './components/MiniDrawer'
 import Grid from "@material-ui/core/es/Grid/Grid";
 
 // For Redux:
-import {fetchClassroomList, fetchCohortList} from './actions';
+import {fetchClassroomList, fetchCohortList, fetchInstructorsList, fetchStudentsList} from './actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import withRouter from 'react-router-dom/es/withRouter'; // needed because of <Provider> around <Routes>
+
+
+// require('dotenv').config({path:'/Users/leticiaogawa/Desktop/ada/Capstone/lovelace-front-end/.env.development'})
+
+
 
 class App extends Component {
 
   componentDidMount(){
     this.props.fetchClassroomList()
     this.props.fetchCohortList()
+    this.props.fetchInstructorsList()
+    this.props.fetchStudentsList()    
   }
   
   render() {    
@@ -37,7 +44,7 @@ class App extends Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchClassroomList, fetchCohortList}, dispatch)
+  return bindActionCreators({fetchClassroomList, fetchCohortList, fetchInstructorsList, fetchStudentsList}, dispatch)
 }
 
 export default withRouter(connect(null, mapDispatchToProps)(App));

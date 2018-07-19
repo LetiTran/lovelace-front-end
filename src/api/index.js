@@ -1,6 +1,9 @@
 import axios from 'axios';
+// require('dotenv').config({path:'../../.env'})
 
-const API_BASE_URL = 'http://localhost:3000/';
+// console.log(process.env)
+const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
+
 
 const client = axios.create({
     baseURL: API_BASE_URL,
@@ -14,14 +17,17 @@ export function fetchClassroomList() {
 }
 
 export function fetchCohortList() {
-    // TODO: Change to cohortsapi when we have Cohort table in back-end
-    return client.get('cohortsapi');
+    return client.get('cohorts');
 }
 
 export function fetchAssignmentList() {
-    return client.get('assignmentsapi');
+    return client.get('assignments');
 }
 
 export function fetchStudentsList() {
-    return client.get('studentsapi');
+    return client.get('students');
+}
+
+export function fetchInstructorsList() {
+    return client.get('instructors');
 }

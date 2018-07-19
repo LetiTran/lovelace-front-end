@@ -1,18 +1,21 @@
 import * as api from '../api';
 
 export const CHANGE_CLASSROOM = "CHANGE_CLASSROOM";
-export const GET_CLASSROOM_LIST_SUCCEDED = "GET_CLASSROOM_LIST_SUCCEDED"
+export const GET_CLASSROOM_LIST_SUCCEDED = "GET_CLASSROOM_LIST_SUCCEDED";
 export const GET_CLASSROOM_LIST = "GET_CLASSROOM_LIST"
 
 export const CHANGE_COHORT = "CHANGE_COHORT";
-export const GET_COHORT_LIST_SUCCEDED = "GET_COHORT_LIST_SUCCEDED"
-export const GET_COHORT_LIST = "GET_COHORT_LIST";
+export const GET_COHORT_LIST_SUCCEDED = "GET_COHORT_LIST_SUCCEDED";
+// export const GET_COHORT_LIST = "GET_COHORT_LIST";
 
-export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED"
-export const GET_ASSIGNMENTS_LIST = "GET_ASSIGNMENTS_LIST";
+export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED";
+// export const GET_ASSIGNMENTS_LIST = "GET_ASSIGNMENTS_LIST";
 
-export const GET_STUDENTS_LIST_SUCCEDED = "GET_STUDENTS_LIST_SUCCEDED"
-export const GET_STUDENTS_LIST = "GET_STUDENTS_LIST";
+export const GET_STUDENTS_LIST_SUCCEDED = "GET_STUDENTS_LIST_SUCCEDED";
+// export const GET_STUDENTS_LIST = "GET_STUDENTS_LIST";
+
+// export const GET_INSTRUCTORS_LIST = "GET_INSTRUCTOR_LIST";
+export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
 
 // *********** COHORT *****************
 export function fetchCohortList() {
@@ -115,6 +118,28 @@ export function fetchStudentsListSucceded(studentsList) {
     type: GET_STUDENTS_LIST_SUCCEDED,
         payload: {
             studentsList
+        }
+    }
+}
+
+// *********** INSTRUCTOR *****************
+export function fetchInstructorsList() {
+    return dispatch => {
+        api.fetchInstructorsList().then(response => {
+            console.log('called fetch instructorsList, response:')
+            console.log(response)
+            dispatch(fetchInstructorsListSucceded(response.data))
+        })
+    }
+}
+
+export function fetchInstructorsListSucceded(instructorsList) {
+    console.log('instructorsList in actions:')
+    console.log(instructorsList)
+    return {
+    type: GET_INSTRUCTORS_LIST_SUCCEDED,
+        payload: {
+            instructorsList
         }
     }
 }
