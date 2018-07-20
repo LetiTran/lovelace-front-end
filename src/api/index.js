@@ -33,3 +33,7 @@ export function fetchStudentsList() {
 export function fetchInstructorsList() {
     return client.get('instructors');
 }
+
+export function postNewClassroom() {
+    return client.post('')
+}

@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import InputWithGrid from './InputWithGrid';
-import CustomizedSnackbars from './MessageSnackBar.js'
+// import CustomizedSnackbars from './MessageSnackBar.js'
 import ChooseCohortOrClassForm from './ChooseCohortOrClassForm.js'
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {createClassroom} from '../actions';
 
 // For Styles:
  import { 
@@ -32,8 +36,14 @@ class SelectClassroomForm extends Component {
     this.setState({ open: false });
   };
 
-  makePostRequest = () => {
-    //   put function that will call the api post request here
+  submitNewClassroom = () => {
+    const data = {  
+      name: this.props.classroomName, 
+      cohortId: this.props.selectedCohort
+    }
+    this.props.createClassroom(data)
+    this.handleClose();
+    //   TODO: put function that will call the api post request here
   };
   
   render() {
@@ -69,13 +79,13 @@ class SelectClassroomForm extends Component {
             <DialogContent>
                 <DialogContentText>
                 {/* this.renderPopUpFormInputs() NOT WORKING...(?)*/}
-                    <InputWithGrid name="Name"/>   
+                    <InputWithGrid element="newClassroomName" name="Name"/>   
                     <ChooseCohortOrClassForm  selectValue="cohort" titleText="Select Cohort for New Classroom" titleSize="insideForm" funcName="chooseCohortForNewClassroom"/>
 
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={this.makePostRequest} color="primary">
+                <Button onClick={this.submitNewClassroom} color="primary">
                 Create Classroom
                 </Button>
                 
@@ -95,4 +105,19 @@ SelectClassroomForm.propTypes = {
   // TODO: write proTypes....
 }
 
-export default SelectClassroomForm;
+
+function mapStateToProps(state) {
+  console.log('function mapStateToProps:' )
+    return {
+    classroomName: state.newClassroomName, 
+    selectedCohort: state.selectedCohortOnFormForNewClassroom,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+        return bindActionCreators({createClassroom}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectClassroomForm);
+
+// export default SelectClassroomForm;

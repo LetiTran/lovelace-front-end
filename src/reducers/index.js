@@ -4,7 +4,12 @@ import {
     GET_ASSIGNMENTS_LIST_SUCCEDED, GET_STUDENTS_LIST_SUCCEDED,
     GET_INSTRUCTORS_LIST_SUCCEDED,
     CHANGE_COHORT_ON_FORM, CHANGE_CLASSROOM_ON_FORM, CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM,
-        } from '../actions';
+    CREATE_CLASSROOM, STORE_NEW_CLASSROOM_NAME,
+    CREATE_COHORT, STORE_NEW_COHORT_NUMBER,
+    STORE_NEW_COHORT_NAME, STORE_NEW_COHORT_REPO_NAME, STORE_NEW_COHORT_CLASS_START_DATE, 
+    STORE_NEW_COHORT_CLASS_END_DATE, STORE_NEW_COHORT_INT_START_DATE, STORE_NEW_COHORT_INT_END_DATE,
+    STORE_NEW_COHORT_GRAD_DATE,
+    } from '../actions';
 
 
 const stateList = {
@@ -34,8 +39,8 @@ const stateList = {
     newCohortInternshipEndDate: "",
     newCohortGraduationDate: "",
 
-    newClassroomtName: "",
-    newClassroomtCohortId: "",
+    newClassroomName: "",
+    newClassroomCohortId: "",
 
 }
 
@@ -76,6 +81,58 @@ const stateList = {
             selectedCohortOnFormForNewClassroom : action.cohort
         })
 
+        case STORE_NEW_COHORT_NUMBER:
+        return Object.assign({}, state, {
+            newCohortNumber: action.number
+        })  
+
+        case STORE_NEW_COHORT_NAME:
+        return Object.assign({}, state, {
+            newCohortName: action.name
+        })  
+
+        case STORE_NEW_COHORT_REPO_NAME:
+        return Object.assign({}, state, {
+            newCohortRepoName: action.name
+        })  
+
+        case STORE_NEW_COHORT_CLASS_START_DATE:
+        return Object.assign({}, state, {
+            newCohortClassStartDate: action.date
+        }) 
+
+        case STORE_NEW_COHORT_CLASS_END_DATE:
+        return Object.assign({}, state, {
+            newCohortClassEndDate: action.date
+        }) 
+
+        case STORE_NEW_COHORT_INT_START_DATE:
+        return Object.assign({}, state, {
+            newCohortInternshipStartDate: action.date
+        }) 
+
+        case STORE_NEW_COHORT_INT_END_DATE:
+        return Object.assign({}, state, {
+            newCohortInternshipEndDate: action.date
+        }) 
+
+        case STORE_NEW_COHORT_GRAD_DATE:
+        return Object.assign({}, state, {
+            newCohortGraduationDate: action.date
+        }) 
+
+        case CREATE_COHORT:
+        return Object.assign({}, state, {
+            newCohortNumber: action.data.number,
+            newCohortName: action.data.name,
+            newCohortRepoName: action.data.repoName,
+            newCohortClassStartDate: action.data.classStartDate,
+            newCohortClassEndDate: action.data.classEndDate,
+            newCohortInternshipStartDate: action.data.internshipStartDate,
+            newCohortInternshipEndDate: action.data.internshipEndDate,
+            newCohortGraduationDate: action.data.graduationDate,
+        })
+
         // *********** CLASSROOM *****************
         case CHANGE_CLASSROOM:
         let studentsInCurrentClassrom = state.studentsList.filter((student) => {
@@ -109,6 +166,17 @@ const stateList = {
         case CHANGE_CLASSROOM_ON_FORM:
         return Object.assign({}, state, {
             selectedClassroomOnForm : action.classroom
+        })
+
+        case STORE_NEW_CLASSROOM_NAME:
+        return Object.assign({}, state, {
+            newClassroomName: action.name
+        })  
+
+        case CREATE_CLASSROOM:
+        return Object.assign({}, state, {
+            newClassroomName: action.data.name,
+            newClassroomCohortId: action.data.cohortId,
         })
 
          // *********** ASSIGNMENTS *****************    

@@ -103,17 +103,12 @@ renderClassroomList = () => {
         return this.props.selectedCohort;
        }
       };
-
-    
     
     const alignment = (this.props.titleSize === "insideForm" ? 'left' : 'center')
     const titleSize = (this.props.titleSize === "insideForm" ? 'caption' : 'headline')
     const marginTop = (this.props.titleSize === "insideForm" ? '25px' : '')
     const titleText =  this.props.titleText
     const selectValue = assignVariables()
-
-
-   
 
     return (
       <section style={{textAlign:alignment}}>

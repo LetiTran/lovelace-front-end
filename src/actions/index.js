@@ -2,13 +2,23 @@ import * as api from '../api';
 
 export const CHANGE_CLASSROOM = "CHANGE_CLASSROOM";
 export const GET_CLASSROOM_LIST_SUCCEDED = "GET_CLASSROOM_LIST_SUCCEDED";
-export const GET_CLASSROOM_LIST = "GET_CLASSROOM_LIST"
-export const CHANGE_CLASSROOM_ON_FORM = "CHANGE_CLASSROOM_ON_FORM"
-
+export const GET_CLASSROOM_LIST = "GET_CLASSROOM_LIST";
+export const CHANGE_CLASSROOM_ON_FORM = "CHANGE_CLASSROOM_ON_FORM";
+export const STORE_NEW_CLASSROOM_NAME = "STORE_NEW_CLASSROOM_NAME";
+export const CREATE_CLASSROOM = "CREATE_CLASSROOM";
 export const CHANGE_COHORT = "CHANGE_COHORT";
 export const GET_COHORT_LIST_SUCCEDED = "GET_COHORT_LIST_SUCCEDED";
 export const CHANGE_COHORT_ON_FORM = "CHANGE_COHORT_ON_FORM";
 export const CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM ="CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM";
+export const STORE_NEW_COHORT_NUMBER = "STORE_NEW_COHORT_NUMBER";
+export const STORE_NEW_COHORT_NAME = "STORE_NEW_COHORT_NAME"
+export const STORE_NEW_COHORT_REPO_NAME = "STORE_NEW_COHORT_REPO_NAME"
+export const STORE_NEW_COHORT_CLASS_START_DATE ="STORE_NEW_COHORT_CLASS_START_DATE"
+export const STORE_NEW_COHORT_CLASS_END_DATE ="STORE_NEW_COHORT_CLASS_END_DATE"
+export const STORE_NEW_COHORT_INT_START_DATE ="STORE_NEW_COHORT_INT_START_DATE"
+export const STORE_NEW_COHORT_INT_END_DATE ="STORE_NEW_COHORT_INT_END_DATE"
+export const STORE_NEW_COHORT_GRAD_DATE ="STORE_NEW_COHORT_GRAD_DATE"
+export const CREATE_COHORT = "CREATE_COHORT";
 
 export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED";
 // export const GET_ASSIGNMENTS_LIST = "GET_ASSIGNMENTS_LIST";
@@ -65,6 +75,78 @@ export function changeCohortOnFormForNewClassroom(cohort) {
     return action
 }
 
+export function storeNewCohortNumber(number) {
+    const action = {
+        type: STORE_NEW_COHORT_NUMBER,
+        number
+    };
+    return action
+}
+
+export function storeNewCohortName(name) {
+    const action = {
+        type: STORE_NEW_COHORT_NAME,
+        name
+    };
+    return action
+}
+
+export function storeNewCohortRepoName(name) {
+    const action = {
+        type: STORE_NEW_COHORT_REPO_NAME,
+        name
+    };
+    return action
+}
+
+export function storeNewCohortClassStartDate(date) {
+    const action = {
+        type: STORE_NEW_COHORT_CLASS_START_DATE,
+        date
+    };
+    return action
+}
+
+export function storeNewCohortClassEndDate(date) {
+    const action = {
+        type: STORE_NEW_COHORT_CLASS_END_DATE,
+        date
+    };
+    return action
+}
+
+export function storeNewCohortIntStartDate(date) {
+    const action = {
+        type: STORE_NEW_COHORT_INT_START_DATE,
+        date
+    };
+    return action
+}
+
+export function storeNewCohortIntEndDate(date) {
+    const action = {
+        type: STORE_NEW_COHORT_INT_END_DATE,
+        date
+    };
+    return action
+}
+
+export function storeNewCohortGradDate(date) {
+    const action = {
+        type: STORE_NEW_COHORT_GRAD_DATE,
+        date
+    };
+    return action
+}
+
+export function createCohort(data) {
+    const action = {
+        type: CREATE_COHORT,
+        data
+        // cohortId and classroomName
+    };
+    return action
+}
 
 // *********** CLASSROOM *****************
 export function fetchClassroomList() {
@@ -100,6 +182,23 @@ export function changeClassroomOnForm(classroom) {
     const action = {
         type: CHANGE_CLASSROOM_ON_FORM,
         classroom
+    };
+    return action
+}
+
+export function storeNewClassroomName(name) {
+    const action = {
+        type: STORE_NEW_CLASSROOM_NAME,
+        name
+    };
+    return action
+}
+
+export function createClassroom(data) {
+    const action = {
+        type: CREATE_CLASSROOM,
+        data
+        // cohortId and classroomName
     };
     return action
 }
