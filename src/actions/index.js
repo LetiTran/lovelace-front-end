@@ -34,6 +34,11 @@ export const ADD_INVITE_LIST_STUDENTS = "ADD_INVITE_LIST_STUDENTS"
 export const CREATE_USER_INVITES = "CREATE_USER_INVITES"
 export const CREATE_INVITES_SUCCEEDED = "CREATE_INVITES_SUCCEEDED"
 
+export const CREATE_INSTRUCTOR = "CREATE_INSTRUCTOR"
+export const STORE_NEW_INSTRUCTOR_NAME = "STORE_NEW_INSTRUCTOR_NAME"
+export const STORE_NEW_INSTRUCTOR_GITHUB_NAME = "STORE_NEW_INSTRUCTOR_GITHUB_NAME"
+
+
 // *********** COHORT *****************
 export function fetchCohortList() {
     return dispatch => {
@@ -255,6 +260,8 @@ export function fetchStudentsListSucceded(studentsList) {
 }
 
 
+// *********** INSTRUCTORS *****************
+
 export function fetchInstructorsList() {
     return dispatch => {
         api.fetchInstructorsList().then(response => {
@@ -272,6 +279,49 @@ export function fetchInstructorsListSucceded(instructorsList) {
             instructorsList
         }
     }
+}
+
+export function storeNewInstructorName(name) {
+    return {
+        type: STORE_NEW_INSTRUCTOR_NAME,
+        payload: {
+            name
+        }
+    }
+}
+
+export function storeNewInstructorGithubName(name) {
+    return {
+        type: STORE_NEW_INSTRUCTOR_GITHUB_NAME,
+        payload: {
+            name
+        }
+    }
+}
+
+
+// CREATE_INSTRUCTOR
+export function createInstructor(instructorinfo){
+    // put the righ fields here for header:
+    let name = instructorinfo.name
+    let github_name = instructorinfo.github_name
+        return dispatch => {
+            console.log({"put the righ fields" :"here for header" })
+            api.postUserInvites({name, github_name}).then(response => {
+                console.log('called post createInstructor, response:')
+                console.log(response)
+                dispatch(createInstructorSucceeded(response.data))
+            })
+    }
+}
+
+export function createInstructorSucceeded(instructor){
+    return {
+        type: 'CREATE_INSTRUCTOR_SUCCEEDED',
+        payload: {
+            instructor,
+        },
+    };
 }
 
 // *********** INVITES *****************

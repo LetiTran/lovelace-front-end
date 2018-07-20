@@ -9,7 +9,8 @@ import {
     STORE_NEW_COHORT_NAME, STORE_NEW_COHORT_REPO_NAME, STORE_NEW_COHORT_CLASS_START_DATE, 
     STORE_NEW_COHORT_CLASS_END_DATE, STORE_NEW_COHORT_INT_START_DATE, STORE_NEW_COHORT_INT_END_DATE,
     STORE_NEW_COHORT_GRAD_DATE,
-    ADD_INVITE_LIST_STUDENTS, CREATE_INVITES_SUCCEEDED
+    ADD_INVITE_LIST_STUDENTS, CREATE_INVITES_SUCCEEDED,
+    CREATE_INSTRUCTOR, STORE_NEW_INSTRUCTOR_NAME, STORE_NEW_INSTRUCTOR_GITHUB_NAME
     } from '../actions';
 
 
@@ -45,6 +46,9 @@ const stateList = {
 
     addedStudentsForInvites: [],
     addedInstructorsForInvites: [],
+
+    newInstructorName: "",
+    newInstructorGithubName: "",
 
 }
 
@@ -235,6 +239,22 @@ const stateList = {
         return Object.assign({}, state, {
             instructorsList : activeInstructors,
         })
+
+        // case CREATE_INSTRUCTOR:
+        // return Object.assign({}, state, {
+        //     newInstructorInfo: action.payload.newInstructorInfo,
+        // })
+
+        case STORE_NEW_INSTRUCTOR_NAME:
+        return Object.assign({}, state, {
+            newInstructorName: action.payload.name,
+        })
+
+        case STORE_NEW_INSTRUCTOR_GITHUB_NAME:
+        return Object.assign({}, state, {
+            newInstructorGithubName: action.payload.name,
+        })
+
 
         // *********** INVITES *****************  
         case ADD_INVITE_LIST_STUDENTS:

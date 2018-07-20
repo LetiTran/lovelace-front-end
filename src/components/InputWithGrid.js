@@ -12,6 +12,8 @@ import {
   storeNewCohortIntStartDate,
   storeNewCohortIntEndDate,
   storeNewCohortGradDate,
+  storeNewInstructorName,
+  storeNewInstructorGithubName
 } from '../actions';
 
 import {
@@ -34,6 +36,12 @@ class InputWithGrid extends Component {
     }else if
     (this.props.element === "newCohortRepoName"){
       this.props.storeNewCohortRepoName(event.target.value);
+    }else if
+    (this.props.element === "newInstructorName"){
+      this.props.storeNewInstructorName(event.target.value);
+    }else if
+    (this.props.element === "newInstructorGithubName"){
+      this.props.storeNewInstructorGithubName(event.target.value);
     }
      
    };
@@ -59,7 +67,9 @@ function mapDispatchToProps(dispatch){
           storeNewCohortClassEndDate,
           storeNewCohortIntStartDate,
           storeNewCohortIntEndDate,
-          storeNewCohortGradDate
+          storeNewCohortGradDate,
+          storeNewInstructorName,
+          storeNewInstructorGithubName,
         }, dispatch)
 }
 
