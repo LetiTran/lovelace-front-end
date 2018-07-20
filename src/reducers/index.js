@@ -62,9 +62,9 @@ const stateList = {
         })
 
         case GET_COHORT_LIST_SUCCEDED:
-        console.log("GET_COHORT_LIST_SUCCEDED called");
-        console.log(state, action)
-        console.log(action.payload.cohortList)
+        // console.log("GET_COHORT_LIST_SUCCEDED called");
+        // console.log(state, action)
+        // console.log(action.payload.cohortList)
 
         let selectCohort = state.cohort
         let cohortList = action.payload.cohortList
@@ -73,10 +73,18 @@ const stateList = {
         if(state.cohort === 0)  {
             selectCohort = cohortList[cohortListSize].id
         }
+
+        let assignCohortOnForm = stateList.selectedCohortOnForm
+        if(state.currentCohort === 0){
+        assignCohortOnForm = cohortList[cohortList.length - 1]
+        }
+
         // Can't use .pop() here! TODO: refactor all this variables..... 
         return Object.assign({}, state, {
             cohortList : action.payload.cohortList,
-            currentCohort: selectCohort
+            currentCohort: selectCohort,
+            selectedCohortOnForm: assignCohortOnForm,
+
         })
 
         case CHANGE_COHORT_ON_FORM:
@@ -152,10 +160,10 @@ const stateList = {
         })
 
         case GET_CLASSROOM_LIST_SUCCEDED:
-        console.log("GET_CLASSROOM_LIST_SUCCEDED called");
-        console.log(state, action)
-        console.log(action.payload.classroomList)
-        console.log(action.payload.classroomList.last)
+        // console.log("GET_CLASSROOM_LIST_SUCCEDED called");
+        // console.log(state, action)
+        // console.log(action.payload.classroomList)
+        // console.log(action.payload.classroomList.last)
 
         let assignClassroom = state.currentClassroom
         // let assignClassroomName = state.classroomcurrentClassroomName
@@ -165,10 +173,17 @@ const stateList = {
         if(state.currentClassroom === 0 )  {
             assignClassroom = classroomList[classroomListSize]
         }
+
+        let assignClassOnForm = stateList.selectedClassroomOnForm
+        if(state.currentCohort === 0){
+        assignClassOnForm = classroomList[classroomList.length - 1]
+        }
+
         // Can't use .pop() here! TODO: refactor all this variables..... 
         return Object.assign({}, state, {
             classroomList : classroomList,
-            currentClassroom: assignClassroom
+            currentClassroom: assignClassroom,
+            selectedClassroomOnForm: assignClassOnForm
         })
         
         case CHANGE_CLASSROOM_ON_FORM:
@@ -192,9 +207,9 @@ const stateList = {
 
          // *********** ASSIGNMENTS *****************    
          case GET_ASSIGNMENTS_LIST_SUCCEDED:
-         console.log("GET_ASSIGNMENTS_LIST_SUCCEDED called");
-         console.log(state, action)
-         console.log(action.payload.assignmentList)
+        //  console.log("GET_ASSIGNMENTS_LIST_SUCCEDED called");
+        //  console.log(state, action)
+        //  console.log(action.payload.assignmentList)
          return Object.assign({}, state, {
              assignmentList : action.payload.assignmentList
          })
@@ -202,19 +217,19 @@ const stateList = {
 
          // *********** STUDENTS *****************    
          case GET_STUDENTS_LIST_SUCCEDED:
-         console.log("GET_STUDENTS_LIST_SUCCEDED called");
-         console.log(state, action)
-         console.log(action.payload.studentsList)
+        //  console.log("GET_STUDENTS_LIST_SUCCEDED called");
+        //  console.log(state, action)
+        //  console.log(action.payload.studentsList)
 
          // Filter students in current classromm
           studentsInCurrentClassrom = action.payload.studentsList.filter((student) => {
-            console.log("state.currentClassroom")
-            console.log(state.currentClassroom)
-            console.log(student.classroom_id)
+            // console.log("state.currentClassroom")
+            // console.log(state.currentClassroom)
+            // console.log(student.classroom_id)
             return student.classroom_id === state.currentClassroom.id
         })
 
-        console.log(studentsInCurrentClassrom)
+        // console.log(studentsInCurrentClassrom)
         // Change state:
          return Object.assign({}, state, {
              studentsList : action.payload.studentsList,
@@ -224,17 +239,17 @@ const stateList = {
 
         // *********** INSTRUCTORS *****************    
         case GET_INSTRUCTORS_LIST_SUCCEDED:
-        console.log("GET_INSTRUCTORS_LIST_SUCCEDED called");
-        console.log(state, action)
-        console.log(action.payload.instructorsList)
+        // console.log("GET_INSTRUCTORS_LIST_SUCCEDED called");
+        // console.log(state, action)
+        // console.log(action.payload.instructorsList)
 
         // Filter instructors in current classromm
         const activeInstructors = action.payload.instructorsList.filter((instructor) => {
-            console.log(instructor)
+            // console.log(instructor)
             return instructor.active === true
         })
 
-        console.log(activeInstructors)
+        // console.log(activeInstructors)
         // Change state:
         return Object.assign({}, state, {
             instructorsList : activeInstructors,

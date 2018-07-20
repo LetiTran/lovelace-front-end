@@ -107,7 +107,7 @@ SelectClassroomForm.propTypes = {
 
 
 function mapStateToProps(state) {
-  console.log('function mapStateToProps:' )
+  // console.log('function mapStateToProps:' )
     return {
     classroomName: state.newClassroomName, 
     selectedCohort: state.selectedCohortOnFormForNewClassroom,

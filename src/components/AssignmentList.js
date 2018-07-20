@@ -19,13 +19,13 @@ import {fetchAssignmentList} from '../actions';
 class AssignmentList extends Component {
 
 componentDidMount(){
-    console.log('Called componentDidMount for assignments')
+    // console.log('Called componentDidMount for assignments')
     this.props.fetchAssignmentList()
     }
 
   renderAssignmentList = () => {
-    console.log('assignmentList in renderAssignmentList: ' )
-    console.log(this.props.assignmentList)
+    // console.log('assignmentList in renderAssignmentList: ' )
+    // console.log(this.props.assignmentList)
     return this.props.assignmentList.map((repo, index) => {
        return (
        
@@ -60,7 +60,7 @@ componentDidMount(){
         },
       };
 
-    console.log('assignments: ' + this.props.assignments)
+    // console.log('assignments: ' + this.props.assignments)
     return (
     <section style={styles.root}>
     <Paper >
@@ -87,8 +87,8 @@ componentDidMount(){
 }
 
 function mapStateToProps(state) {
-  console.log('function mapStateToProps:' )
-    console.log(state.assignmentList)
+  // console.log('function mapStateToProps:' )
+    // console.log(state.assignmentList)
     return {
     assignmentList: state.assignmentList
     }

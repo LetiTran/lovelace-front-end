@@ -43,8 +43,8 @@ export const STORE_NEW_INSTRUCTOR_GITHUB_NAME = "STORE_NEW_INSTRUCTOR_GITHUB_NAM
 export function fetchCohortList() {
     return dispatch => {
         api.fetchCohortList().then(response => {
-            console.log('called fetch cohortList, response:')
-            console.log(response)
+            // console.log('called fetch cohortList, response:')
+            // console.log(response)
             dispatch(fetchCohortListSucceded(response.data))
         })
     }
@@ -59,8 +59,8 @@ export function changeCurrentCohort(cohort) {
 }
 
 export function fetchCohortListSucceded(cohortList) {
-    console.log('cohortList in actions:')
-    console.log(cohortList)
+    // console.log('cohortList in actions:')
+    // console.log(cohortList)
     return {
     type: GET_COHORT_LIST_SUCCEDED,
         payload: {
@@ -162,8 +162,8 @@ export function createCohort(data) {
 export function fetchClassroomList() {
     return dispatch => {
         api.fetchClassroomList().then(response => {
-            console.log('called fetch clasroomList, response:')
-            console.log(response)
+            // console.log('called fetch clasroomList, response:')
+            // console.log(response)
             dispatch(fetchClassroomListSucceded(response.data))
         })
     }
@@ -178,8 +178,8 @@ export function changeCurrentClassroom(classroom) {
 }
 
 export function fetchClassroomListSucceded(classroomList) {
-    console.log('classroomList in actions:')
-    console.log(classroomList)
+    // console.log('classroomList in actions:')
+    // console.log(classroomList)
     return {
     type: GET_CLASSROOM_LIST_SUCCEDED,
         payload: {
@@ -218,16 +218,16 @@ export function createClassroom(data) {
 export function fetchAssignmentList() {
     return dispatch => {
         api.fetchAssignmentList().then(response => {
-            console.log('called fetch assignmentList, response:')
-            console.log(response)
+            // console.log('called fetch assignmentList, response:')
+            // console.log(response)
             dispatch(fetchAssignmentListSucceded(response.data))
         })
     }
 }
 
 export function fetchAssignmentListSucceded(assignmentList) {
-    console.log('assignmentList in actions:')
-    console.log(assignmentList)
+    // console.log('assignmentList in actions:')
+    // console.log(assignmentList)
     return {
     type: GET_ASSIGNMENTS_LIST_SUCCEDED,
         payload: {
@@ -241,16 +241,16 @@ export function fetchAssignmentListSucceded(assignmentList) {
 export function fetchStudentsList() {
     return dispatch => {
         api.fetchStudentsList().then(response => {
-            console.log('called fetch studentsList, response:')
-            console.log(response)
+            // console.log('called fetch studentsList, response:')
+            // console.log(response)
             dispatch(fetchStudentsListSucceded(response.data))
         })
     }
 }
 
 export function fetchStudentsListSucceded(studentsList) {
-    console.log('studentsList in actions:')
-    console.log(studentsList)
+    // console.log('studentsList in actions:')
+    // console.log(studentsList)
     return {
     type: GET_STUDENTS_LIST_SUCCEDED,
         payload: {
@@ -265,8 +265,8 @@ export function fetchStudentsListSucceded(studentsList) {
 export function fetchInstructorsList() {
     return dispatch => {
         api.fetchInstructorsList().then(response => {
-            console.log('called fetch instructorsList, response:')
-            console.log(response)
+            // console.log('called fetch instructorsList, response:')
+            // console.log(response)
             dispatch(fetchInstructorsListSucceded(response.data))
         })
     }
@@ -306,10 +306,10 @@ export function createInstructor(instructorinfo){
     let name = instructorinfo.name
     let github_name = instructorinfo.github_name
         return dispatch => {
-            console.log({"put the righ fields" :"here for header" })
-            api.postUserInvites({name, github_name}).then(response => {
-                console.log('called post createInstructor, response:')
-                console.log(response)
+            // console.log({"put the righ fields" :"here for header" })
+            api.postInstructor({name, github_name}).then(response => {
+                // console.log('called post createInstructor, response:')
+                // console.log(response)
                 dispatch(createInstructorSucceeded(response.data))
             })
     }
@@ -339,29 +339,29 @@ let classroom_id = data.classroom_id
 let github_names = data.github_names
 let role = data.role
     return dispatch => {
-        console.log({classroom_id, github_names, role})
-        api.postUserInvites({classroom_id, github_names, role}).then(response => {
-            console.log('called post postUserInvites, response:')
-            console.log(response)
+        // console.log({classroom_id, github_names, role})
+        api.postInstructor({classroom_id, github_names, role}).then(response => {
+            // console.log('called post postUserInvites, response:')
+            // console.log(response)
             dispatch(createUserInvitesSucceeded(response.data))
         }).catch((error) => {
             // Error
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
-                console.log(error.response.data);
-                // console.log(error.response.status);
-                console.log(error.response.headers);
+                // console.log(error.response.data);
+                console.log(error.response.status);
+                // console.log(error.response.headers);
             } else if (error.request) {
                 // The request was made but no response was received
                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                 // http.ClientRequest in node.js
-                console.log(error.request);
+                // console.log(error.request);
             } else {
                 // Something happened in setting up the request that triggered an Error
-                console.log('Error', error.message);
+                // console.log('Error', error.message);
             }
-            console.log(error.config);
+            // console.log(error.config);
         });
     }
 }

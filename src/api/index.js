@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // console.log(process.env)
 // const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
-const API_BASE_URL = `http://localhost:3000/`;
+const API_BASE_URL = `http://172.24.22.199:3000/`;
 
 // const API_BASE_URL = `https://lovelace-be-heroku.herokuapp.com/`;
 
@@ -48,6 +48,17 @@ export function postUserInvites(data) {
     //     'role': `${data.role}`
     // }
     http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
-   console.log(data)
+//    console.log(data)
     return client.post('invites', data)
+}
+
+export function postInstructor(data) {
+    // headers_content = {
+    //     'github_name': `${data.studentList}`,
+    //     'classroom_id': `${data.classrom}`,
+    //     'role': `${data.role}`
+    // }
+    http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
+//    console.log(data)
+    return client.post('instructors', data)
 }

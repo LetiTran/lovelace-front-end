@@ -22,14 +22,14 @@ import {
 class StudentsList extends Component {
 
     // componentDidMount() {
-    //     console.log('Called componentDidMount for students')
+        // console.log('Called componentDidMount for students')
     //     this.props.fetchStudentsList()
     // }
       
     renderStudentList = () => {
-    console.log('studentsList in renderStudenttList: ' )
-    console.log(this.props.studentsList)
-    console.log(this.props.currentClassroomStudents)
+    // console.log('studentsList in renderStudenttList: ' )
+    // console.log(this.props.studentsList)
+    // console.log(this.props.currentClassroomStudents)
         return this.props.currentClassroomStudents.map((student,index) => {
         //  To change it for ALL STUDENTS LIST, swap this two lines:
         //  return this.props.studentsList.map((student,index) => {
@@ -50,7 +50,7 @@ class StudentsList extends Component {
     }
 
   render() {
-    console.log('students: ' + this.props.assignments)
+    // console.log('students: ' + this.props.assignments)
     
     const styles =  {
         root: {
@@ -98,8 +98,8 @@ StudentsList.propTypes = {
 }
 
 function mapStateToProps(state) {
-    console.log('function mapStateToProps:' )
-      console.log(state.studentsList)
+    // console.log('function mapStateToProps:' )
+      // console.log(state.studentsList)
       return {
       studentsList: state.studentsList,
       currentClassroomStudents: state.currentClassroomStudents,

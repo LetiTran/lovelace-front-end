@@ -17,7 +17,7 @@ class AddNewInstructorInfo extends Component {
         return (
             <Grid container>
             <InputWithGrid element="newInstructorName" name="Name"/>   
-            <InputWithGrid element="newInstructorGithubName" name="Name"/>   
+            <InputWithGrid element="newInstructorGithubName" name="GitHub Name"/>   
             </Grid>
         )
     }
