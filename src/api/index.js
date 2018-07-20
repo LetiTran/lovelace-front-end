@@ -47,7 +47,6 @@ export function postUserInvites(data) {
     //     'classroom_id': `${data.classrom}`,
     //     'role': `${data.role}`
     // }
-    // http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
 //    console.log(data)
     return client.post('invites', data)
 }
