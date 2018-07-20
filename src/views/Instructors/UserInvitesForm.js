@@ -4,6 +4,7 @@ import SelectClassroomForm from "../../components/SelectClassroomForm";
 import AddStudentsToUserInvites from "../../components/AddStudentsToUserInvites";
 import classNames from 'classnames';
 // import PropTypes from 'prop-types';
+// import {createUserInvites} from '../actions';
 
 import { 
     Grid, 
@@ -12,6 +13,17 @@ import {
    } from '../../components-info/MaterialUiImports'
 
 class UserInvitesForm extends Component {
+
+      createUserInvites = () => {
+// //     const data = {  
+
+// //     }
+//     // this.props.createUserInvites(data)
+//     this.onSubmit();
+//     
+//     //   TODO: put function that will call the api post request here
+  };
+
 
   render() {
 
@@ -45,7 +57,7 @@ class UserInvitesForm extends Component {
             </Grid>
         </Grid>
         <Grid style={{margin:"30px"}} container justify="center">
-            <Button style={{width:"300px"}} variant="contained" color="primary" >
+            <Button onClick={this.createUserInvites} style={{width:"300px"}} variant="contained" color="primary" >
                  Send {/*<SendIcon />  */}
             </Button>
         </Grid>

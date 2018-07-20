@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// import {createUserInvites} from '../actions';
+import {addInviteListStudents} from '../actions';
 
 // For Styles:
 import { 
@@ -14,14 +14,18 @@ Typography
 
 class AddStudentsToUserInvites extends Component {
 
-  createUserInvites = () => {
-    const data = {  
+//   createUserInvites = () => {
+//     const data = {  
 
-    }
+//     }
     // this.props.createUserInvites(data)
-    this.handleClose();
+    handleChange = (event) => {
+        this.props.addInviteListStudents(event.target.value)
+    }
+    // addInviteListStudents
     //   TODO: put function that will call the api post request here
-  };
+//   };
+
 
   
   render() {
@@ -57,6 +61,7 @@ class AddStudentsToUserInvites extends Component {
           defaultValue=""
         //   className={classes.textField}
           margin="normal"
+          onChange={this.handleChange}
         />
         </Card>
        
@@ -73,12 +78,13 @@ function mapStateToProps(state) {
         selectedCohortOnForm: state.selectedCohortOnForm,
         selectedClassroomOnForm: state.selectedClassroomOnForm,
         classroomList: state.classroomList,
-        cohortList: state.cohortList
+        cohortList: state.cohortList,
+        addedStudentsForInvites: state.addedStudentsForInvites
     }
 }
 
 function mapDispatchToProps(dispatch){
-    // return bindActionCreators({createUserInvites}, dispatch)
+    return bindActionCreators({addInviteListStudents}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddStudentsToUserInvites);

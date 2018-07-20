@@ -29,6 +29,10 @@ export const GET_STUDENTS_LIST_SUCCEDED = "GET_STUDENTS_LIST_SUCCEDED";
 // export const GET_INSTRUCTORS_LIST = "GET_INSTRUCTOR_LIST";
 export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
 
+
+export const ADD_INVITE_LIST_STUDENTS = "ADD_INVITE_LIST_STUDENTS"
+
+
 // *********** COHORT *****************
 export function fetchCohortList() {
     return dispatch => {
@@ -249,7 +253,7 @@ export function fetchStudentsListSucceded(studentsList) {
     }
 }
 
-// *********** INSTRUCTOR *****************
+
 export function fetchInstructorsList() {
     return dispatch => {
         api.fetchInstructorsList().then(response => {
@@ -261,12 +265,20 @@ export function fetchInstructorsList() {
 }
 
 export function fetchInstructorsListSucceded(instructorsList) {
-    console.log('instructorsList in actions:')
-    console.log(instructorsList)
     return {
     type: GET_INSTRUCTORS_LIST_SUCCEDED,
         payload: {
             instructorsList
+        }
+    }
+}
+
+// *********** INVITES *****************
+export function addInviteListStudents(students){
+    return {
+        type: ADD_INVITE_LIST_STUDENTS,
+        payload: {
+            students
         }
     }
 }
