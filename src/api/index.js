@@ -7,10 +7,13 @@ import axios from 'axios';
 const API_BASE_URL = `http://172.24.22.199:3000/`;
 
 
+
 const client = axios.create({
     baseURL: API_BASE_URL,
     headers: {
         // 'Conten-Type': 'application/json',
+        
+        
     },
 });
 
@@ -38,6 +41,13 @@ export function postNewClassroom() {
     return client.post('')
 }
 
-export function postUserInvites() {
-    return client.post('invites')
+export function postUserInvites(data) {
+    // headers_content = {
+    //     'github_name': `${data.studentList}`,
+    //     'classroom_id': `${data.classrom}`,
+    //     'role': `${data.role}`
+    // }
+    http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
+   console.log(data)
+    return client.post('invites', data)
 }

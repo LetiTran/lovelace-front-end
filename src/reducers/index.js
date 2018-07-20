@@ -9,7 +9,7 @@ import {
     STORE_NEW_COHORT_NAME, STORE_NEW_COHORT_REPO_NAME, STORE_NEW_COHORT_CLASS_START_DATE, 
     STORE_NEW_COHORT_CLASS_END_DATE, STORE_NEW_COHORT_INT_START_DATE, STORE_NEW_COHORT_INT_END_DATE,
     STORE_NEW_COHORT_GRAD_DATE,
-    ADD_INVITE_LIST_STUDENTS
+    ADD_INVITE_LIST_STUDENTS, CREATE_INVITES_SUCCEEDED
     } from '../actions';
 
 
@@ -241,6 +241,11 @@ const stateList = {
         return Object.assign({}, state, {
             addedStudentsForInvites : action.payload.students,
         })
+
+        case CREATE_INVITES_SUCCEEDED:
+        return {
+            post_request_answer: action.payload.invites
+        }
 
         default:
         return state

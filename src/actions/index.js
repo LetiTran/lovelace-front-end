@@ -32,6 +32,7 @@ export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
 
 export const ADD_INVITE_LIST_STUDENTS = "ADD_INVITE_LIST_STUDENTS"
 export const CREATE_USER_INVITES = "CREATE_USER_INVITES"
+export const CREATE_INVITES_SUCCEEDED = "CREATE_INVITES_SUCCEEDED"
 
 // *********** COHORT *****************
 export function fetchCohortList() {
@@ -284,11 +285,43 @@ export function addInviteListStudents(students){
 }
 
 export function createUserInvites(data){
+let classroom_id = data.classroom_id
+let github_names = data.github_names
+let role = data.role
     return dispatch => {
-        api.postUserInvites().then(response => {
+        console.log({classroom_id, github_names, role})
+        api.postUserInvites({classroom_id, github_names, role}).then(response => {
             console.log('called post postUserInvites, response:')
             console.log(response)
-            // dispatch(postUserInvitesSucceded(response.data))
-        })
+            dispatch(createUserInvitesSucceeded(response.data))
+        }).catch((error) => {
+            // Error
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.log(error.response.data);
+                // console.log(error.response.status);
+                console.log(error.response.headers);
+            } else if (error.request) {
+                // The request was made but no response was received
+                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                // http.ClientRequest in node.js
+                console.log(error.request);
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                console.log('Error', error.message);
+            }
+            console.log(error.config);
+        });
     }
+}
+
+
+export function createUserInvitesSucceeded(invites){
+    return {
+        type: 'CREATE_TASK_SUCCEEDED',
+        payload: {
+            invites,
+        },
+    };
 }

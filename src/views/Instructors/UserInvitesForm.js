@@ -20,9 +20,10 @@ class UserInvitesForm extends Component {
 
     createUserInvites = () => {
     const data = {  
-        cohort: this.props.selectedCohortOnForm,
-        classroom: this.props.selectedClassroomOnForm,
-        studentList: this.props.addedStudentsForInvites
+        // cohort: this.props.selectedCohortOnForm,
+        classroom_id: this.props.selectedClassroomOnForm,
+        github_names: this.props.addedStudentsForInvites,
+        role: 'student'
         // add role
     }
 
