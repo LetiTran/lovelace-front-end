@@ -4,7 +4,8 @@ import Homepage from '../views/Instructors/Homepage.jsx';
 import Feedback from '../views/Instructors/Feedback.js';
 import StudentsList from '../components/StudentsList.js';
 // import Classmates from '../views/Students/Classmates.js';
-
+import UserInvitesForm from '../views/Instructors/UserInvitesForm.js'
+import CreateNewInstructor from '../views/Instructors/CreateNewInstructor.js'
 
 
 let indexRoutes = [
@@ -12,7 +13,9 @@ let indexRoutes = [
   { path: "/lovelace-front-end/homepage", name: "Instructors Homepage", component: Homepage },
   { path: "/lovelace-front-end/feedback", name: "Feedback", component: Feedback },
   { path: "/lovelace-front-end/students", name: "StudentsList", component: StudentsList },
+  {path: "/lovelace-front-end/userinvites", name: "User Invites", component: UserInvitesForm},
   // { path: "/lovelace-front-end/classmates/", name: "Classmates", component: Classmates },
+  {path: "/lovelace-front-end/addInstrcutors", name: "Add Instrcutors", component: CreateNewInstructor},
   { path: "/lovelace-front-end", name: "LandingPage", component: LandingPage }
   ];
 

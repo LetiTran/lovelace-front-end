@@ -21,10 +21,10 @@ import {
 
 class StudentsList extends Component {
 
-    componentDidMount() {
-        console.log('Called componentDidMount for students')
-        this.props.fetchStudentsList()
-    }
+    // componentDidMount() {
+    //     console.log('Called componentDidMount for students')
+    //     this.props.fetchStudentsList()
+    // }
       
     renderStudentList = () => {
     console.log('studentsList in renderStudenttList: ' )
