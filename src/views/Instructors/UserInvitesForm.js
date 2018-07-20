@@ -61,7 +61,7 @@ class UserInvitesForm extends Component {
            </Grid>
          </Grid>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
-            <Grid  xs={8} justify="flex-start" item >
+            <Grid  xs={8} item >
                 <AddStudentsToUserInvites />
             </Grid>
         </Grid>

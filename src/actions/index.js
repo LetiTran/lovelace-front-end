@@ -340,7 +340,7 @@ let github_names = data.github_names
 let role = data.role
     return dispatch => {
         // console.log({classroom_id, github_names, role})
-        api.postInstructor({classroom_id, github_names, role}).then(response => {
+        api.postUserInvites({classroom_id, github_names, role}).then(response => {
             // console.log('called post postUserInvites, response:')
             // console.log(response)
             dispatch(createUserInvitesSucceeded(response.data))

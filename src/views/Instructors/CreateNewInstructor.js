@@ -34,7 +34,7 @@ class CreateNewInstructor extends Component {
         <section>
         
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
-            <Grid  xs={8} justify="flex-start" item >
+            <Grid  xs={8} item >
                 <AddNewInstructorInfo />
             </Grid>
         </Grid>

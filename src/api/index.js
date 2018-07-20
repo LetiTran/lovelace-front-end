@@ -3,9 +3,9 @@ import axios from 'axios';
 
 // console.log(process.env)
 // const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
-const API_BASE_URL = `http://172.24.22.199:3000/`;
+// const API_BASE_URL = `http://172.24.22.199:3000/`;
 
-// const API_BASE_URL = `https://lovelace-be-heroku.herokuapp.com/`;
+const API_BASE_URL = `https://lovelace-be-heroku.herokuapp.com/`;
 
 
 const client = axios.create({
@@ -47,7 +47,7 @@ export function postUserInvites(data) {
     //     'classroom_id': `${data.classrom}`,
     //     'role': `${data.role}`
     // }
-    http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
+    // http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
 //    console.log(data)
     return client.post('invites', data)
 }
