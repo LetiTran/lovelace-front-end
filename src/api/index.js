@@ -34,6 +34,6 @@ export function fetchInstructorsList() {
     return client.get('instructors');
 }
 
-export function postNewClassroom() {
-    return client.post('')
-}
+// export function postNewClassroom() {
+//     return client.post('')
+// }

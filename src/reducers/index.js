@@ -164,6 +164,9 @@ const stateList = {
         })
         
         case CHANGE_CLASSROOM_ON_FORM:
+        // let thisClassroom = state.classroomList.filter((classroom) => {
+        //     return classroom.id === action.classroom
+        // })
         return Object.assign({}, state, {
             selectedClassroomOnForm : action.classroom
         })

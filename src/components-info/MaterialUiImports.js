@@ -82,3 +82,12 @@ export {default as amber} from '@material-ui/core/colors/amber';
 export {default as Snackbar} from '@material-ui/core/Snackbar';
 export {default as SnackbarContent} from '@material-ui/core/SnackbarContent';
 export {default as WarningIcon} from '@material-ui/icons/Warning';
+export {default as SendIcon} from '@material-ui/icons/Send';
+
+
+
+// For icons
+// This package has been deprecated
+// Author message:
+
+// Use @material-ui/icons instead
