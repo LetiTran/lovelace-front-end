@@ -31,7 +31,7 @@ export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
 
 
 export const ADD_INVITE_LIST_STUDENTS = "ADD_INVITE_LIST_STUDENTS"
-
+export const CREATE_USER_INVITES = "CREATE_USER_INVITES"
 
 // *********** COHORT *****************
 export function fetchCohortList() {
@@ -280,5 +280,15 @@ export function addInviteListStudents(students){
         payload: {
             students
         }
+    }
+}
+
+export function createUserInvites(data){
+    return dispatch => {
+        api.postUserInvites().then(response => {
+            console.log('called post postUserInvites, response:')
+            console.log(response)
+            // dispatch(postUserInvitesSucceded(response.data))
+        })
     }
 }

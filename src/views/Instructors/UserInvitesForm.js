@@ -2,24 +2,32 @@ import React, { Component } from 'react';
 import SelectCohortForm from "../../components/SelectCohortForm";
 import SelectClassroomForm from "../../components/SelectClassroomForm";
 import AddStudentsToUserInvites from "../../components/AddStudentsToUserInvites";
-import classNames from 'classnames';
+// import classNames from 'classnames';
 // import PropTypes from 'prop-types';
-// import {createUserInvites} from '../actions';
+import {createUserInvites} from '../../actions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+// import {addInviteListStudents} from '../actions';
+
 
 import { 
     Grid, 
     Button,
-    SendIcon
+    // SendIcon
    } from '../../components-info/MaterialUiImports'
 
 class UserInvitesForm extends Component {
 
-      createUserInvites = () => {
-// //     const data = {  
+    createUserInvites = () => {
+    const data = {  
+        cohort: this.props.selectedCohortOnForm,
+        classroom: this.props.selectedClassroomOnForm,
+        studentList: this.props.addedStudentsForInvites
+        // add role
+    }
 
-// //     }
-//     // this.props.createUserInvites(data)
-//     this.onSubmit();
+    this.props.createUserInvites(data)
+//     
 //     
 //     //   TODO: put function that will call the api post request here
   };
@@ -66,5 +74,19 @@ class UserInvitesForm extends Component {
   }
 }
 
-export default UserInvitesForm;
+function mapStateToProps(state) {
+    return {
+        selectedCohortOnForm: state.selectedCohortOnForm,
+        selectedClassroomOnForm: state.selectedClassroomOnForm,
+        addedStudentsForInvites: state.addedStudentsForInvites,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({createUserInvites}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserInvitesForm);
+
+
 
