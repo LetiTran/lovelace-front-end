@@ -135,7 +135,7 @@ const variantIcon = {
             <MySnackbarContentWrapper
               onClose={this.handleClose}
               variant="success"
-              message="This is a success message!"
+              message={this.props.message}
             />
           </Snackbar>
         </div>

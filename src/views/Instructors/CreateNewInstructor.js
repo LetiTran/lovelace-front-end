@@ -8,6 +8,7 @@ import {createInstructor} from '../../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 // import {addInviteListStudents} from '../actions';
+import MessageSnackBar from '../../components/MessageSnackBar.js';
 
 
 import { 
@@ -15,6 +16,16 @@ import {
     Button,
     // SendIcon
    } from '../../components-info/MaterialUiImports'
+
+//    export function RenderMessage(message) {
+//     if (message){
+//     return <MessageSnackBar message={message}/>
+//     }
+// }
+
+
+// const renderMessage = RenderMessage;
+
 
 class CreateNewInstructor extends Component {
 
@@ -27,6 +38,8 @@ class CreateNewInstructor extends Component {
     
         this.props.createInstructor(data)
       };
+
+     
 
   render() {
 
@@ -43,6 +56,7 @@ class CreateNewInstructor extends Component {
                  Send {/*<SendIcon />  */}
             </Button>
         </Grid>
+        {/* <renderMessage /> */}
         </section>
     );
   }

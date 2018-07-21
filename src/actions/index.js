@@ -1,4 +1,5 @@
 import * as api from '../api';
+import RenderMessage from '../views/Instructors/CreateNewInstructor.js'
 
 // ____________________EXPORTS:____________________
 
@@ -177,6 +178,7 @@ export function createCohort(cohortInfo){
             // dispatch(createCohortSucceeded(response))
             //  TODO: put action to show customizedSnackBar was successfull
             console.log(response.data)
+            dispatch(fetchCohortList())
         }).catch((error) => {
             if (error.response) {
                 console.log(error.response);
@@ -234,6 +236,7 @@ export function createClassroom(data){
     return dispatch => {
         api.postClassroom({name, cohort_id}).then(response => {
             console.log(response.data)
+            dispatch(fetchClassroomList())
         //  TODO: put action to show customizedSnackBar was successfull
         }).catch((error) => {
             if (error.response) {
@@ -337,13 +340,18 @@ export function createInstructor(instructorinfo){
         api.postInstructor({name, github_name}).then(response => {
             // dispatch(createInstructorSucceeded(response))
             console.log(response.data)
+            dispatch(fetchInstructorsList())
+            // dispatch(renderMessage("Instructor created!"))
+            
         }).catch((error) => {
+            // dispatch(RenderMessage("Instructor created!"))
             if (error.response) {
                 console.log(error.response.status);
             } 
         });
     }
 }
+
 
 // *********** INVITES *****************
 export function addInviteListStudents(students){

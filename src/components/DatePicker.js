@@ -62,7 +62,7 @@ function handleChange(event)  {
         id="date"
         label={props.text}
         type="date"
-        defaultValue="2018-08-01"
+        defaultValue="SelectDate"
         className={classes.textField}
         InputLabelProps={{
           shrink: true,
