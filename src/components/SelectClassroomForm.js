@@ -107,7 +107,6 @@ SelectClassroomForm.propTypes = {
 
 
 function mapStateToProps(state) {
-  // console.log('function mapStateToProps:' )
     return {
     classroomName: state.newClassroomName, 
     selectedCohort: state.selectedCohortOnFormForNewClassroom,
@@ -120,4 +119,3 @@ function mapDispatchToProps(dispatch){
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectClassroomForm);
 
-// export default SelectClassroomForm;

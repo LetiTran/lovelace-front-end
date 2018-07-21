@@ -87,8 +87,6 @@ componentDidMount(){
 }
 
 function mapStateToProps(state) {
-  // console.log('function mapStateToProps:' )
-    // console.log(state.assignmentList)
     return {
     assignmentList: state.assignmentList
     }

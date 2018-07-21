@@ -115,7 +115,6 @@ SelectCohortForm.propTypes = {
 }
 
 function mapStateToProps(state) {
-  console.log('function mapStateToProps:' )
     return {
       number: state.newCohortNumber,
       name: state.newCohortName,

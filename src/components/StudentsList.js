@@ -98,8 +98,6 @@ StudentsList.propTypes = {
 }
 
 function mapStateToProps(state) {
-    // console.log('function mapStateToProps:' )
-      // console.log(state.studentsList)
       return {
       studentsList: state.studentsList,
       currentClassroomStudents: state.currentClassroomStudents,

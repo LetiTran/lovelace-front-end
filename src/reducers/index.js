@@ -1,16 +1,14 @@
 import {
     CHANGE_CLASSROOM, GET_CLASSROOM_LIST_SUCCEDED,
     CHANGE_COHORT, GET_COHORT_LIST_SUCCEDED,
-    GET_ASSIGNMENTS_LIST_SUCCEDED, GET_STUDENTS_LIST_SUCCEDED,
-    GET_INSTRUCTORS_LIST_SUCCEDED,
+    GET_ASSIGNMENTS_LIST_SUCCEDED, GET_STUDENTS_LIST_SUCCEDED, GET_INSTRUCTORS_LIST_SUCCEDED,
     CHANGE_COHORT_ON_FORM, CHANGE_CLASSROOM_ON_FORM, CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM,
-    CREATE_CLASSROOM, STORE_NEW_CLASSROOM_NAME,
-    CREATE_COHORT, STORE_NEW_COHORT_NUMBER,
-    STORE_NEW_COHORT_NAME, STORE_NEW_COHORT_REPO_NAME, STORE_NEW_COHORT_CLASS_START_DATE, 
-    STORE_NEW_COHORT_CLASS_END_DATE, STORE_NEW_COHORT_INT_START_DATE, STORE_NEW_COHORT_INT_END_DATE,
-    STORE_NEW_COHORT_GRAD_DATE,
-    ADD_INVITE_LIST_STUDENTS, CREATE_INVITES_SUCCEEDED,
-    STORE_NEW_INSTRUCTOR_NAME, STORE_NEW_INSTRUCTOR_GITHUB_NAME
+    STORE_NEW_CLASSROOM_NAME,
+    STORE_NEW_COHORT_NUMBER, STORE_NEW_COHORT_NAME, STORE_NEW_COHORT_REPO_NAME, 
+    STORE_NEW_COHORT_CLASS_START_DATE, STORE_NEW_COHORT_CLASS_END_DATE, 
+    STORE_NEW_COHORT_INT_START_DATE, STORE_NEW_COHORT_INT_END_DATE,
+    STORE_NEW_COHORT_GRAD_DATE, ADD_INVITE_LIST_STUDENTS,
+    STORE_NEW_INSTRUCTOR_NAME, STORE_NEW_INSTRUCTOR_GITHUB_NAME,
     } from '../actions';
 
 
@@ -62,15 +60,17 @@ const stateList = {
         })
 
         case GET_COHORT_LIST_SUCCEDED:
-        // console.log("GET_COHORT_LIST_SUCCEDED called");
-        // console.log(state, action)
-        // console.log(action.payload.cohortList)
 
-        let selectCohort = state.cohort
+        let selectCohort = state.currentCohort
         let cohortList = action.payload.cohortList
         let cohortListSize = action.payload.cohortList.length-1
+        let assignCohortForNewClassroom = state.selectedCohortOnFormForNewClassroom
 
-        if(state.cohort === 0)  {
+        if(state.selectedCohortOnFormForNewClassroom === 0)  {
+            assignCohortForNewClassroom = cohortList[cohortListSize].id
+        }
+
+        if(state.currentCohort === 0)  {
             selectCohort = cohortList[cohortListSize].id
         }
 
@@ -84,7 +84,7 @@ const stateList = {
             cohortList : action.payload.cohortList,
             currentCohort: selectCohort,
             selectedCohortOnForm: assignCohortOnForm,
-
+            selectedCohortOnFormForNewClassroom: assignCohortForNewClassroom,
         })
 
         case CHANGE_COHORT_ON_FORM:
@@ -137,18 +137,6 @@ const stateList = {
             newCohortGraduationDate: action.date
         }) 
 
-        case CREATE_COHORT:
-        return Object.assign({}, state, {
-            newCohortNumber: action.data.number,
-            newCohortName: action.data.name,
-            newCohortRepoName: action.data.repoName,
-            newCohortClassStartDate: action.data.classStartDate,
-            newCohortClassEndDate: action.data.classEndDate,
-            newCohortInternshipStartDate: action.data.internshipStartDate,
-            newCohortInternshipEndDate: action.data.internshipEndDate,
-            newCohortGraduationDate: action.data.graduationDate,
-        })
-
         // *********** CLASSROOM *****************
         case CHANGE_CLASSROOM:
         let studentsInCurrentClassrom = state.studentsList.filter((student) => {
@@ -160,13 +148,8 @@ const stateList = {
         })
 
         case GET_CLASSROOM_LIST_SUCCEDED:
-        // console.log("GET_CLASSROOM_LIST_SUCCEDED called");
-        // console.log(state, action)
-        // console.log(action.payload.classroomList)
-        // console.log(action.payload.classroomList.last)
 
         let assignClassroom = state.currentClassroom
-        // let assignClassroomName = state.classroomcurrentClassroomName
         let classroomList = action.payload.classroomList
         let classroomListSize = action.payload.classroomList.length-1
 
@@ -197,12 +180,6 @@ const stateList = {
         case STORE_NEW_CLASSROOM_NAME:
         return Object.assign({}, state, {
             newClassroomName: action.name
-        })  
-
-        case CREATE_CLASSROOM:
-        return Object.assign({}, state, {
-            newClassroomName: action.data.name,
-            newClassroomCohortId: action.data.cohortId,
         })
 
          // *********** ASSIGNMENTS *****************    
@@ -277,10 +254,10 @@ const stateList = {
             addedStudentsForInvites : action.payload.students,
         })
 
-        case CREATE_INVITES_SUCCEEDED:
-        return {
-            post_request_answer: action.payload.invites
-        }
+        // case CREATE_INVITES_SUCCEEDED:
+        // return {
+        //     post_request_answer: action.payload.invites
+        // }
 
         default:
         return state

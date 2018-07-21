@@ -89,9 +89,9 @@ renderClassroomList = () => {
       // let classroom = this.props.currentClassroom;
   
       if(this.props.funcName === "chooseCohortForNewClassroom") {
-        return this.props.selectedCohort.id;
+        return this.props.selectedCohort;
        }else if(this.props.funcName === "chooseClassroomForInvitesForm"){
-        return this.props.selectedclassroom.id;
+        return this.props.selectedClassroom;
        }else if
        (this.props.funcName === "chooseCurrentCohort"){
         return this.props.currentCohort
@@ -100,7 +100,7 @@ renderClassroomList = () => {
         return this.props.currentClassroom;
        }else if
        (this.props.funcName === "chooseCohortForInvitesForm"){
-        return this.props.selectedCohort.id;
+        return this.props.selectedCohort;
        }
       };
     
@@ -137,12 +137,11 @@ renderClassroomList = () => {
 }
 
 function mapStateToProps(state) {
-  // console.log('function mapStateToProps:' )
     return {
     cohortList: state.cohortList,
     classroomList: state.classroomList,
 
-    selectedclassroom: state.selectedClassroomOnForm,
+    selectedClassroom: state.selectedClassroomOnForm,
     selectedCohort: state.selectedCohortOnForm,
     
     currentCohort: state.currentCohort,

@@ -37,8 +37,12 @@ export function fetchInstructorsList() {
     return client.get('instructors');
 }
 
-export function postNewClassroom() {
-    return client.post('')
+export function postCohort(){
+    return client.post('cohorts')
+}
+
+export function postClassroom() {
+    return client.post('classrooms')
 }
 
 export function postUserInvites(data) {
