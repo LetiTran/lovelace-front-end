@@ -153,13 +153,21 @@ export function storeNewCohortGradDate(date) {
 }
 
 export function createCohort(cohortInfo){
-    let name= cohortInfo.newCohortName
-    let repo_name = cohortInfo.newCohortRepoName   
-    let class_start_date= cohortInfo.newCohortClassStartDate   
-    let class_end_date = cohortInfo.newCohortClassEndDate
-    let internship_start_date = cohortInfo.newCohortInternshipStartDate
-    let internship_end_date = cohortInfo.newCohortInternshipEndDate
-    let graduation_date = cohortInfo.newCohortGraduationDate 
+    // console.log("cohortInfo:")
+    // console.log(cohortInfo)
+    let name= cohortInfo.name
+    let repo_name = cohortInfo.repoName   
+    let class_start_date= cohortInfo.classStartDate   
+    let class_end_date = cohortInfo.classEndDate
+    let internship_start_date = cohortInfo.internshipStartDate
+    let internship_end_date = cohortInfo.internshipEndDate
+    let graduation_date = cohortInfo.graduationDate 
+
+    console.log("Sending Params:")
+    console.log(name, repo_name, class_start_date, 
+        class_end_date, internship_start_date, 
+        internship_end_date, graduation_date)
+
     return dispatch => {
         api.postCohort({
             name, repo_name, class_start_date, 
@@ -171,6 +179,7 @@ export function createCohort(cohortInfo){
             console.log(response.data)
         }).catch((error) => {
             if (error.response) {
+                console.log(error.response);
                 console.log(error.response.status);
             } 
         });

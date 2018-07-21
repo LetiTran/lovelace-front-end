@@ -118,7 +118,7 @@ function mapStateToProps(state) {
     return {
       number: state.newCohortNumber,
       name: state.newCohortName,
-      RrepoName: state.newCohortRepoName,
+      repoName: state.newCohortRepoName,
       classStartDate: state.newCohortClassStartDate,
       classEndDate: state.newCohortClassEndDate,
       internshipStartDate: state.newCohortInternshipStartDate,

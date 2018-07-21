@@ -3,9 +3,9 @@ import axios from 'axios';
 
 // console.log(process.env)
 // const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
-// const API_BASE_URL = `http://172.24.22.199:3000/`;
+const API_BASE_URL = `http://172.24.22.199:3000/`;
 
-const API_BASE_URL = `https://lovelace-be-heroku.herokuapp.com/`;
+// const API_BASE_URL = `https://lovelace-be-heroku.herokuapp.com/`;
 
 
 const client = axios.create({
@@ -37,12 +37,12 @@ export function fetchInstructorsList() {
     return client.get('instructors');
 }
 
-export function postCohort(){
-    return client.post('cohorts')
+export function postCohort(data){
+    return client.post('cohorts', data)
 }
 
-export function postClassroom() {
-    return client.post('classrooms')
+export function postClassroom(data) {
+    return client.post('classrooms', data)
 }
 
 export function postUserInvites(data) {
