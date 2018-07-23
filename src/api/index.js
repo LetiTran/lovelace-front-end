@@ -20,6 +20,9 @@ const client = axios.create({
 export function fetchClassroomList() {
     return client.get('classroomsapi');
 }
+export function fetchClassroom(id){
+    return client.get(`classrooms/${id}`);
+}
 
 export function fetchCohortList() {
     return client.get('cohorts');
@@ -62,25 +65,17 @@ export function postUserInvites(data) {
 }
 
 export function postInstructor(data) {
-    // headers_content = {
-    //     'github_name': `${data.studentList}`,
-    //     'classroom_id': `${data.classrom}`,
-    //     'role': `${data.role}`
-    // }
-    http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
    console.log("client.post('instructors', data) : ")
     console.log(data)
     return client.post('instructors', data)
 }
 
 export function putInstructor(data) {
-    // headers_content = {
-    //     'github_name': `${data.studentList}`,
-    //     'classroom_id': `${data.classrom}`,
-    //     'role': `${data.role}`
-    // }
-    http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
    console.log("client.put('instructors', data) : ")
     console.log(data)
     return client.put(`instructors/${data.id}`, data)
+}
+
+export function putClassroom(data) {
+    return client.put(`classrooms/${data.id}`, data)
 }

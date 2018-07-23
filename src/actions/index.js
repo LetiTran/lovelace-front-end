@@ -25,6 +25,8 @@ export const CHANGE_CLASSROOM_ON_FORM = "CHANGE_CLASSROOM_ON_FORM";
 export const STORE_NEW_CLASSROOM_NAME = "STORE_NEW_CLASSROOM_NAME";
 export const CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM ="CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM";
 export const CREATE_CLASSROOM_SUCCEEDED = "CREATE_CLASSROOM_SUCCEEDED"
+export const STORE_SELECTED_CLASSROOM_NEW_DATA = "STORE_SELECTED_CLASSROOM_NEW_DATA"
+export const STORE_SELECTED_CLASSROOM = "STORE_SELECTED_CLASSROOM"
 
 // *********** STUDENTS *****************
 export const ADD_NAMES_TO_INVITE_LIST = "ADD_NAMES_TO_INVITE_LIST";
@@ -214,6 +216,39 @@ export function fetchClassroomListSucceded(classroomList) {
         }
     }
 }
+
+export function saveSelectedClassroomNewData(classroom) {
+    return {
+        type: STORE_SELECTED_CLASSROOM_NEW_DATA,
+        payload: {
+            classroom
+        }
+    }
+}
+
+export function saveSelectedClassroom(classroomId) {
+return dispatch => {
+    api.fetchClassroom(classroomId).then(response => {
+        console.log('classroom')
+        console.log(response.data)
+        dispatch(fetchClassroomSucceeded(response.data))
+    }).catch((error) => {
+        if (error.response) {
+            console.log(error.response.status);
+        } 
+    });
+}
+}
+
+export function fetchClassroomSucceeded(classroom) {
+    return {
+    type: STORE_SELECTED_CLASSROOM,
+        payload: {
+            classroom
+        }
+    }
+}
+
 
 export function changeClassroomOnForm(classroom) {
     const action = {
@@ -445,14 +480,14 @@ export function postUpdate(data){
     case 'instructor':
     console.log('post update instructor')
     console.log(data)
-    const putData = {
+    const putDataInstructor = {
         id: data.id,  
         name: data.name, 
         github_name: data.github_name, 
         active: data.active, 
     }
         return dispatch => {
-            api.putInstructor(putData).then(response => {
+            api.putInstructor(putDataInstructor).then(response => {
                 // dispatch(postUpdateSucceeded(response.data))
                 //  TODO: put action to show customizedSnackBar was successfull
                 console.log(response.data)
@@ -464,19 +499,24 @@ export function postUpdate(data){
         }
 
 
-    // case 'student':
-    // console.log('student update')
-    //     return dispatch => {
-    //         api.postStudent(data).then(response => {
-    //             // dispatch(postUpdateSucceeded(response.data))
-    //             //  TODO: put action to show customizedSnackBar was successfull
-    //             console.log(response.data)
-    //         }).catch((error) => {
-    //             if (error.response) {
-    //                 console.log(error.response);
-    //             } 
-    //         });
-    //     }
+    case 'classroom':
+    console.log('classroom update')
+    const putDataClassroom = {
+        id: data.id,  
+        name: data.name, 
+        cohort_id: data.cohort_id, 
+    }
+        return dispatch => {
+            api.putClassroom(putDataClassroom).then(response => {
+                // dispatch(puttUpdateSucceeded(response.data))
+                //  TODO: put action to show customizedSnackBar was successfull
+                console.log(response.data)
+            }).catch((error) => {
+                if (error.response) {
+                    console.log(error.response);
+                } 
+            });
+        }
 
     }
 }

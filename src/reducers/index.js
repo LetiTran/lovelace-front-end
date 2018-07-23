@@ -9,7 +9,8 @@ import {
     STORE_NEW_COHORT_INT_START_DATE, STORE_NEW_COHORT_INT_END_DATE,
     STORE_NEW_COHORT_GRAD_DATE, ADD_NAMES_TO_INVITE_LIST,
     STORE_NEW_INSTRUCTOR_NAME, STORE_NEW_INSTRUCTOR_GITHUB_NAME,
-    STORE_SELECTED_INSTRUCTOR, STORE_SELECTED_INSTRUCTOR_NEW_DATA
+    STORE_SELECTED_INSTRUCTOR, STORE_SELECTED_INSTRUCTOR_NEW_DATA,
+    STORE_SELECTED_CLASSROOM_NEW_DATA, STORE_SELECTED_CLASSROOM
     } from '../actions';
 
 // TODO: ORGANIZE, divide them into hashes if better
@@ -55,6 +56,12 @@ const stateList = {
         name: null, 
         github_name: null,
         active: null,
+    },
+
+    selectedtClassroomToUpdate: {
+        id: null,
+        name: null,
+        cohort_id: null
     }
 
 }
@@ -189,6 +196,22 @@ const stateList = {
         case STORE_NEW_CLASSROOM_NAME:
         return Object.assign({}, state, {
             newClassroomName: action.name
+        })
+
+        case STORE_SELECTED_CLASSROOM_NEW_DATA:
+        return Object.assign({}, state, {
+            selectedtClassroomToUpdate: action.payload.classroom,
+        })
+
+        case STORE_SELECTED_CLASSROOM:
+        console.log(action.payload.classroom)
+        const selectedClassroomData = {
+            id: action.payload.classroom.id,
+            name: action.payload.classroom.name, 
+            cohort_id: action.payload.classroom.cohort_id
+        }
+        return Object.assign({}, state, {
+            selectedtClassroomToUpdate: selectedClassroomData
         })
 
          // *********** ASSIGNMENTS *****************    

@@ -20,7 +20,9 @@ class SidebarInstructorsLinksList extends Component {
         <ListItemLink to="/lovelace-front-end/userinvites" primary="User Invites Form" icon={<CheckIcon />} />
         <ListItemLink to="/lovelace-front-end/addInstrcutors" primary="Add Instrcutors" icon={<CheckIcon />} />
         <ListItemLink to="/lovelace-front-end/updateInstructor" primary="Update Instrcutors" icon={<CheckIcon />} />
-        
+        <ListItemLink to="/lovelace-front-end/updateClassroom" primary="Update Classroom" icon={<CheckIcon />} />
+
+
       </div>
     );
   }
