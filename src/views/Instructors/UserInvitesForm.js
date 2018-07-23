@@ -7,9 +7,9 @@ import AddHeadlineToUserInvites from "../../components/AddStudentsToUserInvites"
 import {createUserInvites} from '../../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// import {addInviteListStudents} from '../actions';
+// import {addNamesToInviteList} from '../actions';
 import RadioButtonsGroup from '../../components/RadioButton.js'
-import {addInviteListStudents} from '../../actions';
+import {addNamesToInviteList} from '../../actions';
 
 import { 
     Grid, 
@@ -29,15 +29,12 @@ class UserInvitesForm extends Component {
     const data = {  
         // cohort: this.props.selectedCohortOnForm,
         classroom_id: this.props.selectedClassroomOnForm,
-        github_names: this.props.addedStudentsForInvites,
+        github_names: this.props.addedNamesForInvites,
         role: 'student'
         // add role
     }
 
-    this.props.createUserInvites(data)
-//     
-//     
-//     //   TODO: put function that will call the api post request here
+    this.props.createUserInvites(data) //make api call
   };
 
  
@@ -48,7 +45,7 @@ class UserInvitesForm extends Component {
   }
  
   handleChange = (event) => {
-    this.props.addInviteListStudents(event.target.value)
+    this.props.addNamesToInviteList(event.target.value)
 }
 
   render() {
@@ -67,7 +64,7 @@ class UserInvitesForm extends Component {
         "Name"
         ]   
 
-    const StudentInvite = () => {
+    const PickClassAndCohort = () => {
         return (
             <Grid spacing={16} container direction="row" justify="center">
                 <Grid item>
@@ -97,7 +94,7 @@ class UserInvitesForm extends Component {
         if(this.state.inviteStudents){
             return (
                 <div>
-                    <StudentInvite />
+                    <PickClassAndCohort />
                     <AddHeadline />
                 </div>
             )
@@ -145,12 +142,12 @@ function mapStateToProps(state) {
     return {
         selectedCohortOnForm: state.selectedCohortOnForm,
         selectedClassroomOnForm: state.selectedClassroomOnForm,
-        addedStudentsForInvites: state.addedStudentsForInvites,
+        addedNamesForInvites: state.addedNamesForInvites,
     }
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({createUserInvites, addInviteListStudents}, dispatch)
+    return bindActionCreators({createUserInvites, addNamesToInviteList}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInvitesForm);

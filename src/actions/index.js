@@ -27,7 +27,7 @@ export const CHANGE_CLASSROOM_ON_FORM_FOR_NEW_CLASSROOM ="CHANGE_CLASSROOM_ON_FO
 export const CREATE_CLASSROOM_SUCCEEDED = "CREATE_CLASSROOM_SUCCEEDED"
 
 // *********** STUDENTS *****************
-export const ADD_INVITE_LIST_STUDENTS = "ADD_INVITE_LIST_STUDENTS";
+export const ADD_NAMES_TO_INVITE_LIST = "ADD_NAMES_TO_INVITE_LIST";
 export const GET_STUDENTS_LIST_SUCCEDED = "GET_STUDENTS_LIST_SUCCEDED";
 
 // *********** INSTRUCTORS *****************
@@ -354,11 +354,11 @@ export function createInstructor(instructorinfo){
 
 
 // *********** INVITES *****************
-export function addInviteListStudents(students){
+export function addNamesToInviteList(names){
     return {
-        type: ADD_INVITE_LIST_STUDENTS,
+        type: ADD_NAMES_TO_INVITE_LIST,
         payload: {
-            students
+            names
         }
     }
 }
@@ -367,15 +367,33 @@ export function createUserInvites(data){
     let classroom_id = data.classroom_id
     let github_names = data.github_names
     let role = data.role
-    return dispatch => {
-        api.postUserInvites({classroom_id, github_names, role}).then(response => {
-            // dispatch(createUserInvitesSucceeded(response.data))
-            //  TODO: put action to show customizedSnackBar was successfull
-            console.log(response.data)
-        }).catch((error) => {
-            if (error.response) {
-                console.log(error.response.status);
-            } 
-        });
-    }
+
+    // switch(request_type){
+    // case STUDENT:
+        return dispatch => {
+            api.postUserInvites({classroom_id, github_names, role}).then(response => {
+                // dispatch(createUserInvitesSucceeded(response.data))
+                //  TODO: put action to show customizedSnackBar was successfull
+                console.log(response.data)
+            }).catch((error) => {
+                if (error.response) {
+                    console.log(error.response.status);
+                } 
+            });
+        }
+
+    // case INSTRUCTOR:    
+    //     return dispatch => {
+    //         api.postUserInvites({github_names, role}).then(response => {
+    //             // dispatch(createUserInvitesSucceeded(response.data))
+    //             //  TODO: put action to show customizedSnackBar was successfull
+    //             console.log(response.data)
+    //         }).catch((error) => {
+    //             if (error.response) {
+    //                 console.log(error.response.status);
+    //             } 
+    //         });
+    //     }
+
+    // }
 }

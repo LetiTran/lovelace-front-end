@@ -7,7 +7,7 @@ import AddNewInstructorInfo from "../../components/AddNewInstructorInfo";
 import {createInstructor} from '../../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// import {addInviteListStudents} from '../actions';
+// import {addNamesToInviteList} from '../actions';
 import MessageSnackBar from '../../components/MessageSnackBar.js';
 
 

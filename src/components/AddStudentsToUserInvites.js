@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// import {addInviteListStudents} from '../actions';
+// import {addNamesToInviteList} from '../actions';
 
 // For Styles:
 import { 
@@ -33,13 +33,9 @@ class AddHeadlineToUserInvites extends Component {
     
 
     return (
-      
-        <Card  style={{ margin:3}} >
-        <Typography  variant="headline"  style={{margin:"25px", marginBottom:"0px"}}>
+        <h5  style={{margin:"25px", marginBottom:"0px", textAlign: "center", paddingBottom:"20px"}} >
             {text}
-          </Typography>
-        </Card>
-       
+          </h5>
     )
   }
 }
@@ -54,12 +50,12 @@ function mapStateToProps(state) {
         selectedClassroomOnForm: state.selectedClassroomOnForm,
         classroomList: state.classroomList,
         cohortList: state.cohortList,
-        addedStudentsForInvites: state.addedStudentsForInvites
+        addedNamesForInvites: state.addedNamesForInvites
     }
 }
 
 // function mapDispatchToProps(dispatch){
-//     // return bindActionCreators({addInviteListStudents}, dispatch)
+//     // return bindActionCreators({addNamesToInviteList}, dispatch)
 // }
 
 export default connect(mapStateToProps, null)(AddHeadlineToUserInvites);
