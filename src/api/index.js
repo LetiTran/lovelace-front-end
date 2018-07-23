@@ -36,6 +36,10 @@ export function fetchInstructorsList() {
     return client.get('instructors');
 }
 
+export function fetchInstructor(id){
+    return client.get('instructors', id);
+}
+
 export function postCohort(data){
     return client.post('cohorts', data)
 }
@@ -51,6 +55,8 @@ export function postUserInvites(data) {
     //     'role': `${data.role}`
     // }
 //    console.log(data)
+// console(" client.post('invites', data) : ")
+//     console.log(data)
     return client.post('invites', data)
 }
 
@@ -61,6 +67,7 @@ export function postInstructor(data) {
     //     'role': `${data.role}`
     // }
     http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
-//    console.log(data)
+   console("client.post('instructors', data) : ")
+    console.log(data)
     return client.post('instructors', data)
 }

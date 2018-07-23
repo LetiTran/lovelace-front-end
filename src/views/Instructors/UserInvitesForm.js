@@ -41,7 +41,7 @@ class UserInvitesForm extends Component {
     createInstructorsInvites = () => {
         console.log("called inst")
         const data ={
-            githun_names: this.props.addedNamesForInvites,
+            github_name: this.props.addedNamesForInvites,
             role: 'instructor'
         }
         this.props.createUserInvites(false, data) //make api call

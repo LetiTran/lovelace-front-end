@@ -9,9 +9,10 @@ import {
     STORE_NEW_COHORT_INT_START_DATE, STORE_NEW_COHORT_INT_END_DATE,
     STORE_NEW_COHORT_GRAD_DATE, ADD_NAMES_TO_INVITE_LIST,
     STORE_NEW_INSTRUCTOR_NAME, STORE_NEW_INSTRUCTOR_GITHUB_NAME,
+    STORE_SELECTED_INSTRUCTOR, STORE_SELECTED_INSTRUCTOR_NEW_DATA
     } from '../actions';
 
-
+// TODO: ORGANIZE, divide them into hashes if better
 const stateList = {
     currentCohort: 0, 
     cohortList: [], 
@@ -47,6 +48,15 @@ const stateList = {
 
     newInstructorName: "",
     newInstructorGithubName: "",
+
+    // selectedtInstructorToUpdate: null,
+    selectedtInstructorToUpdate: {
+        id: null,
+        name: null, 
+        github_name: null, 
+        uid: null, 
+        active: null,
+    }
 
 }
 
@@ -221,11 +231,14 @@ const stateList = {
         // console.log(action.payload.instructorsList)
 
         // Filter instructors in current classromm
-        const activeInstructors = action.payload.instructorsList.filter((instructor) => {
-            // console.log(instructor)
+        console.log(action.payload.instructorsList.instructors)
+        const activeInstructors = action.payload.instructorsList.instructors.filter((instructor) => {
+            console.log(instructor)
             return instructor.active === true
+            
         })
 
+        console.log(activeInstructors)
         // console.log(activeInstructors)
         // Change state:
         return Object.assign({}, state, {
@@ -236,6 +249,16 @@ const stateList = {
         // return Object.assign({}, state, {
         //     newInstructorInfo: action.payload.newInstructorInfo,
         // })
+
+        case STORE_SELECTED_INSTRUCTOR_NEW_DATA:
+        return Object.assign({}, state, {
+            selectedtInstructorToUpdate: action.payload.instructor,
+        })
+
+        case STORE_SELECTED_INSTRUCTOR:
+        return Object.ASSIGN({}, state, {
+            selectedtInstructorToUpdate: action.payload.instructor,
+        })
 
         case STORE_NEW_INSTRUCTOR_NAME:
         return Object.assign({}, state, {

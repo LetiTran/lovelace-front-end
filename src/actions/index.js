@@ -33,6 +33,8 @@ export const GET_STUDENTS_LIST_SUCCEDED = "GET_STUDENTS_LIST_SUCCEDED";
 // *********** INSTRUCTORS *****************
 export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
 export const CREATE_INSTRUCTOR = "CREATE_INSTRUCTOR"
+export const STORE_SELECTED_INSTRUCTOR = "STORE_SELECTED_INSTRUCTOR"
+export const STORE_SELECTED_INSTRUCTOR_NEW_DATA = "STORE_SELECTED_INSTRUCTOR_NEW_DATA"
 
 // *********** ASSIGNMENTS *****************
 export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED";
@@ -269,7 +271,6 @@ export function fetchAssignmentListSucceded(assignmentList) {
     }
 }
 
-
 // *********** STUDENTS *****************
 export function fetchStudentsList() {
     return dispatch => {
@@ -311,6 +312,36 @@ export function fetchInstructorsListSucceded(instructorsList) {
     type: GET_INSTRUCTORS_LIST_SUCCEDED,
         payload: {
             instructorsList
+        }
+    }
+}
+
+export function saveSelectedInstructorNewData(instructor) {
+    return {
+        type: STORE_SELECTED_INSTRUCTOR_NEW_DATA,
+        payload: {
+            instructor
+        }
+    }
+}
+
+export function saveSelectedInstructor(id) {
+return dispatch => {
+    api.fetchInstructor(id).then(response => {
+        dispatch(fetchInstructorSucceeded(response.data))
+    }).catch((error) => {
+        if (error.response) {
+            console.log(error.response.status);
+        } 
+    });
+}
+}
+
+export function fetchInstructorSucceeded(instructor) {
+    return {
+    type: STORE_SELECTED_INSTRUCTOR,
+        payload: {
+            instructor
         }
     }
 }
@@ -363,14 +394,19 @@ export function addNamesToInviteList(names){
     }
 }
 
+
+// *********** CREATE AND UPDATE POST REQUESTS *****************
+
 export function createUserInvites(inviteStudents, data){
     let classroom_id = data.classroom_id
     let github_names = data.github_names
     let role = data.role
+    let github_name = data.github_name
 
     switch(inviteStudents){
     case true:
-    console.log('students')
+    console.log('post invite for students')
+    console.log({classroom_id, github_names, role})
         return dispatch => {
             api.postUserInvites({classroom_id, github_names, role}).then(response => {
                 // dispatch(createUserInvitesSucceeded(response.data))
@@ -378,24 +414,62 @@ export function createUserInvites(inviteStudents, data){
                 console.log(response.data)
             }).catch((error) => {
                 if (error.response) {
-                    console.log(error.response.status);
+                    console.log(error.response);
                 } 
             });
         }
 
     case false:   
-    console.log('instrc') 
+    console.log('post invite for instructor') 
+    console.log({github_name, role})
         return dispatch => {
-            api.postUserInvites({github_names, role}).then(response => {
+            api.postUserInvites({github_name, role}).then(response => {
                 // dispatch(createUserInvitesSucceeded(response.data))
                 //  TODO: put action to show customizedSnackBar was successfull
                 console.log(response.data)
             }).catch((error) => {
                 if (error.response) {
-                    console.log(error.response.status);
+                    console.log(error.response);
                 } 
             });
         }
+
+    }
+}
+
+export function postUpdate(element, data){
+
+    switch(element){
+
+    case 'instructor':
+    console.log('post update instructor')
+    console.log(data)
+        return dispatch => {
+            api.postInstructor(data).then(response => {
+                // dispatch(postUpdateSucceeded(response.data))
+                //  TODO: put action to show customizedSnackBar was successfull
+                console.log(response.data)
+            }).catch((error) => {
+                if (error.response) {
+                    console.log(error.response);
+                } 
+            });
+        }
+
+
+    // case 'student':
+    // console.log('student update')
+    //     return dispatch => {
+    //         api.postStudent(data).then(response => {
+    //             // dispatch(postUpdateSucceeded(response.data))
+    //             //  TODO: put action to show customizedSnackBar was successfull
+    //             console.log(response.data)
+    //         }).catch((error) => {
+    //             if (error.response) {
+    //                 console.log(error.response);
+    //             } 
+    //         });
+    //     }
 
     }
 }
