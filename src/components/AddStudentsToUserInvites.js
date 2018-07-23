@@ -3,30 +3,16 @@ import React, { Component } from 'react';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addInviteListStudents} from '../actions';
+// import {addInviteListStudents} from '../actions';
 
 // For Styles:
 import { 
 Card,
-TextField,
+// TextField,
 Typography
 } from '../components-info/MaterialUiImports'
 
-class AddStudentsToUserInvites extends Component {
-
-//   createUserInvites = () => {
-//     const data = {  
-
-//     }
-    // this.props.createUserInvites(data)
-    handleChange = (event) => {
-        this.props.addInviteListStudents(event.target.value)
-    }
-    // addInviteListStudents
-    //   TODO: put function that will call the api post request here
-//   };
-
-
+class AddHeadlineToUserInvites extends Component {
   
   render() {
     
@@ -52,24 +38,13 @@ class AddStudentsToUserInvites extends Component {
         <Typography  variant="headline"  style={{margin:"25px", marginBottom:"0px"}}>
             {text}
           </Typography>
-         <TextField
-         style={{marginLeft:"30px", marginRight:"30px", width:"80%", height:"300px"}}
-          id="multiline-static"
-          label="GitHub Names (separate names by line-breaks if creating multiple invites)"
-          multiline
-          rows="54"
-          defaultValue=""
-        //   className={classes.textField}
-          margin="normal"
-          onChange={this.handleChange}
-        />
         </Card>
        
     )
   }
 }
 
-AddStudentsToUserInvites.propTypes = {
+AddHeadlineToUserInvites.propTypes = {
   // TODO: write proTypes....
 }
 
@@ -83,8 +58,8 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({addInviteListStudents}, dispatch)
-}
+// function mapDispatchToProps(dispatch){
+//     // return bindActionCreators({addInviteListStudents}, dispatch)
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddStudentsToUserInvites);
+export default connect(mapStateToProps, null)(AddHeadlineToUserInvites);
