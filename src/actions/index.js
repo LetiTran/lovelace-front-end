@@ -35,7 +35,6 @@ export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
 export const CREATE_INSTRUCTOR = "CREATE_INSTRUCTOR"
 export const STORE_SELECTED_INSTRUCTOR = "STORE_SELECTED_INSTRUCTOR"
 export const STORE_SELECTED_INSTRUCTOR_NEW_DATA = "STORE_SELECTED_INSTRUCTOR_NEW_DATA"
-
 // *********** ASSIGNMENTS *****************
 export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED";
 export const STORE_NEW_INSTRUCTOR_NAME = "STORE_NEW_INSTRUCTOR_NAME"
@@ -325,9 +324,11 @@ export function saveSelectedInstructorNewData(instructor) {
     }
 }
 
-export function saveSelectedInstructor(id) {
+export function saveSelectedInstructor(instructorId) {
 return dispatch => {
-    api.fetchInstructor(id).then(response => {
+    api.fetchInstructor(instructorId).then(response => {
+        console.log('instuctor')
+        console.log(response.data)
         dispatch(fetchInstructorSucceeded(response.data))
     }).catch((error) => {
         if (error.response) {
@@ -437,15 +438,21 @@ export function createUserInvites(inviteStudents, data){
     }
 }
 
-export function postUpdate(element, data){
+export function postUpdate(data){
 
-    switch(element){
+    switch(data.type){
 
     case 'instructor':
     console.log('post update instructor')
     console.log(data)
+    const putData = {
+        id: data.id,  
+        name: data.name, 
+        github_name: data.github_name, 
+        active: data.active, 
+    }
         return dispatch => {
-            api.postInstructor(data).then(response => {
+            api.putInstructor(putData).then(response => {
                 // dispatch(postUpdateSucceeded(response.data))
                 //  TODO: put action to show customizedSnackBar was successfull
                 console.log(response.data)

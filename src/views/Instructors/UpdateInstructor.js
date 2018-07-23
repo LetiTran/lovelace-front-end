@@ -17,20 +17,24 @@ import {
 class UpdateInstructor extends Component {
 
     postUpdate = () => {
-        // const data = {  
-        //     name: this.props.newInstructorName,
-        //     github_name: this.props.newInstructorGithubName
-        // }
-        // this.props.postUpdate(data)
+        const data = {  
+            type: 'instructor',
+            id: this.props.selectedtInstructorToUpdate.id,  
+            name: this.props.selectedtInstructorToUpdate.name, 
+            github_name: this.props.selectedtInstructorToUpdate.github_name, 
+            active: this.props.selectedtInstructorToUpdate.active, 
+        }
+        this.props.postUpdate(data)
     };
 
      handleStatusChange = (event) => {
          const instructorData = 
          {
+
+            id: this.props.selectedtInstructorToUpdate.id,  
             name: this.props.selectedtInstructorToUpdate.id,  
             name: this.props.selectedtInstructorToUpdate.name, 
             github_name: this.props.selectedtInstructorToUpdate.github_name, 
-            uid: this.props.selectedtInstructorToUpdate.uid, 
             active: event.target.value,
         }
          this.props.saveSelectedInstructorNewData(instructorData);
@@ -39,10 +43,11 @@ class UpdateInstructor extends Component {
     handleNameChange = (event) => {
         const instructorData = 
         {
+
+            id: this.props.selectedtInstructorToUpdate.id,  
            name: this.props.selectedtInstructorToUpdate.id,   
            name: event.target.value,
            github_name: this.props.selectedtInstructorToUpdate.github_name, 
-           uid: this.props.selectedtInstructorToUpdate.uid, 
            active: this.props.selectedtInstructorToUpdate.active,
        }
         this.props.saveSelectedInstructorNewData(instructorData);
@@ -51,26 +56,15 @@ class UpdateInstructor extends Component {
    handleGithubNameChange = (event) => {
         const instructorData = 
         {
+            id: this.props.selectedtInstructorToUpdate.id,  
         name: this.props.selectedtInstructorToUpdate.id,   
         name:this.props.selectedtInstructorToUpdate.name, 
         github_name: event.target.value,
-        uid: this.props.selectedtInstructorToUpdate.uid, 
         active: this.props.selectedtInstructorToUpdate.active,
     }
         this.props.saveSelectedInstructorNewData(instructorData);
 }
 
-    handleUidChange = (event) => {
-        const instructorData = 
-        {
-        name: this.props.selectedtInstructorToUpdate.id,  
-        name:this.props.selectedtInstructorToUpdate.name, 
-        github_name: this.props.selectedtInstructorToUpdate.github_name, 
-        uid: event.target.value, 
-        active: this.props.selectedtInstructorToUpdate.active,
-    }
-        this.props.saveSelectedInstructorNewData(instructorData);
-    }
 
     renderInstructorsList =() => {
         return this.props.instructorsList.map((instruc, index) => {
@@ -81,6 +75,7 @@ class UpdateInstructor extends Component {
     }
 
     handleInstructorChange =(event) => {
+        console.log(event.target.value)
         this.props.saveSelectedInstructor(event.target.value)
     }
 
@@ -91,35 +86,34 @@ class UpdateInstructor extends Component {
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
             <Grid  xs={8} item >
                 <Select
-                 value={this.props.selectedtInstructor}
+                 value={this.props.selectedtInstructorToUpdate.name}
                  onChange={this.handleInstructorChange}
                  inputProps={{
                  name: `change`,
                  id: 'change-Instructor',
                  }}>
-                 {this.renderInstructorsList}
+                 {this.renderInstructorsList()}
                 </Select>
                 <Grid container spacing={8} alignItems="flex-end">
                     <Grid md item>
-                        <TextField onChange={this.handleNameChange} fullWidth={true} label='Name' />
+                        <TextField onChange={this.handleNameChange} fullWidth={true} label={this.props.selectedtInstructorToUpdate.name} />
                     </Grid>
                     <Grid md item>
-                        <TextField onChange={this.handleGithubNameChange} fullWidth={true} label='GitHub Name' />
+                        <TextField onChange={this.handleGithubNameChange} fullWidth={true} label={this.props.selectedtInstructorToUpdate.github_name} />
                     </Grid>
                     <Grid md item>
-                        <TextField onChange={this.handleUidChange} fullWidth={true} label='Uid' />
+                        <Select
+                            value={this.props.selectedtInstructorToUpdate.active}
+                            onChange={this.handleActiveChange}
+                            inputProps={{
+                            name: `change`,
+                            id: 'change-Instructor',
+                            }}
+                        >
+                            <MenuItem value={true}> Active </MenuItem>
+                            <MenuItem value={false}> Inactive </MenuItem>
+                        </Select>
                     </Grid>
-                    <Select
-                        value={this.props.selectedtInstructorToUpdate.active}
-                        onChange={this.handleActiveChange}
-                        inputProps={{
-                        name: `change`,
-                        id: 'change-Instructor',
-                        }}
-                    >
-                        <MenuItem value={true}> Active </MenuItem>
-                        <MenuItem value={false}> Inactive </MenuItem>
-                    </Select>
             {/* <InputWithGrid element="InstructorActive" name="Active"/>    */}
             </Grid>
             </Grid>

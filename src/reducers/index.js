@@ -53,8 +53,7 @@ const stateList = {
     selectedtInstructorToUpdate: {
         id: null,
         name: null, 
-        github_name: null, 
-        uid: null, 
+        github_name: null,
         active: null,
     }
 
@@ -231,14 +230,14 @@ const stateList = {
         // console.log(action.payload.instructorsList)
 
         // Filter instructors in current classromm
-        console.log(action.payload.instructorsList.instructors)
+        // console.log(action.payload.instructorsList.instructors)
         const activeInstructors = action.payload.instructorsList.instructors.filter((instructor) => {
-            console.log(instructor)
+            // console.log(instructor)
             return instructor.active === true
             
         })
 
-        console.log(activeInstructors)
+        // console.log(activeInstructors)
         // console.log(activeInstructors)
         // Change state:
         return Object.assign({}, state, {
@@ -256,8 +255,15 @@ const stateList = {
         })
 
         case STORE_SELECTED_INSTRUCTOR:
-        return Object.ASSIGN({}, state, {
-            selectedtInstructorToUpdate: action.payload.instructor,
+
+        const selectedInstructorData = {
+            id: action.payload.instructor.id,
+            name: action.payload.instructor.name, 
+            github_name: action.payload.instructor.github_name, 
+            active: action.payload.instructor.active,
+        }
+        return Object.assign({}, state, {
+            selectedtInstructorToUpdate: selectedInstructorData
         })
 
         case STORE_NEW_INSTRUCTOR_NAME:

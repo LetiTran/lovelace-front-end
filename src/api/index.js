@@ -3,7 +3,8 @@ import axios from 'axios';
 
 // console.log(process.env)
 // const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
-const API_BASE_URL = `http://localhost:3000/`;
+// const API_BASE_URL = `http://localhost:3000/`;
+const API_BASE_URL = `http://172.24.22.199:3000/`;
 // const API_BASE_URL = `https://lovelace-be-heroku.herokuapp.com/`;
 
 
@@ -37,7 +38,7 @@ export function fetchInstructorsList() {
 }
 
 export function fetchInstructor(id){
-    return client.get('instructors', id);
+    return client.get(`instructors/${id}`);
 }
 
 export function postCohort(data){
@@ -67,7 +68,19 @@ export function postInstructor(data) {
     //     'role': `${data.role}`
     // }
     http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
-   console("client.post('instructors', data) : ")
+   console.log("client.post('instructors', data) : ")
     console.log(data)
     return client.post('instructors', data)
+}
+
+export function putInstructor(data) {
+    // headers_content = {
+    //     'github_name': `${data.studentList}`,
+    //     'classroom_id': `${data.classrom}`,
+    //     'role': `${data.role}`
+    // }
+    http://localhost:3000/invites/?github_name=MonalisaC&classroom_id=1&role=instructor
+   console.log("client.put('instructors', data) : ")
+    console.log(data)
+    return client.put(`instructors/${data.id}`, data)
 }
