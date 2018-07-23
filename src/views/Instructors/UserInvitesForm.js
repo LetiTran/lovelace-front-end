@@ -25,31 +25,41 @@ class UserInvitesForm extends Component {
         inviteStudents: true,
       };
 
-    createUserInvites = () => {
-    const data = {  
+
+    createStudentsInvites = () => {      
+        console.log("called stud")
+        const data = {  
         // cohort: this.props.selectedCohortOnForm,
         classroom_id: this.props.selectedClassroomOnForm,
         github_names: this.props.addedNamesForInvites,
         role: 'student'
         // add role
     }
-
-    this.props.createUserInvites(data) //make api call
+    this.props.createUserInvites(true, data) //make api call
   };
 
+    createInstructorsInvites = () => {
+        console.log("called inst")
+        const data ={
+            githun_names: this.props.addedNamesForInvites,
+            role: 'instructor'
+        }
+        this.props.createUserInvites(false, data) //make api call
+    };
+
+    // TODO: DRY createStudentsInvites and createInstructorsInvites
  
-  changeInviteType =()=> {
-       this.setState(
-           {inviteStudents: !(this.state.inviteStudents)}
-       )
-  }
+    changeInviteType =()=> {
+        this.setState(
+            {inviteStudents: !(this.state.inviteStudents)}
+        )
+    }
  
-  handleChange = (event) => {
-    this.props.addNamesToInviteList(event.target.value)
-}
+    handleChange = (event) => {
+        this.props.addNamesToInviteList(event.target.value)
+    }
 
   render() {
-
     const cohortInfo = [
                     "Cohort Number",
                     "Name",
@@ -97,21 +107,21 @@ class UserInvitesForm extends Component {
                     <PickClassAndCohort />
                     <AddHeadline />
                 </div>
-            )
+            );
         }else{
             return(
                 <AddHeadline />
-            ) 
+            ); 
         }
     }
 
     const DisplayButton = () => {
         return(
             <Grid style={{margin:"30px"}} container justify="center">
-            <Button onClick={this.createUserInvites} style={{width:"300px"}} variant="contained" color="primary" >
+            <Button onClick={this.state.inviteStudents === true ? this.createStudentsInvites : this.createInstructorsInvites} style={{width:"300px"}} variant="contained" color="primary" >
                 Send 
             </Button>
-        </Grid>
+            </Grid>
         )
     }
 
@@ -125,14 +135,14 @@ class UserInvitesForm extends Component {
             id="multiline-static"
             label="GitHub Names (separate names by line-breaks if creating multiple invites)"
             multiline
-            rows="54"
+            rows="20"
             defaultValue=""
             //   className={classes.textField}
             margin="normal"
             onChange={this.handleChange}
             />
             </Card>
-            <DisplayButton />
+            <DisplayButton inviteStudents={this.props.inviteStudents}/>
         </section>
     );
   }

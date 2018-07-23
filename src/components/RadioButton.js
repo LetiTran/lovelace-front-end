@@ -35,9 +35,9 @@ class RadioButtonsGroup extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div style={{justifyContent: "center"}} className={classes.root}>
+      <div style={{justifyContent: "center", margin: "6px"}} className={classes.root}>
         <FormControl  component="fieldset" required error className={classes.formControl}>
-          <h5 >Select type of user to be invited</h5>
+          <h5 style={{margin: "6px"}} >Select type of user to be invited</h5 >
           <RadioGroup
             aria-label="invites"
             name="invites2"

@@ -363,13 +363,14 @@ export function addNamesToInviteList(names){
     }
 }
 
-export function createUserInvites(data){
+export function createUserInvites(inviteStudents, data){
     let classroom_id = data.classroom_id
     let github_names = data.github_names
     let role = data.role
 
-    // switch(request_type){
-    // case STUDENT:
+    switch(inviteStudents){
+    case true:
+    console.log('students')
         return dispatch => {
             api.postUserInvites({classroom_id, github_names, role}).then(response => {
                 // dispatch(createUserInvitesSucceeded(response.data))
@@ -382,18 +383,19 @@ export function createUserInvites(data){
             });
         }
 
-    // case INSTRUCTOR:    
-    //     return dispatch => {
-    //         api.postUserInvites({github_names, role}).then(response => {
-    //             // dispatch(createUserInvitesSucceeded(response.data))
-    //             //  TODO: put action to show customizedSnackBar was successfull
-    //             console.log(response.data)
-    //         }).catch((error) => {
-    //             if (error.response) {
-    //                 console.log(error.response.status);
-    //             } 
-    //         });
-    //     }
+    case false:   
+    console.log('instrc') 
+        return dispatch => {
+            api.postUserInvites({github_names, role}).then(response => {
+                // dispatch(createUserInvitesSucceeded(response.data))
+                //  TODO: put action to show customizedSnackBar was successfull
+                console.log(response.data)
+            }).catch((error) => {
+                if (error.response) {
+                    console.log(error.response.status);
+                } 
+            });
+        }
 
-    // }
+    }
 }

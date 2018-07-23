@@ -36,7 +36,7 @@ class App extends Component {
               </Grid>
             </Grid>
           </MiniDrawer>
-          <footer><Footer /></footer>
+          {/* <footer><Footer /></footer> */}
        </div>
     );
   }
