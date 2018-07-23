@@ -62,8 +62,19 @@ const stateList = {
         id: null,
         name: null,
         cohort_id: null
-    }
+    },
 
+    selectedtCohortToUpdate: {
+        cohortId: null,
+        cohortNumber: null,
+        cohortName: null,
+        cohortRepoName: null,
+        cohortClassStartDate: null,
+        cohortClassEndDate: null,
+        cohortInternshipStartDate: null,
+        cohortInternshipEndDate: null,
+        cohortGraduationDate: null,
+    }
 }
 
  function performAction(state = stateList, action) {

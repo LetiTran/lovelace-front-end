@@ -79,3 +79,11 @@ export function putInstructor(data) {
 export function putClassroom(data) {
     return client.put(`classrooms/${data.id}`, data)
 }
+
+export function fetchCohort(id){
+    return client.get(`cohorts/${id}`);
+}
+
+export function putCohort(data){
+    return client.put(`cohort/${data.id}`, data)
+}

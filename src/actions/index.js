@@ -16,6 +16,8 @@ export const STORE_NEW_COHORT_INT_START_DATE ="STORE_NEW_COHORT_INT_START_DATE"
 export const STORE_NEW_COHORT_INT_END_DATE ="STORE_NEW_COHORT_INT_END_DATE"
 export const STORE_NEW_COHORT_GRAD_DATE ="STORE_NEW_COHORT_GRAD_DATE"
 export const CREATE_COHORT = "CREATE_COHORT";
+export const STORE_SELECTED_COHORT_NEW_DATA = "STORE_SELECTED_COHORT_NEW_DATA"
+export const STORE_SELECTED_COHORT = "STORE_SELECTED_COHORT"
 
 // *********** CLASSROOM *****************
 export const CHANGE_CLASSROOM = "CHANGE_CLASSROOM";
@@ -188,6 +190,39 @@ export function createCohort(cohortInfo){
                 console.log(error.response.status);
             } 
         });
+    }
+}
+
+
+export function saveSelectedCohortNewData(cohort) {
+    return {
+        type: STORE_SELECTED_COHORT_NEW_DATA,
+        payload: {
+            cohort
+        }
+    }
+}
+
+export function saveSelectedCohort(cohortId) {
+return dispatch => {
+    api.fetchCohort(cohortId).then(response => {
+        console.log('cohort')
+        console.log(response.data)
+        dispatch(fetchCohortSucceeded(response.data))
+    }).catch((error) => {
+        if (error.response) {
+            console.log(error.response.status);
+        } 
+    });
+}
+}
+
+export function fetchCohortSucceeded(cohort) {
+    return {
+    type: STORE_SELECTED_COHORT,
+        payload: {
+            cohort
+        }
     }
 }
 
@@ -506,6 +541,8 @@ export function postUpdate(data){
         name: data.name, 
         cohort_id: data.cohort_id, 
     }
+
+    console.log(putDataClassroom)
         return dispatch => {
             api.putClassroom(putDataClassroom).then(response => {
                 // dispatch(puttUpdateSucceeded(response.data))

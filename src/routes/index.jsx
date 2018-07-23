@@ -8,6 +8,7 @@ import UserInvitesForm from '../views/Instructors/UserInvitesForm.js'
 import CreateNewInstructor from '../views/Instructors/CreateNewInstructor.js'
 import UpdateInstructor from '../views/Instructors/UpdateInstructor.js'
 import EditClassroom from '../views/Instructors/EditClassroom.js'
+import UpdateCohort from '../views/Instructors/UpdateCohort.js'
 
 let indexRoutes = [
   { path: "/lovelace-front-end/assignments", name: "Assignments", component: Assignments },
@@ -20,6 +21,7 @@ let indexRoutes = [
   {path: "/lovelace-front-end/updateInstructor", name: "Edit Instrcutors", component: UpdateInstructor},
 
   {path: "/lovelace-front-end/updateClassroom", name: "Edit Classroom", component: EditClassroom},
+  {path: "/lovelace-front-end/updateCohort", name: "Edit Cohort", component: UpdateCohort},
 
   
   { path: "/lovelace-front-end", name: "LandingPage", component: LandingPage }
