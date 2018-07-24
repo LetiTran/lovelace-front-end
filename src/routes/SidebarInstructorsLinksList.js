@@ -20,12 +20,13 @@ class SidebarInstructorsLinksList extends Component {
         <ListItemLink to="/lovelace-front-end/assignments" primary="Assignments" icon={<BookIcon />} />
         {/* TODO: feedback should be inside of assignments or/and submissions */}
         <ListItemLink to="/lovelace-front-end/feedback" primary="Feedback" icon={<BookIcon />} />
+        <ListItemLink to="/lovelace-front-end/submissions" primary="Submissions" icon={<BookIcon />} />
         <Divider light />
         <ListItemLink to="/lovelace-front-end/students" primary="Students" icon={<BookIcon />} />
         <Divider light />
         <ListItemLink to="/lovelace-front-end/admin" primary="Admin Panel" icon={<BookIcon />} />
         {/* <Divider light /> */}
-
+        
         {/* <ListItemLink to="/lovelace-front-end/admin" primary="Admin" icon={<CheckIcon />} /> */}
         {/*  TODO: put all this routes bellow under Admin or Manage or something like that... 
         (either a nested list or all inside one component with multiple tabs) */}
