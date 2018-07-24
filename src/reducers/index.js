@@ -15,7 +15,7 @@ import {
     UPDATE_COHORT_CLASS_START_DATE, UPDATE_COHORT_CLASS_END_DATE, 
     UPDATE_COHORT_INT_START_DATE, UPDATE_COHORT_INT_END_DATE,
     UPDATE_COHORT_GRAD_DATE, STORE_SELECTED_COHORT_TO_UPDATE,
-    STORE_SELECTED_STUDENT_TO_UPDATE, UPDATE_STUDENT_NAME,
+    STORE_SELECTED_STUDENT_TO_UPDATE, UPDATE_STUDENT_NAME, UPDATE_STUDENT_EMAIL,
     UPDATE_STUDENT_GITHUB_NAME,UPDATE_PREFERRED_NAME, UPDATE_STUDENT_CLASSROOM_NAME
     } from '../actions';
 
@@ -322,10 +322,20 @@ const stateList = {
             updateStudentGithubName: action.name
          }) 
 
+         case UPDATE_STUDENT_EMAIL:
+         return Object.assign({}, state, {
+            updateStudentEmail: action.email
+         }) 
+
          case UPDATE_PREFERRED_NAME:
          return Object.assign({}, state, {
             updateStudentPreferredName: action.name
          }) 
+
+        case UPDATE_STUDENT_GITHUB_NAME:
+        return Object.assign({}, state, {
+        updateStudentGithubName: action.name
+        }) 
  
         case UPDATE_STUDENT_CLASSROOM_NAME:
         return Object.assign({}, state, {

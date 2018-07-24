@@ -101,7 +101,7 @@ function mapStateToProps(state) {
       return {
       studentsList: state.studentsList,
       currentClassroomStudents: state.currentClassroomStudents,
-      classroomName: state.currentClassroomName
+      classroomName: state.currentClassroom.name
       }
   }
   

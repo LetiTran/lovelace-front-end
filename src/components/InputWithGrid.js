@@ -17,6 +17,7 @@ import {
   editStudentName,
   editStudentGithubName,
   editStudentPreferredName,
+  editStudentEmail,
 } from '../actions';
 
 import {
@@ -60,8 +61,11 @@ class InputWithGrid extends Component {
     (this.props.element === "updateStudentName"){
       this.props.editStudentName(event.target.value);
     }else if
-    (this.props.element === "updateStudentEmail"){
+    (this.props.element === "updateGithubName"){
       this.props.editStudentGithubName(event.target.value);
+    }else if
+    (this.props.element === "updateStudentEmail"){
+      this.props.editStudentEmail(event.target.value);
     }else if
     (this.props.element === "updateStudentPreferredName"){
       this.props.editStudentPreferredName(event.target.value);
@@ -96,6 +100,7 @@ function mapDispatchToProps(dispatch){
           editStudentName,
           editStudentGithubName,
           editStudentPreferredName,
+          editStudentEmail,
 
         }, dispatch)
 }

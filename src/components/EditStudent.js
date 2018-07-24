@@ -22,8 +22,10 @@ class EditStudent extends Component {
             githubName: this.props.githubName,
             classroom: this.props.updateStudentClassroom,
             email: this.props.updateStudentEmail,
-            prefferedName:this.props.updateStudentPreferredName,
+            preferredName:this.props.updateStudentPreferredName,
         }
+        console.log('data:')
+        console.log(data)
         this.props.updateStudent(data)
     };
 
@@ -65,6 +67,7 @@ class EditStudent extends Component {
             <ChooseCohortOrClassForm titleSize="insideForm" funcName="chooseClassroomForUpdatingStudent"/>
 
             <InputWithGrid  element="updateStudentName" name="Student Name"/>
+            <InputWithGrid  element="updateGithubName" name="Github Name"/>
             {/* <InputWithGrid element="updateStudentClassroom" name="Classroom"/>  */}
             {/* deal with drop-down classroom */}
             <InputWithGrid element="updateStudentEmail" name="Email"/>

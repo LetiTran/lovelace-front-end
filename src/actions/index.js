@@ -48,6 +48,7 @@ export const UPDATE_STUDENT_NAME = "UPDATE_STUDENT_NAME"
 export const UPDATE_STUDENT_GITHUB_NAME = "UPDATE_STUDENT_GITHUB_NAME"
 export const UPDATE_PREFERRED_NAME = "UPDATE_PREFERRED_NAME"
 export const UPDATE_STUDENT_CLASSROOM_NAME = "UPDATE_STUDENT_CLASSROOM_NAME"
+export const UPDATE_STUDENT_EMAIL = "UPDATE_STUDENT_EMAIL"
 
 // *********** INSTRUCTORS *****************
 export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
@@ -526,6 +527,14 @@ export function editStudentGithubName(name) {
     return action
 }
 
+export function editStudentEmail(email) {
+    const action = {
+        type: UPDATE_STUDENT_EMAIL,
+        email
+    };
+    return action
+}
+
 export function editStudentPreferredName(name) {
     const action = {
         type: UPDATE_PREFERRED_NAME,
@@ -553,8 +562,8 @@ export function updateStudent(studentInfo){
     let email= studentInfo.email   
     let preferred_name = studentInfo.preferredName
     
-    // console.log("Sending Params:")
-    // console.log( id ,name, classroom_id, github_name,email,preferred_name)
+    console.log("Sending Params:")
+    console.log( id ,name, classroom_id, github_name,email,preferred_name)
 
     return dispatch => {
         api.putStudent({
