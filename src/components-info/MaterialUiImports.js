@@ -7,7 +7,6 @@ export {default as Divider} from '@material-ui/core/Divider';
 export {default as IconButton} from '@material-ui/core/IconButton';
 export {default as MenuIcon} from '@material-ui/icons/Menu';
 export {default as ChevronLeftIcon} from '@material-ui/icons/ChevronLeft';
-
 // For Assignments and StudentsList
 export {default as Table} from '@material-ui/core/Table';
 export {default as TableBody} from '@material-ui/core/TableBody';
@@ -84,7 +83,11 @@ export {default as SnackbarContent} from '@material-ui/core/SnackbarContent';
 export {default as WarningIcon} from '@material-ui/icons/Warning';
 export {default as SendIcon} from '@material-ui/icons/Send';
 
-
+// For expansion panels:
+export {default as ExpansionPanel} from '@material-ui/core/ExpansionPanel';
+export {default as ExpansionPanelDetails} from '@material-ui/core/ExpansionPanelDetails';
+export {default as ExpansionPanelSummary} from '@material-ui/core/ExpansionPanelSummary';
+export {default as ExpandMoreIcon} from '@material-ui/icons/ExpandMore';
 
 // For icons
 // This package has been deprecated

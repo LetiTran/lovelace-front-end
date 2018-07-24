@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import UpdateInstructorInfo from "../../components/UpdateInstructorInfo";
-import {saveSelectedInstructor, postUpdate, saveSelectedInstructorNewData} from '../../actions';
+import {saveSelectedInstructor, postUpdate, saveSelectedInstructorNewData} from '../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 // import MessageSnackBar from '../../components/MessageSnackBar.js';
@@ -12,9 +12,9 @@ import {
     Select,
     MenuItem,
     
-   } from '../../components-info/MaterialUiImports'
+   } from '../components-info/MaterialUiImports'
 
-class UpdateInstructor extends Component {
+class EditInstructor extends Component {
 
     postUpdate = () => {
         const data = {  
@@ -82,7 +82,7 @@ class UpdateInstructor extends Component {
   render() {
 
     return (
-        <section>
+        <section style={{width: "100%", justify:"center"}}>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
             <Grid  xs={8} item >
                 <Select
@@ -140,7 +140,7 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators({saveSelectedInstructor, postUpdate, saveSelectedInstructorNewData}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateInstructor);
+export default connect(mapStateToProps, mapDispatchToProps)(EditInstructor);
 
 
 

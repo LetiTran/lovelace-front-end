@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import {saveSelectedCohortforUpdating, updateCohort} from '../../actions';
+import {saveSelectedCohortforUpdating, updateCohort} from '../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import InputWithGrid from  '../../components/InputWithGrid';
-import DatePickers from '../../components/DatePicker.js'
+import InputWithGrid from  './InputWithGrid';
+import DatePickers from './DatePicker.js'
 
 import { 
     Grid, 
     Button,
     Select,
     MenuItem,
-   } from '../../components-info/MaterialUiImports'
+   } from '../components-info/MaterialUiImports'
 
 class EditCohort extends Component {
 

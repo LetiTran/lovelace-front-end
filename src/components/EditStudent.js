@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import {saveSelectedStudentforUpdating, updateStudent} from '../../actions';
+import {saveSelectedStudentforUpdating, updateStudent} from '../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import InputWithGrid from  '../../components/InputWithGrid';
-import ChooseCohortOrClassForm from '../../components/ChooseCohortOrClassForm';
+import InputWithGrid from  './InputWithGrid';
+import ChooseCohortOrClassForm from './ChooseCohortOrClassForm';
 
 import { 
     Grid, 
     Button,
     Select,
     MenuItem,
-   } from '../../components-info/MaterialUiImports'
+   } from '../components-info/MaterialUiImports'
 
 class EditStudent extends Component {
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {saveSelectedClassroom, postUpdate, saveSelectedClassroomNewData} from '../../actions';
+import {saveSelectedClassroom, postUpdate, saveSelectedClassroomNewData} from '../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -9,7 +9,7 @@ import {
     TextField,
     Select,
     MenuItem,
-   } from '../../components-info/MaterialUiImports'
+   } from '../components-info/MaterialUiImports'
 
 class EditClassroom extends Component {
 

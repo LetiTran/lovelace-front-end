@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 // import SelectCohortForm from "../../components/SelectCohortForm";
 // import SelectClassroomForm from "../../components/SelectClassroomForm";
-import AddNewInstructorInfo from "../../components/AddNewInstructorInfo";
+import AddNewInstructorInfo from "./AddNewInstructorInfo";
 // import classNames from 'classnames';
 // import PropTypes from 'prop-types';
-import {createInstructor} from '../../actions';
+import {createInstructor} from '../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 // import {addNamesToInviteList} from '../actions';
-import MessageSnackBar from '../../components/MessageSnackBar.js';
+// import MessageSnackBar from '../../components/MessageSnackBar.js';
 
 
 import { 
     Grid, 
     Button,
     // SendIcon
-   } from '../../components-info/MaterialUiImports'
+   } from '../components-info/MaterialUiImports'
 
 //    export function RenderMessage(message) {
 //     if (message){
@@ -44,8 +44,7 @@ class CreateNewInstructor extends Component {
   render() {
 
     return (
-        <section>
-        
+        <section style={{width: "100%", justify:"center"}}>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
             <Grid  xs={8} item >
                 <AddNewInstructorInfo />

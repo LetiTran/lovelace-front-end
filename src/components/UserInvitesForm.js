@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import SelectCohortForm from "../../components/SelectCohortForm";
-import SelectClassroomForm from "../../components/SelectClassroomForm";
-import AddHeadlineToUserInvites from "../../components/AddStudentsToUserInvites";
+import SelectCohortForm from "./SelectCohortForm";
+import SelectClassroomForm from "./SelectClassroomForm";
+import AddHeadlineToUserInvites from "./AddStudentsToUserInvites";
 // import classNames from 'classnames';
 // import PropTypes from 'prop-types';
-import {createUserInvites} from '../../actions';
+import {createUserInvites} from '../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 // import {addNamesToInviteList} from '../actions';
-import RadioButtonsGroup from '../../components/RadioButton.js'
-import {addNamesToInviteList} from '../../actions';
+import RadioButtonsGroup from './RadioButton.js'
+import {addNamesToInviteList} from '../actions';
 
 import { 
     Grid, 
@@ -17,7 +17,7 @@ import {
     
 Card,
 TextField,
-   } from '../../components-info/MaterialUiImports'
+   } from '../components-info/MaterialUiImports'
 
 class UserInvitesForm extends Component {
 
@@ -126,7 +126,7 @@ class UserInvitesForm extends Component {
     }
 
     return (
-        <section>
+        <section style={{width: "100%", justify:"center"}}>
             <RadioButtonsGroup displayFormCallBack={this.changeInviteType}/>
             <DisplayCohortAndClass />
             <Card  style={{ margin:3}} >
