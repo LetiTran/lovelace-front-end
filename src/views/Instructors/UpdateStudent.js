@@ -3,6 +3,7 @@ import {saveSelectedStudentforUpdating, updateStudent} from '../../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import InputWithGrid from  '../../components/InputWithGrid';
+import ChooseCohortOrClassForm from '../../components/ChooseCohortOrClassForm';
 
 import { 
     Grid, 
@@ -47,6 +48,8 @@ renderStudentsList =() => {
         <section>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
             <Grid  xs={8} item >
+            {/* TODO: put title on select fields */}
+            <p>student:</p>
                 <Select
                  value={this.props.selectedtStudentToUpdate}
                  onChange={this.handleStudentChange}
@@ -58,8 +61,12 @@ renderStudentsList =() => {
                 </Select>
                 </Grid>
                 <Grid  xs={8} item >
+                
+                <p>classroom:</p>
+                <ChooseCohortOrClassForm titleSize="insideForm" funcName="chooseClassroomForUpdatingStudent"/>
+
                 <InputWithGrid  element="updateStudentName" name="Student Name"/>
-                <InputWithGrid element="updateStudentClassroom" name="Classroom"/> 
+                {/* <InputWithGrid element="updateStudentClassroom" name="Classroom"/>  */}
                 {/* deal with drop-down classroom */}
                 <InputWithGrid element="updateStudentEmail" name="Email"/>
                 <InputWithGrid element="updateStudentPreferredName" name="PreferredName"/>

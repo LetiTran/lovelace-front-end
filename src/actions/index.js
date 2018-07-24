@@ -47,6 +47,7 @@ export const STORE_SELECTED_STUDENT_TO_UPDATE = "STORE_SELECTED_STUDENT_TO_UPDAT
 export const UPDATE_STUDENT_NAME = "UPDATE_STUDENT_NAME"
 export const UPDATE_STUDENT_GITHUB_NAME = "UPDATE_STUDENT_GITHUB_NAME"
 export const UPDATE_PREFERRED_NAME = "UPDATE_PREFERRED_NAME"
+export const UPDATE_STUDENT_CLASSROOM_NAME = "UPDATE_STUDENT_CLASSROOM_NAME"
 
 // *********** INSTRUCTORS *****************
 export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
@@ -533,6 +534,13 @@ export function editStudentPreferredName(name) {
     return action
 }
 
+export function saveStudentnewClassroom(classroom) {
+    const action = {
+        type: UPDATE_STUDENT_CLASSROOM_NAME,
+        classroom
+    };
+    return action
+}
 
 
 export function updateStudent(studentInfo){

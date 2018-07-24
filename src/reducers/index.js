@@ -16,7 +16,7 @@ import {
     UPDATE_COHORT_INT_START_DATE, UPDATE_COHORT_INT_END_DATE,
     UPDATE_COHORT_GRAD_DATE, STORE_SELECTED_COHORT_TO_UPDATE,
     STORE_SELECTED_STUDENT_TO_UPDATE, UPDATE_STUDENT_NAME,
-    UPDATE_STUDENT_GITHUB_NAME,UPDATE_PREFERRED_NAME
+    UPDATE_STUDENT_GITHUB_NAME,UPDATE_PREFERRED_NAME, UPDATE_STUDENT_CLASSROOM_NAME
     } from '../actions';
 
 // TODO: ORGANIZE, divide them into hashes if better
@@ -338,6 +338,10 @@ const stateList = {
             updateStudentPreferredName: action.name
          }) 
  
+        case UPDATE_STUDENT_CLASSROOM_NAME:
+        return Object.assign({}, state, {
+            updateStudentClassroom: action.classroom
+        })
 
         // *********** INSTRUCTORS *****************    
         case GET_INSTRUCTORS_LIST_SUCCEDED:
