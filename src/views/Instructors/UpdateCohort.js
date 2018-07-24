@@ -8,7 +8,6 @@ import DatePickers from '../../components/DatePicker.js'
 import { 
     Grid, 
     Button,
-    TextField,
     Select,
     MenuItem,
    } from '../../components-info/MaterialUiImports'
@@ -31,41 +30,18 @@ class EditCohort extends Component {
         this.props.updateCohort(data)
     };
 
-//     handleNameChange = (event) => {
-//         const cohortData = 
-//         {
-//             id: this.props.selectedtCohortToUpdate.id,
-//             name: event.target.value,
-//             cohort_id: this.props.selectedtCohortToUpdate.cohort_id
-//        }
-//         this.props.saveSelectedCohortforUpdatingNewData(cohortData);
-//    }
-
-//    handleChange = ( event) => {
-//        console.log(this.props.selectedtCohortToUpdate)
-//         const cohortData = 
-//         {
-
-//         id: this.props.selectedtCohortToUpdate.id,
-//         name: this.props.selectedtCohortToUpdate.name,
-//         cohort_id: event.target.value,
-//     }
-//         this.props.saveSelectedCohortforUpdatingNewData(cohortData);
-// }
-
-handleCohortChange =(event) => {
-    console.log(event.target.value)
-    this.props.saveSelectedCohortforUpdating(event.target.value)
-}
-
-renderCohortsList =() => {
-        return this.props.cohortList.map((cohort, index) => {
-            return (
-            <MenuItem key={index} value={cohort.id}> {cohort.name} </MenuItem>
-            );
-        });
+    handleCohortChange =(event) => {
+        console.log(event.target.value)
+        this.props.saveSelectedCohortforUpdating(event.target.value)
     }
 
+    renderCohortsList =() => {
+            return this.props.cohortList.map((cohort, index) => {
+                return (
+                <MenuItem key={index} value={cohort.id}> {cohort.name} </MenuItem>
+                );
+            });
+    }
 
   render() {
     return (
@@ -105,10 +81,9 @@ renderCohortsList =() => {
 
 function mapStateToProps(state) {
     return {
-        selectedtCohortToUpdate: state.selectedtCohortToUpdate,
-        cohortList : state.cohortList,
-
-    updateCohortNumber: state.updateCohortNumber,
+       selectedtCohortToUpdate: state.selectedtCohortToUpdate,
+       cohortList : state.cohortList,
+       updateCohortNumber: state.updateCohortNumber,
        updateCohortName: state.updateCohortName,
        updateCohortRepoName: state.updateCohortRepoName,
        updateCohortClassStartDate: state.updateCohortClassStartDate,
@@ -116,7 +91,7 @@ function mapStateToProps(state) {
        updateCohortInternshipStartDate: state.updateCohortInternshipStartDate,
        updateCohortInternshipEndDate: state.updateCohortInternshipEndDate,
        updateCohortGraduationDate: state.updateCohortGraduationDate,
-        }
+    }
 }
 
 function mapDispatchToProps(dispatch){
@@ -124,7 +99,3 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditCohort);
-
-
-
-// placeholder={this.props.selectedtCohortToUpdate ? this.props.selectedtCohortToUpdate.id : 'select'}

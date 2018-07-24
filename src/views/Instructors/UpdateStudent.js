@@ -28,20 +28,19 @@ class EditStudent extends Component {
     };
 
 
-handleStudentChange =(event) => {
-    console.log('handlechange')
-    console.log(event.target.value)
-    this.props.saveSelectedStudentforUpdating(event.target.value)
-}
-
-renderStudentsList =() => {
-        return this.props.studentsList.map((student, index) => {
-            return (
-            <MenuItem key={index} value={student.id}> {student.name} </MenuItem>
-            );
-        });
+    handleStudentChange =(event) => {
+        console.log('handlechange')
+        console.log(event.target.value)
+        this.props.saveSelectedStudentforUpdating(event.target.value)
     }
 
+    renderStudentsList =() => {
+            return this.props.studentsList.map((student, index) => {
+                return (
+                <MenuItem key={index} value={student.id}> {student.name} </MenuItem>
+                );
+            });
+    }
 
   render() {
     return (
@@ -50,27 +49,27 @@ renderStudentsList =() => {
             <Grid  xs={8} item >
             {/* TODO: put title on select fields */}
             <p>student:</p>
-                <Select
-                 value={this.props.selectedtStudentToUpdate}
-                 onChange={this.handleStudentChange}
-                 inputProps={{
-                 name: `change`,
-                 id: 'change-student',
-                 }}>
-                 {this.renderStudentsList()}
-                </Select>
-                </Grid>
-                <Grid  xs={8} item >
-                
-                <p>classroom:</p>
-                <ChooseCohortOrClassForm titleSize="insideForm" funcName="chooseClassroomForUpdatingStudent"/>
+            <Select
+                value={this.props.selectedtStudentToUpdate}
+                onChange={this.handleStudentChange}
+                inputProps={{
+                name: `change`,
+                id: 'change-student',
+                }}>
+                {this.renderStudentsList()}
+            </Select>
+            </Grid>
+            <Grid  xs={8} item >
+            
+            <p>classroom:</p>
+            <ChooseCohortOrClassForm titleSize="insideForm" funcName="chooseClassroomForUpdatingStudent"/>
 
-                <InputWithGrid  element="updateStudentName" name="Student Name"/>
-                {/* <InputWithGrid element="updateStudentClassroom" name="Classroom"/>  */}
-                {/* deal with drop-down classroom */}
-                <InputWithGrid element="updateStudentEmail" name="Email"/>
-                <InputWithGrid element="updateStudentPreferredName" name="PreferredName"/>
-                </Grid>
+            <InputWithGrid  element="updateStudentName" name="Student Name"/>
+            {/* <InputWithGrid element="updateStudentClassroom" name="Classroom"/>  */}
+            {/* deal with drop-down classroom */}
+            <InputWithGrid element="updateStudentEmail" name="Email"/>
+            <InputWithGrid element="updateStudentPreferredName" name="PreferredName"/>
+            </Grid>
         </Grid>
         <Grid style={{margin:"30px"}} container justify="center">
             <Button onClick={this.updateStudent} style={{width:"300px"}} variant="contained" color="primary" >
@@ -85,7 +84,6 @@ renderStudentsList =() => {
 function mapStateToProps(state) {
     return {
         studentsList : state.studentsList,
-
         selectedtStudentToUpdate:state.selectedtStudentToUpdate,
         updateStudentName: state.updateStudentName,
         githubName: state.updateGithubName,

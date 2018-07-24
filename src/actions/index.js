@@ -1,5 +1,5 @@
 import * as api from '../api';
-import RenderMessage from '../views/Instructors/CreateNewInstructor.js'
+// import RenderMessage from '../views/Instructors/CreateNewInstructor.js'
 
 // ____________________EXPORTS:____________________
 
@@ -544,17 +544,17 @@ export function saveStudentnewClassroom(classroom) {
 
 
 export function updateStudent(studentInfo){
-    console.log("studentInfo:")
-    console.log(studentInfo)
+    // console.log("studentInfo:")
+    // console.log(studentInfo)
     let id = studentInfo.id
     let name= studentInfo.name
-    let classroom_id= studentInfo.classroom ///figure this out
+    let classroom_id= studentInfo.classroom 
     let github_name = studentInfo.githubName   
     let email= studentInfo.email   
     let preferred_name = studentInfo.preferredName
     
-    console.log("Sending Params:")
-    console.log( id ,name, classroom_id, github_name,email,preferred_name)
+    // console.log("Sending Params:")
+    // console.log( id ,name, classroom_id, github_name,email,preferred_name)
 
     return dispatch => {
         api.putStudent({
@@ -584,7 +584,7 @@ export function saveSelectedStudentforUpdating(studentId) {
             } 
         });
     }
-    }
+}
 
 
 export function fetchStudentForUpdatingSucceeded(student) {

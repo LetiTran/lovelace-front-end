@@ -63,6 +63,7 @@ class Student extends Component {
             <Button onClick={this.props.openGitHubProfile} color="primary">
               See GitHub Page
             </Button>
+            {/* TODO: add a button to edit that will take you to the EditStudent link, with the given student selected */}
             <Button onClick={this.handleClose} color="primary">
               Close
             </Button>

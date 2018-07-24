@@ -7,25 +7,12 @@ import {
   storeNewCohortName,
   storeNewCohortNumber,
   storeNewCohortRepoName,
-  // storeNewCohortClassStartDate,
-  // storeNewCohortClassEndDate,
-  // storeNewCohortIntStartDate,
-  // storeNewCohortIntEndDate,
-  // storeNewCohortGradDate,
   storeNewInstructorName,
   storeNewInstructorGithubName,
 
-  // editClassroomName,
   editCohortName,
   editCohortNumber,
   editCohortRepoName,
-  // editCohortClassStartDate,
-  // editCohortClassEndDate,
-  // editCohortIntStartDate,
-  // editCohortIntEndDate,
-  // editCohortGradDate,
-  // editInstructorName,
-  // editInstructorGithubName
 
   editStudentName,
   editStudentGithubName,
@@ -39,6 +26,7 @@ import {
 
 class InputWithGrid extends Component {
 
+  // TODO: Make it a Switch-case function instead
   handleChange = (event) => {
     if
     (this.props.element === "newClassroomName") {
@@ -98,25 +86,12 @@ function mapDispatchToProps(dispatch){
           storeNewCohortName,
           storeNewCohortNumber,
           storeNewCohortRepoName,
-          // storeNewCohortClassStartDate,
-          // storeNewCohortClassEndDate,
-          // storeNewCohortIntStartDate,
-          // storeNewCohortIntEndDate,
-          // storeNewCohortGradDate,
           storeNewInstructorName,
           storeNewInstructorGithubName,
 
-          // editClassroomName,
           editCohortName,
           editCohortNumber,
           editCohortRepoName,
-          // editCohortClassStartDate,
-          // editCohortClassEndDate,
-          // editCohortIntStartDate,
-          // editCohortIntEndDate,
-          // editCohortGradDate,
-          // editInstructorName,
-          // editInstructorGithubName
 
           editStudentName,
           editStudentGithubName,

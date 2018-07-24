@@ -19,7 +19,6 @@ import {
     UPDATE_STUDENT_GITHUB_NAME,UPDATE_PREFERRED_NAME, UPDATE_STUDENT_CLASSROOM_NAME
     } from '../actions';
 
-// TODO: ORGANIZE, divide them into hashes if better
 const stateList = {
     currentCohort: 0, 
     cohortList: [], 
@@ -56,7 +55,6 @@ const stateList = {
     newInstructorName: "",
     newInstructorGithubName: "",
 
-    // selectedtInstructorToUpdate: null,
     selectedtInstructorToUpdate: {
         id: null,
         name: null, 
@@ -87,6 +85,12 @@ const stateList = {
     updateStudentEmail: null,
     updateStudentPreferredName: null,
 
+    // TODO: Can't decide which way is better, 
+    // Having several separate states for each attribute or comine them in a hash
+    // - hash means way more repetitions inside the component code
+    // - separate states for each means lots of more repeating ereducers and actions,
+    // Not enough time to think about this.
+
 }
 
  function performAction(state = stateList, action) {
@@ -100,34 +104,34 @@ const stateList = {
         })
     
 
-        case GET_COHORT_LIST_SUCCEDED: {
+        case GET_COHORT_LIST_SUCCEDED: 
+        {
+            let selectCohort = state.currentCohort
+            let cohortList = action.payload.cohortList
+            let cohortListSize = action.payload.cohortList.length-1
+            let assignCohortForNewClassroom = state.selectedCohortOnFormForNewClassroom
 
-        let selectCohort = state.currentCohort
-        let cohortList = action.payload.cohortList
-        let cohortListSize = action.payload.cohortList.length-1
-        let assignCohortForNewClassroom = state.selectedCohortOnFormForNewClassroom
+            if(state.selectedCohortOnFormForNewClassroom === 0)  {
+                assignCohortForNewClassroom = cohortList[cohortListSize].id
+            }
 
-        if(state.selectedCohortOnFormForNewClassroom === 0)  {
-            assignCohortForNewClassroom = cohortList[cohortListSize].id
+            if(state.currentCohort === 0)  {
+                selectCohort = cohortList[cohortListSize].id
+            }
+
+            let assignCohortOnForm = stateList.selectedCohortOnForm
+            if(state.currentCohort === 0){
+            assignCohortOnForm = cohortList[cohortList.length - 1]
+            }
+
+            // Can't use .pop() here! TODO: refactor all this variables..... 
+            return Object.assign({}, state, {
+                cohortList : action.payload.cohortList,
+                currentCohort: selectCohort,
+                selectedCohortOnForm: assignCohortOnForm,
+                selectedCohortOnFormForNewClassroom: assignCohortForNewClassroom,
+            })
         }
-
-        if(state.currentCohort === 0)  {
-            selectCohort = cohortList[cohortListSize].id
-        }
-
-        let assignCohortOnForm = stateList.selectedCohortOnForm
-        if(state.currentCohort === 0){
-        assignCohortOnForm = cohortList[cohortList.length - 1]
-        }
-
-        // Can't use .pop() here! TODO: refactor all this variables..... 
-        return Object.assign({}, state, {
-            cohortList : action.payload.cohortList,
-            currentCohort: selectCohort,
-            selectedCohortOnForm: assignCohortOnForm,
-            selectedCohortOnFormForNewClassroom: assignCohortForNewClassroom,
-        })
-    }
 
         case CHANGE_COHORT_ON_FORM:
         return Object.assign({}, state, {
@@ -178,8 +182,6 @@ const stateList = {
         return Object.assign({}, state, {
             newCohortGraduationDate: action.date
         }) 
-
-            // -----
 
         case UPDATE_COHORT_NUMBER:
         return Object.assign({}, state, {
@@ -261,9 +263,6 @@ const stateList = {
         }
 
         case CHANGE_CLASSROOM_ON_FORM:
-        // let thisClassroom = state.classroomList.filter((classroom) => {
-        //     return classroom.id === action.classroom
-        // })
         return Object.assign({}, state, {
             selectedClassroomOnForm : action.classroom
         })
@@ -291,9 +290,6 @@ const stateList = {
 
          // *********** ASSIGNMENTS *****************    
          case GET_ASSIGNMENTS_LIST_SUCCEDED:
-        //  console.log("GET_ASSIGNMENTS_LIST_SUCCEDED called");
-        //  console.log(state, action)
-        //  console.log(action.payload.assignmentList)
          return Object.assign({}, state, {
              assignmentList : action.payload.assignmentList
          })
@@ -301,22 +297,15 @@ const stateList = {
 
          // *********** STUDENTS *****************    
          case GET_STUDENTS_LIST_SUCCEDED:
-        {//  console.log("GET_STUDENTS_LIST_SUCCEDED called");
-        //  console.log(state, action)
-        //  console.log(action.payload.studentsList)
-         // Filter students in current classromm
-          const studentsInCurrentClassrom = action.payload.studentsList.filter((student) => {
-            // console.log("state.currentClassroom")
-            // console.log(state.currentClassroom)
-            // console.log(student.classroom_id)
-            return student.classroom_id === state.currentClassroom.id
-        })
-        // console.log(studentsInCurrentClassrom)
-        // Change state:
-         return Object.assign({}, state, {
-             studentsList : action.payload.studentsList,
-             currentClassroomStudents: studentsInCurrentClassrom
-         })}
+         {
+            const studentsInCurrentClassrom = action.payload.studentsList.filter((student) => {
+                return student.classroom_id === state.currentClassroom.id
+            })
+            return Object.assign({}, state, {
+                studentsList : action.payload.studentsList,
+                currentClassroomStudents: studentsInCurrentClassrom
+            })
+         }
 
          case STORE_SELECTED_STUDENT_TO_UPDATE:
          return Object.assign({}, state, {
@@ -345,29 +334,14 @@ const stateList = {
 
         // *********** INSTRUCTORS *****************    
         case GET_INSTRUCTORS_LIST_SUCCEDED:
-       { // console.log("GET_INSTRUCTORS_LIST_SUCCEDED called");
-        // console.log(state, action)
-        // console.log(action.payload.instructorsList)
-
-        // Filter instructors in current classromm
-        // console.log(action.payload.instructorsList.instructors)
-        const activeInstructors = action.payload.instructorsList.instructors.filter((instructor) => {
-            // console.log(instructor)
-            return instructor.active === true
-            
-        })
-
-        // console.log(activeInstructors)
-        // console.log(activeInstructors)
-        // Change state:
-        return Object.assign({}, state, {
-            instructorsList : activeInstructors,
-        })}
-
-        // case CREATE_INSTRUCTOR:
-        // return Object.assign({}, state, {
-        //     newInstructorInfo: action.payload.newInstructorInfo,
-        // })
+        {
+            const activeInstructors = action.payload.instructorsList.instructors.filter((instructor) => {
+                return instructor.active === true
+            })
+            return Object.assign({}, state, {
+                instructorsList : activeInstructors,
+            })
+        }
 
         case STORE_SELECTED_INSTRUCTOR_NEW_DATA:
         return Object.assign({}, state, {
@@ -375,16 +349,17 @@ const stateList = {
         })
 
         case STORE_SELECTED_INSTRUCTOR:
-{
-        const selectedInstructorData = {
-            id: action.payload.instructor.id,
-            name: action.payload.instructor.name, 
-            github_name: action.payload.instructor.github_name, 
-            active: action.payload.instructor.active,
+        {
+            const selectedInstructorData = {
+                id: action.payload.instructor.id,
+                name: action.payload.instructor.name, 
+                github_name: action.payload.instructor.github_name, 
+                active: action.payload.instructor.active,
+            }
+            return Object.assign({}, state, {
+                selectedtInstructorToUpdate: selectedInstructorData
+            })
         }
-        return Object.assign({}, state, {
-            selectedtInstructorToUpdate: selectedInstructorData
-        })}
 
         case STORE_NEW_INSTRUCTOR_NAME:
         return Object.assign({}, state, {
@@ -402,11 +377,6 @@ const stateList = {
         return Object.assign({}, state, {
             addedNamesForInvites : action.payload.names,
         })
-
-        // case CREATE_INVITES_SUCCEEDED:
-        // return {
-        //     post_request_answer: action.payload.invites
-        // }
 
         default:
         return state

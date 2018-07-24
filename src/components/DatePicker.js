@@ -35,12 +35,11 @@ const styles = theme => ({
   },
 });
 
-//  TODO: right now it will not update the state of the dates if no change on form happen for that particular DatePicker 
+//  TODO: right now it will not update the state of the dates if no change on form happen for that particular DatePicker, FIX it!
 
 class DatePickers  extends Component {
 
-
- handleChange = (event)  =>{
+  handleChange = (event)  =>{
   if
   (this.props.element === "newCohortClassStartDate"){
     this.props.storeNewCohortClassStartDate(event.target.value);
@@ -120,5 +119,3 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(null, mapDispatchToProps)(withStyles(styles)(DatePickers))
-
-// export default connect(mapStateToProps, mapDispatchToProps)(DatePickers);

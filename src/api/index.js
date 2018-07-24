@@ -1,9 +1,12 @@
 import axios from 'axios';
-// require('dotenv').config({path:'../../.env'})
 
+// TODO: .env won't work... (?)
+// require('dotenv').config({path:'../../.env'})
 // console.log(process.env)
 // const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
-const API_BASE_URL = `http://localhost:3000/`;
+
+
+// const API_BASE_URL = `http://localhost:3000/`;
 // const API_BASE_URL = `https://lovelace-be-heroku.herokuapp.com/`;
 
 
@@ -50,26 +53,14 @@ export function postClassroom(data) {
 }
 
 export function postUserInvites(data) {
-    // headers_content = {
-    //     'github_name': `${data.studentList}`,
-    //     'classroom_id': `${data.classrom}`,
-    //     'role': `${data.role}`
-    // }
-//    console.log(data)
-// console(" client.post('invites', data) : ")
-//     console.log(data)
     return client.post('invites', data)
 }
 
 export function postInstructor(data) {
-   console.log("client.post('instructors', data) : ")
-    console.log(data)
     return client.post('instructors', data)
 }
 
 export function putInstructor(data) {
-   console.log("client.put('instructors', data) : ")
-    console.log(data)
     return client.put(`instructors/${data.id}`, data)
 }
 
