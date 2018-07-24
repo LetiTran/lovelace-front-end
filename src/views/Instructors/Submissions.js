@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-// import Submission from './Submission.js'
+import Submission from '../../components/Submission.js'
 
 // For Redux:
 import {connect} from 'react-redux';
@@ -23,32 +23,69 @@ class SubmissionList extends Component {
       
     renderSubmissionList = () => {
     // console.log('studentsList in renderSubmissiontList: ' )
-    // console.log(this.props.studentsList)
+    console.log(this.props.submissionList)
     // console.log(this.props.currentClassroomSubmissions)
-        return this.props.currentClassroomSubmissions.map((student,index) => {
+        return this.props.submissionList.map((submission,index) => {
         //  To change it for ALL STUDENTS LIST, swap this two lines:
         //  return this.props.studentsList.map((student,index) => {
         return (
-            <p>put list</p>
-            // <Submission
-            //     key={index}
-            //     type={student.type}
-            //     // onClick={()=> this.openProfile(student)}
-            //     openGitHubProfile={()=> window.open("https://github.com/" + student.github_name, "_blank")}
-            //     name={student.name}
-            //     email={student.email} 
-            //     classroom={student.classroom_id}
-            //     // TODO: API sending only classroom_id --> how to sen dclass name and cohort?... do it on back-end
-            //     githubName={student.github_name}
-            // />
+            <Submission
+                key={index}
+                studentId={submission.student_id}
+                // student_name={submission.student_name}
+                assignmentId={submission.assignment_id}
+                // assignmentName={submission.assignment_name}
+                openPrUrl={()=> window.open(submission.pr_url, "_blank")}
+                prUrl={submission.pr_url}
+                submittedAt={submission.submitted_at}
+                feedbackUrl={submission.feedback_url} 
+                grade={submission.grade}
+                instructorId={submission.instructor_id}
+                // instructorName={submission.instructor_name}
+            />
         );
         });
     }
 
   render() {
+
+    const styles =  {
+        root: {
+          width: '100%',
+          marginTop: 10,
+          overflowX: 'auto',
+        },
+        table: {
+          minWidth: 700,
+        },
+      };
+
     return (
-    <section >
-    <p>put list</p>
+        
+  <section style={styles.root}>
+    <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
+      Submissions {this.props.classroomName}
+    </Typography>
+
+    <Paper >
+      <Table >
+        <TableHead>
+          <TableRow>
+            <TableCell>Student </TableCell>
+            <TableCell>Assignment</TableCell>
+            <TableCell>Submiaaion Date</TableCell>
+            <TableCell>PR URL</TableCell>
+            <TableCell>Feedback URL</TableCell>
+            <TableCell>Feedback Instructor</TableCell>
+            <TableCell>Grade</TableCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+        {this.renderSubmissionList()}
+        </TableBody>
+      </Table>
+    </Paper>
     
     </section>
     )
@@ -61,6 +98,7 @@ SubmissionList.propTypes = {
 
 function mapStateToProps(state) {
       return {
+        submissionList: state.submissionList
       }
   }
   
@@ -68,5 +106,5 @@ function mapStateToProps(state) {
       return bindActionCreators({ }, dispatch)
     }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(SubmissionList);
+  export default connect(mapStateToProps, null)(SubmissionList);
   

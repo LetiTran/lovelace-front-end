@@ -16,7 +16,8 @@ import {
     UPDATE_COHORT_INT_START_DATE, UPDATE_COHORT_INT_END_DATE,
     UPDATE_COHORT_GRAD_DATE, STORE_SELECTED_COHORT_TO_UPDATE,
     STORE_SELECTED_STUDENT_TO_UPDATE, UPDATE_STUDENT_NAME, UPDATE_STUDENT_EMAIL,
-    UPDATE_STUDENT_GITHUB_NAME,UPDATE_PREFERRED_NAME, UPDATE_STUDENT_CLASSROOM_NAME
+    UPDATE_STUDENT_GITHUB_NAME,UPDATE_PREFERRED_NAME, UPDATE_STUDENT_CLASSROOM_NAME,
+    GET_SUBMISSION_LIST_SUCCEDED
     } from '../actions';
 
 const stateList = {
@@ -84,6 +85,8 @@ const stateList = {
     updateStudentClassroom: null,
     updateStudentEmail: null,
     updateStudentPreferredName: null,
+
+    submissionList: null,
 
     // TODO: Can't decide which way is better, 
     // Having several separate states for each attribute or comine them in a hash
@@ -387,6 +390,14 @@ const stateList = {
         return Object.assign({}, state, {
             addedNamesForInvites : action.payload.names,
         })
+
+
+        // *********** SUBMISSIONS *****************  
+        case GET_SUBMISSION_LIST_SUCCEDED:
+        return Object.assign({}, state, {
+            submissionList: action.payload.submissionList
+        })
+
 
         default:
         return state

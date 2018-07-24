@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 // Styles:
-import Footer from './components/Footer.js';
+// import Footer from './components/Footer.js';
 import MiniDrawer from './components/MiniDrawer'
 import Grid from "@material-ui/core/es/Grid/Grid";
 
 // For Redux:
-import {fetchClassroomList, fetchCohortList, fetchInstructorsList, fetchStudentsList} from './actions';
+import {fetchSubmissionList, fetchClassroomList, fetchCohortList, fetchInstructorsList, fetchStudentsList} from './actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import withRouter from 'react-router-dom/es/withRouter'; // needed because of <Provider> around <Routes>
@@ -22,7 +22,8 @@ class App extends Component {
     this.props.fetchClassroomList()
     this.props.fetchCohortList()
     this.props.fetchInstructorsList()
-    this.props.fetchStudentsList()    
+    this.props.fetchStudentsList()   
+    this.props.fetchSubmissionList() 
   }
   
   render() {    
@@ -44,7 +45,7 @@ class App extends Component {
 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchClassroomList, fetchCohortList, fetchInstructorsList, fetchStudentsList}, dispatch)
+  return bindActionCreators({fetchSubmissionList, fetchClassroomList, fetchCohortList, fetchInstructorsList, fetchStudentsList}, dispatch)
 }
 
 export default withRouter(connect(null, mapDispatchToProps)(App));

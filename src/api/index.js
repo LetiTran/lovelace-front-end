@@ -17,6 +17,10 @@ const client = axios.create({
     },
 });
 
+export function fetchSubmissionList() {
+    return client.get('submissions');
+}
+
 export function fetchClassroomList() {
     return client.get('classroomsapi');
 }
@@ -83,3 +87,4 @@ export function putStudent(data){
 export function fetchStudent(id){
     return client.get(`students/${id}`);
 }
+

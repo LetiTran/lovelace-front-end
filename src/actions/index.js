@@ -64,7 +64,8 @@ export const STORE_NEW_INSTRUCTOR_GITHUB_NAME = "STORE_NEW_INSTRUCTOR_GITHUB_NAM
 export const CREATE_USER_INVITES = "CREATE_USER_INVITES"
 export const CREATE_INVITES_SUCCEEDED = "CREATE_INVITES_SUCCEEDED"
 
-
+// *********** SUBMISSIONS *****************
+export const GET_SUBMISSION_LIST_SUCCEDED = "GET_SUBMISSION_LIST_SUCCEDED"
 
 //  ____________________FUNCTIONS:____________________
 
@@ -798,5 +799,27 @@ export function postUpdate(data){
             });
         }
 
+    }
+}
+
+
+
+// *********** SUBMISSIONS *****************
+
+export function fetchSubmissionList() {
+    return dispatch => {
+        api.fetchSubmissionList().then(response => {
+            dispatch(fetchSubmissionListSucceded(response.data.submissions))
+        })
+    }
+}
+
+
+export function fetchSubmissionListSucceded(submissionList) {
+    return {
+    type: GET_SUBMISSION_LIST_SUCCEDED,
+        payload: {
+            submissionList
+        }
     }
 }
