@@ -78,15 +78,17 @@ const stateList = {
 }
 
  function performAction(state = stateList, action) {
+   
     switch (action.type) {
 
         // *********** COHORT *****************    
-        case CHANGE_COHORT:
+        case CHANGE_COHORT: 
         return Object.assign({}, state, {
             currentCohort : action.cohort
         })
+    
 
-        case GET_COHORT_LIST_SUCCEDED:
+        case GET_COHORT_LIST_SUCCEDED: {
 
         let selectCohort = state.currentCohort
         let cohortList = action.payload.cohortList
@@ -113,6 +115,7 @@ const stateList = {
             selectedCohortOnForm: assignCohortOnForm,
             selectedCohortOnFormForNewClassroom: assignCohortForNewClassroom,
         })
+    }
 
         case CHANGE_COHORT_ON_FORM:
         return Object.assign({}, state, {
@@ -166,17 +169,17 @@ const stateList = {
 
         // *********** CLASSROOM *****************
         case CHANGE_CLASSROOM:
-        let studentsInCurrentClassrom = state.studentsList.filter((student) => {
+        {let studentsInCurrentClassrom = state.studentsList.filter((student) => {
             return student.classroom_id === action.classroom
         })
         return Object.assign({}, state, {
             currentClassroom: action.classroom,
             currentClassroomStudents: studentsInCurrentClassrom
-        })
+        })}
 
         case GET_CLASSROOM_LIST_SUCCEDED:
 
-        let assignClassroom = state.currentClassroom
+       { let assignClassroom = state.currentClassroom
         let classroomList = action.payload.classroomList
         let classroomListSize = action.payload.classroomList.length-1
 
@@ -195,7 +198,8 @@ const stateList = {
             currentClassroom: assignClassroom,
             selectedClassroomOnForm: assignClassOnForm
         })
-        
+        }
+
         case CHANGE_CLASSROOM_ON_FORM:
         // let thisClassroom = state.classroomList.filter((classroom) => {
         //     return classroom.id === action.classroom
@@ -215,7 +219,7 @@ const stateList = {
         })
 
         case STORE_SELECTED_CLASSROOM:
-        console.log(action.payload.classroom)
+        {console.log(action.payload.classroom)
         const selectedClassroomData = {
             id: action.payload.classroom.id,
             name: action.payload.classroom.name, 
@@ -223,7 +227,7 @@ const stateList = {
         }
         return Object.assign({}, state, {
             selectedtClassroomToUpdate: selectedClassroomData
-        })
+        })}
 
          // *********** ASSIGNMENTS *****************    
          case GET_ASSIGNMENTS_LIST_SUCCEDED:
@@ -237,12 +241,12 @@ const stateList = {
 
          // *********** STUDENTS *****************    
          case GET_STUDENTS_LIST_SUCCEDED:
-        //  console.log("GET_STUDENTS_LIST_SUCCEDED called");
+        {//  console.log("GET_STUDENTS_LIST_SUCCEDED called");
         //  console.log(state, action)
         //  console.log(action.payload.studentsList)
 
          // Filter students in current classromm
-          studentsInCurrentClassrom = action.payload.studentsList.filter((student) => {
+          const studentsInCurrentClassrom = action.payload.studentsList.filter((student) => {
             // console.log("state.currentClassroom")
             // console.log(state.currentClassroom)
             // console.log(student.classroom_id)
@@ -254,12 +258,12 @@ const stateList = {
          return Object.assign({}, state, {
              studentsList : action.payload.studentsList,
              currentClassroomStudents: studentsInCurrentClassrom
-         })
+         })}
 
 
         // *********** INSTRUCTORS *****************    
         case GET_INSTRUCTORS_LIST_SUCCEDED:
-        // console.log("GET_INSTRUCTORS_LIST_SUCCEDED called");
+       { // console.log("GET_INSTRUCTORS_LIST_SUCCEDED called");
         // console.log(state, action)
         // console.log(action.payload.instructorsList)
 
@@ -276,7 +280,7 @@ const stateList = {
         // Change state:
         return Object.assign({}, state, {
             instructorsList : activeInstructors,
-        })
+        })}
 
         // case CREATE_INSTRUCTOR:
         // return Object.assign({}, state, {
@@ -289,7 +293,7 @@ const stateList = {
         })
 
         case STORE_SELECTED_INSTRUCTOR:
-
+{
         const selectedInstructorData = {
             id: action.payload.instructor.id,
             name: action.payload.instructor.name, 
@@ -298,7 +302,7 @@ const stateList = {
         }
         return Object.assign({}, state, {
             selectedtInstructorToUpdate: selectedInstructorData
-        })
+        })}
 
         case STORE_NEW_INSTRUCTOR_NAME:
         return Object.assign({}, state, {
