@@ -33,6 +33,10 @@ class Submission extends Component {
     window.open(this.props.openPrUrl)
   }
 
+  openFeedback=() => {
+    //   TODO: PUT feedback component here for this specific pr
+  }
+
   render() {
     return (
       <TableRow>
@@ -66,7 +70,10 @@ class Submission extends Component {
           </DialogContent>
           <DialogActions>
             <Button onClick={this.props.openPrPage} color="primary">
-              See PR Page
+              Go to PR Page
+            </Button>
+            <Button onClick={this.props.openFeedback} color="primary">
+              Go to Feedback
             </Button>
             <Button onClick={this.handleClose} color="primary">
               Close

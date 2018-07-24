@@ -5,7 +5,7 @@ import Submission from '../../components/Submission.js'
 // For Redux:
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-// import {fetchSubmissionList} from '../actions';
+import {fetchSubmissionList} from '../../actions';
 
 // For Styles:
 import { 
@@ -21,18 +21,17 @@ import {
 
 class SubmissionList extends Component {
       
+  componentDidMount(){
+    this.props.fetchSubmissionList() 
+  }
+
     renderSubmissionList = () => {
-    // console.log('studentsList in renderSubmissiontList: ' )
     console.log(this.props.submissionList)
-    // console.log(this.props.currentClassroomSubmissions)
         return this.props.submissionList.map((submission,index) => {
-        //  To change it for ALL STUDENTS LIST, swap this two lines:
-        //  return this.props.studentsList.map((student,index) => {
         return (
             <Submission
                 key={index}
                 studentId={submission.student_id}
-                // student_name={submission.student_name}
                 assignmentId={submission.assignment_id}
                 // assignmentName={submission.assignment_name}
                 openPrUrl={()=> window.open(submission.pr_url, "_blank")}
@@ -80,7 +79,6 @@ class SubmissionList extends Component {
             <TableCell>Grade</TableCell>
           </TableRow>
         </TableHead>
-
         <TableBody>
         {this.renderSubmissionList()}
         </TableBody>
@@ -103,8 +101,8 @@ function mapStateToProps(state) {
   }
   
   function mapDispatchToProps(dispatch) {
-      return bindActionCreators({ }, dispatch)
+      return bindActionCreators({fetchSubmissionList }, dispatch)
     }
   
-  export default connect(mapStateToProps, null)(SubmissionList);
+  export default connect(mapStateToProps, mapDispatchToProps)(SubmissionList);
   

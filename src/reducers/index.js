@@ -86,7 +86,7 @@ const stateList = {
     updateStudentEmail: null,
     updateStudentPreferredName: null,
 
-    submissionList: null,
+    submissionList: [],
 
     // TODO: Can't decide which way is better, 
     // Having several separate states for each attribute or comine them in a hash
