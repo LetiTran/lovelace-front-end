@@ -86,3 +86,11 @@ export function fetchCohort(id){
 export function putCohort(data){
     return client.put(`cohorts/${data.id}`, data)
 }
+
+export function putStudent(data){
+    return client.put(`students/${data.id}`, data)
+}
+
+export function fetchStudent(id){
+    return client.get(`students/${id}`);
+}

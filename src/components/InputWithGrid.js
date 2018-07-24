@@ -26,6 +26,10 @@ import {
   // editCohortGradDate,
   // editInstructorName,
   // editInstructorGithubName
+
+  editStudentName,
+  editStudentGithubName,
+  editStudentPreferredName,
 } from '../actions';
 
 import {
@@ -64,22 +68,16 @@ class InputWithGrid extends Component {
     (this.props.element === "updateCohortRepoName"){
       this.props.editCohortRepoName(event.target.value);
     }
-    // else if
-    // (this.props.element === "updateCohortNumber"){
-    //   this.props.editCohortClassStartDate(event.target.value);
-    // }else if
-    // (this.props.element === "updateCohortNumber"){
-    //   this.props.editCohortClassEndDate(event.target.value);
-    // }else if
-    // (this.props.element === "updateCohortNumber"){
-    //   this.props.editCohortIntStartDate(event.target.value);
-    // }else if
-    // (this.props.element === "updateCohortNumber"){
-    //   this.props.editCohortIntEndDate(event.target.value);
-    // }else if
-    // (this.props.element === "updateCohortNumber"){
-    //   this.props.editCohortGradDate(event.target.value);
-    // }
+    else if
+    (this.props.element === "updateStudentName"){
+      this.props.editStudentName(event.target.value);
+    }else if
+    (this.props.element === "updateStudentEmail"){
+      this.props.editStudentGithubName(event.target.value);
+    }else if
+    (this.props.element === "updateStudentPreferredName"){
+      this.props.editStudentPreferredName(event.target.value);
+    }
      
    };
 
@@ -119,6 +117,11 @@ function mapDispatchToProps(dispatch){
           // editCohortGradDate,
           // editInstructorName,
           // editInstructorGithubName
+
+          editStudentName,
+          editStudentGithubName,
+          editStudentPreferredName,
+
         }, dispatch)
 }
 

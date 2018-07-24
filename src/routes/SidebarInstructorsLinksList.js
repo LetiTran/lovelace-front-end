@@ -22,6 +22,7 @@ class SidebarInstructorsLinksList extends Component {
         <ListItemLink to="/lovelace-front-end/updateInstructor" primary="Update Instrcutors" icon={<CheckIcon />} />
         <ListItemLink to="/lovelace-front-end/updateClassroom" primary="Update Classroom" icon={<CheckIcon />} />
         <ListItemLink to="/lovelace-front-end/updateCohort" primary="Update Cohort" icon={<CheckIcon />} />
+        <ListItemLink to="/lovelace-front-end/updateStudent" primary="Update Student" icon={<CheckIcon />} />
 
 
       </div>

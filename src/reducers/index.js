@@ -14,7 +14,9 @@ import {
     UPDATE_COHORT_NUMBER, UPDATE_COHORT_NAME, UPDATE_COHORT_REPO_NAME, 
     UPDATE_COHORT_CLASS_START_DATE, UPDATE_COHORT_CLASS_END_DATE, 
     UPDATE_COHORT_INT_START_DATE, UPDATE_COHORT_INT_END_DATE,
-    UPDATE_COHORT_GRAD_DATE, STORE_SELECTED_COHORT_TO_UPDATE
+    UPDATE_COHORT_GRAD_DATE, STORE_SELECTED_COHORT_TO_UPDATE,
+    STORE_SELECTED_STUDENT_TO_UPDATE, UPDATE_STUDENT_NAME,
+    UPDATE_STUDENT_GITHUB_NAME,UPDATE_PREFERRED_NAME
     } from '../actions';
 
 // TODO: ORGANIZE, divide them into hashes if better
@@ -69,7 +71,6 @@ const stateList = {
     },
 
     selectedtCohortToUpdate: null,
-
     updateCohortNumber: null,
     updateCohortName: null,
     updateCohortRepoName: null,
@@ -78,6 +79,13 @@ const stateList = {
     updateCohortInternshipStartDate: null,
     updateCohortInternshipEndDate: null,
     updateCohortGraduationDate: null,
+
+    selectedtStudentToUpdate: null,
+    updateStudentName: null,
+    updateStudentGithubName: null,
+    updateStudentClassroom: null,
+    updateStudentEmail: null,
+    updateStudentPreferredName: null,
 
 }
 
@@ -214,10 +222,9 @@ const stateList = {
         }) 
 
         case STORE_SELECTED_COHORT_TO_UPDATE:
-
-            return Object.assign({}, state, {
-                selectedtCohortToUpdate: action.payload.cohort
-            }) 
+        return Object.assign({}, state, {
+            selectedtCohortToUpdate: action.payload.cohort
+        }) 
         
 
         // *********** CLASSROOM *****************
@@ -297,7 +304,6 @@ const stateList = {
         {//  console.log("GET_STUDENTS_LIST_SUCCEDED called");
         //  console.log(state, action)
         //  console.log(action.payload.studentsList)
-
          // Filter students in current classromm
           const studentsInCurrentClassrom = action.payload.studentsList.filter((student) => {
             // console.log("state.currentClassroom")
@@ -305,7 +311,6 @@ const stateList = {
             // console.log(student.classroom_id)
             return student.classroom_id === state.currentClassroom.id
         })
-
         // console.log(studentsInCurrentClassrom)
         // Change state:
          return Object.assign({}, state, {
@@ -313,6 +318,26 @@ const stateList = {
              currentClassroomStudents: studentsInCurrentClassrom
          })}
 
+         case STORE_SELECTED_STUDENT_TO_UPDATE:
+         return Object.assign({}, state, {
+             selectedtStudentToUpdate: action.payload.student
+         }) 
+         
+         case UPDATE_STUDENT_NAME:
+         return Object.assign({}, state, {
+             updateStudentName: action.name
+         }) 
+
+         case UPDATE_STUDENT_GITHUB_NAME:
+         return Object.assign({}, state, {
+            updateStudentGithubName: action.name
+         }) 
+
+         case UPDATE_PREFERRED_NAME:
+         return Object.assign({}, state, {
+            updateStudentPreferredName: action.name
+         }) 
+ 
 
         // *********** INSTRUCTORS *****************    
         case GET_INSTRUCTORS_LIST_SUCCEDED:

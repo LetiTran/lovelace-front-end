@@ -43,6 +43,10 @@ export const STORE_SELECTED_CLASSROOM = "STORE_SELECTED_CLASSROOM"
 // *********** STUDENTS *****************
 export const ADD_NAMES_TO_INVITE_LIST = "ADD_NAMES_TO_INVITE_LIST";
 export const GET_STUDENTS_LIST_SUCCEDED = "GET_STUDENTS_LIST_SUCCEDED";
+export const STORE_SELECTED_STUDENT_TO_UPDATE = "STORE_SELECTED_STUDENT_TO_UPDATE"
+export const UPDATE_STUDENT_NAME = "UPDATE_STUDENT_NAME"
+export const UPDATE_STUDENT_GITHUB_NAME = "UPDATE_STUDENT_GITHUB_NAME"
+export const UPDATE_PREFERRED_NAME = "UPDATE_PREFERRED_NAME"
 
 // *********** INSTRUCTORS *****************
 export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
@@ -501,6 +505,85 @@ export function fetchStudentsListSucceded(studentsList) {
     type: GET_STUDENTS_LIST_SUCCEDED,
         payload: {
             studentsList
+        }
+    }
+}
+
+export function editStudentName(name) {
+    const action = {
+        type: UPDATE_STUDENT_NAME,
+        name
+    };
+    return action
+}
+
+export function editStudentGithubName(name) {
+    const action = {
+        type: UPDATE_STUDENT_GITHUB_NAME,
+        name
+    };
+    return action
+}
+
+export function editStudentPreferredName(name) {
+    const action = {
+        type: UPDATE_PREFERRED_NAME,
+        name
+    };
+    return action
+}
+
+
+
+export function updateStudent(studentInfo){
+    console.log("studentInfo:")
+    console.log(studentInfo)
+    let id = studentInfo.id
+    let name= studentInfo.name
+    let classroom_id= studentInfo.classroom ///figure this out
+    let github_name = studentInfo.githubName   
+    let email= studentInfo.email   
+    let preferred_name = studentInfo.preferredName
+    
+    console.log("Sending Params:")
+    console.log( id ,name, classroom_id, github_name,email,preferred_name)
+
+    return dispatch => {
+        api.putStudent({
+            id ,name, classroom_id, github_name,email,preferred_name
+        }).then(response => {
+            console.log(response.data)
+            dispatch(fetchStudentsList())
+        }).catch((error) => {
+            if (error.response) {
+                console.log(error.response);
+                console.log(error.response.status);
+            } 
+        });
+    }
+}
+
+export function saveSelectedStudentforUpdating(studentId) {
+    console.log(studentId)
+    return dispatch => {
+        api.fetchStudent(studentId).then(response => {
+            console.log('student')
+            console.log(response.data)
+            dispatch(fetchStudentForUpdatingSucceeded(response.data))
+        }).catch((error) => {
+            if (error.response) {
+                console.log(error.response.status);
+            } 
+        });
+    }
+    }
+
+
+export function fetchStudentForUpdatingSucceeded(student) {
+    return {
+    type: STORE_SELECTED_STUDENT_TO_UPDATE,
+        payload: {
+            student
         }
     }
 }
