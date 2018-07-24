@@ -10,7 +10,11 @@ import {
     STORE_NEW_COHORT_GRAD_DATE, ADD_NAMES_TO_INVITE_LIST,
     STORE_NEW_INSTRUCTOR_NAME, STORE_NEW_INSTRUCTOR_GITHUB_NAME,
     STORE_SELECTED_INSTRUCTOR, STORE_SELECTED_INSTRUCTOR_NEW_DATA,
-    STORE_SELECTED_CLASSROOM_NEW_DATA, STORE_SELECTED_CLASSROOM
+    STORE_SELECTED_CLASSROOM_NEW_DATA, STORE_SELECTED_CLASSROOM,
+    UPDATE_COHORT_NUMBER, UPDATE_COHORT_NAME, UPDATE_COHORT_REPO_NAME, 
+    UPDATE_COHORT_CLASS_START_DATE, UPDATE_COHORT_CLASS_END_DATE, 
+    UPDATE_COHORT_INT_START_DATE, UPDATE_COHORT_INT_END_DATE,
+    UPDATE_COHORT_GRAD_DATE, STORE_SELECTED_COHORT_TO_UPDATE
     } from '../actions';
 
 // TODO: ORGANIZE, divide them into hashes if better
@@ -64,17 +68,17 @@ const stateList = {
         cohort_id: null
     },
 
-    selectedtCohortToUpdate: {
-        cohortId: null,
-        cohortNumber: null,
-        cohortName: null,
-        cohortRepoName: null,
-        cohortClassStartDate: null,
-        cohortClassEndDate: null,
-        cohortInternshipStartDate: null,
-        cohortInternshipEndDate: null,
-        cohortGraduationDate: null,
-    }
+    selectedtCohortToUpdate: null,
+
+    updateCohortNumber: null,
+    updateCohortName: null,
+    updateCohortRepoName: null,
+    updateCohortClassStartDate: null,
+    updateCohortClassEndDate: null,
+    updateCohortInternshipStartDate: null,
+    updateCohortInternshipEndDate: null,
+    updateCohortGraduationDate: null,
+
 }
 
  function performAction(state = stateList, action) {
@@ -166,6 +170,55 @@ const stateList = {
         return Object.assign({}, state, {
             newCohortGraduationDate: action.date
         }) 
+
+            // -----
+
+        case UPDATE_COHORT_NUMBER:
+        return Object.assign({}, state, {
+            updateCohortNumber: action.number
+        })  
+
+        case UPDATE_COHORT_NAME:
+        return Object.assign({}, state, {
+            updateCohortName: action.name
+        })  
+
+        case UPDATE_COHORT_REPO_NAME:
+        return Object.assign({}, state, {
+            updateCohortRepoName: action.name
+        })  
+
+        case UPDATE_COHORT_CLASS_START_DATE:
+        return Object.assign({}, state, {
+            updateCohortClassStartDate: action.date
+        }) 
+
+        case UPDATE_COHORT_CLASS_END_DATE:
+        return Object.assign({}, state, {
+            updateCohortClassEndDate: action.date
+        }) 
+
+        case UPDATE_COHORT_INT_START_DATE:
+        return Object.assign({}, state, {
+            updateCohortInternshipStartDate: action.date
+        }) 
+
+        case UPDATE_COHORT_INT_END_DATE:
+        return Object.assign({}, state, {
+            updateCohortInternshipEndDate: action.date
+        }) 
+
+        case UPDATE_COHORT_GRAD_DATE:
+        return Object.assign({}, state, {
+            updateCohortGraduationDate: action.date
+        }) 
+
+        case STORE_SELECTED_COHORT_TO_UPDATE:
+
+            return Object.assign({}, state, {
+                selectedtCohortToUpdate: action.payload.cohort
+            }) 
+        
 
         // *********** CLASSROOM *****************
         case CHANGE_CLASSROOM:

@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { TextField } from '../components-info/MaterialUiImports'
@@ -11,6 +12,13 @@ import {
   storeNewCohortIntStartDate,
   storeNewCohortIntEndDate,
   storeNewCohortGradDate,
+
+  editCohortClassStartDate,
+  editCohortClassEndDate,
+  editCohortIntStartDate,
+  editCohortIntEndDate,
+  editCohortGradDate,
+
 } from '../actions';
 
 
@@ -29,40 +37,58 @@ const styles = theme => ({
 
 //  TODO: right now it will not update the state of the dates if no change on form happen for that particular DatePicker 
 
-function DatePickers(props) {
+class DatePickers  extends Component {
 
 
-function handleChange(event)  {
+ handleChange = (event)  =>{
   if
-  (props.element === "newCohortClassStartDate"){
-    props.storeNewCohortClassStartDate(event.target.value);
+  (this.props.element === "newCohortClassStartDate"){
+    this.props.storeNewCohortClassStartDate(event.target.value);
   }else if
-  (props.element === "newCohortClassEndDate"){
-    props.storeNewCohortClassEndDate(event.target.value);
+  (this.props.element === "newCohortClassEndDate"){
+    this.props.storeNewCohortClassEndDate(event.target.value);
   }else if
-  (props.element === "newCohortIntStartDate"){
-    props.storeNewCohortIntStartDate(event.target.value);
+  (this.props.element === "newCohortIntStartDate"){
+    this.props.storeNewCohortIntStartDate(event.target.value);
   }else if
-  (props.element === "newCohortIntEndDate"){
-    props.storeNewCohortIntEndDate(event.target.value);
+  (this.props.element === "newCohortIntEndDate"){
+    this.props.storeNewCohortIntEndDate(event.target.value);
   }else if
-  (props.element === "newCohortGradDate"){
-    props.storeNewCohortGradDate(event.target.value);
+  (this.props.element === "newCohortGradDate"){
+    this.props.storeNewCohortGradDate(event.target.value);
+  }else if
+  (this.props.element === "updateCohortClassStartDate") {
+    console.log('yes')
+    this.props.editCohortClassStartDate(event.target.value)
+  }else if
+  (this.props.element === "updateCohortClassEndDate") {
+    this.props.editCohortClassEndDate(event.target.value)
+  }else if
+  (this.props.element === "updateCohortIntStartDate") {
+    this.props.editCohortIntStartDate(event.target.value)
+  }else if
+  (this.props.element === "updateCohortIntEndDate") {
+    this.props.editCohortIntStartDate(event.target.value)
+  }else if
+  (this.props.element === "updateCohortGradDate") {
+    this.props.editCohortGradDate(event.target.value)
   }
    
  };
-
-  const { classes } = props;
-    // const name = props.text
+render() {
+  console.log('props:...')
+  console.log(this.props)
+  const { classes } = this.props;
+    // const name = this.props.text
   return (
     <form className={classes.container} style={{marginTop:"5px"}} noValidate>
       <TextField
-        onChange={handleChange}
+        onChange={this.handleChange}
         style={{marginLeft:"0", marginRight:"0", width:"100%"}} 
         id="date"
-        label={props.text}
+        label={this.props.text}
         type="date"
-        defaultValue="SelectDate"
+        defaultValue="2018-05-01"
         className={classes.textField}
         InputLabelProps={{
           shrink: true,
@@ -70,6 +96,7 @@ function handleChange(event)  {
       />
     </form>
   );
+}
 }
 
 DatePickers.propTypes = {
@@ -82,7 +109,13 @@ function mapDispatchToProps(dispatch){
     storeNewCohortClassEndDate,
     storeNewCohortIntStartDate,
     storeNewCohortIntEndDate,
-    storeNewCohortGradDate
+    storeNewCohortGradDate,
+
+    editCohortClassStartDate,
+    editCohortClassEndDate,
+    editCohortIntStartDate,
+    editCohortIntEndDate,
+    editCohortGradDate,
   }, dispatch)
 }
 

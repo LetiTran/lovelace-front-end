@@ -15,9 +15,19 @@ export const STORE_NEW_COHORT_CLASS_END_DATE ="STORE_NEW_COHORT_CLASS_END_DATE"
 export const STORE_NEW_COHORT_INT_START_DATE ="STORE_NEW_COHORT_INT_START_DATE"
 export const STORE_NEW_COHORT_INT_END_DATE ="STORE_NEW_COHORT_INT_END_DATE"
 export const STORE_NEW_COHORT_GRAD_DATE ="STORE_NEW_COHORT_GRAD_DATE"
+
+export const UPDATE_COHORT_NUMBER = "UPDATE_COHORT_NUMBER";
+export const UPDATE_COHORT_NAME = "UPDATE_COHORT_NAME"
+export const UPDATE_COHORT_REPO_NAME = "UPDATE_COHORT_REPO_NAME"
+export const UPDATE_COHORT_CLASS_START_DATE ="UPDATE_COHORT_CLASS_START_DATE"
+export const UPDATE_COHORT_CLASS_END_DATE ="UPDATE_COHORT_CLASS_END_DATE"
+export const UPDATE_COHORT_INT_START_DATE ="UPDATE_COHORT_INT_START_DATE"
+export const UPDATE_COHORT_INT_END_DATE ="UPDATE_COHORT_INT_END_DATE"
+export const UPDATE_COHORT_GRAD_DATE ="UPDATE_COHORT_GRAD_DATE"
+
 export const CREATE_COHORT = "CREATE_COHORT";
 export const STORE_SELECTED_COHORT_NEW_DATA = "STORE_SELECTED_COHORT_NEW_DATA"
-export const STORE_SELECTED_COHORT = "STORE_SELECTED_COHORT"
+export const STORE_SELECTED_COHORT_TO_UPDATE = "STORE_SELECTED_COHORT_TO_UPDATE"
 
 // *********** CLASSROOM *****************
 export const CHANGE_CLASSROOM = "CHANGE_CLASSROOM";
@@ -157,7 +167,113 @@ export function storeNewCohortGradDate(date) {
     };
     return action
 }
+// --------
 
+export function editCohortNumber(number) {
+    const action = {
+        type: UPDATE_COHORT_NUMBER,
+        number
+    };
+    return action
+}
+
+export function editCohortName(name) {
+    const action = {
+        type: UPDATE_COHORT_NAME,
+        name
+    };
+    return action
+}
+
+export function editCohortRepoName(name) {
+    const action = {
+        type: UPDATE_COHORT_REPO_NAME,
+        name
+    };
+    return action
+}
+
+export function editCohortClassStartDate(date) {
+    const action = {
+        type: UPDATE_COHORT_CLASS_START_DATE,
+        date
+    };
+    return action
+}
+
+export function editCohortClassEndDate(date) {
+    const action = {
+        type: UPDATE_COHORT_CLASS_END_DATE,
+        date
+    };
+    return action
+}
+
+export function editCohortIntStartDate(date) {
+    const action = {
+        type: UPDATE_COHORT_INT_START_DATE,
+        date
+    };
+    return action
+}
+
+export function editCohortIntEndDate(date) {
+    const action = {
+        type: UPDATE_COHORT_INT_END_DATE,
+        date
+    };
+    return action
+}
+
+export function editCohortGradDate(date) {
+    const action = {
+        type: UPDATE_COHORT_GRAD_DATE,
+        date
+    };
+    return action
+}
+
+
+
+export function updateCohort(cohortInfo){
+    console.log("cohortInfo:")
+    console.log(cohortInfo)
+    let id = cohortInfo.id
+    let number= cohortInfo.number
+    let name= cohortInfo.name
+    let repo_name = cohortInfo.repoName   
+    let class_start_date= cohortInfo.classStartDate   
+    let class_end_date = cohortInfo.classEndDate
+    let internship_start_date = cohortInfo.internshipStartDate
+    let internship_end_date = cohortInfo.internshipEndDate
+    let graduation_date = cohortInfo.graduationDate 
+
+    console.log("Sending Params:")
+    console.log(id,number,name, repo_name, class_start_date, 
+        class_end_date, internship_start_date, 
+        internship_end_date, graduation_date)
+
+    return dispatch => {
+        api.putCohort({
+            id ,number, name, repo_name, class_start_date, 
+            class_end_date, internship_start_date, 
+            internship_end_date, graduation_date
+        }).then(response => {
+            // dispatch(createCohortSucceeded(response))
+            //  TODO: put action to show customizedSnackBar was successfull
+            console.log(response.data)
+            dispatch(fetchCohortList())
+        }).catch((error) => {
+            if (error.response) {
+                console.log(error.response);
+                console.log(error.response.status);
+            } 
+        });
+    }
+}
+
+
+// ---------
 export function createCohort(cohortInfo){
     // console.log("cohortInfo:")
     // console.log(cohortInfo)
@@ -194,37 +310,64 @@ export function createCohort(cohortInfo){
 }
 
 
-export function saveSelectedCohortNewData(cohort) {
+// export function saveSelectedCohortNewData(data) {
+//     return {
+//         type: STORE_SELECTED_COHORT_NEW_DATA,
+//         payload: {
+//             data
+//         }
+//     }
+// }
+
+// export function saveSelectedCohort(cohortId) {
+// return dispatch => {
+//     api.fetchCohort(cohortId).then(response => {
+//         console.log('cohort')
+//         console.log(response.data)
+//         dispatch(fetchCohortSucceeded(response.data))
+//     }).catch((error) => {
+//         if (error.response) {
+//             console.log(error.response.status);
+//         } 
+//     });
+// }
+// }
+
+
+
+// export function fetchCohortSucceeded(cohort) {
+//     return {
+//     type: STORE_SELECTED_COHORT,
+//         payload: {
+//             cohort
+//         }
+//     }
+// }
+
+export function saveSelectedCohortforUpdating(cohortId) {
+    return dispatch => {
+        api.fetchCohort(cohortId).then(response => {
+            console.log('cohort')
+            console.log(response.data)
+            dispatch(fetchCohortForUpdatingSucceeded(response.data))
+        }).catch((error) => {
+            if (error.response) {
+                console.log(error.response.status);
+            } 
+        });
+    }
+    }
+
+
+export function fetchCohortForUpdatingSucceeded(cohort) {
     return {
-        type: STORE_SELECTED_COHORT_NEW_DATA,
+    type: STORE_SELECTED_COHORT_TO_UPDATE,
         payload: {
             cohort
         }
     }
 }
 
-export function saveSelectedCohort(cohortId) {
-return dispatch => {
-    api.fetchCohort(cohortId).then(response => {
-        console.log('cohort')
-        console.log(response.data)
-        dispatch(fetchCohortSucceeded(response.data))
-    }).catch((error) => {
-        if (error.response) {
-            console.log(error.response.status);
-        } 
-    });
-}
-}
-
-export function fetchCohortSucceeded(cohort) {
-    return {
-    type: STORE_SELECTED_COHORT,
-        payload: {
-            cohort
-        }
-    }
-}
 
 // *********** CLASSROOM *****************
 export function fetchClassroomList() {

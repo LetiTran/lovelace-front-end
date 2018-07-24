@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {saveSelectedCohort, postUpdate, saveSelectedCohortNewData} from '../../actions';
+import {saveSelectedCohortforUpdating, updateCohort} from '../../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import InputWithGrid from  '../../components/InputWithGrid';
@@ -15,15 +15,20 @@ import {
 
 class EditCohort extends Component {
 
-    postUpdate = () => {
+    updateCohort = () => {
         console.log('got to postUpdate')
         const data = {  
-            type: 'cohort',
             id: this.props.selectedtCohortToUpdate.id,
-            name: this.props.selectedtCohortToUpdate.name
-
+             number : this.props.updateCohortNumber,
+             name : this.props.updateCohortName,
+             repoName : this.props.updateCohortRepoName,
+             classStartDate : this.props.updateCohortClassStartDate,
+             classEndDate : this.props.updateCohortClassEndDate,
+             internshipStartDate : this.props.updateCohortInternshipStartDate,
+             internshipEndDate : this.props.updateCohortInternshipEndDate,
+             graduationDate : this.props.updateCohortGraduationDate,
         }
-        this.props.postUpdate(data)
+        this.props.updateCohort(data)
     };
 
 //     handleNameChange = (event) => {
@@ -33,34 +38,27 @@ class EditCohort extends Component {
 //             name: event.target.value,
 //             cohort_id: this.props.selectedtCohortToUpdate.cohort_id
 //        }
-//         this.props.saveSelectedCohortNewData(cohortData);
+//         this.props.saveSelectedCohortforUpdatingNewData(cohortData);
 //    }
 
-   handleChange = (element, event) => {
-        const cohortData = 
-        {
+//    handleChange = ( event) => {
+//        console.log(this.props.selectedtCohortToUpdate)
+//         const cohortData = 
+//         {
 
-        id: this.props.selectedtCohortToUpdate.id,
-        name: this.props.selectedtCohortToUpdate.name,
-        cohort_id:event.target.value,
-    }
-        this.props.saveSelectedCohortNewData(cohortData);
-}
+//         id: this.props.selectedtCohortToUpdate.id,
+//         name: this.props.selectedtCohortToUpdate.name,
+//         cohort_id: event.target.value,
+//     }
+//         this.props.saveSelectedCohortforUpdatingNewData(cohortData);
+// }
 
 handleCohortChange =(event) => {
     console.log(event.target.value)
-    this.props.saveSelectedCohort(event.target.value)
+    this.props.saveSelectedCohortforUpdating(event.target.value)
 }
 
 renderCohortsList =() => {
-        return this.props.cohortList.map((cohort, index) => {
-            return (
-            <MenuItem key={index} value={cohort.id}> {cohort.name} </MenuItem>
-            );
-        });
-    }
-
-    renderCohortsList=() => {
         return this.props.cohortList.map((cohort, index) => {
             return (
             <MenuItem key={index} value={cohort.id}> {cohort.name} </MenuItem>
@@ -75,7 +73,7 @@ renderCohortsList =() => {
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
             <Grid  xs={8} item >
                 <Select
-                 value={this.props.selectedtCohortToUpdate.name}
+                 value={this.props.selectedtCohortToUpdate}
                  onChange={this.handleCohortChange}
                  inputProps={{
                  name: `change`,
@@ -85,13 +83,6 @@ renderCohortsList =() => {
                 </Select>
                 </Grid>
                 <Grid  xs={8} item >
-
-                <Grid container spacing={8} alignItems="flex-end">
-                    <Grid md item>
-                        <TextField onChange={this.handleChange} fullWidth={true} label={this.props.name} />
-                    </Grid>
-                </Grid>
-
                 <InputWithGrid  element="updateCohortNumber" name="Cohort Number"/>
                 <InputWithGrid element="updateCohortName" name="Name"/>
                 <InputWithGrid element="updateCohortRepoName" name="Repo Name"/>
@@ -101,10 +92,9 @@ renderCohortsList =() => {
                 <DatePickers element="updateCohortIntEndDate" text="Internship End Date"/>
                 <DatePickers element="updateCohortGradDate" text="Graduation Date"/>     
                 </Grid>
-
         </Grid>
         <Grid style={{margin:"30px"}} container justify="center">
-            <Button onClick={this.postUpdate} style={{width:"300px"}} variant="contained" color="primary" >
+            <Button onClick={this.updateCohort} style={{width:"300px"}} variant="contained" color="primary" >
                  Update
             </Button>
         </Grid>
@@ -117,15 +107,24 @@ function mapStateToProps(state) {
     return {
         selectedtCohortToUpdate: state.selectedtCohortToUpdate,
         cohortList : state.cohortList,
-        cohortList : state.cohortList
+
+    updateCohortNumber: state.updateCohortNumber,
+       updateCohortName: state.updateCohortName,
+       updateCohortRepoName: state.updateCohortRepoName,
+       updateCohortClassStartDate: state.updateCohortClassStartDate,
+       updateCohortClassEndDate: state.updateCohortClassEndDate,
+       updateCohortInternshipStartDate: state.updateCohortInternshipStartDate,
+       updateCohortInternshipEndDate: state.updateCohortInternshipEndDate,
+       updateCohortGraduationDate: state.updateCohortGraduationDate,
         }
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({saveSelectedCohort, postUpdate, saveSelectedCohortNewData}, dispatch)
+    return bindActionCreators({saveSelectedCohortforUpdating, updateCohort}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditCohort);
 
 
 
+// placeholder={this.props.selectedtCohortToUpdate ? this.props.selectedtCohortToUpdate.id : 'select'}

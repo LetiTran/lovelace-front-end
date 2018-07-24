@@ -84,5 +84,5 @@ export function fetchCohort(id){
 }
 
 export function putCohort(data){
-    return client.put(`cohort/${data.id}`, data)
+    return client.put(`cohorts/${data.id}`, data)
 }

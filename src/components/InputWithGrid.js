@@ -7,13 +7,25 @@ import {
   storeNewCohortName,
   storeNewCohortNumber,
   storeNewCohortRepoName,
-  storeNewCohortClassStartDate,
-  storeNewCohortClassEndDate,
-  storeNewCohortIntStartDate,
-  storeNewCohortIntEndDate,
-  storeNewCohortGradDate,
+  // storeNewCohortClassStartDate,
+  // storeNewCohortClassEndDate,
+  // storeNewCohortIntStartDate,
+  // storeNewCohortIntEndDate,
+  // storeNewCohortGradDate,
   storeNewInstructorName,
-  storeNewInstructorGithubName
+  storeNewInstructorGithubName,
+
+  // editClassroomName,
+  editCohortName,
+  editCohortNumber,
+  editCohortRepoName,
+  // editCohortClassStartDate,
+  // editCohortClassEndDate,
+  // editCohortIntStartDate,
+  // editCohortIntEndDate,
+  // editCohortGradDate,
+  // editInstructorName,
+  // editInstructorGithubName
 } from '../actions';
 
 import {
@@ -42,7 +54,32 @@ class InputWithGrid extends Component {
     }else if
     (this.props.element === "newInstructorGithubName"){
       this.props.storeNewInstructorGithubName(event.target.value);
+    }else if
+    (this.props.element === "updateCohortNumber"){
+      this.props.editCohortNumber(event.target.value);
+    }else if
+    (this.props.element === "updateCohortName"){
+      this.props.editCohortName(event.target.value);
+    }else if
+    (this.props.element === "updateCohortRepoName"){
+      this.props.editCohortRepoName(event.target.value);
     }
+    // else if
+    // (this.props.element === "updateCohortNumber"){
+    //   this.props.editCohortClassStartDate(event.target.value);
+    // }else if
+    // (this.props.element === "updateCohortNumber"){
+    //   this.props.editCohortClassEndDate(event.target.value);
+    // }else if
+    // (this.props.element === "updateCohortNumber"){
+    //   this.props.editCohortIntStartDate(event.target.value);
+    // }else if
+    // (this.props.element === "updateCohortNumber"){
+    //   this.props.editCohortIntEndDate(event.target.value);
+    // }else if
+    // (this.props.element === "updateCohortNumber"){
+    //   this.props.editCohortGradDate(event.target.value);
+    // }
      
    };
 
@@ -63,13 +100,25 @@ function mapDispatchToProps(dispatch){
           storeNewCohortName,
           storeNewCohortNumber,
           storeNewCohortRepoName,
-          storeNewCohortClassStartDate,
-          storeNewCohortClassEndDate,
-          storeNewCohortIntStartDate,
-          storeNewCohortIntEndDate,
-          storeNewCohortGradDate,
+          // storeNewCohortClassStartDate,
+          // storeNewCohortClassEndDate,
+          // storeNewCohortIntStartDate,
+          // storeNewCohortIntEndDate,
+          // storeNewCohortGradDate,
           storeNewInstructorName,
           storeNewInstructorGithubName,
+
+          // editClassroomName,
+          editCohortName,
+          editCohortNumber,
+          editCohortRepoName,
+          // editCohortClassStartDate,
+          // editCohortClassEndDate,
+          // editCohortIntStartDate,
+          // editCohortIntEndDate,
+          // editCohortGradDate,
+          // editInstructorName,
+          // editInstructorGithubName
         }, dispatch)
 }
 
