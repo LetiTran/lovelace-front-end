@@ -317,9 +317,15 @@ const stateList = {
         })
 
         case STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL:
+        // console.log('STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL')
+        // console.log(action.payload.bool)
+        // console.log(state.newAssignmentIndividual)
+        
         return Object.assign({}, state, {
-            newAssignmentIndividual: action.payload.bool,
+            // newAssignmentIndividual: action.payload.bool,
+        newAssignmentIndividual: action.payload.bool,
         })
+        
 
 
          // *********** STUDENTS *****************    

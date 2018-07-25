@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {createAssignment} from '../actions';
+// import {createAssignment} from '../actions';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+// import {bindActionCreators} from 'redux';
 import InputWithGrid from './InputWithGrid.js'
 // import MessageSnackBar from '../../components/MessageSnackBar.js';
-
+import SelectionBoxForIndividualAssignment from './SelectionBoxForIndividualAssignment.js'
 
 import { 
     Grid, 
@@ -24,20 +24,20 @@ import {
 class CreateAssignment extends Component {
 
 
-    createAssignment = () => {
-        const data = {  
-            name: this.props.newAssignmentName,
-            repo_url: this.props.newAssignmentRepoUrl,
-            individual: this.props.newAssignmentIndividual
-        }
+    // createAssignment = () => {
+    //     const data = {  
+    //         name: this.props.newAssignmentName,
+    //         repo_url: this.props.newAssignmentRepoUrl,
+    //         individual: this.props.newAssignmentIndividual
+    //     }
     
-        this.props.createAssignments(data)
-      };
+    //     this.props.createAssignment(data)
+    //   };
 
      
 
   render() {
-
+console.log(this.props.newAssignmentIndividual)
     return (
         <section style={{width: "100%", justify:"center"}}>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
@@ -45,14 +45,16 @@ class CreateAssignment extends Component {
             <Grid container spacing={8} alignItems="flex-end">
             <InputWithGrid element="newAssignmentName" name="Name"/>   
             <InputWithGrid element="newAssignmentRepoUrl" name="Repo URL"/>   
+
             {/* TODO: put select box for indivual or not */}
             </Grid>
             </Grid>
         </Grid>
         <Grid style={{margin:"30px"}} container justify="center">
-            <Button onClick={this.createAssignments} style={{width:"300px"}} variant="contained" color="primary" >
+            {/* <Button onClick={this.createAssignments} style={{width:"300px"}} variant="contained" color="primary" >
                  Create 
-            </Button>
+            </Button> */}
+            <SelectionBoxForIndividualAssignment/>
         </Grid>
         {/* <renderMessage /> */}
         </section>
@@ -68,11 +70,11 @@ function mapStateToProps(state) {
         }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({createAssignment}, dispatch)
-}
+// function mapDispatchToProps(dispatch){
+//     return bindActionCreators({createAssignment}, dispatch)
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateAssignment);
+export default connect(mapStateToProps, null)(CreateAssignment);
 
 
 

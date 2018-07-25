@@ -10,6 +10,10 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 
+import {createAssignment} from '../actions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
 import CreateAssignment from './CreateAssignment.js'
 
 
@@ -51,10 +55,44 @@ class VerticalLinearStepper extends React.Component {
     activeStep: 0,
   };
 
-  handleNext = () => {
-    this.setState(state => ({
-      activeStep: state.activeStep + 1,
-    }));
+  createAssignment = () => {
+    const data = {  
+        name: this.props.newAssignmentName,
+        repo_url: this.props.newAssignmentRepoUrl,
+        individual: this.props.newAssignmentIndividual
+    }
+
+    this.props.createAssignment(data)
+  };
+
+  createSubmission = () => {
+      const data = {
+
+      }
+
+    // this.props.createSubmission(data)
+  }
+
+  handleNext = (index) => {
+    let jump = 1
+
+    switch (index) {
+        case 0:
+            if(this.props.newAssignmentIndividual) {
+                jump = 2
+            } //No need for creating groups if it is individual assignment (back-end will do it automatically)
+           this.createAssignment();
+        case 1:
+           this.createSubmission();
+        case 2:
+           `Display Assignment and its groups`;
+        default:
+          null;
+      }
+
+      this.setState(state => ({
+        activeStep: state.activeStep + jump,
+      }));
   };
 
 //   handleBack = () => {
@@ -95,7 +133,7 @@ class VerticalLinearStepper extends React.Component {
                       <Button
                         variant="contained"
                         color="primary"
-                        onClick={this.handleNext}
+                        onClick={()=>this.handleNext(index)}
                         className={classes.button}
                       >
                         {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
@@ -109,7 +147,10 @@ class VerticalLinearStepper extends React.Component {
         </Stepper>
         {activeStep === steps.length && (
           <Paper square elevation={0} className={classes.resetContainer}>
-            <Typography>All steps completed - Assignment and its Submissions created!</Typography>
+            <Typography>
+                All steps completed - Assignment and its Submissions created!
+                 Individual Assignment's groups wil be created automatically.
+            </Typography>
             <Button onClick={this.handleReset} className={classes.button}>
               Create a New Assignment
             </Button>
@@ -124,4 +165,17 @@ VerticalLinearStepper.propTypes = {
   classes: PropTypes.object,
 };
 
-export default withStyles(styles)(VerticalLinearStepper);
+function mapStateToProps(state) {
+    return {
+        newAssignmentName: state.newAssignmentName,
+        newAssignmentRepoUrl: state.newAssignmentRepoUrl,
+        newAssignmentIndividual: state.newAssignmentIndividual
+        }
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({createAssignment}, dispatch)
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(VerticalLinearStepper));

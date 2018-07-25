@@ -527,6 +527,8 @@ export function storeNewAssignmentIndividual(bool) {
 
 
 export function createAssignment(data){
+    console.log('yes')
+    console.log(data)
     data = {
             name: data.name,
             repo_url: data.repoUrl,
