@@ -31,6 +31,7 @@ class StudentsListForCreatingGroups extends Component {
     // console.log('studentsList in renderStudenttList: ' )
     // console.log(this.props.studentsList)
     // console.log(this.props.currentClassroomStudentsToAddToGroupd)
+    if (Object.keys(this.props.currentClassroomStudentsToAddToGroupd).length>1) {
         return this.props.currentClassroomStudentsToAddToGroupd.map((student,index) => {
         //  To change it for ALL STUDENTS LIST, swap this two lines:
         //  return this.props.studentsList.map((student,index) => {
@@ -45,7 +46,10 @@ class StudentsListForCreatingGroups extends Component {
             </List>
         );
         });
-    }
+      } else {
+        return <p style={{color: "red", textAlign: "center"}}>No more students to be assigned to a group!</p>
+      }
+      }
 
   render() {
     // console.log('students: ' + this.props.assignments)
