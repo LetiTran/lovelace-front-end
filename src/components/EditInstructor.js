@@ -11,8 +11,11 @@ import {
     TextField,
     Select,
     MenuItem,
-    
+    FormControl
    } from '../components-info/MaterialUiImports'
+
+
+import { FormLabel } from '../../node_modules/@material-ui/core';
 
 class EditInstructor extends Component {
 
@@ -85,6 +88,8 @@ class EditInstructor extends Component {
         <section style={{width: "100%", justify:"center"}}>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
             <Grid  xs={8} item >
+            <FormControl>
+                <FormLabel>Instructor</FormLabel> 
                 <Select
                  value={this.props.selectedtInstructorToUpdate.name}
                  onChange={this.handleInstructorChange}
@@ -94,6 +99,7 @@ class EditInstructor extends Component {
                  }}>
                  {this.renderInstructorsList()}
                 </Select>
+                </FormControl>
                 <Grid container spacing={8} alignItems="flex-end">
                     <Grid md item>
                         <TextField onChange={this.handleNameChange} fullWidth={true} label={this.props.selectedtInstructorToUpdate.name} />
@@ -102,6 +108,8 @@ class EditInstructor extends Component {
                         <TextField onChange={this.handleGithubNameChange} fullWidth={true} label={this.props.selectedtInstructorToUpdate.github_name} />
                     </Grid>
                     <Grid md item>
+                    <FormControl>
+                        <FormLabel>Status</FormLabel> 
                         <Select
                             value={this.props.selectedtInstructorToUpdate.active}
                             onChange={this.handleActiveChange}
@@ -113,6 +121,7 @@ class EditInstructor extends Component {
                             <MenuItem value={true}> Active </MenuItem>
                             <MenuItem value={false}> Inactive </MenuItem>
                         </Select>
+                        </FormControl>
                     </Grid>
             {/* <InputWithGrid element="InstructorActive" name="Active"/>    */}
             </Grid>

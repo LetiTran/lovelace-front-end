@@ -10,7 +10,11 @@ import {
     Button,
     Select,
     MenuItem,
+    FormControl,
+    
    } from '../components-info/MaterialUiImports'
+
+import { FormLabel } from '../../node_modules/@material-ui/core';
 
 class EditCohort extends Component {
 
@@ -18,7 +22,6 @@ class EditCohort extends Component {
         console.log('got to postUpdate')
         const data = {  
             id: this.props.selectedtCohortToUpdate.id,
-             number : this.props.updateCohortNumber,
              name : this.props.updateCohortName,
              repoName : this.props.updateCohortRepoName,
              classStartDate : this.props.updateCohortClassStartDate,
@@ -48,6 +51,8 @@ class EditCohort extends Component {
         <section>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
             <Grid  xs={8} item >
+            <FormControl>
+                <FormLabel>Cohort</FormLabel> 
                 <Select
                  value={this.props.selectedtCohortToUpdate}
                  onChange={this.handleCohortChange}
@@ -57,9 +62,9 @@ class EditCohort extends Component {
                  }}>
                  {this.renderCohortsList()}
                 </Select>
+                </FormControl>
                 </Grid>
                 <Grid  xs={8} item >
-                <InputWithGrid  element="updateCohortNumber" name="Cohort Number"/>
                 <InputWithGrid element="updateCohortName" name="Name"/>
                 <InputWithGrid element="updateCohortRepoName" name="Repo Name"/>
                 <DatePickers element="updateCohortClassStartDate" text="Class Start Date"/>   

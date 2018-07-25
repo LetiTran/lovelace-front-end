@@ -2,6 +2,7 @@
 // import Paper from "@material-ui/core/Paper";
 import AssignmentList from '../../components/AssignmentList.js';
 import AssignmentSteppers from '../../components/AssignmentSteppers.js'
+import EditAssignment from '../../components/EditAssignment.js'
 // import Typography from '@material-ui/core/Typography';
 
 import React from 'react';
@@ -50,7 +51,7 @@ class Assignments extends React.Component {
     const { classes, theme } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={classes.root} style={{alignItems: "center"}}>
         <AppBar position="static" color="default">
           <Tabs
             value={this.state.value}
@@ -72,7 +73,7 @@ class Assignments extends React.Component {
         >
           <TabContainer dir={theme.direction}><AssignmentList /></TabContainer>
           <TabContainer dir={theme.direction}><AssignmentSteppers/></TabContainer>
-          <TabContainer dir={theme.direction}>Edit Assignment</TabContainer>
+          <TabContainer dir={theme.direction}><EditAssignment/></TabContainer>
         </SwipeableViews>
       </div>
     );

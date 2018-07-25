@@ -69,6 +69,9 @@ export {default as TextField} from '@material-ui/core/TextField';
 export {default as CardActions} from '@material-ui/core/CardActions';
 // export {default as CardContent} from '@material-ui/core/CardContent';
 
+// export{default as  FormLabel } from '../../node_modules/@material-ui/core';
+export {default as FormHelperText} from '@material-ui/core/FormHelperText';
+
 //  For Message SnackBar:
 // export {default as Button} from '@material-ui/core/Button';
 export {default as CheckCircleIcon} from '@material-ui/icons/CheckCircle';

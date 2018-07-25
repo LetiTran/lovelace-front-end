@@ -9,7 +9,9 @@ import {
     TextField,
     Select,
     MenuItem,
+    FormControl
    } from '../components-info/MaterialUiImports'
+import { FormLabel } from '../../node_modules/@material-ui/core';
 
 class EditClassroom extends Component {
 
@@ -73,6 +75,8 @@ renderClassroomsList =() => {
         <section>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
             <Grid  xs={8} item >
+            <FormControl>
+                <FormLabel>Classroom</FormLabel> 
                 <Select
                  value={this.props.selectedtClassroomToUpdate.name}
                  onChange={this.handleClassroomChange}
@@ -82,11 +86,14 @@ renderClassroomsList =() => {
                  }}>
                  {this.renderClassroomsList()}
                 </Select>
+                </FormControl>
                 <Grid container spacing={8} alignItems="flex-end">
                     <Grid md item>
-                        <TextField onChange={this.handleNameChange} fullWidth={true} label={this.props.selectedtClassroomToUpdate.name} />
+                        <TextField onChange={this.handleNameChange} fullWidth={true} label={this.props.selectedtClassroomToUpdate.name ? this.props.selectedtClassroomToUpdate.name : "Name"} />
                     </Grid>
                     <Grid md item>
+                    <FormControl>
+                       <FormLabel>Cohort</FormLabel> 
                         <Select
                             value={this.props.selectedtClassroomToUpdate.cohort_id}
                             onChange={this.handleCohortChange}
@@ -95,8 +102,12 @@ renderClassroomsList =() => {
                             id: 'change-cohort-id',
                             }}
                         >
+                        <MenuItem value="" disabled>
+                            Cohort
+                        </MenuItem>
                         {this.renderCohortsList()}
                         </Select>
+                        </FormControl>
                     </Grid>
             {/* <InputWithGrid element="ClassroomActive" name="Active"/>    */}
             </Grid>

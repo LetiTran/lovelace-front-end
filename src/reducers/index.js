@@ -21,6 +21,7 @@ import {
     STORE_SELECTED_SUBMISSION_GRADE, STORE_SELECTED_SUBMISSION, 
     STORE_NEW_ASSIGNMENT_NAME, STORE_NEW_ASSIGNMENT_REPO_URL, STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL,
     STORE_ASSIGNMENT_GROUPS,
+    UPDATE_SELECTED_ASSIGNMENT,
     } from '../actions';
 
 const stateList = {
@@ -96,6 +97,8 @@ const stateList = {
     newAssignmentName: null,
     newAssignmentRepoUrl: null,
     newAssignmentIndividual: false,
+
+    selectedAssignmentonForm: null,
 
     studentsGroups: [
         [{name: "test1", id: 1}, {name: "test2", id: 2}],
@@ -336,6 +339,10 @@ const stateList = {
             assignedGroups: addGroup
         })
 
+        case UPDATE_SELECTED_ASSIGNMENT:
+        return Object.assign({}, state, {
+            selectedAssignmentonForm: action.assignment
+        })
 
          // *********** STUDENTS *****************    
          case GET_STUDENTS_LIST_SUCCEDED:

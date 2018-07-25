@@ -64,6 +64,7 @@ export const STORE_NEW_ASSIGNMENT_NAME = "STORE_NEW_ASSIGNMENT_NAME";
 export const STORE_NEW_ASSIGNMENT_REPO_URL = "STORE_NEW_ASSIGNMENT_REPO_URL";
 export const STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL = "STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL";
 export const STORE_ASSIGNMENT_GROUPS = "STORE_ASSIGNMENT_GROUPS";
+export const UPDATE_SELECTED_ASSIGNMENT = "UPDATE_SELECTED_ASSIGNMENT"
 
 // *********** INVITES *****************
 export const CREATE_USER_INVITES = "CREATE_USER_INVITES"
@@ -541,9 +542,10 @@ export function createAssignment(data){
             let name= data.name
             let repo_url= data.repoUrl
            let individual= data.repoUrl
+           let classroom_id = data.currentClassroom
    
     return dispatch => {
-        api.putAssignment(name, repo_url, individual).then(response => {
+        api.postAssignment(name, repo_url, individual,classroom_id).then(response => {
             console.log(response.data)
             dispatch(fetchAssignmentList())
         //  TODO: put action to show customizedSnackBar was successfull
@@ -553,6 +555,36 @@ export function createAssignment(data){
             } 
         });
     }
+}
+
+export function updateAssignment(data){
+    console.log('yes')
+    console.log(data)
+    let id = data.id
+            let name= data.name
+            let repo_url= data.repoUrl
+           let individual= data.repoUrl
+           let classroom_id = data.currentClassroom
+   
+    return dispatch => {
+        api.putAssignment(name, repo_url, individual,classroom_id).then(response => {
+            console.log(response.data)
+            dispatch(fetchAssignmentList())
+        //  TODO: put action to show customizedSnackBar was successfull
+        }).catch((error) => {
+            if (error.response) {
+                console.log(error.response.status);
+            } 
+        });
+    }
+}
+
+export function changeCurrentSelectedAssignment(assignment){
+    const action = {
+        type: UPDATE_SELECTED_ASSIGNMENT,
+        assignment
+    };
+    return action
 }
 
 // *********** STUDENTS *****************

@@ -59,7 +59,8 @@ class VerticalLinearStepper extends React.Component {
     const data = {  
         name: this.props.newAssignmentName,
         repo_url: this.props.newAssignmentRepoUrl,
-        individual: this.props.newAssignmentIndividual
+        individual: this.props.newAssignmentIndividual,
+        currentClassroom: this.props.currentClassroom
     }
 
     this.props.createAssignment(data)

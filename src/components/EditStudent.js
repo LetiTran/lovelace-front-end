@@ -10,7 +10,10 @@ import {
     Button,
     Select,
     MenuItem,
+    FormControl
    } from '../components-info/MaterialUiImports'
+
+import { FormLabel } from '../../node_modules/@material-ui/core';
 
 class EditStudent extends Component {
 
@@ -49,8 +52,8 @@ class EditStudent extends Component {
         <section>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
             <Grid  xs={8} item >
-            {/* TODO: put title on select fields */}
-            <p>student:</p>
+            <FormControl>
+                <FormLabel>Student</FormLabel> 
             <Select
                 value={this.props.selectedtStudentToUpdate}
                 onChange={this.handleStudentChange}
@@ -60,12 +63,14 @@ class EditStudent extends Component {
                 }}>
                 {this.renderStudentsList()}
             </Select>
+            </FormControl>
             </Grid>
             <Grid  xs={8} item >
             
-            <p>classroom:</p>
-            <ChooseCohortOrClassForm titleSize="insideForm" funcName="chooseClassroomForUpdatingStudent"/>
-
+            <FormControl>
+                <FormLabel>Classroom</FormLabel> 
+                <ChooseCohortOrClassForm titleSize="insideForm" funcName="chooseClassroomForUpdatingStudent"/>
+            </FormControl>
             <InputWithGrid  element="updateStudentName" name="Student Name"/>
             <InputWithGrid  element="updateGithubName" name="Github Name"/>
             {/* <InputWithGrid element="updateStudentClassroom" name="Classroom"/>  */}
