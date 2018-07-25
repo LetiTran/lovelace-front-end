@@ -40,6 +40,7 @@ class StudentsListForCreatingGroups extends Component {
                 key={index}
                 type={student.id}
                 name={student.name}
+                element={student}
               />
             </List>
         );
@@ -68,11 +69,11 @@ class StudentsListForCreatingGroups extends Component {
 
     <Paper >
       <Table >
-        <TableHead>
+        {/* <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
           </TableRow>
-        </TableHead>
+        </TableHead> */}
 
         <TableBody>
         {this.renderStudentList()}

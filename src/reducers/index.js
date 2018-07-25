@@ -22,6 +22,7 @@ import {
     STORE_NEW_ASSIGNMENT_NAME, STORE_NEW_ASSIGNMENT_REPO_URL, STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL,
     STORE_ASSIGNMENT_GROUPS,
     UPDATE_SELECTED_ASSIGNMENT,
+    ADD_STUDENT_TO_GROUP,
     } from '../actions';
 
 const stateList = {
@@ -100,6 +101,9 @@ const stateList = {
 
     selectedAssignmentonForm: null,
 
+    groupSize: 2,
+    
+    currentGroup: 0,
     studentsGroups: [
         [{name: "test1", id: 1}, {name: "test2", id: 2}],
         [{name: "test3", id: 3}, {name: "test4", id: 4}]
@@ -391,6 +395,31 @@ const stateList = {
             updateStudentClassroom: action.classroom
         })
 
+        case ADD_STUDENT_TO_GROUP:
+        console.log((action.payload.student))
+        // check if gourp has defined size already and move to next group if...
+        // console.log( Object.keys(state.studentsGroups[state.currentGroup]).length)
+        let currentSize = Object.keys(state.studentsGroups[state.currentGroup]).length
+        if (currentSize === state.groupSize) {
+           let changeCurrentGroup =+ 1
+             Object.assign({}, state, {
+                currentGroup: changeCurrentGroup
+            })
+        }
+
+        let addToGroup = state.studentsGroups[state.currentGroup].concat(action.payload.student)
+
+        console.log(addToGroup)
+        let groups = state.studentsGroups
+        console.log(groups)
+        groups[state.currentGroup] = addToGroup
+        console.log(groups)
+
+        return Object.assign({}, state, {
+            studentsGroups: groups
+        })
+
+        
         // *********** INSTRUCTORS *****************    
         case GET_INSTRUCTORS_LIST_SUCCEDED:
         {

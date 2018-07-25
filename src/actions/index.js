@@ -49,6 +49,7 @@ export const UPDATE_STUDENT_GITHUB_NAME = "UPDATE_STUDENT_GITHUB_NAME"
 export const UPDATE_PREFERRED_NAME = "UPDATE_PREFERRED_NAME"
 export const UPDATE_STUDENT_CLASSROOM_NAME = "UPDATE_STUDENT_CLASSROOM_NAME"
 export const UPDATE_STUDENT_EMAIL = "UPDATE_STUDENT_EMAIL"
+export const ADD_STUDENT_TO_GROUP = "ADD_STUDENT_TO_GROUP"
 
 // *********** INSTRUCTORS *****************
 export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
@@ -699,6 +700,19 @@ export function fetchStudentForUpdatingSucceeded(student) {
     type: STORE_SELECTED_STUDENT_TO_UPDATE,
         payload: {
             student
+        }
+    }
+}
+
+export function addStudentToGroup(student) {
+    console.log(student)
+    return {
+        type: ADD_STUDENT_TO_GROUP,
+        payload: {
+            student: {
+                name: student.name,
+                id: student.id
+            }
         }
     }
 }

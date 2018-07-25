@@ -81,11 +81,11 @@ class ListStudentsGroups extends Component {
 
     <Paper >
       <Table >
-        <TableHead>
+        {/* <TableHead>
           <TableRow>
             <TableCell>Groups</TableCell>
           </TableRow>
-        </TableHead>
+        </TableHead> */}
 
         <TableBody>
         {this.renderStudentGroupsList()}
