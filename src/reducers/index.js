@@ -97,7 +97,10 @@ const stateList = {
     newAssignmentRepoUrl: null,
     newAssignmentIndividual: false,
 
-
+    studentsGroups: [
+        [{name: "test1", id: 1}, {name: "test2", id: 2}],
+        [{name: "test3", id: 3}, {name: "test4", id: 4}]
+    ]
     // TODO: Can't decide which way is better, 
     // Having several separate states for each attribute or comine them in a hash
     // - hash means way more repetitions inside the component code

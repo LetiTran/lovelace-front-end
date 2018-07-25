@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import AddStudentToGroup from './AddStudentToGroup.js'
 
 // For Redux:
 import {connect} from 'react-redux';
@@ -16,31 +15,45 @@ import {
   TableRow, 
   Paper,
   Typography ,
-  List
+  List,
+  ListItem,
+  ListItemText
 } from '../components-info/MaterialUiImports'
 
 
-class StudentsListForCreatingGroups extends Component {
+import ListSubheader from '@material-ui/core/ListSubheader';
+
+
+class ListStudentsGroups extends Component {
 
     // componentDidMount() {
-        // console.log('Called componentDidMount for students')
-    //     this.props.fetchStudentsList()
+    //     console.log('Called componentDidMount for studentsGroups')
+    //     // this.props.studentsGroups()
     // }
       
-    renderStudentList = () => {
-    // console.log('studentsList in renderStudenttList: ' )
-    // console.log(this.props.studentsList)
-    // console.log(this.props.currentClassroomStudents)
-        return this.props.currentClassroomStudents.map((student,index) => {
+
+    renderStudentGroupStudents = (group) => {
+        console.log(group)
+        return group.map((student,index) => {
+            return (
+                <ListItem>
+                    <ListItemText
+                    primary={student.name}
+                    />
+                </ListItem>
+            );
+            });
+    }
+    renderStudentGroupsList = () => {
+        console.log(this.props.studentsGroups)
+        return this.props.studentsGroups.map((group,index) => {
         //  To change it for ALL STUDENTS LIST, swap this two lines:
         //  return this.props.studentsList.map((student,index) => {
         return (
-            <List>
-              <AddStudentToGroup
-                key={index}
-                type={student.id}
-                name={student.name}
-              />
+            <List 
+            key={index}
+            subheader={<ListSubheader>Group {index+1}</ListSubheader>}>
+            {this.renderStudentGroupStudents(group)}
             </List>
         );
         });
@@ -63,19 +76,19 @@ class StudentsListForCreatingGroups extends Component {
     return (
     <section style={styles.root}>
     {/* <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
-      Students on Classroom {this.props.classroomName}
+      Groups {this.props.classroomName}
     </Typography> */}
 
     <Paper >
       <Table >
         <TableHead>
           <TableRow>
-            <TableCell>Name</TableCell>
+            <TableCell>Groups</TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
-        {this.renderStudentList()}
+        {this.renderStudentGroupsList()}
         </TableBody>
       </Table>
     </Paper>
@@ -86,7 +99,7 @@ class StudentsListForCreatingGroups extends Component {
   }
 }
 
-StudentsListForCreatingGroups.propTypes = {
+ListStudentsGroups.propTypes = {
   // TODO: write proTypes....
 }
 
@@ -94,7 +107,8 @@ function mapStateToProps(state) {
       return {
       studentsList: state.studentsList,
       currentClassroomStudents: state.currentClassroomStudents,
-      classroomName: state.currentClassroom.name
+      classroomName: state.currentClassroom.name,
+      studentsGroups: state.studentsGroups
       }
   }
   
@@ -102,5 +116,5 @@ function mapStateToProps(state) {
       return bindActionCreators({fetchStudentsList}, dispatch)
     }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(StudentsListForCreatingGroups);
+  export default connect(mapStateToProps, mapDispatchToProps)(ListStudentsGroups);
   
