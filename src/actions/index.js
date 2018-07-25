@@ -55,10 +55,14 @@ export const GET_INSTRUCTORS_LIST_SUCCEDED = "GET_INSTRUCTOR_LIST_SUCCEDED";
 export const CREATE_INSTRUCTOR = "CREATE_INSTRUCTOR"
 export const STORE_SELECTED_INSTRUCTOR = "STORE_SELECTED_INSTRUCTOR"
 export const STORE_SELECTED_INSTRUCTOR_NEW_DATA = "STORE_SELECTED_INSTRUCTOR_NEW_DATA"
-// *********** ASSIGNMENTS *****************
-export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED";
 export const STORE_NEW_INSTRUCTOR_NAME = "STORE_NEW_INSTRUCTOR_NAME"
 export const STORE_NEW_INSTRUCTOR_GITHUB_NAME = "STORE_NEW_INSTRUCTOR_GITHUB_NAME"
+
+// *********** ASSIGNMENTS *****************
+export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED";
+export const STORE_NEW_ASSIGNMENT_NAME = "STORE_NEW_ASSIGNMENT_NAME";
+export const STORE_NEW_ASSIGNMENT_REPO_URL = "STORE_NEW_ASSIGNMENT_REPO_URL";
+export const STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL = "STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL";
 
 // *********** INVITES *****************
 export const CREATE_USER_INVITES = "CREATE_USER_INVITES"
@@ -66,6 +70,9 @@ export const CREATE_INVITES_SUCCEEDED = "CREATE_INVITES_SUCCEEDED"
 
 // *********** SUBMISSIONS *****************
 export const GET_SUBMISSION_LIST_SUCCEDED = "GET_SUBMISSION_LIST_SUCCEDED"
+export const STORE_SELECTED_SUBMISSION_GRADE = "STORE_SELECTED_SUBMISSION_GRADE"
+export const STORE_SELECTED_SUBMISSION = "STORE_SELECTED_SUBMISSION"
+
 
 //  ____________________FUNCTIONS:____________________
 
@@ -490,6 +497,54 @@ export function fetchAssignmentListSucceded(assignmentList) {
     }
 }
 
+
+export function storeNewAssignmentName(name) {
+    return {
+        type: STORE_NEW_ASSIGNMENT_NAME,
+        payload: {
+            name
+        }
+    }
+}
+
+export function storeNewAssignmentRepoUrl(url) {
+    return {
+        type: STORE_NEW_ASSIGNMENT_NAME,
+        payload: {
+            url
+        }
+    }
+}
+
+export function storeNewAssignmentIndividual(bool) {
+    return {
+        type: STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL,
+        payload: {
+            bool
+        }
+    }
+}
+
+
+export function createAssignment(data){
+    data = {
+            name: data.name,
+            repo_url: data.repoUrl,
+            individual: data.repoUrl
+    } 
+    return dispatch => {
+        api.postAssignment({data}).then(response => {
+            console.log(response.data)
+            dispatch(fetchAssignmentList())
+        //  TODO: put action to show customizedSnackBar was successfull
+        }).catch((error) => {
+            if (error.response) {
+                console.log(error.response.status);
+            } 
+        });
+    }
+}
+
 // *********** STUDENTS *****************
 export function fetchStudentsList() {
     return dispatch => {
@@ -799,6 +854,27 @@ export function postUpdate(data){
             });
         }
 
+    case 'submission':
+        console.log('submissiom update')
+        const feedbackInfo = {
+            // id: data.submissionId,  
+            // grade: state.submissionGrade, 
+            // pr_url: state.
+        }
+
+        console.log(feedbackInfo)
+        return dispatch => {
+            api.putSubmission(feedbackInfo).then(response => {
+                // dispatch(puttUpdateSucceeded(response.data))
+                //  TODO: put action to show customizedSnackBar was successfull
+                console.log(response.data)
+            }).catch((error) => {
+                if (error.response) {
+                    console.log(error.response);
+                } 
+            });
+        }
+
     }
 }
 
@@ -809,11 +885,10 @@ export function postUpdate(data){
 export function fetchSubmissionList() {
     return dispatch => {
         api.fetchSubmissionList().then(response => {
-            dispatch(fetchSubmissionListSucceded(response.data.submissions))
+            dispatch(fetchSubmissionListSucceded(response.data))
         })
     }
 }
-
 
 export function fetchSubmissionListSucceded(submissionList) {
     return {
@@ -823,3 +898,36 @@ export function fetchSubmissionListSucceded(submissionList) {
         }
     }
 }
+
+export function storeSelectedSubmission(submission){
+    return {
+        type: STORE_SELECTED_SUBMISSION,
+        payload: {
+            submission
+        }
+    }
+}
+
+export function updateSelectedSubmissionGrade(submissionGrade){
+    return {
+        type: STORE_SELECTED_SUBMISSION_GRADE,
+        payload: {
+            submissionGrade
+        }
+    }
+}
+
+// export function updateSubmission(data){
+
+//     const feedbackInfo = {   
+//     id: data.submissionId,
+//     grade: data.submissionGrade
+//     }
+
+//     return {
+//         type: SEND_FEEDBACK,
+//         payload: {
+//             feedbackInfo
+//         }
+//     }
+// }

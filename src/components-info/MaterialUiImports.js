@@ -44,10 +44,10 @@ export {default as Input} from "@material-ui/core/Input";
 // export {default as Typography} from "@material-ui/core/es/Typography/Typography";
 export {default as CodeIcon} from "@material-ui/icons/es/Code";
 export {default as Avatar} from "@material-ui/core/es/Avatar/Avatar";
-// export {default as FormGroup} from "@material-ui/core/es/FormGroup/FormGroup";
-// export {default as FormControlLabel} from "@material-ui/core/es/FormControlLabel/FormControlLabel";
-// export {default as Switch} from "@material-ui/core/es/Switch/Switch";
-// export {default as List} from "@material-ui/core/es/List/List";
+export {default as FormGroup} from "@material-ui/core/es/FormGroup/FormGroup";
+export {default as FormControlLabel} from "@material-ui/core/es/FormControlLabel/FormControlLabel";
+export {default as Switch} from "@material-ui/core/es/Switch/Switch";
+export {default as List} from "@material-ui/core/es/List/List";
 // export {default as ListItem} from "@material-ui/core/es/ListItem/ListItem"; --> REPEATED
 
 //  For Repo

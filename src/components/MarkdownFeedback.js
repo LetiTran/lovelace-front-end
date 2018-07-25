@@ -2,24 +2,24 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import PropTypes from 'prop-types';
 import {
-//  ReactMarkdown,
  MarkdownElement, 
-//  Paper, 
+ Paper, 
  Grid, 
  Card,
-//  GridContainer,
+ GridContainer,
  CardHeader,
  CardContent, 
  Input,
-//  Typography, 
+ Typography, 
  CodeIcon, 
  Avatar, 
-//  FormGroup, 
-//  FormControlLabel, 
-//  Switch,
-//  List, 
+ FormGroup, 
+ FormControlLabel, 
+ Switch,
+ List, 
  ListItem,
 } from '../components-info/MaterialUiImports'
+// import MarkdownElement from '@material-ui/docs'
 
 let initialSourcetwo = '# Task List\r\n## What We\'re Looking For\r\n\r\nFeature | Feedback\r\n:------------- | :-------------\r\n**Baseline** | \r\nAppropriate Git Usage with no extraneous files checked in | Good number of commits and commit messages\r\nAnswered comprehension questions | Check, Strong Params actually ensure that no unexpected fields are inserted in creation or update operations.  Familiarity with routes & styling will come with practice.  If you have a specific question, send it on to me.  \r\nSuccessfully handles: Index, Show | Check\r\nSuccessfully handles: New, Create | Check.\r\nSuccessfully handles: Edit, Update | Check\r\nSuccessfully handles: Destroy, Task Complete | Check\r\nRoutes follow RESTful conventions | Check\r\nUses named routes (like `_path`) | Check\r\nUses partial views to DRY the new and edit forms | Check\r\n**Overall** | Nicely done.  The site works and does everything expected.  The styling looks good without being too fancy. \r\n';
 
@@ -70,100 +70,100 @@ constructor(props) {
   }
 
 
-  render() {
-    const { feedback } = this.state.feedback;
-    return (
-        <section>
-          <Grid container spacing={24}>
-            <Grid item xs={12} sm={12} md={6}>
-              <Card>
-                <CardHeader
-                    avatar={<Avatar ><CodeIcon /></Avatar>}
-                    title={<h1>Foo</h1>}
-                />
-            <CardContent>
-                <Input
-                    id="md-feedback"
-                    fullWidth={true}
-                    multiline={true}
-                    value={feedback}
-                    onChange={feedback}
-
-
-                />
-              </CardContent>
-              </Card>
-            </Grid>
-          <Grid item xs={12} sm={12} md={6}>
-              <Card>
-                <CardHeader>
-                  <div color="rose">
-                    <CodeIcon />
-                  </div>
-                  <h4>Foo</h4>
-                </CardHeader>
-                <CardContent>
-                <MarkdownElement text={this.state.feedback} />;
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-        </section>
-
-    )
-  }
-}
-
 //   render() {
-//     // const { feedback } = this.state.feedback;
-//     const { auth, feedback } = this.state;
-//     const foo =
-//       this.state.auth ? <Input
-//         id="md-feedback"
-//         fullWidth={true}
-//         multiline={true}
-//         value={this.state.feedback}
-//         onChange={this.updateFeedback}
-//
-//
-//     /> : <MarkdownElement text={this.state.feedback} />;
-//
+//     const { feedback } = this.state.feedback;
 //     return (
-//       <section >
-//         <FormGroup row>
-//           <FormControlLabel
-//               control={
-//                 <Switch checked={this.state.auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-//               }
-//               label={this.state.auth ? "Form" : "Preview"}
-//           />
-//         </FormGroup>
-//         <Grid container spacing={24}>
-//           <Grid item xs={12} sm={12} md={6}>
-//             <Card>
-//               <CardContent>{foo}</CardContent>
-//             </Card>
-//           </Grid>
-//           <Grid item xs={12} sm={12} md={6}>
-//             <Card>
-//               <CardContent>
-//           <List style={{
-//             position: "relative",
-//
-//             overflow: "scroll",
-//             maxHeight: "60vh"
-//           }}
-//                 >
-//             {this.renderContentsList()}
-//           </List>
+//         <section>
+//           <Grid container spacing={24}>
+//             <Grid item xs={12} sm={12} md={6}>
+//               <Card>
+//                 <CardHeader
+//                     avatar={<Avatar ><CodeIcon /></Avatar>}
+//                     title={<h1>Foo</h1>}
+//                 />
+//             <CardContent>
+//                 <Input
+//                     id="md-feedback"
+//                     fullWidth={true}
+//                     multiline={true}
+//                     value={feedback}
+//                     onChange={feedback}
+
+
+//                 />
 //               </CardContent>
-//             </Card>
-//         </Grid>
-//         </Grid>
-//       </section>
+//               </Card>
+//             </Grid>
+//           <Grid item xs={12} sm={12} md={6}>
+//               <Card>
+//                 <CardHeader>
+//                   <div color="rose">
+//                     <CodeIcon />
+//                   </div>
+//                   <h4>Foo</h4>
+//                 </CardHeader>
+//                 <CardContent>
+//                 <MarkdownElement text={this.state.feedback} />;
+//                 </CardContent>
+//               </Card>
+//             </Grid>
+//           </Grid>
+//         </section>
+
 //     )
 //   }
 // }
+
+  render() {
+    // const { feedback } = this.state.feedback;
+    const { auth, feedback } = this.state;
+    const foo =
+      this.state.auth ? <Input
+        id="md-feedback"
+        fullWidth={true}
+        multiline={true}
+        value={this.state.feedback}
+        onChange={this.updateFeedback}
+
+
+    /> : <MarkdownElement text={this.state.feedback} />;
+
+    return (
+      <section >
+        <FormGroup row>
+          <FormControlLabel
+              control={
+                <Switch checked={this.state.auth} onChange={this.handleChange} aria-label="LoginSwitch" />
+              }
+              label={this.state.auth ? "Form" : "Preview"}
+          />
+        </FormGroup>
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={12} md={6}>
+            <Card>
+              <CardContent>{foo}</CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <Card>
+              <CardContent>
+          <List style={{
+            position: "relative",
+
+            overflow: "scroll",
+            maxHeight: "60vh"
+          }}
+                >
+            {this.renderContentsList()}
+          </List>
+              </CardContent>
+            </Card>
+        </Grid>
+        </Grid>
+      </section>
+    )
+  }
+}
 
 // or https://material-ui.com/demos/dialogs/
 

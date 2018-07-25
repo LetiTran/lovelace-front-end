@@ -17,7 +17,9 @@ import {
     UPDATE_COHORT_GRAD_DATE, STORE_SELECTED_COHORT_TO_UPDATE,
     STORE_SELECTED_STUDENT_TO_UPDATE, UPDATE_STUDENT_NAME, UPDATE_STUDENT_EMAIL,
     UPDATE_STUDENT_GITHUB_NAME,UPDATE_PREFERRED_NAME, UPDATE_STUDENT_CLASSROOM_NAME,
-    GET_SUBMISSION_LIST_SUCCEDED
+    GET_SUBMISSION_LIST_SUCCEDED,
+    STORE_SELECTED_SUBMISSION_GRADE, STORE_SELECTED_SUBMISSION, 
+    STORE_NEW_ASSIGNMENT_NAME, STORE_NEW_ASSIGNMENT_REPO_URL, STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL
     } from '../actions';
 
 const stateList = {
@@ -47,14 +49,14 @@ const stateList = {
     newCohortInternshipEndDate: "",
     newCohortGraduationDate: "",
 
-    newClassroomName: "",
-    newClassroomCohortId: "",
+    newClassroomName: null,
+    newClassroomCohortId: null,
 
     addedNamesForInvites: [],
     addedInstructorsForInvites: [],
 
-    newInstructorName: "",
-    newInstructorGithubName: "",
+    newInstructorName: null,
+    newInstructorGithubName: null,
 
     selectedtInstructorToUpdate: {
         id: null,
@@ -87,6 +89,13 @@ const stateList = {
     updateStudentPreferredName: null,
 
     submissionList: [],
+    selectedSubmission: null,
+    updateSubmissionGrade: null,
+
+    newAssignmentName: null,
+    newAssignmentRepoUrl: null,
+    newAssignmentIndividual: true,
+
 
     // TODO: Can't decide which way is better, 
     // Having several separate states for each attribute or comine them in a hash
@@ -292,10 +301,25 @@ const stateList = {
         })}
 
          // *********** ASSIGNMENTS *****************    
-         case GET_ASSIGNMENTS_LIST_SUCCEDED:
+        case GET_ASSIGNMENTS_LIST_SUCCEDED:
          return Object.assign({}, state, {
              assignmentList : action.payload.assignmentList
          })
+
+        case STORE_NEW_ASSIGNMENT_NAME:
+        return Object.assign({}, state, {
+            newAssignmentName: action.payload.name,
+        })
+
+        case STORE_NEW_ASSIGNMENT_REPO_URL:
+        return Object.assign({}, state, {
+            newAssignmentRepoUrl: action.payload.url,
+        })
+
+        case STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL:
+        return Object.assign({}, state, {
+            newAssignmentIndividual: action.payload.bool,
+        })
 
 
          // *********** STUDENTS *****************    
@@ -397,6 +421,17 @@ const stateList = {
         return Object.assign({}, state, {
             submissionList: action.payload.submissionList
         })
+
+        case STORE_SELECTED_SUBMISSION:
+        return Object.assign({},state, {
+            selectedSubmission: action.payload.submission
+        })
+
+        case STORE_SELECTED_SUBMISSION_GRADE:
+        return Object.assign({},state, {
+            updateSubmissionGrade: action.payload.submissionGrade
+        })
+
 
 
         default:

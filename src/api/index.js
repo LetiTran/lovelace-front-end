@@ -88,3 +88,14 @@ export function fetchStudent(id){
     return client.get(`students/${id}`);
 }
 
+export function putSubmission(data){
+    return client.get(`submissions/${data.id}`);
+}
+
+export function postAssignment(data){
+    return client.get(`assignments/${data}`);
+}
+
+export function putAssignment(data){
+    return client.get(`assignments/${data.id}`);
+}
