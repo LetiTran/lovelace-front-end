@@ -19,7 +19,8 @@ import {
     UPDATE_STUDENT_GITHUB_NAME,UPDATE_PREFERRED_NAME, UPDATE_STUDENT_CLASSROOM_NAME,
     GET_SUBMISSION_LIST_SUCCEDED,
     STORE_SELECTED_SUBMISSION_GRADE, STORE_SELECTED_SUBMISSION, 
-    STORE_NEW_ASSIGNMENT_NAME, STORE_NEW_ASSIGNMENT_REPO_URL, STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL
+    STORE_NEW_ASSIGNMENT_NAME, STORE_NEW_ASSIGNMENT_REPO_URL, STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL,
+    STORE_ASSIGNMENT_GROUPS,
     } from '../actions';
 
 const stateList = {
@@ -94,7 +95,7 @@ const stateList = {
 
     newAssignmentName: null,
     newAssignmentRepoUrl: null,
-    newAssignmentIndividual: true,
+    newAssignmentIndividual: false,
 
 
     // TODO: Can't decide which way is better, 
@@ -326,6 +327,11 @@ const stateList = {
         newAssignmentIndividual: action.payload.bool,
         })
         
+        case STORE_ASSIGNMENT_GROUPS:
+        let addGroup = state.assignedGroups.concat(action.payload.group)
+        return Object.assign({}, state, {
+            assignedGroups: addGroup
+        })
 
 
          // *********** STUDENTS *****************    

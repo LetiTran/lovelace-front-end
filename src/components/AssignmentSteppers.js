@@ -15,7 +15,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import CreateAssignment from './CreateAssignment.js'
-
+import CreateGroup from './CreateGroup.js'
 
 const styles = theme => ({
   root: {
@@ -42,7 +42,7 @@ function getStepContent(step) {
     case 0:
       return <CreateAssignment/>
     case 1:
-      return 'Add Create groups component here';
+      return <CreateGroup/>;
     case 2:
       return `Display Assignment and its groups`;
     default:
@@ -169,7 +169,8 @@ function mapStateToProps(state) {
     return {
         newAssignmentName: state.newAssignmentName,
         newAssignmentRepoUrl: state.newAssignmentRepoUrl,
-        newAssignmentIndividual: state.newAssignmentIndividual
+        newAssignmentIndividual: state.newAssignmentIndividual,
+        currentClassroom: state.currentClassroom
         }
 }
 

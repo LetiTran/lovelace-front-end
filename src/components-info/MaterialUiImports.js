@@ -89,8 +89,14 @@ export {default as ExpansionPanelDetails} from '@material-ui/core/ExpansionPanel
 export {default as ExpansionPanelSummary} from '@material-ui/core/ExpansionPanelSummary';
 export {default as ExpandMoreIcon} from '@material-ui/icons/ExpandMore';
 
+//  For list
+
+export {default as ListItemSecondaryAction} from '@material-ui/core/ListItemSecondaryAction';
+
 // For icons
+export {default as WorkIcon} from '@material-ui/icons/Work';
+
+
 // This package has been deprecated
 // Author message:
-
 // Use @material-ui/icons instead

@@ -63,6 +63,7 @@ export const GET_ASSIGNMENTS_LIST_SUCCEDED = "GET_ASSIGNMENTS_LIST_SUCCEDED";
 export const STORE_NEW_ASSIGNMENT_NAME = "STORE_NEW_ASSIGNMENT_NAME";
 export const STORE_NEW_ASSIGNMENT_REPO_URL = "STORE_NEW_ASSIGNMENT_REPO_URL";
 export const STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL = "STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL";
+export const STORE_ASSIGNMENT_GROUPS = "STORE_ASSIGNMENT_GROUPS";
 
 // *********** INVITES *****************
 export const CREATE_USER_INVITES = "CREATE_USER_INVITES"
@@ -509,7 +510,7 @@ export function storeNewAssignmentName(name) {
 
 export function storeNewAssignmentRepoUrl(url) {
     return {
-        type: STORE_NEW_ASSIGNMENT_NAME,
+        type: STORE_NEW_ASSIGNMENT_REPO_URL,
         payload: {
             url
         }
@@ -525,17 +526,24 @@ export function storeNewAssignmentIndividual(bool) {
     }
 }
 
+export function storeAssignmentGroup(group){
+    return {
+        type: STORE_ASSIGNMENT_GROUPS,
+        payload: {
+            group
+        }
+    }
+}
 
 export function createAssignment(data){
     console.log('yes')
     console.log(data)
-    data = {
-            name: data.name,
-            repo_url: data.repoUrl,
-            individual: data.repoUrl
-    } 
+            let name= data.name
+            let repo_url= data.repoUrl
+           let individual= data.repoUrl
+   
     return dispatch => {
-        api.postAssignment({data}).then(response => {
+        api.putAssignment(name, repo_url, individual).then(response => {
             console.log(response.data)
             dispatch(fetchAssignmentList())
         //  TODO: put action to show customizedSnackBar was successfull

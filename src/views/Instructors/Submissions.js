@@ -1,108 +1,101 @@
-import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import Submission from '../../components/Submission.js'
-
 // For Redux:
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {fetchSubmissionList} from '../../actions';
+import {} from '../../actions';
 
-// For Styles:
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableRow, 
-  Paper,
-  Typography 
-} from '../../components-info/MaterialUiImports'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
+import SwipeableViews from 'react-swipeable-views';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 
 
-class SubmissionList extends Component {
-      
-  componentDidMount(){
-    this.props.fetchSubmissionList() 
-  }
+import SubmissionList from '../../components/SubmissionList.js'
 
-    renderSubmissionList = () => {
-    console.log(this.props.submissionList)
-        return this.props.submissionList.map((submission,index) => {
-        return (
-            <Submission
-                key={index}
-                studentId={submission.student_id}
-                assignmentId={submission.assignment_id}
-                // assignmentName={submission.assignment_name}
-                openPrUrl={()=> window.open(submission.pr_url, "_blank")}
-                prUrl={submission.pr_url}
-                submittedAt={submission.submitted_at}
-                feedbackUrl={submission.feedback_url} 
-                grade={submission.grade}
-                instructorId={submission.instructor_id}
-                // instructorName={submission.instructor_name}
-            />
-        );
-        });
-    }
+function TabContainer({ children, dir }) {
+  return (
+    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+      {children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  dir: PropTypes.string.isRequired,
+};
+
+const styles = theme => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    width: "90%",
+  },
+});
+
+class Submission extends React.Component {
+  state = {
+    value: 0,
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  handleChangeIndex = index => {
+    this.setState({ value: index });
+  };
 
   render() {
-
-    const styles =  {
-        root: {
-          width: '100%',
-          marginTop: 10,
-          overflowX: 'auto',
-        },
-        table: {
-          minWidth: 700,
-        },
-      };
+    const { classes, theme } = this.props;
 
     return (
-        
-  <section style={styles.root}>
-    <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
-      Submissions {this.props.classroomName}
-    </Typography>
-
-    <Paper >
-      <Table >
-        <TableHead>
-          <TableRow>
-            <TableCell>Student </TableCell>
-            <TableCell>Assignment</TableCell>
-            <TableCell>Submiaaion Date</TableCell>
-            <TableCell>PR URL</TableCell>
-            <TableCell>Feedback URL</TableCell>
-            <TableCell>Feedback Instructor</TableCell>
-            <TableCell>Grade</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-        {this.renderSubmissionList()}
-        </TableBody>
-      </Table>
-    </Paper>
-    
-    </section>
-    )
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            fullWidth
+            centered
+          >
+            <Tab label="Submission List" />
+            <Tab label="Create Submission" />
+            <Tab label="Edit Submission" />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={this.state.value}
+          onChangeIndex={this.handleChangeIndex}
+        >
+          <TabContainer dir={theme.direction}><SubmissionList /></TabContainer>
+          <TabContainer dir={theme.direction}>Create submission</TabContainer>
+          <TabContainer dir={theme.direction}>Edit Assignment</TabContainer>
+        </SwipeableViews>
+      </div>
+    );
   }
 }
 
-SubmissionList.propTypes = {
+
+
+Submission.propTypes = {
   // TODO: write proTypes....
 }
 
 function mapStateToProps(state) {
       return {
-        submissionList: state.submissionList
+        classroomName: state.currentClassroom.name
       }
   }
   
   function mapDispatchToProps(dispatch) {
-      return bindActionCreators({fetchSubmissionList }, dispatch)
+      return bindActionCreators({ }, dispatch)
     }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(SubmissionList);
-  
+  export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, { withTheme: true })(Submission));

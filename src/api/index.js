@@ -4,9 +4,9 @@ import axios from 'axios';
 // require('dotenv').config({path:'../../.env'})
 // console.log(process.env)
 // const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
-const API_BASE_URL = 'http://172.24.22.199:3000'
+// const API_BASE_URL = 'http://172.24.22.199:3000'
 
-// const API_BASE_URL = `http://localhost:3000/`;
+const API_BASE_URL = `http://localhost:3000/`;
 // const API_BASE_URL = `https://lovelace-be-heroku.herokuapp.com/`;
 
 
@@ -89,13 +89,13 @@ export function fetchStudent(id){
 }
 
 export function putSubmission(data){
-    return client.get(`submissions/${data.id}`);
+    return client.get(`submissions/${data.id}`, data);
 }
 
 export function postAssignment(data){
-    return client.get(`assignments/${data}`);
+    return client.get(`assignments/${data}`, data);
 }
 
 export function putAssignment(data){
-    return client.get(`assignments/${data.id}`);
+    return client.get(`assignments/`, data);
 }
