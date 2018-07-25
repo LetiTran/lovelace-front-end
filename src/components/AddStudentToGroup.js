@@ -17,10 +17,15 @@ import {addStudentToGroup } from '../actions';
 class AddStudentToGroup extends Component {
 
   addStudentToGroup = (event) => {
-    // console.log('value')
+    // console.log(    this.props.forceUpdateCallBack
+    // )
     // console.log(event.target.value)
+    // this.props.forceUpdateCallBack
     this.props.addStudentToGroup(this.props.element)
+    // this.props.forceUpdateCallBack
   }
+
+
 
   render() {
     return (
@@ -30,7 +35,7 @@ class AddStudentToGroup extends Component {
         />
         <ListItemSecondaryAction>
           <IconButton  aria-label="Add" onClick={this.addStudentToGroup}>
-            <p style={{fontSize:"0.5em"}}>Add</p>
+            <p style={{fontSize:"0.5em", color:"green"}}>ADD</p>
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
@@ -51,7 +56,7 @@ AddStudentToGroup.propTypes = {
 
 function mapStateToProps(state) {
   return {
-  // classroomName: state.currentClassroom.name
+    currentClassroomStudentsToAddToGroupd: state.currentClassroomStudentsToAddToGroupd
   }
 }
 

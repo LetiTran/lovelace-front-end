@@ -18,48 +18,63 @@ import {
 
 class CreateGroup extends Component {
 
-  // TODO: Make it a Switch-case function instead
-  handleChange = (event) => {
-    
-   };
+  // constructor(){
+  //   super();
+  //   this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+  // };
+  
+  // forceUpdateHandler(){
+  //   this.forceUpdate();
+  // };
+
+  // forceUpdateHandler = () => {
+  //   console.log('force update called')
+  //   this.forceUpdate()
+  //  }
 
   render() {
+     
+  
     return (
-
-
-       
+      <Grid container direction="row" justify="center">
+      <Grid item xs={6}>
         <Table >
           <TableHead>
             <TableRow>
               <TableCell>Students in Classroom {this.props.classroomName}</TableCell>
+            </TableRow>
+          </TableHead>
+  
+          <TableBody>
+          <TableCell><StudentsListForCreatingGroups /></TableCell>
+          </TableBody>
+        </Table>
+        </Grid>
+        <Grid item xs={6}>
+        <Table >
+          <TableHead>
+            <TableRow>
               <TableCell>Groups {this.props.classroomName}</TableCell>
             </TableRow>
           </TableHead>
   
           <TableBody>
-          <TableCell><StudentsListForCreatingGroups/></TableCell>
           <TableCell><ListStudentsGroups/></TableCell>
           </TableBody>
 
+          {/* forceUpdateCallBack={this.forceUpdateHandler} */}
         </Table>
-
-
-
-            // <Grid container spacing={8} alignItems="flex-end">
-            // <Grid md item>
-            // <StudentsListForCreatingGroups/>
-            // </Grid>
-            // <Grid md item>
-            // <ListStudentsGroups/>
-            // </Grid>
-            // </Grid>
+        </Grid>
+      </Grid>
     );
   }
 }
 
 function mapStateToProps(state) {
     return {
-    classroomName: state.currentClassroom.name
+    classroomName: state.currentClassroom.name,
+    studentsGroups: state.studentsGroups
+
     }
 }
 

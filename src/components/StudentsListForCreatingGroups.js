@@ -30,12 +30,12 @@ class StudentsListForCreatingGroups extends Component {
     renderStudentList = () => {
     // console.log('studentsList in renderStudenttList: ' )
     // console.log(this.props.studentsList)
-    // console.log(this.props.currentClassroomStudents)
-        return this.props.currentClassroomStudents.map((student,index) => {
+    // console.log(this.props.currentClassroomStudentsToAddToGroupd)
+        return this.props.currentClassroomStudentsToAddToGroupd.map((student,index) => {
         //  To change it for ALL STUDENTS LIST, swap this two lines:
         //  return this.props.studentsList.map((student,index) => {
         return (
-            <List>
+            <List style={{verticalAlign: "top"}}>
               <AddStudentToGroup
                 key={index}
                 type={student.id}
@@ -94,7 +94,7 @@ StudentsListForCreatingGroups.propTypes = {
 function mapStateToProps(state) {
       return {
       studentsList: state.studentsList,
-      currentClassroomStudents: state.currentClassroomStudents,
+      currentClassroomStudentsToAddToGroupd: state.currentClassroomStudentsToAddToGroupd,
       classroomName: state.currentClassroom.name
       }
   }

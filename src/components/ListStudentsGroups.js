@@ -28,22 +28,24 @@ class ListStudentsGroups extends Component {
 
     // componentDidMount() {
     //     console.log('Called componentDidMount for studentsGroups')
-    //     // this.props.studentsGroups()
+    //     this.props.studentsGroups()
     // }
       
+
 
     renderStudentGroupStudents = (group) => {
         console.log(group)
         return group.map((student,index) => {
             return (
                 <ListItem>
-                    <ListItemText
-                    primary={student.name}
+                    <ListItemText style={{textAlign: "center", color: "grey"}}
+                    secondary={student.name}
                     />
                 </ListItem>
             );
             });
     }
+
     renderStudentGroupsList = () => {
         console.log(this.props.studentsGroups)
         return this.props.studentsGroups.map((group,index) => {
@@ -51,8 +53,9 @@ class ListStudentsGroups extends Component {
         //  return this.props.studentsList.map((student,index) => {
         return (
             <List 
+            style={{verticalAlign: "top",textAlign: "center"}}
             key={index}
-            subheader={<ListSubheader>Group {index+1}</ListSubheader>}>
+            subheader={<ListSubheader style={{color: "green"}}>Group {index+1}</ListSubheader>}>
             {this.renderStudentGroupStudents(group)}
             </List>
         );
@@ -106,7 +109,7 @@ ListStudentsGroups.propTypes = {
 function mapStateToProps(state) {
       return {
       studentsList: state.studentsList,
-      currentClassroomStudents: state.currentClassroomStudents,
+      currentClassroomStudentsToAddToGroupd: state.currentClassroomStudentsToAddToGroupd,
       classroomName: state.currentClassroom.name,
       studentsGroups: state.studentsGroups
       }

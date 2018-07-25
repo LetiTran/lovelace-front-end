@@ -102,11 +102,22 @@ const stateList = {
     selectedAssignmentonForm: null,
 
     groupSize: 2,
-    
+    currentClassroomStudentsToAddToGroupd: null,
+    // [{name: "test3", id: 3}, {name: "test4", id: 4}]
     currentGroup: 0,
     studentsGroups: [
-        [{name: "test1", id: 1}, {name: "test2", id: 2}],
-        [{name: "test3", id: 3}, {name: "test4", id: 4}]
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
     ]
     // TODO: Can't decide which way is better, 
     // Having several separate states for each attribute or comine them in a hash
@@ -259,7 +270,8 @@ const stateList = {
         })
         return Object.assign({}, state, {
             currentClassroom: action.classroom,
-            currentClassroomStudents: studentsInCurrentClassrom
+            currentClassroomStudents: studentsInCurrentClassrom,
+            currentClassroomStudentsToAddToGroupd: studentsInCurrentClassrom
         })}
 
         case GET_CLASSROOM_LIST_SUCCEDED:
@@ -356,7 +368,8 @@ const stateList = {
             })
             return Object.assign({}, state, {
                 studentsList : action.payload.studentsList,
-                currentClassroomStudents: studentsInCurrentClassrom
+                currentClassroomStudents: studentsInCurrentClassrom,
+                currentClassroomStudentsToAddToGroupd: studentsInCurrentClassrom
             })
          }
 
@@ -396,27 +409,33 @@ const stateList = {
         })
 
         case ADD_STUDENT_TO_GROUP:
+
         console.log((action.payload.student))
         // check if gourp has defined size already and move to next group if...
         // console.log( Object.keys(state.studentsGroups[state.currentGroup]).length)
         let currentSize = Object.keys(state.studentsGroups[state.currentGroup]).length
+        let putInThisGroup = state.currentGroup
         if (currentSize === state.groupSize) {
-           let changeCurrentGroup =+ 1
-             Object.assign({}, state, {
-                currentGroup: changeCurrentGroup
-            })
+            putInThisGroup = putInThisGroup + 1
         }
 
-        let addToGroup = state.studentsGroups[state.currentGroup].concat(action.payload.student)
+        let addToGroup = state.studentsGroups[putInThisGroup].concat(action.payload.student)
 
         console.log(addToGroup)
         let groups = state.studentsGroups
         console.log(groups)
-        groups[state.currentGroup] = addToGroup
+        groups[putInThisGroup] = addToGroup
         console.log(groups)
 
+        let takeStudentOutOfList = state.currentClassroomStudentsToAddToGroupd.filter(function(elem){
+            return elem.id != action.payload.student.id; 
+         });
+        // let takeStudentOutOfList = state.currentClassroomStudentsToAddToGroupd.pop(action.payload.student)
         return Object.assign({}, state, {
-            studentsGroups: groups
+            studentsGroups: groups,
+            currentGroup: putInThisGroup,
+            currentClassroomStudentsToAddToGroupd:takeStudentOutOfList
+
         })
 
         
