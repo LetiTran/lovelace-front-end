@@ -66,7 +66,7 @@ class StudentsList extends Component {
     return (
     <section style={styles.root}>
     <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
-      Students on Classroom {this.props.classroomName}
+      Students 
     </Typography>
 
     <Paper >

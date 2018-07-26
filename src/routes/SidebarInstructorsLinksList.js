@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import ListItemLink from '../components/ListItemLink'
-
+import ChooseCohortOrClassForm from '../components/ChooseCohortOrClassForm.js'
 import { 
     BookIcon, 
     HomeIcon, 
     CheckIcon, 
-    Divider
+    Divider,
+    ListItem,
+    ListItemIcon,
+    ListItemText
 } from '../components-info/MaterialUiImports'
 
 class SidebarInstructorsLinksList extends Component {
@@ -13,21 +16,32 @@ class SidebarInstructorsLinksList extends Component {
   render() {
     return (
       <div>
-        <ListItemLink to="/lovelace-front-end" primary="LandingPage" icon={<HomeIcon />} />
+                  {/* <section style={{textAlign: "center", paddingLeft: "10px"}} >Choose Classroom</section> */}
 
-        <ListItemLink to="/lovelace-front-end/homepage" primary="Instructors Homepage" icon={<HomeIcon />} />
+        <ListItem >
+          <ListItemIcon><HomeIcon /></ListItemIcon>
+          <ListItemText primary={"Choose Classroom"} secondary={<ChooseCohortOrClassForm selectValue="classroom"  funcName="chooseCurrentClassroom" titleSize="insideForm"/>} /> 
+          {/* <ListItemText > </ListItemText> */}
+        </ListItem>
         <Divider light />
-        <ListItemLink to="/lovelace-front-end/assignments" primary="Assignments" icon={<BookIcon />} />
+        <Divider light />
+        {/* <ListItemLink primary="Choose Classroom" icon={<HomeIcon />} >Choose Classroom </ListItemLink> */}
+
+        {/* <ListItemLink to="/lovelace-front-end" primary="LandingPage" icon={<HomeIcon />} /> */}
+
+        {/* <ListItemLink to="/lovelace-front-end/homepage" primary="Instructors Homepage" icon={<HomeIcon />} /> */}
+        <Divider  />
+        <ListItemLink to="/assignments" primary="Assignments" icon={<BookIcon />} />
         {/* TODO: feedback should be inside of assignments or/and submissions */}
-        <ListItemLink to="/lovelace-front-end/feedback" primary="Feedback" icon={<BookIcon />} />
-        <ListItemLink to="/lovelace-front-end/submissions" primary="Submissions" icon={<BookIcon />} />
+        <ListItemLink to="/feedback" primary="Feedback" icon={<BookIcon />} />
+        <ListItemLink to="/submissions" primary="Submissions" icon={<BookIcon />} />
         <Divider light />
-        <ListItemLink to="/lovelace-front-end/students" primary="Students" icon={<BookIcon />} />
+        <ListItemLink to="/students" primary="Students" icon={<BookIcon />} />
         <Divider light />
-        <ListItemLink to="/lovelace-front-end/admin" primary="Admin Panel" icon={<BookIcon />} />
+        <ListItemLink to="/admin" primary="Admin Panel" icon={<BookIcon />} />
         {/* <Divider light /> */}
         
-        {/* <ListItemLink to="/lovelace-front-end/admin" primary="Admin" icon={<CheckIcon />} /> */}
+        {/* <ListItemLink to="/admin" primary="Admin" icon={<CheckIcon />} /> */}
         {/*  TODO: put all this routes bellow under Admin or Manage or something like that... 
         (either a nested list or all inside one component with multiple tabs) */}
         {/* <ListItemLink to="/lovelace-front-end/userinvites" primary="User Invites" icon={<CheckIcon />} />

@@ -13,7 +13,10 @@ Typography,
 Divider,
 IconButton, 
 MenuIcon,
-ChevronLeftIcon, 
+ChevronLeftIcon,
+ListItem,
+HomeIcon ,
+List
 } from '../components-info/MaterialUiImports'
 
 const drawerWidth = 240;
@@ -138,8 +141,11 @@ class MiniDrawer extends React.Component {
             <IconButton onClick={this.handleDrawerClose}><ChevronLeftIcon style={{color: "white"}}/></IconButton>
           </section>
           <Divider />
+          {/* <section style={{textAlign: "center", paddingLeft: "10px"}} >Choose Classroom</section> */}
           {/* Render list of links on side bar. Changes wich one to render using permission once login is set up*/}
+          <List>
           <SidebarInstructorsLinksList />
+          </List>
           <SidebarStudentsLinksList />
         </Drawer>
         <main className={classes.content}>

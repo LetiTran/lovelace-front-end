@@ -51,6 +51,14 @@ class EditStudent extends Component {
     return (
         <section>
         <Grid  alignItems="center" spacing={16} container direction="row" justify="center">
+            
+        <Grid  xs={8} item >
+            <FormControl>
+                <FormLabel>Classroom</FormLabel> 
+                <ChooseCohortOrClassForm titleSize="insideForm" funcName="chooseClassroomForUpdatingStudent"/>
+            </FormControl>
+        </Grid>
+
             <Grid  xs={8} item >
             <FormControl>
                 <FormLabel>Student</FormLabel> 
@@ -66,11 +74,6 @@ class EditStudent extends Component {
             </FormControl>
             </Grid>
             <Grid  xs={8} item >
-            
-            <FormControl>
-                <FormLabel>Classroom</FormLabel> 
-                <ChooseCohortOrClassForm titleSize="insideForm" funcName="chooseClassroomForUpdatingStudent"/>
-            </FormControl>
             <InputWithGrid  element="updateStudentName" name="Student Name"/>
             <InputWithGrid  element="updateGithubName" name="Github Name"/>
             {/* <InputWithGrid element="updateStudentClassroom" name="Classroom"/>  */}

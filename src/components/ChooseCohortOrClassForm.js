@@ -125,6 +125,7 @@ renderClassroomList = () => {
         <FormControl >
           <InputLabel htmlFor="change-cohortOrClassroom"></InputLabel>
           <Select
+          style={{width: "120px"}}
             value={selectValue}
             onChange={this.handleChange}
             inputProps={{

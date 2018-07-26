@@ -7,16 +7,16 @@ import AdminPanels from '../views/Instructors/Admin.js';
 import Submissions from '../views/Instructors/Submissions.js';
 
 let indexRoutes = [
-  { path: "/lovelace-front-end/assignments", name: "Assignments", component: Assignments },
-  { path: "/lovelace-front-end/feedback", name: "Feedback", component: Feedback },
-  {path: "/lovelace-front-end/submissions", name: "Submissions", component: Submissions},
+  { path: "/assignments", name: "Assignments", component: Assignments },
+  { path: "/feedback", name: "Feedback", component: Feedback },
+  {path: "/submissions", name: "Submissions", component: Submissions},
 
-  { path: "/lovelace-front-end/students", name: "Students", component: Students },
+  { path: "/students", name: "Students", component: Students },
 
-  {path: "/lovelace-front-end/admin", name: "Admin Panel", component: AdminPanels},
+  {path: "/admin", name: "Admin Panel", component: AdminPanels},
 
-  { path: "/lovelace-front-end/homepage", name: "Instructors Homepage", component: Homepage },
-  { path: "/lovelace-front-end", name: "LandingPage", component: LandingPage }
+  { path: "/homepage", name: "Instructors Homepage", component: Homepage },
+  { path: "/", name: "LandingPage", component: LandingPage }
   ];
 
 export default indexRoutes;
