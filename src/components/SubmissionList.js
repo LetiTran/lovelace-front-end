@@ -38,7 +38,7 @@ class SubmissionList extends Component {
                 prUrl={submission.pr_url}
                 submittedAt={submission.submitted_at}
                 feedbackUrl={submission.feedback_url} 
-                grade={submission.grade}
+                // grade={submission.grade}
                 instructorId={submission.instructor_id}
                 // instructorName={submission.instructor_name}
             />

@@ -37,16 +37,29 @@ class Submission extends Component {
     //   TODO: PUT feedback component here for this specific pr
   }
 
+  
+
   render() {
+
+    const style  = () => {
+      if (this.props.grade === "meet_standard" ){
+        return {backgroundColor: '#3FBF3F'}  
+      }else if (this.props.grade === "approach_standard"){
+          return {backgroundColor: '#F7F707'}
+      }else{ //(this.props.grade === "not_standard" )
+          return {backgroundColor: '#F70707'}
+      }
+    }
+   
     return (
-      <TableRow>
+      <TableRow style={this.style}>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.studentName}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.assignmentName}</TableCell> 
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.submittedAt}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.prUrl}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.feedbackUrl}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.instructorName}</TableCell>
-        <TableCell onClick={this.handleClickOpen('paper')}>{this.props.grade}</TableCell>
+        {/* <TableCell onClick={this.handleClickOpen('paper')}>{this.props.grade}</TableCell> */}
         {/* Figure out how to DRY this to tablerow onclick insetad of tablecell without loosing format */}
 
 
@@ -60,7 +73,7 @@ class Submission extends Component {
           <DialogTitle id="scroll-dialog-title">{this.props.assignmentName} / {this.props.studentName}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              <p><strong>Student: </strong>{this.props.studentName}</p>
+              {/* <p><strong>Student: </strong>{this.props.studentName}</p> */}
               <p><strong>Submitted At: </strong>{this.props.submittedAt}</p>
               <p><strong>PR URL: </strong>{this.props.prUrl}</p>
               <p><strong>Feedback URL: </strong>{this.props.feedbackUrl}</p>

@@ -83,7 +83,6 @@ class StudentsList extends Component {
             <TableCell>Email</TableCell>
           </TableRow>
         </TableHead>
-
         <TableBody>
         {this.renderStudentList()}
         </TableBody>
