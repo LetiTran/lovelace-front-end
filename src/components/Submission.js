@@ -29,6 +29,21 @@ class Submission extends Component {
     this.setState({ open: false });
   };
   
+  displayGrade = () => {
+    switch (this.props.grade) {
+      case "meet_standard":
+      return "Meets Standard"
+
+      case "approach_standard":
+      return "Approaches Standard"
+
+      case "not_standard":
+      return "Not Standard"
+
+      default:
+      return "Not Graded Yet"
+    }
+  }
 
   render() {
 
@@ -97,7 +112,7 @@ maxWidth: 900px,
               <p><strong>PR URL: </strong>{this.props.prUrl}</p>
               <p><strong>Feedback URL: </strong>{this.props.feedbackUrl}</p>
               <p><strong>Instructor: </strong>{this.props.instructorName}</p>             
-              <p><strong>Grade: </strong>{this.props.grade}</p>
+              <p ><strong>Grade: </strong><span style={{backgroundColor: style(), width: "100px"}}>{this.displayGrade()}</span></p>
 
               {/* TODO: send the assignment feedback template (will be sent from back-end when we have time to get to it) 
               to the MardownFeedback component and add its needed functions: */}
