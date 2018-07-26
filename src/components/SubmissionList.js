@@ -37,8 +37,11 @@ class SubmissionList extends Component {
                 // assignmentName={submission.assignment_name}
                 openPrUrl={()=> window.open(submission.data.raw.pr_url, "_blank")}
                 prUrl={submission.data.raw.pr_url}
+                dueDate={submission.data.display_data.due_date}
                 submittedAt={submission.data.display_data.submission_date}
                 feedbackUrl={submission.data.raw.feedback_url} 
+
+                openFeedbackUrl={()=> window.open(submission.data.raw.feedback_url, "_blank")}
                 grade={submission.data.raw.grade}
                 instructorId={submission.data.display_data.instructor_id}
                 // instructorName={submission.instructor_name}
@@ -73,6 +76,7 @@ class SubmissionList extends Component {
           <TableRow>
             <TableCell>Student </TableCell>
             <TableCell>Assignment</TableCell>
+            <TableCell>Due Date </TableCell>
             <TableCell>Submision Date</TableCell>
             <TableCell>PR URL</TableCell>
             <TableCell>Feedback URL</TableCell>

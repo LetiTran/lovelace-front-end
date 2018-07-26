@@ -9,7 +9,11 @@ import {
     ListItem,
     ListItemIcon,
     ListItemText,
-    AccountCircle
+    AccountCircle,
+    AssignmentReturned,
+    Assignment,
+    Create,
+    Redo
 } from '../components-info/MaterialUiImports'
 
 class SidebarInstructorsLinksList extends Component {
@@ -32,16 +36,16 @@ class SidebarInstructorsLinksList extends Component {
 
         {/* <ListItemLink to="/lovelace-front-end/homepage" primary="Instructors Homepage" icon={<HomeIcon />} /> */}
         <Divider  />
-        <ListItemLink to="/assignments" primary="Assignments" icon={<BookIcon />} />
+        <ListItemLink to="/assignments" primary="Assignments" icon={<Assignment />} />
         {/* TODO: feedback should be inside of assignments or/and submissions */}
-        {/* <ListItemLink to="/feedback" primary="Feedback" icon={<BookIcon />} /> 
+        {/* <ListItemLink to="/feedback" primary="Feedback" icon={<Redo />} /> 
         TODO: add assignment selectionbox inside of it and then make it availbale here too..
         currently available with a static template with no real functions of submitting it for presentantio purpose*/ } 
-        <ListItemLink to="/submissions" primary="Submissions" icon={<BookIcon />} />
+        <ListItemLink to="/submissions" primary="Submissions" icon={<AssignmentReturned />} />
         <Divider light />
         <ListItemLink to="/students" primary="Students" icon={<AccountCircle />} />
         <Divider light />
-        <ListItemLink to="/admin" primary="Admin Panel" icon={<BookIcon />} />
+        <ListItemLink to="/admin" primary="Admin Panel" icon={<Create />} />
         {/* <Divider light /> */}
         
         {/* <ListItemLink to="/admin" primary="Admin" icon={<CheckIcon />} /> */}

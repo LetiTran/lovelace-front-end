@@ -100,7 +100,11 @@ export {default as ListItemSecondaryAction} from '@material-ui/core/ListItemSeco
 export {default as WorkIcon} from '@material-ui/icons/Work';
 
 export {default as AccountCircle} from '@material-ui/icons/AccountCircle';
+export {default as AssignmentReturned} from  '@material-ui/icons/AssignmentReturned';
+export {default as Assignment} from  '@material-ui/icons/Assignment';
+export {default as Create} from  '@material-ui/icons/Create';
 
+export {default as Redo} from  '@material-ui/icons/Redo';
 
 
 // This package has been deprecated
