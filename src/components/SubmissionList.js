@@ -120,7 +120,6 @@ class SubmissionList extends Component {
             <TableCell>PR URL</TableCell>
             <TableCell>Feedback URL</TableCell>
             <TableCell>Feedback Instructor</TableCell>
-            <TableCell>Grade</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
