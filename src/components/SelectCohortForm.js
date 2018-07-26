@@ -66,7 +66,7 @@ class SelectCohortForm extends Component {
 
         <CardActions>
         {/* Create new button: */}
-        <Button onClick={this.handleClickOpen('body')} color="primary">
+        <Button onClick={this.handleClickOpen('body')} style={{backgroundColor: "#669933", color:"white"}}>
             {this.props.buttonName}
         </Button>
         </CardActions>
@@ -95,10 +95,10 @@ class SelectCohortForm extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.createCohort} color="primary">
+            <Button onClick={this.createCohort} style={{backgroundColor: "#669933", color:"white"}}>
               Create Cohort
             </Button>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} style={{backgroundColor: "#669933", color:"white"}}>
               Close
             </Button>
           </DialogActions>

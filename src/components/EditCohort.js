@@ -75,7 +75,7 @@ class EditCohort extends Component {
                 </Grid>
         </Grid>
         <Grid style={{margin:"30px"}} container justify="center">
-            <Button onClick={this.updateCohort} style={{width:"300px"}} variant="contained" color="primary" >
+            <Button onClick={this.updateCohort} style={{width:"300px", backgroundColor: "#669933", color:"white"}} variant="contained"  >
                  Update
             </Button>
         </Grid>

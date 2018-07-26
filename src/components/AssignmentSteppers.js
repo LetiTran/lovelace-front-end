@@ -123,7 +123,7 @@ class VerticalLinearStepper extends React.Component {
           {steps.map((label, index) => {
             return (
               <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+                <StepLabel >{label}</StepLabel>
                 <StepContent>
                   <Typography>{getStepContent(index)}</Typography>
                   <div className={classes.actionsContainer}>
@@ -137,7 +137,7 @@ class VerticalLinearStepper extends React.Component {
                       </Button> */}
                       <Button
                         variant="contained"
-                        color="primary"
+                        style={{backgroundColor: "#669933", color:"white"}}
                         onClick={()=>this.handleNext(index)}
                         className={classes.button}
                       >

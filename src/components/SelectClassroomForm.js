@@ -59,7 +59,7 @@ class SelectClassroomForm extends Component {
 
             <CardActions>
             {/* CreateNew button: */}
-            <Button onClick={this.handleClickOpen('body')} color="primary">
+            <Button onClick={this.handleClickOpen('body')} style={{backgroundColor: "#669933", color:"white"}}>
                 {this.props.buttonName}
             </Button>
             {/* <CustomizedSnackbars/> */}
@@ -85,11 +85,11 @@ class SelectClassroomForm extends Component {
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={this.submitNewClassroom} color="primary">
+                <Button style={{backgroundColor: "#669933", color:"white"}}onClick={this.submitNewClassroom} >
                 Create Classroom
                 </Button>
                 
-                <Button onClick={this.handleClose} color="primary">
+                <Button onClick={this.handleClose} style={{backgroundColor: "#669933", color:"white"}}>
                 Close
                 </Button>
             </DialogActions>

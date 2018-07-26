@@ -34,7 +34,7 @@ const styles = {
 
 class SelectionBoxForIndividualAssignment extends React.Component {
   state = {
-    checked: true,
+    checked: false,
   };
 
   handleChange = name => event => {

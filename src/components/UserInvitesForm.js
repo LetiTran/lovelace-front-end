@@ -118,7 +118,7 @@ class UserInvitesForm extends Component {
     const DisplayButton = () => {
         return(
             <Grid style={{margin:"30px"}} container justify="center">
-            <Button onClick={this.state.inviteStudents === true ? this.createStudentsInvites : this.createInstructorsInvites} style={{width:"300px"}} variant="contained" color="primary" >
+            <Button onClick={this.state.inviteStudents === true ? this.createStudentsInvites : this.createInstructorsInvites} style={{width:"300px", backgroundColor: "#669933", color:"white"}} variant="contained" >
                 Send 
             </Button>
             </Grid>

@@ -45,8 +45,8 @@ class RadioButtonsGroup extends React.Component {
             value={this.state.value}
             onChange={this.handleChange}
           >
-            <FormControlLabel value="students" control={<Radio color="primary" />} label="Students" />
-            <FormControlLabel value="Instructors" control={<Radio color="primary" />} label="Instructors" />
+            <FormControlLabel value="students" control={<Radio style={{color:"#669933"}}/>} label="Students" />
+            <FormControlLabel value="Instructors" control={<Radio style={{ color:"#669933"}}/>} label="Instructors" />
             {/* <FormControlLabel
               value="disabled"
               disabled

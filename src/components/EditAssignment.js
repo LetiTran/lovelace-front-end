@@ -50,7 +50,7 @@ class EditAssignment extends Component {
         </Grid>
 
          <Grid style={{margin:"30px"}} container justify="center">
-            <Button onClick={this.updateAssignments} style={{width:"300px"}} variant="contained" color="primary" >
+            <Button  onClick={this.updateAssignments} style={{width:"300px", backgroundColor: "#669933", color:"white"}} variant="contained" color="primary" >
                  Update Assignment
             </Button>
         </Grid>

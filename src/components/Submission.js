@@ -69,13 +69,13 @@ class Submission extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.props.openPrPage} color="primary">
+            <Button onClick={this.props.openPrPage} style={{backgroundColor: "#669933", color:"white"}}>
               Go to PR Page
             </Button>
-            <Button onClick={this.props.openFeedback} color="primary">
+            <Button onClick={this.props.openFeedback} style={{backgroundColor: "#669933", color:"white"}}>
               Go to Feedback
             </Button>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} style={{backgroundColor: "#669933", color:"white"}}>
               Close
             </Button>
           </DialogActions>

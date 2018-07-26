@@ -52,7 +52,7 @@ class Assignments extends React.Component {
 
     return (
       <div className={classes.root} style={{alignItems: "center"}}>
-        <AppBar position="static" color="default">
+        <AppBar position="static" color="default" >
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
