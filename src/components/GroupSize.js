@@ -64,7 +64,6 @@ class GroupSize extends React.Component {
             <MenuItem value={2}>2</MenuItem>
             <MenuItem value={3}>3</MenuItem>
             <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
           </Select>
         </FormControl>
       </form>

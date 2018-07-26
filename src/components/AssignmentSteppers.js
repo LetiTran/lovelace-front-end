@@ -14,6 +14,7 @@ import {createAssignment} from '../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
+import VerifyNewAssignment from './VerifyNewAssignment.js'
 import CreateAssignment from './CreateAssignment.js'
 import CreateGroup from './CreateGroup.js'
 
@@ -34,8 +35,9 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Create Assignment', 'Create groups', 'Verify'];
+  return ['Create Assignment', 'Create groups'];
 }
+//  TODO: Add  'Verify' to array and display groups for user to verify it and send put request to Submission
 
 function getStepContent(step) {
   switch (step) {
@@ -43,8 +45,9 @@ function getStepContent(step) {
       return <CreateAssignment/>
     case 1:
       return <CreateGroup/>;
-    case 2:
-      return `Display Assignment and its groups`;
+      //  Add this step for verification 
+    // case 2:
+    //   return <VerifyNewAssignment/>;
     default:
       return 'Unknown step';
   }
@@ -85,8 +88,9 @@ class VerticalLinearStepper extends React.Component {
            this.createAssignment();
         case 1:
            this.createSubmission();
-        case 2:
-           `Display Assignment and its groups`;
+          //  Add this step for verification 
+        // case 2:
+        //    `Display Assignment and its groups`;
         default:
           null;
       }
@@ -149,10 +153,9 @@ class VerticalLinearStepper extends React.Component {
         {activeStep === steps.length && (
           <Paper square elevation={0} className={classes.resetContainer}>
             <Typography>
-                All steps completed - Assignment and its Submissions created!
-                 Individual Assignment's groups wil be created automatically.
+                <h4 style={{ color:"#669933" }} >New {this.props.studentsGroups[0][0] ? "paired assignment" : "individual assignment"} {this.props.newAssignmentName}  with repo url {this.props.newAssignmentRepoUrl} was created! </h4>  
             </Typography>
-            <Button onClick={this.handleReset} className={classes.button}>
+            <Button style={{backgroundColor: "#669933", color:"white"}}onClick={this.handleReset} className={classes.button}>
               Create a New Assignment
             </Button>
           </Paper>
@@ -171,7 +174,12 @@ function mapStateToProps(state) {
         newAssignmentName: state.newAssignmentName,
         newAssignmentRepoUrl: state.newAssignmentRepoUrl,
         newAssignmentIndividual: state.newAssignmentIndividual,
-        currentClassroom: state.currentClassroom
+        currentClassroom: state.currentClassroom,
+
+        studentsGroups: state.studentsGroups,
+        newAssignmentName: state.newAssignmentName,
+        newAssignmentRepoUrl: state.newAssignmentRepoUrl,
+        newAssignmentIndividual: state.newAssignmentIndividual
         }
 }
 
