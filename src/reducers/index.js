@@ -22,7 +22,7 @@ import {
     STORE_NEW_ASSIGNMENT_NAME, STORE_NEW_ASSIGNMENT_REPO_URL, STORE_NEW_ASSIGNMENT_INDIVIDUAL_BOOL,
     STORE_ASSIGNMENT_GROUPS,
     UPDATE_SELECTED_ASSIGNMENT,
-    ADD_STUDENT_TO_GROUP,
+    ADD_STUDENT_TO_GROUP, CHANGE_GROUP_SIZE
     } from '../actions';
 
 const stateList = {
@@ -436,6 +436,11 @@ const stateList = {
             currentGroup: putInThisGroup,
             currentClassroomStudentsToAddToGroupd:takeStudentOutOfList
 
+        })
+
+        case CHANGE_GROUP_SIZE:
+        return Object.assign({}, state, {
+            groupSize: action.payload.size,
         })
 
         

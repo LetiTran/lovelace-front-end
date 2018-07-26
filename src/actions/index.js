@@ -75,7 +75,7 @@ export const CREATE_INVITES_SUCCEEDED = "CREATE_INVITES_SUCCEEDED"
 export const GET_SUBMISSION_LIST_SUCCEDED = "GET_SUBMISSION_LIST_SUCCEDED"
 export const STORE_SELECTED_SUBMISSION_GRADE = "STORE_SELECTED_SUBMISSION_GRADE"
 export const STORE_SELECTED_SUBMISSION = "STORE_SELECTED_SUBMISSION"
-
+export const CHANGE_GROUP_SIZE = "CHANGE_GROUP_SIZE"
 
 //  ____________________FUNCTIONS:____________________
 
@@ -988,7 +988,14 @@ export function updateSelectedSubmissionGrade(submissionGrade){
 //     }
 // }
 
-
+export function changeGroupSize(size){
+    return { 
+        type: CHANGE_GROUP_SIZE,
+        payload: {
+            size
+        }
+    }
+}
 
 
 // ---------------

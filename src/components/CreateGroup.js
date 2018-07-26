@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { } from '../actions';
+import { changeGroupSize} from '../actions';
 import StudentsListForCreatingGroups from './StudentsListForCreatingGroups.js'
 import ListStudentsGroups from './ListStudentsGroups.js'
+import GroupSize from './GroupSize.js'
 
 import {
     Grid,
@@ -13,7 +14,8 @@ import {
     TableHead,
     TableBody,
     TableRow,
-    TableCell
+    TableCell,
+    TextField
 } from '../components-info/MaterialUiImports'
 
 class CreateGroup extends Component {
@@ -32,10 +34,14 @@ class CreateGroup extends Component {
   //   this.forceUpdate()
   //  }
 
+  // handleGroupSize = (event) => {
+  //   this.props.changeGroupSize(event.target.value)
+  // }
+
   render() {
-     
-  
     return (
+      <section>
+      <GroupSize style={{textAlign: "right"}}/>
       <Grid container direction="row" justify="center">
       <Grid item xs={6}>
         <Table >
@@ -66,6 +72,7 @@ class CreateGroup extends Component {
         </Table>
         </Grid>
       </Grid>
+      </section>
     );
   }
 }
@@ -80,7 +87,7 @@ function mapStateToProps(state) {
 
 
 function mapDispatchToProps(dispatch){
-        return bindActionCreators({ }, dispatch)
+        return bindActionCreators({ changeGroupSize}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateGroup);
