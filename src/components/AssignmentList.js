@@ -32,16 +32,19 @@ componentDidMount(){
         <Repo
             key={index}
             type={repo.type}
-            onClick={()=> window.open(repo.repo_url, "_blank")}
-            repoUrl={repo.repo_url}
+            onRepoClick={()=> window.open(`https://github.com/Ada-C9/${repo.repo_url} `, "_blank")}
+            repoUrl={`https://github.com/Ada-C9/${repo.repo_url} `}
             startDate={repo.start_date} 
             dueDate={repo.due_date}
             individual={repo.individual}
             // Add this ones later on rails db and here too:
             // external_id={repo.id}
-            // name={repo.name}
+            name={repo.name}
             // language={repo.language}
-            // pulls_url={repo.pulls_url}
+            pullsUrl={`https://github.com/Ada-C9/${repo.repo_url} `}
+            // https://github.com/Ada-C9/rails-debugging
+            onPullsClick={()=> window.open(`https://github.com/Ada-C9/${repo.repo_url}/pulls `, "_blank")}
+
       />
     )
    });
@@ -69,7 +72,6 @@ componentDidMount(){
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell>Repo URL</TableCell>
-            <TableCell>Language</TableCell>
             <TableCell>Due Date</TableCell>
             <TableCell>Pulls URL</TableCell>
           </TableRow>

@@ -42,8 +42,12 @@ class StudentsList extends Component {
                 name={student.name}
                 email={student.email} 
                 classroom={student.classroom_id}
+
+                classroomName={student.classroom_name}
+
+                cohortName={student.cohort_name}
                 // TODO: API sending only classroom_id --> how to sen dclass name and cohort?... do it on back-end
-                githubName={student.github_name}
+                // githubName={student.github_name} TODO: add it back after presentantio
             />
         );
         });
@@ -68,15 +72,14 @@ class StudentsList extends Component {
     <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
       Students 
     </Typography>
-
     <Paper >
       <Table >
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell>Cohort</TableCell>
-            <TableCell>Class</TableCell>
-            <TableCell>GitHub Name</TableCell>
+            <TableCell>Classroom</TableCell>
+            {/* <TableCell>GitHub Name</TableCell> TODO: add it back after presentantio */}
             <TableCell>Email</TableCell>
           </TableRow>
         </TableHead>

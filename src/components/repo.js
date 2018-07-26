@@ -16,11 +16,10 @@ class Repo extends Component {
 
     return (
         <TableRow>
-            <TableCell> Put Name</TableCell>
-            <TableCell onClick={this.props.onClick}> {repoUrl} </TableCell> 
-            <TableCell>Put Language</TableCell>
-            <TableCell>Put Due Date</TableCell>
-            <TableCell>Put Pulls URL</TableCell>
+            <TableCell> {this.props.name}</TableCell>
+            <TableCell onClick={this.props.onRepoClick} > {repoUrl} </TableCell> 
+            <TableCell>{this.props.dueDate}</TableCell>
+            <TableCell onClick={this.props.onPullsClick} >{this.props.pullsUrl}</TableCell>
         </TableRow>
 
     )
