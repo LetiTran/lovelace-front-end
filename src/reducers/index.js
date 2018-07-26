@@ -439,8 +439,16 @@ const stateList = {
         })
 
         case CHANGE_GROUP_SIZE:
+        // let new_gorups = studentsGroups
+        // new Array()
+        let division = Object.keys(state.currentClassroomStudents).length / action.payload.size
+        console.log('division')
+        console.log(division)
+        let new_gorups = new Array(division).fill(null).map(()=>new Array().fill(null))
+        console.log(new_gorups)
         return Object.assign({}, state, {
             groupSize: action.payload.size,
+            studentsGroups: new_gorups
         })
 
         
