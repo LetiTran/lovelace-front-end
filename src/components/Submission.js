@@ -28,26 +28,19 @@ class Submission extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-
-  openPrPage =() => {
-    window.open(this.props.openPrUrl)
-  }
-
-  openFeedback=() => {
-    //   TODO: PUT feedback component here for this specific pr
-  }
-
   
 
   render() {
 
     const style  = () => {
       if (this.props.grade === "meet_standard" ){
-        return {backgroundColor: '#3FBF3F'}  
+        return '#c2f0c2'
       }else if (this.props.grade === "approach_standard"){
-          return {backgroundColor: '#F7F707'}
-      }else{ //(this.props.grade === "not_standard" )
-          return {backgroundColor: '#F70707'}
+          return '#ffffb3'
+      }else if((this.props.grade === "not_standard" )){ 
+          return '#ffcccc'
+      }else{
+        return '#f2f2f2'
       }
     }
    
@@ -55,7 +48,7 @@ class Submission extends Component {
 
 
     return (
-      <TableRow style={this.style}>
+      <TableRow style={{backgroundColor: style()}}>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.studentName}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.assignmentName}</TableCell> 
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.dueDate}</TableCell>
