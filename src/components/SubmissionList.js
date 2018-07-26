@@ -31,15 +31,16 @@ class SubmissionList extends Component {
         return (
             <Submission
                 key={index}
-                studentId={submission.student_id}
-                assignmentId={submission.assignment_id}
+                studentName={submission.data.display_data.student_name[0]}
+                assignmentName={submission.data.display_data.assignment_name}
+                instructorName={submission.data.display_data.instructor_name}
                 // assignmentName={submission.assignment_name}
-                openPrUrl={()=> window.open(submission.pr_url, "_blank")}
-                prUrl={submission.pr_url}
-                submittedAt={submission.submitted_at}
-                feedbackUrl={submission.feedback_url} 
-                // grade={submission.grade}
-                instructorId={submission.instructor_id}
+                openPrUrl={()=> window.open(submission.data.raw.pr_url, "_blank")}
+                prUrl={submission.data.raw.pr_url}
+                submittedAt={submission.data.display_data.submission_date}
+                feedbackUrl={submission.data.raw.feedback_url} 
+                grade={submission.data.raw.grade}
+                instructorId={submission.data.display_data.instructor_id}
                 // instructorName={submission.instructor_name}
             />
         );
@@ -72,7 +73,7 @@ class SubmissionList extends Component {
           <TableRow>
             <TableCell>Student </TableCell>
             <TableCell>Assignment</TableCell>
-            <TableCell>Submiaaion Date</TableCell>
+            <TableCell>Submision Date</TableCell>
             <TableCell>PR URL</TableCell>
             <TableCell>Feedback URL</TableCell>
             <TableCell>Feedback Instructor</TableCell>

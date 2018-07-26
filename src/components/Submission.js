@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-
+import MarkdownFeedback from "./MarkdownFeedback";
 // For Styles:
  import { 
  TableCell,
@@ -51,6 +51,9 @@ class Submission extends Component {
       }
     }
    
+    let initialSourcetwo = `# ${this.props.name}\r\n## What We\'re Looking For\r\n\r\nFeature | Feedback\r\n:------------- | :-------------\r\n**Baseline** | \r\nAppropriate Git Usage with no extraneous files checked in | Good number of commits and commit messages\r\nAnswered comprehension questions | Check, Strong Params actually ensure that no unexpected fields are inserted in creation or update operations.  Familiarity with routes & styling will come with practice.  If you have a specific question, send it on to me.  \r\nSuccessfully handles: Index, Show | Check\r\nSuccessfully handles: New, Create | Check.\r\nSuccessfully handles: Edit, Update | Check\r\nSuccessfully handles: Destroy, Task Complete | Check\r\nRoutes follow RESTful conventions | Check\r\nUses named routes (like '_path') | Check\r\nUses partial views to DRY the new and edit forms | Check\r\n**Overall** | Nicely done.  The site works and does everything expected.  The styling looks good without being too fancy. \r\n`
+
+
     return (
       <TableRow style={this.style}>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.studentName}</TableCell>
@@ -65,6 +68,7 @@ class Submission extends Component {
 
         {/* For the pop-up dialog box: */}
         <Dialog
+          style={this.style}
           open={this.state.open}
           onClose={this.handleClose}
           scroll={this.state.scroll}
@@ -79,6 +83,10 @@ class Submission extends Component {
               <p><strong>Feedback URL: </strong>{this.props.feedbackUrl}</p>
               <p><strong>Instructor: </strong>{this.props.instructorName}</p>             
               <p><strong>Grade: </strong>{this.props.grade}</p>
+
+              {/* TODO: send the assignment feedback template (will be sent from back-end when we have time to get to it) 
+              to the MardownFeedback component and add its needed functions: */}
+              <MarkdownFeedback feedback={initialSourcetwo}/>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -86,7 +94,7 @@ class Submission extends Component {
               Go to PR Page
             </Button>
             <Button onClick={this.props.openFeedback} style={{backgroundColor: "#669933", color:"white"}}>
-              Go to Feedback
+              Go to Feedback Page
             </Button>
             <Button onClick={this.handleClose} style={{backgroundColor: "#669933", color:"white"}}>
               Close

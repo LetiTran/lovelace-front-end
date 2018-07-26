@@ -8,7 +8,8 @@ import {
     Divider,
     ListItem,
     ListItemIcon,
-    ListItemText
+    ListItemText,
+    AccountCircle
 } from '../components-info/MaterialUiImports'
 
 class SidebarInstructorsLinksList extends Component {
@@ -33,10 +34,12 @@ class SidebarInstructorsLinksList extends Component {
         <Divider  />
         <ListItemLink to="/assignments" primary="Assignments" icon={<BookIcon />} />
         {/* TODO: feedback should be inside of assignments or/and submissions */}
-        <ListItemLink to="/feedback" primary="Feedback" icon={<BookIcon />} />
+        {/* <ListItemLink to="/feedback" primary="Feedback" icon={<BookIcon />} /> 
+        TODO: add assignment selectionbox inside of it and then make it availbale here too..
+        currently available with a static template with no real functions of submitting it for presentantio purpose*/ } 
         <ListItemLink to="/submissions" primary="Submissions" icon={<BookIcon />} />
         <Divider light />
-        <ListItemLink to="/students" primary="Students" icon={<BookIcon />} />
+        <ListItemLink to="/students" primary="Students" icon={<AccountCircle />} />
         <Divider light />
         <ListItemLink to="/admin" primary="Admin Panel" icon={<BookIcon />} />
         {/* <Divider light /> */}

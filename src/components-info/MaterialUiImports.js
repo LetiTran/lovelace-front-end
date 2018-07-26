@@ -99,6 +99,9 @@ export {default as ListItemSecondaryAction} from '@material-ui/core/ListItemSeco
 // For icons
 export {default as WorkIcon} from '@material-ui/icons/Work';
 
+export {default as AccountCircle} from '@material-ui/icons/AccountCircle';
+
+
 
 // This package has been deprecated
 // Author message:

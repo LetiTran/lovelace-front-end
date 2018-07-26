@@ -21,15 +21,19 @@ import {
 } from '../components-info/MaterialUiImports'
 // import MarkdownElement from '@material-ui/docs'
 
-let initialSourcetwo = '# Task List\r\n## What We\'re Looking For\r\n\r\nFeature | Feedback\r\n:------------- | :-------------\r\n**Baseline** | \r\nAppropriate Git Usage with no extraneous files checked in | Good number of commits and commit messages\r\nAnswered comprehension questions | Check, Strong Params actually ensure that no unexpected fields are inserted in creation or update operations.  Familiarity with routes & styling will come with practice.  If you have a specific question, send it on to me.  \r\nSuccessfully handles: Index, Show | Check\r\nSuccessfully handles: New, Create | Check.\r\nSuccessfully handles: Edit, Update | Check\r\nSuccessfully handles: Destroy, Task Complete | Check\r\nRoutes follow RESTful conventions | Check\r\nUses named routes (like `_path`) | Check\r\nUses partial views to DRY the new and edit forms | Check\r\n**Overall** | Nicely done.  The site works and does everything expected.  The styling looks good without being too fancy. \r\n'
+  // let initialSourcetwo = `# ${this.props.name}\r\n## What We\'re Looking For\r\n\r\nFeature | Feedback\r\n:------------- | :-------------\r\n**Baseline** | \r\nAppropriate Git Usage with no extraneous files checked in | Good number of commits and commit messages\r\nAnswered comprehension questions | Check, Strong Params actually ensure that no unexpected fields are inserted in creation or update operations.  Familiarity with routes & styling will come with practice.  If you have a specific question, send it on to me.  \r\nSuccessfully handles: Index, Show | Check\r\nSuccessfully handles: New, Create | Check.\r\nSuccessfully handles: Edit, Update | Check\r\nSuccessfully handles: Destroy, Task Complete | Check\r\nRoutes follow RESTful conventions | Check\r\nUses named routes (like '_path') | Check\r\nUses partial views to DRY the new and edit forms | Check\r\n**Overall** | Nicely done.  The site works and does everything expected.  The styling looks good without being too fancy. \r\n`
+
 
 class MarkdownFeedback extends Component {
+
+
+
 
 constructor(props) {
   super(props);
   this.state = {
     auth: true,
-    feedback: initialSourcetwo,
+    feedback: this.props.initialSourcetwo,
     contentsList: []
   }
 }
@@ -89,7 +93,7 @@ constructor(props) {
                     value={feedback}
                     onChange={feedback}
                   />
-                  {/* {initialSourcetwo} */}
+                  {this.props.initialSourcetwo}
                   <Input
                     id="md-feedback"
                     fullWidth={true}

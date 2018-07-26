@@ -41,7 +41,7 @@ componentDidMount(){
             // external_id={repo.id}
             name={repo.name}
             // language={repo.language}
-            pullsUrl={`https://github.com/Ada-C9/${repo.repo_url} `}
+            pullsUrl={`https://github.com/Ada-C9/${repo.repo_url}/pulls`}
             // https://github.com/Ada-C9/rails-debugging
             onPullsClick={()=> window.open(`https://github.com/Ada-C9/${repo.repo_url}/pulls `, "_blank")}
 
