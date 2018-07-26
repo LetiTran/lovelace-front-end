@@ -63,12 +63,51 @@ class SubmissionList extends Component {
         },
       };
 
+      const colorCodeRedStyle = {
+        alignSelf: "center",
+        marginRight: "20px",
+        marginBottom: 20, 
+        backgroundColor:'#ffcccc', 
+        width: "150px", 
+        textAlign: "center"
+      }
+
+      const colorCodeYellowStyle = {
+        alignSelf: "center",
+        marginRight: "20px",
+        marginBottom: 20, 
+        backgroundColor:'#ffffb3', 
+        width: "150px", 
+        textAlign: "center"
+      }
+
+      const colorCodeGreenStyle = {
+        alignSelf: "center",
+        marginRight: "20px",
+        marginBottom: 20, 
+        backgroundColor:'#c2f0c2', 
+        width: "150px", 
+        textAlign: "center"
+      }
+
+
+
     return (
         
   <section style={styles.root}>
     <Typography style={{marginBottom: 20}} variant="title" id="tableTitle">
       Submissions {this.props.classroomName}
     </Typography>
+
+    {/* <Typography style={{marginBottom: 20, color:'#c2f0c2'}} variant="title" id="tableTitle"> */}
+     <section style={{display: "inline-flex"}} ><p style={colorCodeGreenStyle}> Meets Standard </p> <p style={colorCodeYellowStyle}> Approaches Standard </p> <p style={colorCodeRedStyle}> Not Standard </p></section>
+    {/* </Typography> */}
+    {/* <Typography style={{marginBottom: 20, color:'#ffffb3'}} variant="title" id="tableTitle">
+      Approaches Standard
+    </Typography>
+    <Typography style={{marginBottom: 20, color:'#ffcccc'}} variant="title" id="tableTitle">
+      Not Standard
+    </Typography> */}
 
     <Paper >
       <Table >

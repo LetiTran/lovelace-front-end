@@ -56,7 +56,7 @@ class Submission extends Component {
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.prUrl}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.feedbackUrl}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.instructorName}</TableCell>
-        <TableCell onClick={this.handleClickOpen('paper')}>{this.props.grade}</TableCell>
+        {/* <TableCell onClick={this.handleClickOpen('paper')}>{this.props.grade}</TableCell> */}
         {/* Figure out how to DRY this to tablerow onclick insetad of tablecell without loosing format */}
 
 {/* //     max-width: 1200px;
