@@ -722,6 +722,7 @@ export function addStudentToGroup(student) {
 export function fetchInstructorsList() {
     return dispatch => {
         api.fetchInstructorsList().then(response => {
+         
             dispatch(fetchInstructorsListSucceded(response.data))
         }).catch((error) => {
             if (error.response) {
@@ -732,6 +733,7 @@ export function fetchInstructorsList() {
 }
 
 export function fetchInstructorsListSucceded(instructorsList) {
+    console.log(instructorsList)
     return {
     type: GET_INSTRUCTORS_LIST_SUCCEDED,
         payload: {

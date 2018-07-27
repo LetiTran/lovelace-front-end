@@ -453,7 +453,7 @@ const stateList = {
         // *********** INSTRUCTORS *****************    
         case GET_INSTRUCTORS_LIST_SUCCEDED:
         {
-            const activeInstructors = action.payload.instructorsList.instructors.filter((instructor) => {
+            const activeInstructors = action.payload.instructorsList.filter((instructor) => {
                 return instructor.active === true
             })
             return Object.assign({}, state, {
