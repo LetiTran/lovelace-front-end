@@ -6,8 +6,7 @@ import axios from 'axios';
 // const API_BASE_URL = `http://${process.env.KIP_ADDRESS}:3000/`;
 // const API_BASE_URL = `https://lovelace-be-heroku.herokuapp.com/`;
 
-
-const API_BASE_URL = `http://172.24.22.199:3000/`;
+const API_BASE_URL = `http://localhost:3000/`;
 
 
 const client = axios.create({

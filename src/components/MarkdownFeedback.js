@@ -21,8 +21,53 @@ import {
 } from '../components-info/MaterialUiImports'
 // import MarkdownElement from '@material-ui/docs'
 
-  // let initialSourcetwo = `# ${this.props.name}\r\n## What We\'re Looking For\r\n\r\nFeature | Feedback\r\n:------------- | :-------------\r\n**Baseline** | \r\nAppropriate Git Usage with no extraneous files checked in | Good number of commits and commit messages\r\nAnswered comprehension questions | Check, Strong Params actually ensure that no unexpected fields are inserted in creation or update operations.  Familiarity with routes & styling will come with practice.  If you have a specific question, send it on to me.  \r\nSuccessfully handles: Index, Show | Check\r\nSuccessfully handles: New, Create | Check.\r\nSuccessfully handles: Edit, Update | Check\r\nSuccessfully handles: Destroy, Task Complete | Check\r\nRoutes follow RESTful conventions | Check\r\nUses named routes (like '_path') | Check\r\nUses partial views to DRY the new and edit forms | Check\r\n**Overall** | Nicely done.  The site works and does everything expected.  The styling looks good without being too fancy. \r\n`
+import purple from '@material-ui/core/colors/purple';
 
+import { withStyles } from '@material-ui/core/styles';
+
+  // let initialSourcetwo = `# ${this.props.name}\r\n## What We\'re Looking For\r\n\r\nFeature | Feedback\r\n:------------- | :-------------\r\n**Baseline** | \r\nAppropriate Git Usage with no extraneous files checked in | Good number of commits and commit messages\r\nAnswered comprehension questions | Check, Strong Params actually ensure that no unexpected fields are inserted in creation or update operations.  Familiarity with routes & styling will come with practice.  If you have a specific question, send it on to me.  \r\nSuccessfully handles: Index, Show | Check\r\nSuccessfully handles: New, Create | Check.\r\nSuccessfully handles: Edit, Update | Check\r\nSuccessfully handles: Destroy, Task Complete | Check\r\nRoutes follow RESTful conventions | Check\r\nUses named routes (like '_path') | Check\r\nUses partial views to DRY the new and edit forms | Check\r\n**Overall** | Nicely done.  The site works and does everything expected.  The styling looks good without being too fancy. \r\n`
+  const styles = theme => ({
+    colorBar: {},
+    colorChecked: {},
+    iOSSwitchBase: {
+      '&$iOSChecked': {
+        color: theme.palette.common.white,
+        '& + $iOSBar': {
+          backgroundColor: '#669933',
+        },
+      },
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+        easing: theme.transitions.easing.sharp,
+      }),
+    },
+    iOSChecked: {
+      transform: 'translateX(15px)',
+      '& + $iOSBar': {
+        opacity: 1,
+        border: 'none',
+      },
+    },
+    iOSBar: {
+      borderRadius: 13,
+      width: 42,
+      height: 26,
+      marginTop: -13,
+      marginLeft: -21,
+      border: 'solid 1px',
+      borderColor: theme.palette.grey[400],
+      backgroundColor: theme.palette.grey[50],
+      opacity: 1,
+      transition: theme.transitions.create(['background-color', 'border']),
+    },
+    iOSIcon: {
+      width: 24,
+      height: 24,
+    },
+    iOSIconChecked: {
+      boxShadow: theme.shadows[1],
+    },
+  });
 
 class MarkdownFeedback extends Component {
 
@@ -141,13 +186,20 @@ constructor(props) {
 
 
     /> : <MarkdownElement text={this.state.feedback} />;
-
+    // color="primary" 
+    const { classes } = this.props;
     return (
       <section >
         <FormGroup row>
           <FormControlLabel
               control={
-                <Switch checked={this.state.auth} onChange={this.handleChange} aria-label="TextSwitch" />
+                <Switch   classes={{
+                  switchBase: classes.iOSSwitchBase,
+                  bar: classes.iOSBar,
+                  icon: classes.iOSIcon,
+                  iconChecked: classes.iOSIconChecked,
+                  checked: classes.iOSChecked,
+                }}  checked={this.state.auth} onChange={this.handleChange} aria-label="TextSwitch" />
               }
               label={this.state.auth ? "Preview" : "Preview"}
           />
@@ -181,4 +233,4 @@ constructor(props) {
 // or https://material-ui.com/demos/dialogs/
 
 
-export default MarkdownFeedback;
+export default withStyles(styles)(MarkdownFeedback);

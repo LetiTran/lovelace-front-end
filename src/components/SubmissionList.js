@@ -32,6 +32,7 @@ class SubmissionList extends Component {
             <Submission
                 key={index}
                 studentName={submission.data.display_data.student_name[0]}
+                // {TODO: Change the student name of rendering only the first element to rendering the whole leis(in case of a grup assignment)}
                 assignmentName={submission.data.display_data.assignment_name}
                 instructorName={submission.data.display_data.instructor_name}
                 // assignmentName={submission.assignment_name}
@@ -40,7 +41,7 @@ class SubmissionList extends Component {
                 dueDate={submission.data.display_data.due_date}
                 submittedAt={submission.data.display_data.submission_date}
                 feedbackUrl={submission.data.raw.feedback_url} 
-
+          
                 openFeedbackUrl={()=> window.open(submission.data.raw.feedback_url, "_blank")}
                 grade={submission.data.raw.grade}
                 instructorId={submission.data.display_data.instructor_id}
@@ -100,7 +101,7 @@ class SubmissionList extends Component {
     </Typography>
 
     {/* <Typography style={{marginBottom: 20, color:'#c2f0c2'}} variant="title" id="tableTitle"> */}
-     <section style={{display: "inline-flex"}} ><p style={colorCodeGreenStyle}> Meets Standard </p> <p style={colorCodeYellowStyle}> Approaches Standard </p> <p style={colorCodeRedStyle}> Not Standard </p></section>
+     <section style={{display: "inline-flex"}}><p style={colorCodeGreenStyle}> Meets Standard </p> <p style={colorCodeYellowStyle}> Approaches Standard </p> <p style={colorCodeRedStyle}> Not Standard </p></section>
     {/* </Typography> */}
     {/* <Typography style={{marginBottom: 20, color:'#ffffb3'}} variant="title" id="tableTitle">
       Approaches Standard
@@ -117,8 +118,8 @@ class SubmissionList extends Component {
             <TableCell>Assignment</TableCell>
             <TableCell>Due Date </TableCell>
             <TableCell>Submision Date</TableCell>
-            <TableCell>PR URL</TableCell>
-            <TableCell>Feedback URL</TableCell>
+            {/* <TableCell>PR URL</TableCell> */}
+            {/* <TableCell>Feedback URL</TableCell> */}
             <TableCell>Feedback Instructor</TableCell>
           </TableRow>
         </TableHead>

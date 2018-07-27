@@ -30,6 +30,12 @@ class StudentsList extends Component {
     // console.log('studentsList in renderStudenttList: ' )
     // console.log(this.props.studentsList)
     // console.log(this.props.currentClassroomStudents)
+      let classroomName = this.props.classroomNamePatch
+    if(this.props.classroom === 1){
+      classroomName = "Ampers"
+    }else { //(this.props.classroom === 2)
+      classroomName = "Octos"
+    }
         return this.props.currentClassroomStudents.map((student,index) => {
         //  To change it for ALL STUDENTS LIST, swap this two lines:
         //  return this.props.studentsList.map((student,index) => {
@@ -41,11 +47,13 @@ class StudentsList extends Component {
                 openGitHubProfile={()=> window.open("https://github.com/" + student.github_name, "_blank")}
                 name={student.name}
                 email={student.email} 
-                classroom={student.classroom_id}
 
-                classroomName={student.classroom_name}
-
-                cohortName={student.cohort_name}
+                // TODO: change this later when api is sending is the classroom name of each student.
+                // classroom={student.classroom_id}
+                classroomName={classroomName}
+                // classroomName={student.classroom_name}
+                // cohortName={student.cohort_name}
+                cohortName="C9"
                 // TODO: API sending only classroom_id --> how to sen dclass name and cohort?... do it on back-end
                 // githubName={student.github_name} TODO: add it back after presentantio
             />
@@ -103,8 +111,10 @@ function mapStateToProps(state) {
       return {
       studentsList: state.studentsList,
       currentClassroomStudents: state.currentClassroomStudents,
-      classroomName: state.currentClassroom.name
-      }
+      classroom: state.currentClassroom,
+      cohortName: state.currentCohort.name,
+      classroomNamePatch: state.currentClassroom.name
+    }
   }
   
   function mapDispatchToProps(dispatch) {

@@ -41,7 +41,7 @@ class LandingPage extends Component {
         <Grid container justify="center">
           <Grid item style={styles.Grid}  >
             <Paper style={styles.Paper}>
-            <Login />
+            <Login/>
             </Paper>
           </Grid>
         </Grid>

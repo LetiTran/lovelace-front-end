@@ -7,11 +7,10 @@ class Login extends Component {
   render() {
 
     const Welcome = (
-      <Button size="small">Please Login!</Button> 
+      <Button size="small">Welcome Back Demo User!</Button> 
     )
 
     return (
-    
       <div>
          {Welcome}
              {/* github loggin button
