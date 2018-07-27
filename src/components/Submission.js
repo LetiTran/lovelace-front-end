@@ -110,7 +110,7 @@ maxWidth: 900px,
               {/* <p><strong>Student: </strong>{this.props.studentName}</p> */}
               <p><strong>Submitted At: </strong>{this.props.submittedAt}</p>
               <p onClick={this.props.openPrUrl}><strong>PR URL: </strong>{this.props.prUrl}</p>
-              <p><strong>Feedback URL: </strong>{this.props.feedbackUrl}</p>
+              {/* <p><strong>Feedback URL: </strong>{this.props.feedbackUrl}</p> */}
               <p><strong>Instructor: </strong>{this.props.instructorName}</p>             
               <p ><strong>Grade: </strong><span style={{backgroundColor: style(), width: "100px"}}>{this.displayGrade()}</span></p>
 

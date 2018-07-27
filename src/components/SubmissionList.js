@@ -41,7 +41,7 @@ class SubmissionList extends Component {
                 dueDate={submission.data.display_data.due_date}
                 submittedAt={submission.data.display_data.submission_date}
                 feedbackUrl={submission.data.raw.feedback_url} 
-
+          
                 openFeedbackUrl={()=> window.open(submission.data.raw.feedback_url, "_blank")}
                 grade={submission.data.raw.grade}
                 instructorId={submission.data.display_data.instructor_id}
