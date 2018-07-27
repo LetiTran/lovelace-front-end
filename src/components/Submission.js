@@ -68,8 +68,8 @@ class Submission extends Component {
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.assignmentName}</TableCell> 
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.dueDate}</TableCell>
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.submittedAt}</TableCell>
-        <TableCell onClick={this.handleClickOpen('paper')}>{this.props.prUrl}</TableCell>
-        <TableCell onClick={this.handleClickOpen('paper')}>{this.props.feedbackUrl}</TableCell>
+        {/* <TableCell onClick={this.handleClickOpen('paper')}>{this.props.prUrl}</TableCell> */}
+        {/* <TableCell onClick={this.handleClickOpen('paper')}>{this.props.feedbackUrl}</TableCell> */}
         <TableCell onClick={this.handleClickOpen('paper')}>{this.props.instructorName}</TableCell>
         {/* <TableCell onClick={this.handleClickOpen('paper')}>{this.props.grade}</TableCell> */}
         {/* Figure out how to DRY this to tablerow onclick insetad of tablecell without loosing format */}
@@ -109,7 +109,7 @@ maxWidth: 900px,
             <DialogContentText >
               {/* <p><strong>Student: </strong>{this.props.studentName}</p> */}
               <p><strong>Submitted At: </strong>{this.props.submittedAt}</p>
-              <p><strong>PR URL: </strong>{this.props.prUrl}</p>
+              <p onClick={this.props.openPrUrl}><strong>PR URL: </strong>{this.props.prUrl}</p>
               <p><strong>Feedback URL: </strong>{this.props.feedbackUrl}</p>
               <p><strong>Instructor: </strong>{this.props.instructorName}</p>             
               <p ><strong>Grade: </strong><span style={{backgroundColor: style(), width: "100px"}}>{this.displayGrade()}</span></p>
@@ -126,15 +126,16 @@ maxWidth: 900px,
             <Button onClick={this.props.openFeedbackUrl} style={{backgroundColor: "#669933", color:"white"}}>
               Go to Feedback Page
             </Button>
+            {/* TODO: add gradding buttons and function for 'Save Feedback'*/}
+            <Button onClick={this.handleClose} style={{backgroundColor: "#669933", color:"white"}}>
+              Save Feedback
+            </Button>
             <Button onClick={this.handleClose} style={{backgroundColor: "#669933", color:"white"}}>
               Close
             </Button>
           </DialogActions>
         </Dialog>
-        
         </TableRow>
-
-       
     )
   }
 }

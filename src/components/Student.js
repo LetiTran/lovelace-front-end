@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
+import avatar from "../avatar.png"
 // For Styles:
  import { 
  TableCell,
@@ -52,6 +53,7 @@ class Student extends Component {
           <DialogTitle id="scroll-dialog-title">{this.props.name}</DialogTitle>
           <DialogContent>
             <DialogContentText>
+              <img className="logo" src= {avatar} alt="App Logo" height="100" width="100"/>
               {/* put github picture here (calls api and get avatar)? */}
               <p><strong>Cohort: </strong>{this.props.cohortName}</p>
               <p><strong>Classroom: </strong>{this.props.classroomName}</p>
